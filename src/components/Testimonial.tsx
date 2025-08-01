@@ -54,8 +54,9 @@ const Testimonial: React.FC = () => {
                             Triển khai các dự án cộng đồng trên không gian mạng
                         </h3>
                         <p className="text-gray-600 text-sm leading-relaxed">
-                            Tạo hưng thú cho trẻ em, giúp trẻ hiểu và đáo tạo tuyến giáo phẩm xây dựng môi trường số an toàn - minh
-                            bạch - sáng tạo cây.
+                            Tập trung vào chống tin giả, ngăn chặn lừa đảo
+                            trực tuyến, góp phần xây dựng một môi trường
+                            số an toàn – minh bạch – đáng tin cậy
                         </p>
                     </div>
 
@@ -64,8 +65,10 @@ const Testimonial: React.FC = () => {
                         <div className="text-6xl font-light text-gray-300 mb-6">02</div>
                         <h3 className="text-xl font-semibold text-gray-800 mb-4 leading-tight">Đào tạo & Nâng cao Nhân thức</h3>
                         <p className="text-gray-600 text-sm leading-relaxed">
-                            Tổ chức các chương trình đào tạo, huấn luyện về chế độ kiến thức nhận dạng các nội dung, ký năng và kiến
-                            thức về IOT của người nội.
+                            Tổ chức các chương trình đào tạo, huấn luyện
+                            và chia sẻ kiến thức nhằm nâng cao hiểu biết,
+                            kỹ năng và trách nhiệm xã hội của người nổi
+                            tiếng đối với cộng đồng.
                         </p>
                     </div>
 
@@ -76,8 +79,10 @@ const Testimonial: React.FC = () => {
                             Tổ chức các sự kiện và hoạt động thực tiễn
                         </h3>
                         <p className="text-gray-600 text-sm leading-relaxed">
-                            Tạo điều kiện gặp gỡ, thảo luận, chia sẻ, thoát chính sách, các buổi gặp mặt và phiên hoạt động ý nghĩa
-                            khác để biến cam kết thành hành động.
+                            Bao gồm tọa đàm, hội thảo, diễn đàn, đối
+                            thoại chính sách, các buổi gặp mặt và
+                            nhiều hoạt động ý nghĩa khác để biến cam
+                            kết thành hành động.
                         </p>
                     </div>
                 </div>
