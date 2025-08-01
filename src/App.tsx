@@ -7,6 +7,9 @@ import Event from "./components/Event.tsx";
 import KOL from "./components/KOL.tsx";
 import DiscussionComponent from "./components/DiscussionComponent.tsx";
 import AllianceIntroduction from "@/components/AllianceIntroduction.tsx";
+import Testimonial from "./components/Testimonial.tsx";
+import Banner from "./components/Banner.tsx";
+import Footer from "./components/Footer.tsx";
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
         <KOL></KOL>
         <DiscussionComponent />
         <AllianceIntroduction></AllianceIntroduction>
+        <Testimonial></Testimonial>
+        <Banner></Banner>
+        <Footer />
     </div>
   );
 }

@@ -55,10 +55,10 @@ const CountdownPage: React.FC = () => {
           {/* Main Title */}
           <div className="mb-8 text-left">
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-black leading-tight">
-              KOL <span className="text-2xl md:text-3xl font-normal">với</span> KỶ NGUYÊN
+              KOL <span className="text-2xl md:text-3xl font-normal">VỚI</span> KỶ NGUYÊN
             </h2>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-black leading-tight">
-              VƯƠNG MÌNH <span className="text-2xl md:text-3xl font-normal">CỦA DÂN TỘC</span>
+              VƯƠN MÌNH <span className="text-2xl md:text-3xl font-normal">CỦA DÂN TỘC</span>
             </h2>
           </div>
 
