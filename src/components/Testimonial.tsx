@@ -41,7 +41,7 @@ const Testimonial: React.FC = () => {
             {/* Header Section */}
             <div className="text-center py-16 px-4">
                 <h1 className="text-4xl md:text-5xl font-light text-gray-400 mb-4 tracking-wider">LIÊN MINH NIỀM TIN SỐ</h1>
-                <p className="text-lg text-gray-500 font-light tracking-wide">ẢNH HƯỞNG TRÁCH NHIỆM, DẪN DẮT NIỀM TIN</p>
+                <p className="text-4xl text-gray-400 font-light tracking-wide">ẢNH HƯỞNG TRÁCH NHIỆM, DẪN DẮT NIỀM TIN</p>
             </div>
 
             {/* Main Content Cards */}
