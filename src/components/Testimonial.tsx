@@ -91,7 +91,7 @@ const Testimonial: React.FC = () => {
 
             {/* Testimonials Section */}
             <div className="bg-white py-16">
-                <div className="max-w-7xl mx-auto px-4 relative">
+                <div className=" px-4 relative">
                     <div className="flex items-center justify-between">
                         {/* Previous Button */}
                         <button
