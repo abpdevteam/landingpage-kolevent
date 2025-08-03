@@ -2,10 +2,10 @@ import React from 'react';
 
 const Services: React.FC = () => {
   return (
-      <div className="w-full min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="w-full max-w-7xl mx-auto space-y-12">
+      <div className="w-full  bg-gray-50">
+        <div className="w-full  space-y-12">
           {/* Phần header và đơn vị tổ chức */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="flex flex-col md:flex-row items-center justify-between">
             {/* Đơn vị chủ trì */}
             <div className="flex-1 text-center">
               <h2 className="text-xl font-semibold text-gray-700 mt-2">ĐƠN VỊ CHỦ TRÌ</h2>
@@ -36,9 +36,8 @@ const Services: React.FC = () => {
             </div>
           </div>
 
-          {/* Artwork full width */}
           <div className="w-full">
-            <div className="w-full h-96 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center text-gray-400">
+            <div className="w-full h-40 flex items-center justify-center text-gray-400 bg-gray-200">
               [ARTWORK]
             </div>
           </div>
