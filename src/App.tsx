@@ -10,6 +10,7 @@ import AllianceIntroduction from "@/components/AllianceIntroduction.tsx";
 import Testimonial from "./components/Testimonial.tsx";
 import Banner from "./components/Banner.tsx";
 import Footer from "./components/Footer.tsx";
+import InfluencerBanner from "@/components/InfluencerBanner.tsx";
 
 function App() {
   return (
@@ -22,8 +23,11 @@ function App() {
         <KOL></KOL>
         <DiscussionComponent />
         <AllianceIntroduction></AllianceIntroduction>
+
         <Testimonial></Testimonial>
+        <InfluencerBanner></InfluencerBanner>
         <Banner></Banner>
+
         <Footer />
     </div>
   );

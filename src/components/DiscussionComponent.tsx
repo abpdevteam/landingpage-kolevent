@@ -17,12 +17,12 @@ const DiscussionComponent: React.FC = () => {
         {
             id: 2,
             number: "02",
-            title: "Trách nhiệm đạo đức - pháp lý - xã hội của kol trong kỳ nguyên mới"
+            title: "Trách nhiệm đạo đức - pháp lý - xã hội của kol trong kỷ nguyên mới"
         },
         {
             id: 3,
             number: "03",
-            title: "Liên kết hệ sinh thái: nền tảng - doanh nghiệp - agency - KOLs"
+            title: "Liên kết hệ sinh thái: nền tảng doanh nghiệp - agency- KOLs"
         }
     ]
 

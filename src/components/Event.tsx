@@ -18,7 +18,7 @@ const Event: React.FC = () => {
                             </div>
 
                             <div className="flex justify-between items-center w-full">
-                                <div className="text-xl md:text-2xl text-gray-500">
+                                <div className="text-xl md:text-4xl text-gray-500">
                                     Khách sạn Intercontinental Hanoi Landmark72
                                 </div>
                             </div>
@@ -30,7 +30,7 @@ const Event: React.FC = () => {
                 {/* Main Content */}
                 <div className="space-y-8"> {/* Tăng khoảng cách */}
                     <div
-                        className="text-lg md:text-xl text-gray-800 leading-relaxed space-y-6"> {/* Tăng kích thước chữ */}
+                        className="text-lg md:text-xl text-gray-800 leading-relaxed"> {/* Tăng kích thước chữ */}
                         <p>Quy tụ các KOL tiêu biểu trên toàn quốc cùng đại diện cơ quan quản lý và doanh nghiệp</p>
                         <p>Diễn đàn thường niên, uy tín và quy mô nhất dành cho KOL.</p>
                         <p>
@@ -54,9 +54,7 @@ const Event: React.FC = () => {
                                     </div>
 
                                     <p className="text-base md:text-lg text-gray-700 leading-relaxed"> {/* Tăng kích thước */}
-                                        Lựa chọn theo tiêu chí từ Cục an ninh
-                                        mạng và Cục nghiệp vụ của Bộ và
-                                        Công an
+                                        Lựa chọn theo tiêu chí từ Cục an ninh  mạng và Cục nghiệp vụ của Bộ và  Công an
                                     </p>
                                 </div>
                             </div>
@@ -71,7 +69,7 @@ const Event: React.FC = () => {
                                             <div>NGHIỆP</div>
                                         </div>
                                     </div>
-                                    <p className="text-base md:text-lg text-gray-700">Truyền thông, đào tạo, quản lý KOL...</p> {/* Tăng kích thước */}
+                                    <p className="text-base md:text-lg text-gray-700"> Truyền thông, đào tạo, quản lý KOL…</p> {/* Tăng kích thước */}
                                 </div>
                             </div>
 

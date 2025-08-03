@@ -40,23 +40,24 @@ const Testimonial: React.FC = () => {
         <div className="min-h-screen bg-gray-50">
             {/* Header Section */}
             <div className="text-center py-16 px-4">
-                <h1 className="text-4xl md:text-5xl font-light text-gray-400 mb-4 tracking-wider">LIÊN MINH NIỀM TIN SỐ</h1>
-                <p className="text-4xl text-gray-400 font-light tracking-wide">ẢNH HƯỞNG TRÁCH NHIỆM, DẪN DẮT NIỀM TIN</p>
+                <h1 className="text-6xl md:text-5xl font-light text-gray-400 mb-4 tracking-wider">LIÊN MINH NIỀM TIN SỐ</h1>
+                <p className="text-3xl text-gray-400 font-light tracking-wide">ẢNH HƯỞNG TRÁCH NHIỆM, DẪN DẮT NIỀM TIN</p>
             </div>
 
             {/* Main Content Cards */}
-            <div className="max-w-7xl mx-auto px-4 mb-20">
+            <div className="max-w-7xl mx-auto px-4 mb-20 ">
                 <div className="grid md:grid-cols-3 gap-8">
                     {/* Card 01 */}
-                    <div className="bg-white rounded-lg p-8 shadow-sm">
+                    <div className="bg-white rounded-lg p-8 shadow-sm ">
                         <div className="text-6xl font-light text-gray-300 mb-6">01</div>
                         <h3 className="text-xl font-semibold text-gray-800 mb-4 leading-tight">
-                            Triển khai các dự án cộng đồng trên không gian mạng
+                            Triển khai các dự án cộng đồng
+                            trên không gian mạng
                         </h3>
                         <p className="text-gray-600 text-sm leading-relaxed">
                             Tập trung vào chống tin giả, ngăn chặn lừa đảo
                             trực tuyến, góp phần xây dựng một môi trường
-                            số an toàn – minh bạch – đáng tin cậy
+                            số an toàn – minh bạch – đáng tin cậy.
                         </p>
                     </div>
 
