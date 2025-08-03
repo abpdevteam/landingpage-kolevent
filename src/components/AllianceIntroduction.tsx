@@ -3,7 +3,7 @@ import React from "react";
 const AllianceIntroduction: React.FC = () => {
     return (
         <div className="min-h-screen p-8">
-            <div className="max-w-6xl mx-auto bg-white">
+            <div className="bg-white">
                 {/* Header Section */}
                 <div className="relative mb-12">
                     <div className="flex justify-between items-start">

@@ -17,7 +17,7 @@ const Banner: React.FC = () => {
         <div className="w-full bg-white ">
             {/* Image Carousel Section */}
             <div className="relative  px-4 py-8">
-                <div className="max-w-6xl mx-auto relative">
+                <div className="relative">
                     {/* Left Arrow */}
                     <button
                         onClick={prevSlide}

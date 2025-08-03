@@ -1,7 +1,7 @@
 import React from "react";
 const Footer: React.FC = () => {
     return (
-        <div className="w-full max-w-2xl mx-auto  p-12 text-center">
+        <div className="w-full   p-12 text-center">
             {/* Logo Section */}
             <div className="mb-8">
                 <h1 className="text-lg font-bold text-black tracking-wider">LOGO</h1>

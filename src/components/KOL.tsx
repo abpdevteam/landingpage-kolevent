@@ -63,7 +63,7 @@ const KOL: React.FC = () => {
 
     return (
         <div className=" bg-gray-50 py-12 px-4">
-            <div className="max-w-7xl mx-auto">
+            <div className="">
                 {/* First Row - 5 cards */}
                 <div className="flex justify-center mb-12">
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-10">

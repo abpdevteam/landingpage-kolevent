@@ -3,7 +3,7 @@ import React from "react";
 const InfluencerBanner: React.FC = () => {
     return (
         <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
+            <div className="">
                 {/* Header */}
                 <div className="text-center mb-12">
                     <h1 className="text-4xl md:text-5xl font-bold text-gray-400 mb-4 tracking-wide">CHƯƠNG TRÌNH TÍN NHIỆM</h1>
