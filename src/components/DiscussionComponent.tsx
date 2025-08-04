@@ -27,7 +27,7 @@ const DiscussionComponent: React.FC = () => {
     ]
 
     return (
-        <div className="max-w-6xl mx-auto p-8 bg-white">
+        <div className=" p-8 bg-white">
             {/* Header Section */}
             <div className="flex justify-between items-start mb-12">
                 <div className="flex flex-col items-start gap-1">
@@ -64,6 +64,43 @@ const DiscussionComponent: React.FC = () => {
                         </div>
                     </div>
                 ))}
+            </div>
+            <div className="mt-5">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                    {/* Column 1 */}
+                    <div className="text-center bg-gray-100 rounded-lg flex items-center justify-center min-h-[150px]">
+                        <p className="text-gray-600 leading-relaxed text-sm">
+                            <span className="block mb-2">Đạo đức số, yếu tố cốt lõi trong ảnh hưởng bền vững</span>
+                            <span className="block mb-2">Biểu đạt tự do và những ranh giới</span>
+                            <span className="block">Giá trị thật hay những con số ảo</span>
+                        </p>
+
+                    </div>
+
+                    {/* Column 2 */}
+                    <div className="text-center bg-gray-100 rounded-lg flex items-center justify-center min-h-[150px]">
+                        <p className="text-gray-600 leading-relaxed text-sm">
+                            <span className="block mb-2">Sự cần thiết về giải pháp trang bị nhận thức đó với KOL</span>
+                            <span
+                                className="block mb-2">Vai trò của nền tảng trong việc định hướng giá trị của KOL</span>
+                            <span
+                                className="block mb-2">Tin tức cộng đồng và vai trò kiến tạo niềm tin trong kỷ nguyên</span>
+                            <span className="block">truyền thông xã hội</span>
+                        </p>
+
+                    </div>
+
+                    {/* Column 3 */}
+                    <div className="text-center bg-gray-100 rounded-lg flex items-center justify-center min-h-[150px]">
+                        <p className="text-gray-600 leading-relaxed text-sm">
+                            <span className="block mb-2">Văn hóa số và ứng xử chuẩn mực của người ảnh hưởng</span>
+                            <span className="block mb-2">Vai trò của KOL trong hệ sinh thái truyền thông số</span>
+                            <span
+                                className="block">Thương hiệu cá nhân và quyền sở hữu trí tuệ trong kỷ nguyên số</span>
+                        </p>
+
+                    </div>
+                </div>
             </div>
         </div>
     )

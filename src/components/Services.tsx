@@ -1,49 +1,70 @@
-import React from 'react';
+import React from "react";
 
 const Services: React.FC = () => {
   return (
-      <div className="w-full  bg-gray-50">
-        <div className="w-full  space-y-12">
-          {/* Phần header và đơn vị tổ chức */}
-          <div className="flex flex-col md:flex-row items-center justify-between">
+      <footer className="bg-gray-100 py-12 px-6">
+        <div className="">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             {/* Đơn vị chủ trì */}
-            <div className="flex-1 text-center">
-              <h2 className="text-xl font-semibold text-gray-700 mt-2">ĐƠN VỊ CHỦ TRÌ</h2>
-              <div className="mt-6 flex justify-center">
-                <div className="flex justify-center">
-                  <h1 className="text-2xl font-bold text-gray-800 mt-[50px] mr-[20px]">
-                    Hiệp hội an ninh <br/> mạng quốc gia
-                  </h1>
-                </div>
-                <div
-                    className="w-40 h-40 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center text-gray-400">
-                  [LOGO CHỦ TRÌ]
-                </div>
-              </div>
+            <div className="text-center">
+              <h3 className="font-bold text-gray-500 mb-3 text-xl uppercase tracking-wide">ĐƠN VỊ CHỦ TRÌ</h3>
+              <p className=" text-sm leading-relaxed">
+                Hiệp Hội An Ninh
+                <br />
+                Mạng Quốc Gia
+              </p>
             </div>
 
-            {/* Đơn vị phối hợp */}
-            <div className="flex-1 text-center">
-              <h3 className="text-xl font-semibold text-gray-700">ĐƠN VỊ PHỐI HỢP TỔ CHỨC</h3>
-              <div className="mt-6 flex justify-center gap-8">
-                <div className="w-32 h-32 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center text-gray-400">
-                  [LOGO 1]
+            {/* Đơn vị bảo trợ */}
+            <div className="text-center">
+              <h3 className="font-bold text-gray-500 mb-3 text-xl uppercase tracking-wide">ĐƠN VỊ BẢO TRỢ</h3>
+              <p className=" text-sm">Cục A05</p>
+            </div>
+
+            {/* Đơn vị phối hợp tổ chức */}
+            <div className="text-center ">
+              <h3 className="font-bold text-gray-500 mb-3 text-xl uppercase tracking-wide">ĐƠN VỊ PHỐI HỢP TỔ CHỨC</h3>
+              <p className="text-sm">Người Quan Sát x Cyber Trust</p>
+            </div>
+
+            {/* Đơn vị tài trợ chính */}
+            <div className="text-center ">
+              <h3 className="font-bold text-gray-500 mb-3 text-xl uppercase tracking-wide">ĐƠN VỊ TÀI TRỢ CHÍNH</h3>
+              <div className="flex justify-center  gap-4">
+                <div className="w-16 h-8 bg-gray-300 rounded flex items-center justify-center">
+                  <span className="text-xs text-gray-500">Logo</span>
                 </div>
-                <div className="w-32 h-32 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center text-gray-400">
-                  [LOGO 2]
+                <div className="w-16 h-8 bg-gray-300 rounded flex items-center justify-center">
+                  <span className="text-xs text-gray-500">Logo</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="w-full">
-            <div className="w-full h-40 flex items-center justify-center text-gray-400 bg-gray-200">
-              [ARTWORK]
+          {/* Bottom section with two columns */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-8 border-t border-gray-200">
+            {/* Đơn vị đồng hành */}
+            <div className="text-center ">
+              <h3 className="font-bold text-gray-500 mb-3 text-xl uppercase tracking-wide">ĐƠN VỊ ĐỒNG HÀNH</h3>
+              <p className=" text-sm leading-relaxed">
+                VCorp, Schannel, Beatvn, theanh28, vitamin, Công ty
+                <br />
+                TNHH Giải pháp số Toptop. (Các doanh nghiệp tt khác)
+              </p>
+            </div>
+
+            {/* Đơn vị bảo trợ (bottom) */}
+            <div className="text-center">
+              <h3 className="font-bold text-gray-500 mb-3 text-xl uppercase tracking-wide">ĐƠN VỊ BẢO TRỢ</h3>
+              <p className=" text-sm leading-relaxed">
+                VTV1, VTV24, ANTV,CAND, PLVN,
+                <br />
+                VNE, Tuổi trẻ, Tiktok
+              </p>
             </div>
           </div>
         </div>
-      </div>
-  );
-};
-
+      </footer>
+  )
+}
 export default Services;
