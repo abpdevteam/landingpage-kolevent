@@ -3,7 +3,7 @@ import React from "react";
 const Event: React.FC = () => {
     return (
         <div className="min-h-screen bg-gray-100 p-4 md:p-8">
-            <div className="max-w-5xl mx-auto space-y-8"> {/* Tăng max-width lên 5xl */}
+            <div className="space-y-8 ml-[100px] mr-[100px]"> {/* Tăng max-width lên 5xl */}
                 {/* Header Event Info - Card to hơn */}
                 <div className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-gray-500 w-full"> {/* Tăng padding */}
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
