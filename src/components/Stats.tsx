@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from "react"
 
+// Add this in your global CSS file or style tag
+const fontStyles = `
+  @font-face {
+    font-family: 'BT Suave';
+    src: url('/src/assets/fonts/BTSuave-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+  }
+`
+
 interface TimeLeft {
   days: number
   hours: number
@@ -43,99 +53,107 @@ const CountdownPage: React.FC = () => {
   }
 
   return (
-      <div
-          className="min-h-screen flex flex-col items-center justify-between px-4 py-8"
-          style={{
-            backgroundImage: "url('/src/assets/images/img.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            fontFamily: "'Inter', sans-serif"
-          }}
-      >
-        {/* Empty space to push content down */}
-        <div></div>
+      <>
+        <style>{fontStyles}</style>
+        <div
+            className="min-h-screen flex flex-col items-center justify-between px-4 py-8"
+            style={{
+              backgroundImage: "url('/src/assets/images/img.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              fontFamily: "'Inter', sans-serif"
+            }}
+        >
+          {/* Empty space to push content down */}
+          <div></div>
 
-        {/* Countdown Section at the bottom */}
-        <div className="flex flex-col items-center w-full mt-[30px]">
-          {/* Header section */}
-          <div className="space-y-4 text-center mb-8">
-            <div className="flex items-center justify-center">
-              <img
-                  src="/src/assets/images/img_1.png"
-                  alt="Left Icon"
-                  style={{width: '38px', height: '39px', marginRight: '16px'}}
-              />
-              <div>
-                <h3
-                    className="text-2xl md:text-3xl font-bold text-white"
-                    style={{fontFamily: "'BT Suave', sans-serif"}}
-                >
-                  COUNTDOWN ĐẾM NGƯỢC
-                </h3>
-                <p
-                    className="text-lg md:text-3xl text-white"
-                    style={{fontFamily: "'BT Suave', sans-serif"}}
-                >
-                  NGÀY DIỄN RA SỰ KIỆN
-                </p>
+          {/* Countdown Section at the bottom */}
+          <div className="flex flex-col items-center w-full mt-[30px]">
+            {/* Header section */}
+            <div className="space-y-4 text-center mb-8">
+              <div className="flex items-center justify-center">
+                <img
+                    src="/src/assets/images/img_1.png"
+                    alt="Left Icon"
+                    style={{width: '38px', height: '39px', marginRight: '16px'}}
+                />
+                <div>
+                  <h3
+                      className="text-2xl md:text-3xl font-bold text-white"
+                      style={{
+                        fontFamily: "'BT Suave', sans-serif",
+                        fontWeight: 700,
+                        fontStyle: 'normal'
+                      }}
+                  >
+                    COUNTDOWN ĐẾM NGƯỢC
+                  </h3>
+                  <p
+                      className="text-lg md:text-3xl text-white"
+                      style={{
+                        fontFamily: "'BT Suave', sans-serif",
+                        fontWeight: 700,
+                        fontStyle: 'normal'
+                      }}
+                  >
+                    NGÀY DIỄN RA SỰ KIỆN
+                  </p>
+                </div>
+                <img
+                    src="/src/assets/images/img_1.png"
+                    alt="Right Icon"
+                    style={{width: '38px', height: '39px', marginLeft: '16px'}}
+                />
               </div>
-              <img
-                  src="/src/assets/images/img_1.png"
-                  alt="Right Icon"
-                  style={{width: '38px', height: '39px', marginLeft: '16px'}}
-              />
             </div>
-          </div>
 
-          {/* Countdown box */}
-          <div
-              className=" rounded-3xl  p-6 md:p-8 w-full max-w-2xl border"
-          >
-            <div className="flex items-center justify-center gap-2 md:gap-8">
-              {/* Days */}
-              <div className="text-center">
-                <div className="text-4xl md:text-6xl font-bold text-white">
-                  {formatNumber(timeLeft.days)}
+            {/* Countdown box */}
+            <div className="rounded-3xl p-6 md:p-8 w-full max-w-2xl border">
+              <div className="flex items-center justify-center gap-2 md:gap-8">
+                {/* Days */}
+                <div className="text-center">
+                  <div className="text-4xl md:text-6xl font-bold text-white" style={{fontFamily: "'Inter', sans-serif"}}>
+                    {formatNumber(timeLeft.days)}
+                  </div>
+                  <div className="text-sm md:text-base text-white" style={{fontFamily: "'Inter', sans-serif"}}>Days</div>
                 </div>
-                <div className="text-sm md:text-base text-white">Days</div>
-              </div>
 
-              <div className="text-4xl md:text-6xl font-bold text-white">:</div>
+                <div className="text-4xl md:text-6xl font-bold text-white" style={{fontFamily: "'Inter', sans-serif"}}>:</div>
 
-              {/* Hours */}
-              <div className="text-center">
-                <div className="text-4xl md:text-6xl font-bold text-white">
-                {formatNumber(timeLeft.hours)}
+                {/* Hours */}
+                <div className="text-center">
+                  <div className="text-4xl md:text-6xl font-bold text-white" style={{fontFamily: "'Inter', sans-serif"}}>
+                    {formatNumber(timeLeft.hours)}
+                  </div>
+                  <div className="text-sm md:text-base text-white" style={{fontFamily: "'Inter', sans-serif"}}>Hours</div>
                 </div>
-                <div className="text-sm md:text-base text-white">Hours</div>
-              </div>
 
-              <div className="text-4xl md:text-6xl font-bold text-white">:</div>
+                <div className="text-4xl md:text-6xl font-bold text-white" style={{fontFamily: "'Inter', sans-serif"}}>:</div>
 
-              {/* Minutes */}
-              <div className="text-center">
-                <div className="text-4xl md:text-6xl font-bold text-white">
-                  {formatNumber(timeLeft.minutes)}
+                {/* Minutes */}
+                <div className="text-center">
+                  <div className="text-4xl md:text-6xl font-bold text-white" style={{fontFamily: "'Inter', sans-serif"}}>
+                    {formatNumber(timeLeft.minutes)}
+                  </div>
+                  <div className="text-sm md:text-base text-white" style={{fontFamily: "'Inter', sans-serif"}}>Minutes</div>
                 </div>
-                <div className="text-sm md:text-base text-white">Minutes</div>
-              </div>
 
-              <div className="text-4xl md:text-6xl font-bold text-white">:</div>
+                <div className="text-4xl md:text-6xl font-bold text-white" style={{fontFamily: "'Inter', sans-serif"}}>:</div>
 
-              {/* Seconds */}
-              <div className="text-center">
-                <div className="text-4xl md:text-6xl font-bold text-white">
-                  {formatNumber(timeLeft.seconds)}
+                {/* Seconds */}
+                <div className="text-center">
+                  <div className="text-4xl md:text-6xl font-bold text-white" style={{fontFamily: "'Inter', sans-serif"}}>
+                    {formatNumber(timeLeft.seconds)}
+                  </div>
+                  <div className="text-sm md:text-base text-white" style={{fontFamily: "'Inter', sans-serif"}}>Seconds</div>
                 </div>
-                <div className="text-sm md:text-base text-white">Seconds</div>
               </div>
-
             </div>
           </div>
         </div>
-      </div>
+      </>
   )
 }
 
-export default CountdownPage;
+export default CountdownPage
