@@ -1,15 +1,5 @@
 import React, { useState, useEffect } from "react"
 
-// Add this in your global CSS file or style tag
-const fontStyles = `
-  @font-face {
-    font-family: 'BT Suave';
-    src: url('/src/assets/fonts/BTSuave-Bold.otf') format('opentype');
-    font-weight: 700;
-    font-style: normal;
-  }
-`
-
 interface TimeLeft {
   days: number
   hours: number
@@ -54,11 +44,10 @@ const CountdownPage: React.FC = () => {
 
   return (
       <>
-        <style>{fontStyles}</style>
         <div
             className="min-h-screen flex flex-col items-center justify-between px-4 py-8"
             style={{
-              backgroundImage: "url('/src/assets/images/img.png')",
+              backgroundImage: "url('/images/img.png')",
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
@@ -74,7 +63,7 @@ const CountdownPage: React.FC = () => {
             <div className="space-y-4 text-center mb-8">
               <div className="flex items-center justify-center">
                 <img
-                    src="/src/assets/images/img_1.png"
+                    src="/images/img_1.png"
                     alt="Left Icon"
                     style={{width: '38px', height: '39px', marginRight: '16px'}}
                 />
@@ -101,7 +90,7 @@ const CountdownPage: React.FC = () => {
                   </p>
                 </div>
                 <img
-                    src="/src/assets/images/img_1.png"
+                    src="/images/img_1.png"
                     alt="Right Icon"
                     style={{width: '38px', height: '39px', marginLeft: '16px'}}
                 />

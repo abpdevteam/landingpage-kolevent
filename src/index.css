@@ -12,3 +12,10 @@
   }
 }
 
+@font-face {
+  font-family: 'BT Suave';
+  src: url('/fonts/BTSuave-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
