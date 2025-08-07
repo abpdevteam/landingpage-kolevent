@@ -15,13 +15,16 @@ const CountdownPage: React.FC = () => {
     seconds: 0,
   })
 
-  // Target date: August 18, 2025 at 8:00 AM
-  const targetDate = new Date(2025, 7, 18, 8, 0, 0)
+// Target date: August 18, 2025 at 8:00 AM Vietnam Time (GMT+7)
+  const targetDate = new Date(Date.UTC(2025, 7, 18, 1, 0, 0)) // 1:00 UTC = 8:00 GMT+7
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const now = new Date().getTime()
-      const distance = targetDate.getTime() - now
+      // Get current time in Vietnam Timezone (GMT+7)
+      const now = new Date()
+      const nowVietnam = new Date(now.getTime() + (now.getTimezoneOffset() + 420) * 60000)
+
+      const distance = targetDate.getTime() - nowVietnam.getTime()
 
       if (distance > 0) {
         const days = Math.floor(distance / (1000 * 60 * 60 * 24))
@@ -32,6 +35,7 @@ const CountdownPage: React.FC = () => {
         setTimeLeft({ days, hours, minutes, seconds })
       } else {
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+        clearInterval(timer)
       }
     }, 1000)
 
@@ -47,7 +51,7 @@ const CountdownPage: React.FC = () => {
         <div
             className="min-h-screen flex flex-col items-center justify-between px-4 py-8"
             style={{
-              backgroundImage: "url('/images/img.png')",
+              backgroundImage: "url('/images/img_4.png')",
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
@@ -56,7 +60,6 @@ const CountdownPage: React.FC = () => {
         >
           {/* Empty space to push content down */}
           <div></div>
-
           {/* Countdown Section at the bottom */}
           <div className="flex flex-col items-center w-full mt-[30px]">
             {/* Header section */}
@@ -102,40 +105,54 @@ const CountdownPage: React.FC = () => {
               <div className="flex items-center justify-center gap-2 md:gap-8">
                 {/* Days */}
                 <div className="text-center">
-                  <div className="text-4xl md:text-6xl font-bold text-white" style={{fontFamily: "'Inter', sans-serif"}}>
+                  <div className="text-4xl md:text-6xl font-bold text-white"
+                       style={{fontFamily: "'Inter', sans-serif"}}>
                     {formatNumber(timeLeft.days)}
                   </div>
-                  <div className="text-sm md:text-base text-white" style={{fontFamily: "'Inter', sans-serif"}}>Days</div>
+                  <div className="text-sm md:text-base text-white" style={{fontFamily: "'Inter', sans-serif"}}>Days
+                  </div>
                 </div>
 
-                <div className="text-4xl md:text-6xl font-bold text-white" style={{fontFamily: "'Inter', sans-serif"}}>:</div>
+                <div className="text-4xl md:text-6xl font-bold text-white"
+                     style={{fontFamily: "'Inter', sans-serif"}}>:
+                </div>
 
                 {/* Hours */}
                 <div className="text-center">
-                  <div className="text-4xl md:text-6xl font-bold text-white" style={{fontFamily: "'Inter', sans-serif"}}>
+                  <div className="text-4xl md:text-6xl font-bold text-white"
+                       style={{fontFamily: "'Inter', sans-serif"}}>
                     {formatNumber(timeLeft.hours)}
                   </div>
-                  <div className="text-sm md:text-base text-white" style={{fontFamily: "'Inter', sans-serif"}}>Hours</div>
+                  <div className="text-sm md:text-base text-white" style={{fontFamily: "'Inter', sans-serif"}}>Hours
+                  </div>
                 </div>
 
-                <div className="text-4xl md:text-6xl font-bold text-white" style={{fontFamily: "'Inter', sans-serif"}}>:</div>
+                <div className="text-4xl md:text-6xl font-bold text-white"
+                     style={{fontFamily: "'Inter', sans-serif"}}>:
+                </div>
 
                 {/* Minutes */}
                 <div className="text-center">
-                  <div className="text-4xl md:text-6xl font-bold text-white" style={{fontFamily: "'Inter', sans-serif"}}>
+                  <div className="text-4xl md:text-6xl font-bold text-white"
+                       style={{fontFamily: "'Inter', sans-serif"}}>
                     {formatNumber(timeLeft.minutes)}
                   </div>
-                  <div className="text-sm md:text-base text-white" style={{fontFamily: "'Inter', sans-serif"}}>Minutes</div>
+                  <div className="text-sm md:text-base text-white" style={{fontFamily: "'Inter', sans-serif"}}>Minutes
+                  </div>
                 </div>
 
-                <div className="text-4xl md:text-6xl font-bold text-white" style={{fontFamily: "'Inter', sans-serif"}}>:</div>
+                <div className="text-4xl md:text-6xl font-bold text-white"
+                     style={{fontFamily: "'Inter', sans-serif"}}>:
+                </div>
 
                 {/* Seconds */}
                 <div className="text-center">
-                  <div className="text-4xl md:text-6xl font-bold text-white" style={{fontFamily: "'Inter', sans-serif"}}>
+                  <div className="text-4xl md:text-6xl font-bold text-white"
+                       style={{fontFamily: "'Inter', sans-serif"}}>
                     {formatNumber(timeLeft.seconds)}
                   </div>
-                  <div className="text-sm md:text-base text-white" style={{fontFamily: "'Inter', sans-serif"}}>Seconds</div>
+                  <div className="text-sm md:text-base text-white" style={{fontFamily: "'Inter', sans-serif"}}>Seconds
+                  </div>
                 </div>
               </div>
             </div>
