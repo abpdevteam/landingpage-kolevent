@@ -15,36 +15,40 @@ const CountdownPage: React.FC = () => {
     seconds: 0,
   })
 
-// Target date: August 18, 2025 at 8:00 AM Vietnam Time (GMT+7)
-  const targetDate = new Date(Date.UTC(2025, 7, 18, 1, 0, 0)) // 1:00 UTC = 8:00 GMT+7
+  // Target: 18/08/2025 08:00 GMT+7
+  const targetDate = new Date("2025-08-18T08:00:00+07:00")
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      // Get current time in Vietnam Timezone (GMT+7)
-      const now = new Date()
-      const nowVietnam = new Date(now.getTime() + (now.getTimezoneOffset() + 420) * 60000)
-
-      const distance = targetDate.getTime() - nowVietnam.getTime()
+    const tick = () => {
+      const distance = targetDate.getTime() - Date.now()
 
       if (distance > 0) {
         const days = Math.floor(distance / (1000 * 60 * 60 * 24))
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
         const seconds = Math.floor((distance % (1000 * 60)) / 1000)
-
         setTimeLeft({ days, hours, minutes, seconds })
       } else {
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
         clearInterval(timer)
       }
-    }, 1000)
+    }
 
+    tick() // chạy ngay lần đầu
+    const timer = setInterval(tick, 1000)
     return () => clearInterval(timer)
   }, [targetDate])
 
-  const formatNumber = (num: number): string => {
-    return num.toString().padStart(2, "0")
-  }
+  const formatNumber = (num: number): string => num.toString().padStart(2, "0")
+
+  const Item = ({ value, label }: { value: number; label: string }) => (
+      <div className="text-center">
+        <div className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-bold text-white leading-none">
+          {formatNumber(value)}
+        </div>
+        <div className="mt-1 text-xs sm:text-sm md:text-base text-white/90">{label}</div>
+      </div>
+  )
 
   return (
       <>
@@ -55,39 +59,30 @@ const CountdownPage: React.FC = () => {
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
-              fontFamily: "'Inter', sans-serif"
+              fontFamily: "'Inter', sans-serif",
             }}
         >
-          {/* Empty space to push content down */}
           <div></div>
-          {/* Countdown Section at the bottom */}
+
           <div className="flex flex-col items-center w-full mt-[30px]">
-            {/* Header section */}
-            <div className="space-y-4 text-center mb-8">
-              <div className="flex items-center justify-center">
+            {/* Header */}
+            <div className="space-y-4 text-center mb-6 sm:mb-8">
+              <div className="flex items-center justify-center gap-4">
                 <img
                     src="/images/img_1.png"
                     alt="Left Icon"
-                    style={{width: '38px', height: '39px', marginRight: '16px'}}
+                    className="w-8 h-8 sm:w-9 sm:h-9"
                 />
                 <div>
                   <h3
-                      className="text-2xl md:text-3xl font-bold text-white"
-                      style={{
-                        fontFamily: "'BT Suave', sans-serif",
-                        fontWeight: 700,
-                        fontStyle: 'normal'
-                      }}
+                      className="text-xl sm:text-2xl md:text-3xl font-bold text-white"
+                      style={{fontFamily: "'BT Suave', sans-serif", fontWeight: 700, fontStyle: "normal"}}
                   >
                     COUNTDOWN ĐẾM NGƯỢC
                   </h3>
                   <p
-                      className="text-lg md:text-3xl text-white"
-                      style={{
-                        fontFamily: "'BT Suave', sans-serif",
-                        fontWeight: 700,
-                        fontStyle: 'normal'
-                      }}
+                      className="text-lg sm:text-2xl md:text-3xl text-white"
+                      style={{fontFamily: "'BT Suave', sans-serif", fontWeight: 700, fontStyle: "normal"}}
                   >
                     NGÀY DIỄN RA SỰ KIỆN
                   </p>
@@ -95,67 +90,33 @@ const CountdownPage: React.FC = () => {
                 <img
                     src="/images/img_1.png"
                     alt="Right Icon"
-                    style={{width: '38px', height: '39px', marginLeft: '16px'}}
+                    className="w-8 h-8 sm:w-9 sm:h-9"
                 />
               </div>
             </div>
 
             {/* Countdown box */}
-            <div className="rounded-3xl p-6 md:p-8 w-full max-w-2xl border">
-              <div className="flex items-center justify-center gap-2 md:gap-8">
-                {/* Days */}
-                <div className="text-center">
-                  <div className="text-4xl md:text-6xl font-bold text-white"
-                       style={{fontFamily: "'Inter', sans-serif"}}>
-                    {formatNumber(timeLeft.days)}
-                  </div>
-                  <div className="text-sm md:text-base text-white" style={{fontFamily: "'Inter', sans-serif"}}>Days
-                  </div>
-                </div>
+            <div
+                className="rounded-3xl p-4 sm:p-6 md:p-8 w-full max-w-2xl border border-white/30 bg-black/20 backdrop-blur">
+              {/* Mobile: grid 2x2 ; md+: hàng ngang có dấu : */}
+              <div className="grid grid-cols-2 gap-4 sm:gap-6 md:flex md:items-center md:justify-center md:gap-8">
+                <Item value={timeLeft.days} label="Days"/>
 
-                <div className="text-4xl md:text-6xl font-bold text-white"
-                     style={{fontFamily: "'Inter', sans-serif"}}>:
-                </div>
+                {/* Dấu : chỉ hiện từ md trở lên */}
+                <div className="hidden md:block text-5xl md:text-6xl font-bold text-white -mt-8">:</div>
 
-                {/* Hours */}
-                <div className="text-center">
-                  <div className="text-4xl md:text-6xl font-bold text-white"
-                       style={{fontFamily: "'Inter', sans-serif"}}>
-                    {formatNumber(timeLeft.hours)}
-                  </div>
-                  <div className="text-sm md:text-base text-white" style={{fontFamily: "'Inter', sans-serif"}}>Hours
-                  </div>
-                </div>
+                <Item value={timeLeft.hours} label="Hours"/>
 
-                <div className="text-4xl md:text-6xl font-bold text-white"
-                     style={{fontFamily: "'Inter', sans-serif"}}>:
-                </div>
+                <div className="hidden md:block text-5xl md:text-6xl font-bold text-white -mt-8">:</div>
 
-                {/* Minutes */}
-                <div className="text-center">
-                  <div className="text-4xl md:text-6xl font-bold text-white"
-                       style={{fontFamily: "'Inter', sans-serif"}}>
-                    {formatNumber(timeLeft.minutes)}
-                  </div>
-                  <div className="text-sm md:text-base text-white" style={{fontFamily: "'Inter', sans-serif"}}>Minutes
-                  </div>
-                </div>
+                <Item value={timeLeft.minutes} label="Minutes"/>
 
-                <div className="text-4xl md:text-6xl font-bold text-white"
-                     style={{fontFamily: "'Inter', sans-serif"}}>:
-                </div>
+                <div className="hidden md:block text-5xl md:text-6xl font-bold text-white -mt-8">:</div>
 
-                {/* Seconds */}
-                <div className="text-center">
-                  <div className="text-4xl md:text-6xl font-bold text-white"
-                       style={{fontFamily: "'Inter', sans-serif"}}>
-                    {formatNumber(timeLeft.seconds)}
-                  </div>
-                  <div className="text-sm md:text-base text-white" style={{fontFamily: "'Inter', sans-serif"}}>Seconds
-                  </div>
-                </div>
+                <Item value={timeLeft.seconds} label="Seconds"/>
               </div>
             </div>
+
           </div>
         </div>
       </>
