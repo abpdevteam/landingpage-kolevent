@@ -1,30 +1,67 @@
 import React from "react";
+
 const Footer: React.FC = () => {
     return (
-        <div className="w-full   p-12 text-center">
-            {/* Logo Section */}
-            <div className="mb-8">
-                <h1 className="text-lg font-bold text-black tracking-wider">LOGO</h1>
+        <div className="relative w-full h-[400px] text-white">
+            {/* Ảnh nền */}
+            <img
+                src="/images/img_11.png"
+                alt="Background"
+                className="absolute inset-0 w-full h-full object-cover"
+            />
+
+            {/* Lớp gradient overlay 1 */}
+            <div
+                className="absolute inset-0"
+                style={{
+                    background:
+                        "linear-gradient(360deg, rgba(28, 62, 133, 0) 0%, #1D3D86 97.34%)",
+                    transform: "rotate(-180deg)",
+                }}
+            ></div>
+
+            {/* Lớp gradient overlay 2 */}
+            <div
+                className="absolute inset-0"
+                style={{
+                    background:
+                        "linear-gradient(360deg, rgba(28, 62, 133, 0) 0%, #1D3D86 97.34%)",
+                }}
+            ></div>
+
+            {/* Ảnh 12 ở trên cùng */}
+            <div className="absolute top-4 w-full flex justify-center z-10">
+                <img
+                    src="/images/img_12.png"
+                    alt="Logo"
+                    width={230}
+                    height={125}
+                    className="object-contain"
+                />
             </div>
 
-            {/* Main Title */}
-            <div className="mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold text-black leading-tight">LIÊN MINH NIỀM TIN SỐ</h2>
+            {/* Tiêu đề ở giữa */}
+            <div className="absolute inset-0 flex items-center justify-center z-10">
+                <h2
+                    className="font-semibold text-[68px] leading-none text-center"
+                    style={{
+                        fontFamily: "'BT Suave', sans-serif",
+                        fontWeight: 500,
+                        color: "#ffffff",
+                    }}
+                >
+                    LIÊN MINH NIỀM TIN SỐ
+                </h2>
             </div>
 
-            {/* Contact Information */}
-            <div className="grid grid-cols-3 gap-8 text-sm font-medium text-black">
-                <div>
-                    <span>FACEBOOK</span>
-                </div>
-                <div>
-                    <span>HOTLINE</span>
-                </div>
-                <div>
-                    <span>WEBSITE</span>
-                </div>
+            {/* Dòng liên hệ ở dưới cùng */}
+            <div className="absolute bottom-4 w-full flex justify-center space-x-8 text-[25px] z-10">
+                <span>Facebook</span>
+                <span>Hotline</span>
+                <span>Website</span>
             </div>
         </div>
-    )
-}
+    );
+};
+
 export default Footer;

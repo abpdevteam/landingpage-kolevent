@@ -2,59 +2,77 @@ import React from "react";
 import { Image } from "antd";
 
 interface KOLProfile {
-    id: number
-    name: string
-    role: string
-    avatar: string
+    id: number;
+    name: string;
+    role: string;
+    avatar: string;
 }
 
 const kolProfiles: KOLProfile[] = [
-    { id: 1, name: "NGUYEN VAN A", role: "KOL", avatar: "/placeholder.svg?height=100&width=100" },
-    { id: 2, name: "NGUYEN VAN B", role: "KOL", avatar: "/placeholder.svg?height=100&width=100" },
-    { id: 3, name: "NGUYEN VAN C", role: "KOL", avatar: "/placeholder.svg?height=100&width=100" },
-    { id: 4, name: "NGUYEN VAN D", role: "KOL", avatar: "/placeholder.svg?height=100&width=100" },
-    { id: 5, name: "NGUYEN VAN E", role: "KOL", avatar: "/placeholder.svg?height=100&width=100" },
-    { id: 6, name: "NGUYEN VAN F", role: "KOL", avatar: "/placeholder.svg?height=100&width=100" },
-    { id: 7, name: "NGUYEN VAN G", role: "KOL", avatar: "/placeholder.svg?height=100&width=100" },
-    { id: 8, name: "NGUYEN VAN H", role: "KOL", avatar: "/placeholder.svg?height=100&width=100" },
-    { id: 9, name: "NGUYEN VAN I", role: "KOL", avatar: "/placeholder.svg?height=100&width=100" },
-    { id: 10, name: "NGUYEN VAN K", role: "KOL", avatar: "/placeholder.svg?height=100&width=100" },
-    { id: 11, name: "NGUYEN VAN L", role: "KOL", avatar: "/placeholder.svg?height=100&width=100" },
-    { id: 12, name: "NGUYEN VAN M", role: "KOL", avatar: "/placeholder.svg?height=100&width=100" },
-    { id: 13, name: "NGUYEN VAN N", role: "KOL", avatar: "/placeholder.svg?height=100&width=100" },
-    { id: 14, name: "NGUYEN VAN O", role: "KOL", avatar: "/placeholder.svg?height=100&width=100" },
-    { id: 15, name: "NGUYEN VAN P", role: "KOL", avatar: "/placeholder.svg?height=100&width=100" },
-    { id: 16, name: "NGUYEN VAN P", role: "KOL", avatar: "/placeholder.svg?height=100&width=100" },
-]
+    { id: 1, name: "NGUYEN VAN A", role: "KOLs", avatar: "/images/img_43.png" },
+    { id: 2, name: "NGUYEN VAN B", role: "KOLs", avatar: "/images/img_42.png" },
+    { id: 3, name: "NGUYEN VAN C", role: "KOLs", avatar: "/images/img_42.png" },
+    { id: 4, name: "NGUYEN VAN D", role: "KOLs", avatar: "/images/img_42.png" },
+    { id: 5, name: "NGUYEN VAN E", role: "KOLs", avatar: "/images/img_42.png" },
+    { id: 6, name: "NGUYEN VAN F", role: "KOLs", avatar: "/images/img_42.png" },
+    { id: 7, name: "NGUYEN VAN G", role: "KOLs", avatar: "/images/img_42.png" },
+    { id: 8, name: "NGUYEN VAN H", role: "KOLs", avatar: "/images/img_42.png" },
+    { id: 9, name: "NGUYEN VAN I", role: "KOLs", avatar: "/images/img_42.png" },
+    { id: 10, name: "NGUYEN VAN K", role: "KOLs", avatar: "/images/img_42.png" },
+    { id: 11, name: "NGUYEN VAN L", role: "KOLs", avatar: "/images/img_42.png" },
+    { id: 12, name: "NGUYEN VAN M", role: "KOLs", avatar: "/images/img_42.png" },
+    { id: 13, name: "NGUYEN VAN N", role: "KOLs", avatar: "/images/img_42.png" },
+    { id: 14, name: "NGUYEN VAN O", role: "KOLs", avatar: "/images/img_42.png" },
+    { id: 15, name: "NGUYEN VAN P", role: "KOLs", avatar: "/images/img_42.png" },
+    { id: 16, name: "NGUYEN VAN P", role: "KOLs", avatar: "/images/img_42.png" },
+];
 
 interface KOLCardProps {
-    profile: KOLProfile
+    profile: KOLProfile;
 }
 
 function KOLCard({ profile }: KOLCardProps) {
     return (
-        <div className="flex flex-col items-center space-y-2">
-            <div className="relative flex items-start w-full">
-                {/* Text on the left */}
-                <div className="flex-1 pr-2 text-right mt-4">
-                    <div className="text-sm font-semibold text-gray-800 whitespace-nowrap">{profile.name}</div>
-                    <div className="text-xs text-gray-600">{profile.role}</div>
+        <div
+            className="w-[230px] relative rounded-2xl overflow-hidden min-h-[200px]"
+            style={{
+                background:
+                    "linear-gradient(to bottom, rgba(255,255,255,0) 0%, #FDEDE0 100%)",
+            }}
+        >
+            {/* Vignette fade dưới */}
+            <div
+                className="pointer-events-none absolute inset-x-4 bottom-0 h-1/2 rounded-xl"
+                style={{
+                    background:
+                        "linear-gradient(to bottom, rgba(29,61,134,0) 0%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.85) 100%)",
+                    filter: "blur(0.3px)",
+                }}
+            />
+            {/* Text góc trái trên */}
+            <div className="relative z-10 p-5">
+                <div className="text-white font-semibold text-sm leading-tight">
+                    {profile.name}
                 </div>
-
-                {/* Profile Avatar - fixed position */}
-                <div className="flex-shrink-0">
-                    <Image
-                        src={profile.avatar || "/placeholder.svg"}
-                        width={100}
-                        height={100}
-                        className="rounded-full bg-gray-400 object-cover"
-                        preview={false}
-                    />
+                <div className="italic text-white/80 text-xs mt-1">
+                    {profile.role}
                 </div>
             </div>
+            {/* Avatar góc phải đáy */}
+            <div className="absolute -right-5 -bottom-10 z-10">
+                <Image
+                    src={profile.avatar}
+                    width={190}
+                    height={200}
+                    preview={false}
+                    className="object-contain"
+                />
+            </div>
         </div>
-    )
+    );
 }
+
+
 
 const KOL: React.FC = () => {
     const row1 = kolProfiles.slice(0, 5);
@@ -62,42 +80,45 @@ const KOL: React.FC = () => {
     const row3 = kolProfiles.slice(11);
 
     return (
-        <div className=" bg-gray-50 py-12 px-4">
-            <div className="">
-                {/* First Row - 5 cards */}
-                <div className="flex justify-center mb-12">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-10">
-                        {row1.map((profile) => (
-                            <KOLCard key={profile.id} profile={profile}/>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Second Row - 6 cards */}
-                <div className="flex justify-center mb-12">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-10">
-                        {row2.map((profile) => (
-                            <KOLCard key={profile.id} profile={profile}/>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Third Row - 5 cards */}
-                <div className="flex justify-center">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-10">
-                        {row3.map((profile) => (
-                            <KOLCard key={profile.id} profile={profile}/>
-                        ))}
-                    </div>
-                </div>
-                <div className="text-center mb-16 mt-10">
-                    <h2 className="text-2xl md:text-3xl font-light text-gray-400 tracking-wider">
-                        CÁC KOLs XÁC NHẬN THAM GIA
-                    </h2>
+        <div className="bg-[#1D3D86] py-12 px-4">
+            {/* Hàng 1 - 5 card */}
+            <div className="flex justify-center mb-12">
+                <div className="grid grid-cols-5 gap-8 justify-items-center">
+                    {row1.map((p) => (
+                        <KOLCard key={p.id} profile={p} />
+                    ))}
                 </div>
             </div>
+
+            {/* Hàng 2 - 6 card */}
+            <div className="flex justify-center mb-12">
+                <div className="grid grid-cols-6 gap-8 justify-items-center">
+                    {row2.map((p) => (
+                        <KOLCard key={p.id} profile={p} />
+                    ))}
+                </div>
+            </div>
+
+            {/* Hàng 3 - 5 card */}
+            <div className="flex justify-center">
+                <div className="grid grid-cols-5 gap-8 justify-items-center">
+                    {row3.map((p) => (
+                        <KOLCard key={p.id} profile={p} />
+                    ))}
+                </div>
+            </div>
+
+            <div className="text-center mb-16 mt-10">
+                <h2 className="text-2xl md:text-3xl font-light text-white/70 tracking-wider"    style={{
+                    fontFamily: "'BT Suave', sans-serif",
+                    fontWeight: 700,
+                    color: "#ffffff",
+                }}>
+                    CÁC KOLs XÁC NHẬN THAM GIA
+                </h2>
+            </div>
         </div>
-    )
-}
+    );
+};
 
 export default KOL;

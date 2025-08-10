@@ -25,7 +25,7 @@ const HeaderSection: React.FC = () => {
   return (
       <header className="bg-blue-900 text-white py-6">
         <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold">KOLKO KÝ NGUYỄN VƯƠN MINH</h1>
+          <h1 className="text-3xl font-bold">KOLK KÝ NGUYỄN VƯƠN MINH</h1>
           <p className="text-xl mt-2">COUNTRYING SẢN NGƯỜC NĂM? DẪN ĐỀ XUÂN</p>
         </div>
       </header>
