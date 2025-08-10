@@ -240,7 +240,7 @@ const Event: React.FC = () => {
                                     ].map((platform, index) => (
                                         <div
                                             key={index}
-                                            className="flex items-center justify-center px-3 py-2 rounded-lg backdrop-blur-sm"
+                                            className="flex items-center justify-center px-3 py-2 "
                                         >
                                             <img src={platform.img} alt={platform.name} className="w-12 h-12 object-contain" />
                                         </div>
