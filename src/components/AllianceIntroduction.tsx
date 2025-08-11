@@ -145,22 +145,49 @@ const AlliancePage: React.FC = () => {
                                 {topics.map((topic) => (
                                     <div
                                         key={topic.id}
-                                        style={{background: "rgba(157, 215, 255, 0.2)", borderRadius: "23.522px"}}
-                                        className="backdrop-blur-sm rounded-lg h-full flex flex-col p-4 md:p-5"
+                                        className="h-full flex rounded-lg overflow-hidden"
+                                        style={{
+                                            borderRadius: "23.522px",
+                                            minHeight: "70px", // giảm tổng chiều cao
+                                        }}
                                     >
-                                        <div className="flex items-center gap-4 md:gap-6">
-                                            <div className="flex-shrink-0">
-                                                <div
-                                                    className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-md">
-                                                    <span
-                                                        className="text-6xl md:text-6xl font-light">{topic.number}</span>
-                                                </div>
-                                            </div>
-                                            <p className="text-base md:text-lg leading-relaxed">{topic.title}</p>
+                                        {/* Bên trái - nền số */}
+                                        <div
+                                            className="flex items-center justify-center w-1/4"
+                                            style={{
+                                                background: "rgba(255, 255, 255, 0.25)",
+                                            }}
+                                        >
+        <span
+            className="text-4xl md:text-5xl font-light"
+            style={{
+                fontFamily: "'BT Suave', sans-serif",
+                fontWeight: 700,
+                color: "#ffffff",
+            }}
+        >
+          {topic.number}
+        </span>
+                                        </div>
+
+                                        {/* Bên phải - nền tiêu đề */}
+                                        <div
+                                            className="flex items-center p-4 md:p-5 w-3/4"
+                                            style={{
+                                                background: "rgba(157, 215, 255, 0.2)",
+                                            }}
+                                        >
+                                            <p
+                                                className="text-base md:text-lg leading-relaxed"
+                                                style={{color: "#ffffff"}}
+                                            >
+                                                {topic.title}
+                                            </p>
                                         </div>
                                     </div>
                                 ))}
                             </div>
+
 
                             {/* Bullets */}
                             <div className="mt-6 md:mt-8">
@@ -678,12 +705,20 @@ const AlliancePage: React.FC = () => {
                         {/* Đơn vị bảo trợ */}
                         <div className="text-center space-y-4">
                             <p className="text-[16px] font-bold">ĐƠN VỊ BẢO TRỢ</p>
-                            <div className="text-base sm:text-lg font-medium">Cục A05</div>
+                            <div className="flex flex-col items-center">
+                                {/* Ảnh logo - responsive với kích thước khác nhau trên mobile/desktop */}
+                                <Logo src="/images/img_7.png" alt="Đơn vị" className="h-5 sm:h-7"/>
+                                {/* Text description - responsive font size và line height */}
+                                <div className="text-[10px] sm:text-[12px] md:text-sm leading-tight md:leading-normal">
+                                    A05 - Cục An ninh mạng và phòng, chống tội phạm sử dụng công nghệ cao
+                                </div>
+
+                            </div>
                         </div>
 
                         {/* Đơn vị phối hợp tổ chức */}
                         <div className="text-center space-y-4">
-                            <p className="text-[16px] font-bold">ĐƠN VỊ PHỐI HỢP TỔ CHỨC</p>
+                        <p className="text-[16px] font-bold">ĐƠN VỊ PHỐI HỢP TỔ CHỨC</p>
                             <div className="flex flex-wrap items-center justify-center gap-4">
                                 <Logo src="/images/img_14.png" alt="Đơn vị phối hợp 1" className="h-5 sm:h-7"/>
                                 <Logo src="/images/img_15.png" alt="Đơn vị phối hợp 2" className="h-5 sm:h-7"/>
@@ -702,7 +737,7 @@ const AlliancePage: React.FC = () => {
 
                     {/* Hàng 3: Đơn vị bảo trợ */}
                     <div className="text-center space-y-4 relative top-0 md:top-[70px]">
-                        <p className="text-[16px] font-bold">ĐƠN VỊ BẢO TRỢ</p>
+                        <p className="text-[16px] font-bold">ĐƠN VỊ BẢO TRỢ TRUYỀN THÔNG</p>
 
                         <div
                             className="grid place-items-center gap-x-4 px-0 mx-0 grid-cols-2 sm:grid-cols-3 md:grid-cols-5 md:px-8 md:mx-[250px]">

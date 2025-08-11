@@ -158,11 +158,25 @@ const CountdownWithServices: React.FC = () => {
 
                 </div>
 
-                <div className="text-center">
-                  <h3 className="font-bold text-white/80 mb-2 text-base md:text-lg uppercase tracking-wide">
+                <div className="text-center space-y-3">
+                  {/* Tiêu đề - text đầu tiên */}
+                  <h3 className="font-bold text-white/80 text-base md:text-lg uppercase tracking-wide">
                     ĐƠN VỊ BẢO TRỢ
                   </h3>
-                  <p className="text-white/90 text-xs md:text-sm">Cục A05</p>
+
+                  {/* Ảnh logo - ở giữa */}
+                  <div className="flex justify-center">
+                    <img
+                        src="/images/img_7.png"
+                        alt="Người Quan Sát"
+                        className="h-8 object-contain"
+                    />
+                  </div>
+
+                  {/* Mô tả - text cuối cùng */}
+                  <p className="text-white/90 text-xs md:text-sm px-4">
+                    A05 - Cục An ninh mạng và phòng, chống tội phạm sử dụng công nghệ cao
+                  </p>
                 </div>
 
                 <div className="text-center">

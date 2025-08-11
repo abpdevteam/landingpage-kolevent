@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
             <img
                 src="/images/img_11.png"
                 alt="Background"
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full"
             />
 
             {/* Lớp gradient overlay 1 */}
@@ -16,7 +16,6 @@ const Footer: React.FC = () => {
                 style={{
                     background:
                         "linear-gradient(360deg, rgba(28, 62, 133, 0) 0%, #1D3D86 97.34%)",
-                    transform: "rotate(-180deg)",
                 }}
             ></div>
 
@@ -26,6 +25,7 @@ const Footer: React.FC = () => {
                 style={{
                     background:
                         "linear-gradient(360deg, rgba(28, 62, 133, 0) 0%, #1D3D86 97.34%)",
+                    transform: "rotate(-180deg)",
                 }}
             ></div>
 

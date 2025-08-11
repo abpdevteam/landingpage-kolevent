@@ -4,10 +4,11 @@ const Event: React.FC = () => {
     // Style có ảnh nền nằm ngang
     const cardWithImage: React.CSSProperties = {
         background: `
-      linear-gradient(rgba(157,215,255,0.1), rgba(157,215,255,0.1)),
-      url('/images/img_40.png')
-    `,
-        backgroundSize: "100% auto",
+    linear-gradient(rgba(157,215,255,0.1), rgba(157,215,255,0.1)),
+    url('/images/img_40.png')
+  `,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         borderRadius: "17.3576px",
     };
@@ -25,7 +26,7 @@ const Event: React.FC = () => {
             {/* Lớp nền */}
             <div
                 aria-hidden
-                className="pointer-events-none absolute inset-0 -z-10 bg-no-repeat bg-center"
+                className="pointer-events-none absolute inset-0 z-0 bg-no-repeat bg-center"
                 style={{
                     backgroundImage: "url('/images/img_35.png')",
                     backgroundSize: "100% auto",
@@ -105,7 +106,7 @@ const Event: React.FC = () => {
                             {/* Card 1 - có ảnh */}
                             <div className="rounded-2xl p-6 md:p-10" style={cardWithImage}>
                                 <div className="space-y-5">
-                                    <div className="flex items-end gap-3">
+                                    <div className="flex items-end gap-3 ">
                     <span
                         className="text-5xl md:text-6xl font-extrabold text-white leading-none"
                         style={{
@@ -159,24 +160,28 @@ const Event: React.FC = () => {
                                             <div>NGHIỆP</div>
                                         </div>
                                     </div>
-                                    <p className="text-sm md:text-base text-white/90">Truyền thông, đào tạo, quản lý KOL…</p>
+                                    <p className="text-sm md:text-base text-white/90">Truyền thông, đào tạo, quản lý
+                                        KOL…</p>
                                 </div>
                             </div>
 
                             {/* Card 3 - có ảnh */}
-                            <div className="rounded-2xl p-6 md:p-10" style={cardWithImage}>
+                            <div
+                                className="rounded-2xl p-6 md:p-10 md:flex md:items-center md:justify-center"
+                                style={cardWithImage}
+                            >
                                 <div className="space-y-5">
                                     <div className="flex items-end gap-3">
-                    <span
-                        className="text-5xl md:text-6xl font-extrabold text-white leading-none"
-                        style={{
-                            fontFamily: "'BT Suave', sans-serif",
-                            fontWeight: 700,
-                            color: "#ffffff",
-                        }}
-                    >
-                      50+
-                    </span>
+      <span
+          className="text-5xl md:text-6xl font-extrabold text-white leading-none"
+          style={{
+              fontFamily: "'BT Suave', sans-serif",
+              fontWeight: 700,
+              color: "#ffffff",
+          }}
+      >
+        50+
+      </span>
                                         <div
                                             className="text-xl md:text-2xl font-semibold text-white leading-tight"
                                             style={{
@@ -189,11 +194,9 @@ const Event: React.FC = () => {
                                             <div>GIA</div>
                                         </div>
                                     </div>
-                                    <p className="text-sm md:text-base text-white/90">
-                                        Đến từ các lĩnh vực công nghệ, truyền thông và an ninh mạng
-                                    </p>
                                 </div>
                             </div>
+
                         </div>
                     </section>
 
