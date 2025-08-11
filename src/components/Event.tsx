@@ -4,9 +4,9 @@ const Event: React.FC = () => {
     // Style có ảnh nền nằm ngang
     const cardWithImage: React.CSSProperties = {
         background: `
-    linear-gradient(rgba(157,215,255,0.1), rgba(157,215,255,0.1)),
-    url('/images/img_40.png')
-  `,
+      linear-gradient(rgba(157,215,255,0.1), rgba(157,215,255,0.1)),
+      url('/images/img_40.png')
+    `,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -21,6 +21,8 @@ const Event: React.FC = () => {
         borderRadius: "17.3576px",
     };
 
+    const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+
     return (
         <div className="relative min-h-screen bg-[#1D3D86]">
             {/* Lớp nền */}
@@ -28,7 +30,7 @@ const Event: React.FC = () => {
                 aria-hidden
                 className="pointer-events-none absolute inset-0 z-0 bg-no-repeat bg-center"
                 style={{
-                    backgroundImage: "url('/images/img_35.png')",
+                    backgroundImage: `url('${isMobile ? "/images/img_51.png" : "/images/img_35.png"}')`,
                     backgroundSize: "100% auto",
                 }}
             />
@@ -75,16 +77,22 @@ const Event: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* Hàng dưới */}
-                        <div className="grid md:grid-cols-3 border-t border-white/100 divide-y md:divide-y-0 md:divide-x divide-white/100 bg-[#1D3D86]">
+                        {/* Hàng dưới — giữ cùng grid [300px_1fr] để gạch thẳng hàng, lồng 2 cột ở nửa phải */}
+                        <div className="grid md:grid-cols-[300px_1fr] border-t border-white/100 divide-y md:divide-y-0 md:divide-x divide-white/100 bg-[#1D3D86]">
+                            {/* Cột trái (khớp 300px) */}
                             <div className="p-6 md:p-8 flex items-center justify-center text-sm md:text-base text-white/90 leading-relaxed text-center">
                                 Quy tụ các KOL tiêu biểu trên toàn quốc cùng đại diện cơ quan quản lý và doanh nghiệp.
                             </div>
-                            <div className="p-6 md:p-8 flex items-center justify-center text-sm md:text-base text-white/90 leading-relaxed text-center">
-                                Diễn đàn thường niên, uy tín và quy mô nhất dành cho KOL.
-                            </div>
-                            <div className="p-6 md:p-8 flex items-center justify-center text-sm md:text-base text-white/90 leading-relaxed text-center">
-                                Nhìn nhận vai trò, trách nhiệm của KOL trong kỷ nguyên số, đồng thời đề xuất các giải pháp phát huy ảnh hưởng tích cực của họ.
+
+                            {/* Cột phải chia 2 */}
+                            <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/100">
+                                <div className="p-6 md:p-8 flex items-center justify-center text-sm md:text-base text-white/90 leading-relaxed text-center">
+                                    Diễn đàn thường niên, uy tín và quy mô nhất dành cho KOL.
+                                </div>
+                                <div className="p-6 md:p-8 flex items-center justify-center text-sm md:text-base text-white/90 leading-relaxed text-center">
+                                    Nhìn nhận vai trò, trách nhiệm của KOL trong kỷ nguyên số, đồng thời đề xuất các giải pháp phát huy
+                                    ảnh hưởng tích cực của họ.
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -106,7 +114,7 @@ const Event: React.FC = () => {
                             {/* Card 1 - có ảnh */}
                             <div className="rounded-2xl p-6 md:p-10" style={cardWithImage}>
                                 <div className="space-y-5">
-                                    <div className="flex items-end gap-3 ">
+                                    <div className="flex items-end gap-3">
                     <span
                         className="text-5xl md:text-6xl font-extrabold text-white leading-none"
                         style={{
@@ -160,28 +168,24 @@ const Event: React.FC = () => {
                                             <div>NGHIỆP</div>
                                         </div>
                                     </div>
-                                    <p className="text-sm md:text-base text-white/90">Truyền thông, đào tạo, quản lý
-                                        KOL…</p>
+                                    <p className="text-sm md:text-base text-white/90">Truyền thông, đào tạo, quản lý KOL…</p>
                                 </div>
                             </div>
 
                             {/* Card 3 - có ảnh */}
-                            <div
-                                className="rounded-2xl p-6 md:p-10 md:flex md:items-center md:justify-center"
-                                style={cardWithImage}
-                            >
+                            <div className="rounded-2xl p-6 md:p-10 md:flex md:items-center md:justify-center" style={cardWithImage}>
                                 <div className="space-y-5">
                                     <div className="flex items-end gap-3">
-      <span
-          className="text-5xl md:text-6xl font-extrabold text-white leading-none"
-          style={{
-              fontFamily: "'BT Suave', sans-serif",
-              fontWeight: 700,
-              color: "#ffffff",
-          }}
-      >
-        50+
-      </span>
+                    <span
+                        className="text-5xl md:text-6xl font-extrabold text-white leading-none"
+                        style={{
+                            fontFamily: "'BT Suave', sans-serif",
+                            fontWeight: 700,
+                            color: "#ffffff",
+                        }}
+                    >
+                      50+
+                    </span>
                                         <div
                                             className="text-xl md:text-2xl font-semibold text-white leading-tight"
                                             style={{
@@ -196,13 +200,12 @@ const Event: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </section>
 
                     {/* ==== Đối tác ==== */}
                     <section className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                        {/* Card 4 - có ảnh */}
+                        {/* Card 4 - chỉ gradient */}
                         <div className="rounded-2xl p-6 md:p-8" style={cardGradient}>
                             <div className="space-y-4">
                                 <h3
@@ -215,13 +218,13 @@ const Event: React.FC = () => {
                                 >
                                     CƠ QUAN QUẢN LÝ NHÀ NƯỚC
                                 </h3>
-                                <p className="text-sm md:text-base text-white/90 leading-relaxed text-center ">
+                                <p className="text-sm md:text-base text-white/90 leading-relaxed text-center">
                                     Thuộc các bộ: Công an, Khoa học và Công nghệ, Công thương, Quốc phòng, Ngân hàng Nhà nước…
                                 </p>
                             </div>
                         </div>
 
-                        {/* Card 5 - chỉ gradient */}
+                        {/* Card 5 - có ảnh */}
                         <div className="rounded-2xl p-6 md:p-8" style={cardWithImage}>
                             <div>
                                 <h3
@@ -241,10 +244,7 @@ const Event: React.FC = () => {
                                         { name: "Google", img: "/images/img_38.png" },
                                         { name: "TikTok", img: "/images/img_39.png" },
                                     ].map((platform, index) => (
-                                        <div
-                                            key={index}
-                                            className="flex items-center justify-center px-3 py-2 "
-                                        >
+                                        <div key={index} className="flex items-center justify-center px-3 py-2">
                                             <img src={platform.img} alt={platform.name} className="w-12 h-12 object-contain" />
                                         </div>
                                     ))}
