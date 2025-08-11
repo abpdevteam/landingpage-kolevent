@@ -249,7 +249,7 @@ const AlliancePage: React.FC = () => {
                                         className="text-2xl md:text-4xl uppercase tracking-wide"
                                         style={{
                                             fontFamily: "'BT Suave', sans-serif",
-                                            fontWeight: 700,
+                                            fontWeight: 400,
                                             color: "#ffffff"
                                         }}
                                     >

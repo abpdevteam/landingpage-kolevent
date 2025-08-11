@@ -3,20 +3,20 @@ import React from "react";
 const Event: React.FC = () => {
     // Style có ảnh nền nằm ngang
     const cardWithImage: React.CSSProperties = {
-        background: `
-      linear-gradient(rgba(157,215,255,0.1), rgba(157,215,255,0.1)),
-      url('/images/img_40.png')
+        backgroundImage: `
+      linear-gradient(rgba(157, 215, 255, 0.2) 5.04%),
+      url('/images/img_54.png'),
+      url('/images/img_53.png')
     `,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        borderRadius: "17.3576px",
+        backgroundPosition: "center, top left, bottom right",
+        backgroundRepeat: "no-repeat, no-repeat, no-repeat",
+        backgroundSize: "cover, auto 85%, auto 40%",
+        borderRadius: "17.3576px"
     };
-
     // Style chỉ gradient
     const cardGradient: React.CSSProperties = {
         background: `
-      linear-gradient(rgba(157,215,255,0.1), rgba(157,215,255,0.1))
+      linear-gradient(rgba(157,215,255,0.2), rgba(157,215,255,0.2))
     `,
         borderRadius: "17.3576px",
     };
