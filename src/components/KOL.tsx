@@ -53,7 +53,7 @@ function KOLCard({ profile }: KOLCardProps) {
             />
 
             {/* Text trên cùng - Đã sửa để text không bị giới hạn */}
-            <div className="absolute top-0 left-0 right-0 z-20 px-6 md:px-3">
+            <div className="absolute top-0 left-0 right-0 z-20 px-8 md:px-3">
                 <div
                     className="text-white font-semibold text-xs md:text-sm leading-tight whitespace-normal break-words">
                     {profile.name}

@@ -714,11 +714,11 @@ const AlliancePage: React.FC = () => {
                         {/* Đơn vị bảo trợ */}
                         <div className="text-center space-y-4">
                             <p className="text-[16px] font-bold">ĐƠN VỊ BẢO TRỢ</p>
-                            <div className="flex flex-col items-center">
+                            <div className="flex flex-col items-center gap-y-2">
                                 {/* Ảnh logo - responsive với kích thước khác nhau trên mobile/desktop */}
                                 <Logo src="/images/img_7.png" alt="Đơn vị" className="h-5 sm:h-7"/>
                                 {/* Text description - responsive font size và line height */}
-                                <div className="text-[10px] sm:text-[12px] md:text-sm leading-tight md:leading-normal">
+                                <div className="text-[10px] sm:text-[12px] md:text-sm leading-tight md:leading-normal ">
                                     A05 - Cục An ninh mạng và phòng, chống tội phạm sử dụng công nghệ cao
                                 </div>
 
