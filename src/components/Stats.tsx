@@ -88,11 +88,11 @@ const CountdownWithServices: React.FC = () => {
                   alt="Overlay"
                   className="w-[280px] md:w-[420px] lg:w-[500px] h-auto object-contain"
               />
-              <div className="flex justify-center gap-2 mt-5">
-                <img src="/images/img_8.png" alt="Icon 1" className="h-5 md:h-6 w-auto"/>
-                <img src="/images/img_9.png" alt="Icon 2" className="h-5 md:h-6 w-auto"/>
-                <img src="/images/img_10.png" alt="Icon 3" className="h-5 md:h-6 w-auto"/>
-              </div>
+              {/*<div className="flex justify-center gap-2 mt-5">*/}
+              {/*  <img src="/images/img_8.png" alt="Icon 1" className="h-5 md:h-6 w-auto"/>*/}
+              {/*  <img src="/images/img_9.png" alt="Icon 2" className="h-5 md:h-6 w-auto"/>*/}
+              {/*  <img src="/images/img_10.png" alt="Icon 3" className="h-5 md:h-6 w-auto"/>*/}
+              {/*</div>*/}
             </div>
 
             {/* Chừa khoảng tránh icon */}

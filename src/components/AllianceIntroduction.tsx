@@ -266,11 +266,13 @@ const AlliancePage: React.FC = () => {
                                     className="backdrop-blur-sm p-6 rounded-lg h-full flex items-center justify-center"
                                     style={{
                                         backgroundImage: `
-            linear-gradient(rgba(157, 215, 255, 0.2) 5.04%),
-            url('/images/img_33.png')
-        `,
-                                        backgroundSize: "cover",
-                                        backgroundPosition: "center",
+      linear-gradient(rgba(157, 215, 255, 0.2) 5.04%),
+      url('/images/img_52.png'),
+      url('/images/img_53.png')
+    `,
+                                        backgroundPosition: "center, top left, bottom right",
+                                        backgroundRepeat: "no-repeat, no-repeat, no-repeat",
+                                        backgroundSize: "cover, auto 100%, auto 50%",
                                         borderRadius: "17.3576px"
                                     }}
                                 >
@@ -334,11 +336,13 @@ const AlliancePage: React.FC = () => {
                                     className=" backdrop-blur-sm p-6 rounded-lg h-full flex items-center justify-center"
                                     style={{
                                         backgroundImage: `
-            linear-gradient(rgba(157, 215, 255, 0.2) 5.04%),
-            url('/images/img_34.png')
-        `,
-                                        backgroundSize: "cover",
-                                        backgroundPosition: "center",
+      linear-gradient(rgba(157, 215, 255, 0.2) 5.04%),
+      url('/images/img_54.png'),
+      url('/images/img_55.png')
+    `,
+                                        backgroundPosition: "center, top left, bottom right",
+                                        backgroundRepeat: "no-repeat, no-repeat, no-repeat",
+                                        backgroundSize: "cover, auto 70%, auto 30%",
                                         borderRadius: "17.3576px"
                                     }}
                                 >
@@ -444,7 +448,7 @@ const AlliancePage: React.FC = () => {
                         </h2>
                         <p
                             className="text-xl md:text-3xl text-white font-light tracking-wide"
-                            style={{fontFamily: "'BT Suave', sans-serif", fontWeight: 700, color: "#ffffff"}}
+                            style={{fontFamily: "'BT Suave', sans-serif", fontWeight: 400}}
                         >
                             ẢNH HƯỞNG TRÁCH NHIỆM, DẪN DẮT NIỀM TIN
                         </p>
@@ -476,7 +480,12 @@ const AlliancePage: React.FC = () => {
                                 <div key={i} className="p-6 md:p-8 rounded-[24.5736px] backdrop-blur-sm"
                                      style={{background: "rgba(157, 215, 255, 0.2)"}}>
                                     <div
-                                        className="text-5xl md:text-6xl font-light text-white mb-4 md:mb-6">{card.number}</div>
+                                        className="text-5xl md:text-6xl font-light text-white mb-4 md:mb-6"
+                                        style={{fontFamily: "'BT Suave', sans-serif", fontWeight: 400}}
+                                    >
+                                        {card.number}
+                                    </div>
+
                                     <h3 className="text-lg md:text-xl font-semibold text-white mb-3 md:mb-4 leading-tight">{card.title}</h3>
                                     <p className="text-white text-sm md:text-base leading-relaxed">{card.desc}</p>
                                 </div>
@@ -563,13 +572,13 @@ const AlliancePage: React.FC = () => {
                         <div className="text-center mb-8 md:mb-12">
                             <h1
                                 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-wide"
-                                style={{fontFamily: "'BT Suave', sans-serif", fontWeight: 500}}
+                                style={{fontFamily: "'BT Suave', sans-serif", fontWeight: 700}}
                             >
                                 CHƯƠNG TRÌNH TÍN NHIỆM
                             </h1>
                             <h2
                                 className="text-3xl md:text-4xl font-bold text-white tracking-wide"
-                                style={{fontFamily: "'BT Suave', sans-serif", fontWeight: 500}}
+                                style={{fontFamily: "'BT Suave', sans-serif", fontWeight: 400}}
                             >
                                 NGƯỜI CÓ ẢNH HƯỞNG
                             </h2>
