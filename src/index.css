@@ -26,3 +26,23 @@
   font-weight: 400;
   font-style: normal;
 }
+@font-face {
+  font-family: 'NeueHelveticaExt';
+  src: url('/fonts/SVN-NeueHelveticaExt-Rg.otf') format('opentype');
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NeueHelveticaExt';
+  src: url('/fonts/SVN-NeueHelveticaExt-Md.otf') format('opentype');
+  font-weight: 500; /* Medium */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NeueHelveticaExt';
+  src: url('/fonts/SVN-NeueHelveticaExt-Bd.otf') format('opentype');
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
