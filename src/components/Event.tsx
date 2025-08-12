@@ -79,11 +79,7 @@ const Event: React.FC = () => {
                     <section className="space-y-6">
                         <h2
                             className="text-2xl md:text-3xl font-light text-white/90 text-center tracking-wide"
-                            style={{
-                                fontFamily: "'BT Suave', sans-serif",
-                                fontWeight: 700,
-                                color: "#ffffff",
-                            }}
+                            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700 }}
                         >
                             SỰ GÓP MẶT CỦA
                         </h2>
@@ -106,7 +102,7 @@ const Event: React.FC = () => {
                       KOL
                     </span>
                                     </div>
-                                    <p className="text-sm md:text-base text-white/90 text-center leading-relaxed" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
+                                    <p className="text-sm md:text-base text-white  leading-relaxed" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
                                         Lựa chọn theo tiêu chí từ Cục an ninh mạng và Cục nghiệp vụ của Bộ và Công an
                                     </p>
                                 </div>
@@ -170,7 +166,7 @@ const Event: React.FC = () => {
                                 >
                                     CƠ QUAN QUẢN LÝ NHÀ NƯỚC
                                 </h3>
-                                <p className="text-sm md:text-base text-white/90 leading-relaxed text-center" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
+                                <p className="text-sm md:text-base text-white leading-relaxed" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
                                     Thuộc các bộ: Công an, Khoa học và Công nghệ, Công thương, Quốc phòng, Ngân hàng Nhà
                                     nước...
                                 </p>
