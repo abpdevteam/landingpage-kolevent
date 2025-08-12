@@ -18,13 +18,6 @@ const kolProfiles: KOLProfile[] = [
     { id: 7, name: "NGUYEN VAN G", role: "KOLs", avatar: "/images/img_42.png" },
     { id: 8, name: "NGUYEN VAN H", role: "KOLs", avatar: "/images/img_42.png" },
     { id: 9, name: "NGUYEN VAN I", role: "KOLs", avatar: "/images/img_42.png" },
-    { id: 10, name: "NGUYEN VAN K", role: "KOLs", avatar: "/images/img_42.png" },
-    { id: 11, name: "NGUYEN VAN L", role: "KOLs", avatar: "/images/img_42.png" },
-    { id: 12, name: "NGUYEN VAN M", role: "KOLs", avatar: "/images/img_42.png" },
-    { id: 13, name: "NGUYEN VAN N", role: "KOLs", avatar: "/images/img_42.png" },
-    { id: 14, name: "NGUYEN VAN O", role: "KOLs", avatar: "/images/img_42.png" },
-    { id: 15, name: "NGUYEN VAN P", role: "KOLs", avatar: "/images/img_42.png" },
-    { id: 16, name: "NGUYEN VAN P", role: "KOLs", avatar: "/images/img_42.png" },
 ];
 
 interface KOLCardProps {
@@ -33,29 +26,22 @@ interface KOLCardProps {
 
 function KOLCard({ profile }: KOLCardProps) {
     return (
-        <div className="relative rounded-2xl overflow-hidden min-h-[180px] w-[160px] md:w-[250px] md:h-[151px]">
-            {/* Nền chỉ ở nửa dưới */}
-            <div
-                className="absolute bottom-0 w-full h-1/2"
-                style={{
-                    background:
-                        "linear-gradient(to bottom, rgba(255,255,255,0) 0%, #FDEDE0 100%)",
-                }}
-            />
-            {/* Vignette fade dưới */}
-            <div
-                className="pointer-events-none absolute inset-x-3 md:inset-x-4 bottom-0 h-1/2 rounded-xl"
-                style={{
-                    background:
-                        "linear-gradient(to bottom, rgba(29,61,134,0) 0%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.85) 100%)",
-                    filter: "blur(0.3px)",
-                }}
-            />
-
-            {/* Text trên cùng - Đã sửa để text không bị giới hạn */}
-            <div className="absolute top-0 left-0 right-0 z-20 px-8 md:px-3">
-                <div
-                    className="text-white font-semibold text-xs md:text-sm leading-tight whitespace-normal break-words">
+        <div
+            className="
+        relative overflow-hidden min-h-[220px] w-[160px] md:w-[250px] md:h-[200px]
+        transition-transform duration-300 ease-out hover:-translate-y-1 hover:shadow-xl
+      "
+            style={{
+                background:
+                    "linear-gradient(180deg, rgba(255, 255, 255, 0) -56.25%, rgba(255, 255, 255, 0.3) 100%)",
+                border: "1px solid rgba(255, 255, 255, 0.3)",
+                borderRadius: "16px",
+                backdropFilter: "blur(2px)",
+            }}
+        >
+            {/* Text trên cùng */}
+            <div className="absolute top-0 left-0 right-0 z-20 px-2 md:px-3 pt-2">
+                <div className="text-white font-semibold text-xs md:text-sm leading-tight whitespace-normal break-words">
                     {profile.name}
                 </div>
                 <div className="italic text-white/80 text-[10px] md:text-xs mt-0.5 whitespace-normal">
@@ -64,8 +50,9 @@ function KOLCard({ profile }: KOLCardProps) {
             </div>
 
             {/* Avatar */}
-            <div className="absolute -bottom-2 md:bottom-auto md:ml-[60px] z-10">
+            <div className="absolute -bottom-2 md:ml-[60px] z-10">
                 <Image
+                    alt={profile.name}
                     src={profile.avatar}
                     preview={false}
                     className="w-28 md:w-[190px] h-auto object-contain"
@@ -79,54 +66,46 @@ const KOL: React.FC = () => {
     // Laptop/desktop: 4 – 5 – 4 (giữ nguyên)
     const row1_md = kolProfiles.slice(0, 4);
     const row2_md = kolProfiles.slice(4, 9);
-    const row3_md = kolProfiles.slice(9, 13);
 
     return (
-        <div className="bg-[#1D3D86] py-12 px-4">
-            {/* Hàng 1: mobile 3, md+ 4 */}
-            <div className="flex justify-center mb-10">
-                <div className="grid grid-cols-3 md:grid-cols-4 gap-3 md:gap-8 justify-items-center">
-                    {row1_md.map((p, i) => (
-                        <div key={p.id} className={i >= 3 ? "hidden md:block" : ""}>
-                            <KOLCard profile={p} />
-                        </div>
-                    ))}
-                </div>
-            </div>
+        <div
+            className="relative py-12 px-4 bg-cover bg-center"
+            style={{
+                backgroundImage: "url('/images/img_63.png')", // đổi theo ảnh bạn có
+            }}
+        >
 
-            {/* Hàng 2: mobile 4, md+ 5 */}
-            <div className="flex justify-center mb-10">
-                <div className="grid grid-cols-4 md:grid-cols-5 gap-3 md:gap-8 justify-items-center">
-                    {row2_md.map((p, i) => (
-                        <div key={p.id} className={i >= 4 ? "hidden md:block" : ""}>
-                            <KOLCard profile={p} />
-                        </div>
-                    ))}
+            <div className="relative z-10">
+                <div className="text-center mb-7">
+                    <h2
+                        className="text-2xl md:text-3xl font-light text-white/70 tracking-wider"
+                        style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700 }}
+                    >
+                        CÁC KOLs XÁC NHẬN THAM GIA
+                    </h2>
                 </div>
-            </div>
 
-            {/* Hàng 3: mobile 3, md+ 4 */}
-            <div className="flex justify-center">
-                <div className="grid grid-cols-3 md:grid-cols-4 gap-3 md:gap-8 justify-items-center">
-                    {row3_md.map((p, i) => (
-                        <div key={p.id} className={i >= 3 ? "hidden md:block" : ""}>
-                            <KOLCard profile={p} />
-                        </div>
-                    ))}
+                {/* Hàng 1: mobile 3, md+ 4 */}
+                <div className="flex justify-center mb-10">
+                    <div className="grid grid-cols-3 md:grid-cols-4 gap-3 md:gap-8 justify-items-center">
+                        {row1_md.map((p, i) => (
+                            <div key={p.id} className={i >= 3 ? "hidden md:block" : ""}>
+                                <KOLCard profile={p} />
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
 
-            <div className="text-center mt-7">
-                <h2
-                    className="text-2xl md:text-3xl font-light text-white/70 tracking-wider"
-                    style={{
-                        fontFamily: "'BT Suave', sans-serif",
-                        fontWeight: 700,
-                        color: "#ffffff",
-                    }}
-                >
-                    CÁC KOLs XÁC NHẬN THAM GIA
-                </h2>
+                {/* Hàng 2: mobile 4, md+ 5 */}
+                <div className="flex justify-center mb-10">
+                    <div className="grid grid-cols-4 md:grid-cols-5 gap-3 md:gap-8 justify-items-center">
+                        {row2_md.map((p, i) => (
+                            <div key={p.id} className={i >= 4 ? "hidden md:block" : ""}>
+                                <KOLCard profile={p} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     );

@@ -1,106 +1,84 @@
 import React from "react";
 
 const Event: React.FC = () => {
-    // Style có ảnh nền nằm ngang
-    const cardWithImage: React.CSSProperties = {
-        backgroundImage: `
-      linear-gradient(rgba(157, 215, 255, 0.2) 5.04%),
-      url('/images/img_54.png'),
-      url('/images/img_53.png')
-    `,
-        backgroundPosition: "center, top left, bottom right",
-        backgroundRepeat: "no-repeat, no-repeat, no-repeat",
-        backgroundSize: "cover, auto 85%, auto 40%",
-        borderRadius: "17.3576px"
-    };
-    // Style chỉ gradient
     const cardGradient: React.CSSProperties = {
-        background: `
-      linear-gradient(rgba(157,215,255,0.2), rgba(157,215,255,0.2))
-    `,
-        borderRadius: "17.3576px",
+        background: "linear-gradient(180deg, rgba(255, 255, 255, 0) -56.25%, rgba(255, 255, 255, 0.3) 100%)",
+        border: "1px solid rgba(255, 255, 255, 0.3)",
+        borderRadius: "16px"
     };
 
     const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
 
     return (
-        <div className="relative min-h-screen bg-[#1D3D86]">
+        <div className="relative min-h-screen">
             {/* Lớp nền */}
             <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0 z-0 bg-no-repeat bg-center"
                 style={{
-                    backgroundImage: `url('${isMobile ? "/images/img_51.png" : "/images/img_35.png"}')`,
+                    backgroundImage: `url('${isMobile ? "/images/img_62.png" : "/images/img_62.png"}')`,
                     backgroundSize: "100% auto",
                 }}
             />
 
             <div className="relative z-10 px-4 md:px-8 py-8 md:py-12">
-                <div className="mx-auto w-full max-w-6xl space-y-8">
+                <div className="mx-auto w-full max-w-6xl">
                     {/* ==== Phần thông tin sự kiện ==== */}
-                    <section className="overflow-hidden rounded-2xl border border-white/100 bg-[#23458F] text-white shadow-sm">
-                        {/* Hàng trên */}
-                        <div className="grid md:grid-cols-[300px_1fr] divide-y md:divide-y-0 md:divide-x divide-white/100">
-                            <div className="p-6 md:p-8 flex flex-col items-center justify-center text-center">
+                    <section className="text-white">
+                        {/* Thanh thông tin (giống pill mờ trong ảnh) */}
+                        <div
+                            className="rounded-2xl border border-white/40 bg-white/10 backdrop-blur px-4 md:px-8 py-4 md:py-5
+             flex flex-col items-center md:items-start text-center md:text-left shadow-sm"
+                        >
+                            {/* Hàng trên: Giờ và Ngày */}
+                            <div className="flex items-center justify-between w-full">
+                                {/* Giờ */}
                                 <div
-                                    className="text-2xl md:text-3xl font-light"
-                                    style={{
-                                        fontFamily: "'BT Suave', sans-serif",
-                                        fontWeight: 700,
-                                        color: "#ffffff",
-                                    }}
+                                    className="text-xl md:text-3xl font-bold"
                                 >
-                                    8h00 → 12h00
+                                    8h00&nbsp;&rarr;&nbsp;12h00
                                 </div>
+
+                                {/* Ngày */}
                                 <div
-                                    className="text-5xl md:text-5xl font-bold leading-tight mt-1"
-                                    style={{
-                                        fontFamily: "'BT Suave', sans-serif",
-                                        fontWeight: 700,
-                                        color: "#ffffff",
-                                    }}
+                                    className="text-xl md:text-3xl font-bold"
                                 >
                                     18.08.2025
                                 </div>
                             </div>
-                            <div className="p-6 md:p-8 flex items-center justify-center text-center">
-                                <h3
-                                    className="text-4xl md:text-4xl font-bold leading-snug"
-                                    style={{
-                                        fontFamily: "'BT Suave', sans-serif",
-                                        fontWeight: 700,
-                                        color: "#ffffff",
-                                    }}
-                                >
-                                    Khách sạn Intercontinental Hanoi Landmark72
-                                </h3>
-                            </div>
+
+                            {/* Địa điểm */}
+                            <h3
+                                className="text-2xl md:text-4xl font-bold leading-snug mt-2"
+                            >
+                                Khách sạn Intercontinental Hanoi Landmark&nbsp;72
+                            </h3>
                         </div>
 
-                        {/* Hàng dưới — giữ cùng grid [300px_1fr] để gạch thẳng hàng, lồng 2 cột ở nửa phải */}
-                        <div className="grid md:grid-cols-[300px_1fr] border-t border-white/100 divide-y md:divide-y-0 md:divide-x divide-white/100 bg-[#1D3D86]">
-                            {/* Cột trái (khớp 300px) */}
-                            <div className="p-6 md:p-8 flex items-center justify-center text-sm md:text-base text-white/90 leading-relaxed text-center">
+
+                        <div
+                            className="mt-3 px-4 md:px-8 py-5 md:py-6 space-y-3 text-sm md:text-base text-white/90 leading-relaxed" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
+                            <p>
                                 Quy tụ các KOL tiêu biểu trên toàn quốc cùng đại diện cơ quan quản lý và doanh nghiệp.
-                            </div>
-
-                            {/* Cột phải chia 2 */}
-                            <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/100">
-                                <div className="p-6 md:p-8 flex items-center justify-center text-sm md:text-base text-white/90 leading-relaxed text-center">
-                                    Diễn đàn thường niên, uy tín và quy mô nhất dành cho KOL.
-                                </div>
-                                <div className="p-6 md:p-8 flex items-center justify-center text-sm md:text-base text-white/90 leading-relaxed text-center">
-                                    Nhìn nhận vai trò, trách nhiệm của KOL trong kỷ nguyên số, đồng thời đề xuất các giải pháp phát huy
-                                    ảnh hưởng tích cực của họ.
-                                </div>
-                            </div>
+                            </p>
+                            <p>
+                                Diễn đàn thường niên, uy tín và quy mô nhất dành cho KOL.
+                            </p>
+                            <p>
+                                Nhìn nhận vai trò, trách nhiệm của KOL trong kỷ nguyên số, đồng thời đề xuất các giải
+                                pháp
+                                phát huy ảnh hưởng tích cực của họ trong phát triển đất nước và bảo vệ an ninh trật tự.
+                            </p>
                         </div>
+
+
                     </section>
+
 
                     {/* ==== Thống kê ==== */}
                     <section className="space-y-6">
                         <h2
-                            className="text-3xl md:text-4xl font-light text-white/90 text-center tracking-wide"
+                            className="text-2xl md:text-3xl font-light text-white/90 text-center tracking-wide"
                             style={{
                                 fontFamily: "'BT Suave', sans-serif",
                                 fontWeight: 700,
@@ -112,32 +90,24 @@ const Event: React.FC = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                             {/* Card 1 - có ảnh */}
-                            <div className="rounded-2xl p-6 md:p-10" style={cardWithImage}>
+                            <div className="rounded-2xl p-6 md:p-10" style={cardGradient}>
                                 <div className="space-y-5">
                                     <div className="flex items-end gap-3">
                     <span
                         className="text-5xl md:text-6xl font-extrabold text-white leading-none"
-                        style={{
-                            fontFamily: "'BT Suave', sans-serif",
-                            fontWeight: 700,
-                            color: "#ffffff",
-                        }}
+                        style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
                     >
                       300+
                     </span>
                                         <span
                                             className="text-xl md:text-2xl font-semibold text-white"
-                                            style={{
-                                                fontFamily: "'BT Suave', sans-serif",
-                                                fontWeight: 700,
-                                                color: "#ffffff",
-                                            }}
+                                            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
                                         >
-                      KOLs
+                      KOL
                     </span>
                                     </div>
-                                    <p className="text-sm md:text-base text-white/90 text-center leading-relaxed">
-                                        Lựa chọn theo tiêu chí từ Cục An ninh mạng và Cục nghiệp vụ của Bộ Công an.
+                                    <p className="text-sm md:text-base text-white/90 text-center leading-relaxed" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
+                                        Lựa chọn theo tiêu chí từ Cục an ninh mạng và Cục nghiệp vụ của Bộ và Công an
                                     </p>
                                 </div>
                             </div>
@@ -148,51 +118,37 @@ const Event: React.FC = () => {
                                     <div className="flex items-end gap-3">
                     <span
                         className="text-5xl md:text-6xl font-extrabold text-white leading-none"
-                        style={{
-                            fontFamily: "'BT Suave', sans-serif",
-                            fontWeight: 700,
-                            color: "#ffffff",
-                        }}
+                        style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700 }}
                     >
                       50+
                     </span>
                                         <div
                                             className="text-xl md:text-2xl font-semibold text-white leading-tight"
-                                            style={{
-                                                fontFamily: "'BT Suave', sans-serif",
-                                                fontWeight: 700,
-                                                color: "#ffffff",
-                                            }}
+                                            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
                                         >
                                             <div>DOANH</div>
                                             <div>NGHIỆP</div>
                                         </div>
                                     </div>
-                                    <p className="text-sm md:text-base text-white/90">Truyền thông, đào tạo, quản lý KOL…</p>
+                                    <p className="text-sm md:text-base text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>Truyền thông, đào tạo, quản lý
+                                        KOL…</p>
                                 </div>
                             </div>
 
                             {/* Card 3 - có ảnh */}
-                            <div className="rounded-2xl p-6 md:p-10 md:flex md:items-center md:justify-center" style={cardWithImage}>
+                            <div className="rounded-2xl p-6 md:p-10 md:flex"
+                                 style={cardGradient}>
                                 <div className="space-y-5">
                                     <div className="flex items-end gap-3">
                     <span
                         className="text-5xl md:text-6xl font-extrabold text-white leading-none"
-                        style={{
-                            fontFamily: "'BT Suave', sans-serif",
-                            fontWeight: 700,
-                            color: "#ffffff",
-                        }}
+                        style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
                     >
                       50+
                     </span>
                                         <div
                                             className="text-xl md:text-2xl font-semibold text-white leading-tight"
-                                            style={{
-                                                fontFamily: "'BT Suave', sans-serif",
-                                                fontWeight: 700,
-                                                color: "#ffffff",
-                                            }}
+                                            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
                                         >
                                             <div>CHUYÊN</div>
                                             <div>GIA</div>
@@ -204,48 +160,42 @@ const Event: React.FC = () => {
                     </section>
 
                     {/* ==== Đối tác ==== */}
-                    <section className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    <section className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                         {/* Card 4 - chỉ gradient */}
                         <div className="rounded-2xl p-6 md:p-8" style={cardGradient}>
                             <div className="space-y-4">
                                 <h3
                                     className="text-center text-xl md:text-2xl font-bold text-white leading-tight"
-                                    style={{
-                                        fontFamily: "'BT Suave', sans-serif",
-                                        fontWeight: 700,
-                                        color: "#ffffff",
-                                    }}
+                                    style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
                                 >
                                     CƠ QUAN QUẢN LÝ NHÀ NƯỚC
                                 </h3>
-                                <p className="text-sm md:text-base text-white/90 leading-relaxed text-center">
-                                    Thuộc các bộ: Công an, Khoa học và Công nghệ, Công thương, Quốc phòng, Ngân hàng Nhà nước…
+                                <p className="text-sm md:text-base text-white/90 leading-relaxed text-center" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
+                                    Thuộc các bộ: Công an, Khoa học và Công nghệ, Công thương, Quốc phòng, Ngân hàng Nhà
+                                    nước...
                                 </p>
                             </div>
                         </div>
 
                         {/* Card 5 - có ảnh */}
-                        <div className="rounded-2xl p-6 md:p-8" style={cardWithImage}>
+                        <div className="rounded-2xl p-6 md:p-8" style={cardGradient}>
                             <div>
                                 <h3
                                     className="text-xl text-center md:text-2xl font-bold text-white leading-tight"
-                                    style={{
-                                        fontFamily: "'BT Suave', sans-serif",
-                                        fontWeight: 700,
-                                        color: "#ffffff",
-                                    }}
+                                    style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
                                 >
                                     CÁC NỀN TẢNG MẠNG XÃ HỘI
                                 </h3>
                                 <div className="flex items-center justify-center flex-wrap">
                                     {[
-                                        { name: "Zalo", img: "/images/img_36.png" },
-                                        { name: "Meta", img: "/images/img_37.png" },
-                                        { name: "Google", img: "/images/img_38.png" },
-                                        { name: "TikTok", img: "/images/img_39.png" },
+                                        {name: "Zalo", img: "/images/img_36.png"},
+                                        {name: "Meta", img: "/images/img_37.png"},
+                                        {name: "Google", img: "/images/img_38.png"},
+                                        {name: "TikTok", img: "/images/img_39.png"},
                                     ].map((platform, index) => (
                                         <div key={index} className="flex items-center justify-center px-3 py-2">
-                                            <img src={platform.img} alt={platform.name} className="w-12 h-12 object-contain" />
+                                            <img src={platform.img} alt={platform.name}
+                                                 className="w-12 h-12 object-contain"/>
                                         </div>
                                     ))}
                                 </div>
@@ -253,14 +203,11 @@ const Event: React.FC = () => {
                         </div>
 
                         {/* Card 6 - chỉ gradient */}
-                        <div className="rounded-2xl p-6 md:p-8 flex items-center justify-center text-center" style={cardGradient}>
+                        <div className="rounded-2xl p-6 md:p-8 flex items-center justify-center text-center"
+                             style={cardGradient}>
                             <h3
                                 className="text-xl md:text-2xl font-bold text-white leading-tight"
-                                style={{
-                                    fontFamily: "'BT Suave', sans-serif",
-                                    fontWeight: 700,
-                                    color: "#ffffff",
-                                }}
+                                style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
                             >
                                 THÀNH VIÊN HIỆP HỘI AN NINH MẠNG QUỐC GIA
                             </h3>
