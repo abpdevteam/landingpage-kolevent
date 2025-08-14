@@ -1,4 +1,7 @@
 import React from "react";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { getAnimationClasses } from "../utils/animation";
+import CountUp from "./CountUp";
 
 const Event: React.FC = () => {
     const cardGradient: React.CSSProperties = {
@@ -8,6 +11,12 @@ const Event: React.FC = () => {
     };
 
     const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+
+    // Animation hooks for different sections
+    const eventInfoAnimation = useScrollAnimation<HTMLElement>({ threshold: 0.2, triggerOnce: true });
+    const titleAnimation = useScrollAnimation<HTMLHeadingElement>({ threshold: 0.3, triggerOnce: true });
+    const statsAnimation = useScrollAnimation<HTMLElement>({ threshold: 0.3, triggerOnce: true });
+    const partnersAnimation = useScrollAnimation<HTMLElement>({ threshold: 0.3, triggerOnce: true });
 
     return (
         <div className="relative min-h-screen">
@@ -24,7 +33,10 @@ const Event: React.FC = () => {
             <div className="relative z-10 px-4 md:px-8 py-8 md:py-12">
                 <div className="mx-auto w-full max-w-6xl">
                     {/* ==== Phần thông tin sự kiện ==== */}
-                    <section className="text-white">
+                    <section 
+                        ref={eventInfoAnimation.elementRef}
+                        className={`text-white ${getAnimationClasses(eventInfoAnimation.isVisible, 'fadeInUp')}`}
+                    >
                         {/* Thanh thông tin (giống pill mờ trong ảnh) */}
                         <div
                             className="rounded-2xl border border-white/40 bg-white/10 backdrop-blur px-4 md:px-8 py-4 md:py-5
@@ -68,9 +80,13 @@ const Event: React.FC = () => {
 
 
                     {/* ==== Thống kê ==== */}
-                    <section className="space-y-6">
+                    <section 
+                        ref={statsAnimation.elementRef}
+                        className={`space-y-6 ${getAnimationClasses(statsAnimation.isVisible, 'fadeInUp', 1)}`}
+                    >
                         <h2
-                            className="text-2xl md:text-3xl font-light text-white/90 text-center tracking-wide"
+                            ref={titleAnimation.elementRef}
+                            className={`text-2xl md:text-3xl font-light text-white/90 text-center tracking-wide ${getAnimationClasses(titleAnimation.isVisible, 'fadeIn')}`}
                             style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700 }}
                         >
                             SỰ GÓP MẶT CỦA
@@ -78,21 +94,26 @@ const Event: React.FC = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                             {/* Card 1 - có ảnh */}
-                            <div className="rounded-2xl p-6 md:p-10" style={cardGradient}>
+                            <div 
+                                className={`rounded-2xl p-6 md:p-10 ${getAnimationClasses(statsAnimation.isVisible, 'scaleIn', 0)}`} 
+                                style={cardGradient}
+                            >
                                 <div className="space-y-5">
                                     <div className="flex items-end gap-3">
-                    <span
-                        className="text-5xl md:text-6xl font-extrabold text-white leading-none"
-                        style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
-                    >
-                      300+
-                    </span>
+                                        <CountUp
+                                            end={300}
+                                            suffix="+"
+                                            duration={2500}
+                                            delay={500}
+                                            className="text-5xl md:text-6xl font-extrabold text-white leading-none"
+                                            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
+                                        />
                                         <span
                                             className="text-xl md:text-2xl font-semibold text-white"
                                             style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
                                         >
-                      KOL
-                    </span>
+                                            KOL
+                                        </span>
                                     </div>
                                     <p className="text-sm md:text-base text-white  leading-relaxed" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
                                         Tiêu biểu, đại diện trên các lĩnh vực, không phân biệt dân tộc, tôn giáo từ mọi miền Tổ quốc
@@ -101,15 +122,20 @@ const Event: React.FC = () => {
                             </div>
 
                             {/* Card 2 - chỉ gradient */}
-                            <div className="rounded-2xl p-6 md:p-10" style={cardGradient}>
+                            <div 
+                                className={`rounded-2xl p-6 md:p-10 ${getAnimationClasses(statsAnimation.isVisible, 'scaleIn', 1)}`} 
+                                style={cardGradient}
+                            >
                                 <div className="space-y-5">
                                     <div className="flex items-end gap-3">
-                    <span
-                        className="text-5xl md:text-6xl font-extrabold text-white leading-none"
-                        style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700 }}
-                    >
-                      50+
-                    </span>
+                                        <CountUp
+                                            end={50}
+                                            suffix="+"
+                                            duration={2000}
+                                            delay={700}
+                                            className="text-5xl md:text-6xl font-extrabold text-white leading-none"
+                                            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700 }}
+                                        />
                                         <div
                                             className="text-xl md:text-2xl font-semibold text-white leading-tight"
                                             style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
@@ -123,16 +149,20 @@ const Event: React.FC = () => {
                             </div>
 
                             {/* Card 3 - có ảnh */}
-                            <div className="rounded-2xl p-6 md:p-10 md:flex"
-                                 style={cardGradient}>
+                            <div 
+                                className={`rounded-2xl p-6 md:p-10 md:flex ${getAnimationClasses(statsAnimation.isVisible, 'scaleIn', 2)}`}
+                                style={cardGradient}
+                            >
                                 <div className="space-y-5">
                                     <div className="flex items-end gap-3">
-                    <span
-                        className="text-5xl md:text-6xl font-extrabold text-white leading-none"
-                        style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
-                    >
-                      50+
-                    </span>
+                                        <CountUp
+                                            end={50}
+                                            suffix="+"
+                                            duration={2200}
+                                            delay={900}
+                                            className="text-5xl md:text-6xl font-extrabold text-white leading-none"
+                                            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
+                                        />
                                         <div
                                             className="text-xl md:text-2xl font-semibold text-white leading-tight"
                                             style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
@@ -147,9 +177,15 @@ const Event: React.FC = () => {
                     </section>
 
                     {/* ==== Đối tác ==== */}
-                    <section className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    <section 
+                        ref={partnersAnimation.elementRef}
+                        className={`mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 ${getAnimationClasses(partnersAnimation.isVisible, 'fadeInUp', 2)}`}
+                    >
                         {/* Card 4 - chỉ gradient */}
-                        <div className="rounded-2xl p-6 md:p-8" style={cardGradient}>
+                        <div 
+                            className={`rounded-2xl p-6 md:p-8 ${getAnimationClasses(partnersAnimation.isVisible, 'fadeInLeft', 0)}`} 
+                            style={cardGradient}
+                        >
                             <div className="space-y-4">
                                 <h3
                                     className="text-center text-xl md:text-2xl font-bold text-white leading-tight"
@@ -164,7 +200,10 @@ const Event: React.FC = () => {
                         </div>
 
                         {/* Card 5 - có ảnh */}
-                        <div className="rounded-2xl p-6 md:p-8" style={cardGradient}>
+                        <div 
+                            className={`rounded-2xl p-6 md:p-8 ${getAnimationClasses(partnersAnimation.isVisible, 'scaleIn', 1)}`} 
+                            style={cardGradient}
+                        >
                             <div>
                                 <h3
                                     className="text-xl text-center md:text-2xl font-bold text-white leading-tight"
@@ -196,8 +235,10 @@ const Event: React.FC = () => {
                         </div>
 
                         {/* Card 6 - chỉ gradient */}
-                        <div className="rounded-2xl p-6 md:p-8 flex justify-center text-center  "
-                             style={cardGradient}>
+                        <div 
+                            className={`rounded-2xl p-6 md:p-8 flex justify-center text-center ${getAnimationClasses(partnersAnimation.isVisible, 'fadeInRight', 2)}`}
+                            style={cardGradient}
+                        >
                             <h3
                                 className="text-xl md:text-2xl font-bold text-white leading-tight"
                                 style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500}}

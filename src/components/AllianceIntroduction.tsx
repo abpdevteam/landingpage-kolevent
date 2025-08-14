@@ -1,4 +1,7 @@
 import React from "react";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { getAnimationClasses } from "../utils/animation";
+
 interface DiscussionTopic {
     id: number;
     number: string;
@@ -75,6 +78,21 @@ function Item({ children }: { children: React.ReactNode }) {
 
 
 const AllianceIntroduction: React.FC = () => {
+    // Animation hooks
+    const headerAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.3 });
+    const topicsAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+    const bulletsAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+    const allianceHeaderAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.3 });
+    const reasonCardAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+    const visionCardAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+    const activitiesHeaderAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.3 });
+    const activitiesCardsAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+    const trustProgramHeaderAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.3 });
+    const trustProgramContentAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+    const purposeAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+    const criteriaHeaderAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+    const pillarsAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+
     // const Logo = ({
     //                   src,
     //                   alt,
@@ -170,7 +188,10 @@ const AllianceIntroduction: React.FC = () => {
                     >
                         <div className="relative z-10 mr-[80px] ml-[80px]">
                             {/* Header */}
-                            <div className="px-4 md:mx-[100px] mb-10 md:mb-12">
+                            <div 
+                                ref={headerAnimation.elementRef}
+                                className={`px-4 md:mx-[100px] mb-10 md:mb-12 ${getAnimationClasses(headerAnimation.isVisible, 'fadeInUp')}`}
+                            >
                                 <div className="flex items-center justify-center gap-6">
                                     <div className="flex flex-col gap-1">
                                         <h1
@@ -200,11 +221,14 @@ const AllianceIntroduction: React.FC = () => {
                                 return (
                                     <div className="px-4 md:mx-[100px]">
                                         {/* Topics */}
-                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch">
-                                            {topics.map((topic) => (
+                                        <div 
+                                            ref={topicsAnimation.elementRef}
+                                            className={`grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch ${getAnimationClasses(topicsAnimation.isVisible, 'fadeInUp')}`}
+                                        >
+                                            {topics.map((topic, index) => (
                                                 <div
                                                     key={topic.id}
-                                                    className="h-full flex flex-col p-6 transition-transform hover:-translate-y-0.5"
+                                                    className={`h-full flex flex-col p-6 transition-transform hover:-translate-y-0.5 ${getAnimationClasses(topicsAnimation.isVisible, 'fadeInUp', index)}`}
                                                     style={cardStyle} // gradient + border
                                                 >
                                                     {/* Số */}
@@ -236,7 +260,10 @@ const AllianceIntroduction: React.FC = () => {
 
 
                                         {/* Bullets */}
-                                        <div className="mt-6 md:mt-8">
+                                        <div 
+                                            ref={bulletsAnimation.elementRef}
+                                            className={`mt-6 md:mt-8 ${getAnimationClasses(bulletsAnimation.isVisible, 'fadeInUp')}`}
+                                        >
                                             <div
                                                 className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
                                                 style={{
@@ -261,7 +288,7 @@ const AllianceIntroduction: React.FC = () => {
                                                 ].map((col, idx) => (
                                                     <div
                                                         key={idx}
-                                                        className="text-left rounded-lg flex flex-col justify-start min-h-[200px] p-4 transition-transform hover:-translate-y-0.5"
+                                                        className={`text-left rounded-lg flex flex-col justify-start min-h-[200px] p-4 transition-transform hover:-translate-y-0.5 ${getAnimationClasses(bulletsAnimation.isVisible, 'fadeInUp', idx)}`}
                                                         style={{
                                                             ...cardStyle,
                                                             height: "100%", // giữ cùng chiều cao khi grid auto
@@ -302,7 +329,10 @@ const AllianceIntroduction: React.FC = () => {
                         {/* Nội dung */}
                         <div className="relative z-10 md:mx-[100px]">
                             {/* Header */}
-                            <div className="px-4 md:mx-[100px] mb-10 md:mb-12">
+                            <div 
+                                ref={allianceHeaderAnimation.elementRef}
+                                className={`px-4 md:mx-[100px] mb-10 md:mb-12 ${getAnimationClasses(allianceHeaderAnimation.isVisible, 'fadeInUp')}`}
+                            >
                                 <div className="flex justify-center items-start gap-6">
                                     <div className="text-center justify-center">
                                         <h1
@@ -332,10 +362,13 @@ const AllianceIntroduction: React.FC = () => {
                             {/* Row 1 */}
                             <div className="px-4 md:mx-[80px]">
                                 {/* Row 1 */}
-                                <div className="grid grid-cols-1 md:grid-cols-[400px_1fr] gap-6 mb-6">
+                                <div 
+                                    ref={reasonCardAnimation.elementRef}
+                                    className={`grid grid-cols-1 md:grid-cols-[400px_1fr] gap-6 mb-6 ${getAnimationClasses(reasonCardAnimation.isVisible, 'fadeInUp')}`}
+                                >
                                     {/* Card 1 */}
                                     <div
-                                        className="backdrop-blur-sm p-6 rounded-lg h-full flex items-center justify-center"
+                                        className={`backdrop-blur-sm p-6 rounded-lg h-full flex items-center justify-center ${getAnimationClasses(reasonCardAnimation.isVisible, 'fadeInLeft')}`}
                                         style={{
                                             background: "linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)",
                                             border: "1px solid rgba(255, 255, 255, 0.3)",
@@ -378,7 +411,7 @@ const AllianceIntroduction: React.FC = () => {
 
                                     {/* Card 2 */}
                                     <div
-                                        className="p-6 rounded-lg h-full flex flex-col justify-center"
+                                        className={`p-6 rounded-lg h-full flex flex-col justify-center ${getAnimationClasses(reasonCardAnimation.isVisible, 'fadeInRight')}`}
                                         style={{
                                             background: "linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)",
                                             border: "1px solid rgba(255, 255, 255, 0.3)",
@@ -410,10 +443,13 @@ const AllianceIntroduction: React.FC = () => {
                                 </div>
 
                                 {/* Row 2 */}
-                                <div className="grid grid-cols-1 md:grid-cols-[400px_1fr] gap-6">
+                                <div 
+                                    ref={visionCardAnimation.elementRef}
+                                    className={`grid grid-cols-1 md:grid-cols-[400px_1fr] gap-6 ${getAnimationClasses(visionCardAnimation.isVisible, 'fadeInUp')}`}
+                                >
                                     {/* Card 3 */}
                                     <div
-                                        className="backdrop-blur-sm p-6 rounded-lg h-full flex items-center justify-center"
+                                        className={`backdrop-blur-sm p-6 rounded-lg h-full flex items-center justify-center ${getAnimationClasses(visionCardAnimation.isVisible, 'fadeInLeft')}`}
                                         style={{
                                             background: "linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)",
                                             border: "1px solid rgba(255, 255, 255, 0.3)",
@@ -456,7 +492,7 @@ const AllianceIntroduction: React.FC = () => {
 
                                     {/* Card 4 */}
                                     <div
-                                        className="p-6 rounded-lg h-full"
+                                        className={`p-6 rounded-lg h-full ${getAnimationClasses(visionCardAnimation.isVisible, 'fadeInRight')}`}
                                         style={{
                                             background: "linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)",
                                             border: "1px solid rgba(255, 255, 255, 0.3)",
@@ -551,7 +587,10 @@ const AllianceIntroduction: React.FC = () => {
                 {/* Nội dung */}
                 <div className="relative z-20 ">
                     {/* Header nhỏ */}
-                    <div className="text-center py-12 md:py-16 px-4">
+                    <div 
+                        ref={activitiesHeaderAnimation.elementRef}
+                        className={`text-center py-12 md:py-16 px-4 ${getAnimationClasses(activitiesHeaderAnimation.isVisible, 'fadeInUp')}`}
+                    >
                         <h1
                             className="text-3xl md:text-5xl font-bold mb-2"
                             style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700, color: "#ffffff"}}
@@ -567,7 +606,10 @@ const AllianceIntroduction: React.FC = () => {
                     </div>
 
                     {/* 3 Cards (hoạt động chính) */}
-                    <div className="px-4 md:px-0 mb-14 md:mb-20 md:mx-[195px]">
+                    <div 
+                        ref={activitiesCardsAnimation.elementRef}
+                        className={`px-4 md:px-0 mb-14 md:mb-20 md:mx-[195px] ${getAnimationClasses(activitiesCardsAnimation.isVisible, 'fadeInUp')}`}
+                    >
                         <div
                             className="grid grid-cols-1 md:grid-cols-3 items-stretch gap-6 md:gap-8">
                             {[
@@ -592,7 +634,7 @@ const AllianceIntroduction: React.FC = () => {
                             ].map((card, i) => (
                                 <div
                                     key={i}
-                                    className="h-full p-6 md:p-8 rounded-[16px] backdrop-blur-sm flex flex-col"
+                                    className={`h-full p-6 md:p-8 rounded-[16px] backdrop-blur-sm flex flex-col ${getAnimationClasses(activitiesCardsAnimation.isVisible, 'fadeInUp', i)}`}
                                     style={{
                                         background: "linear-gradient(180deg, rgba(255, 255, 255, 0.2) -56.25%, #FFFFFF 100%)",
                                         border: "1px solid rgba(255, 255, 255, 0.3)",
@@ -675,7 +717,10 @@ const AllianceIntroduction: React.FC = () => {
                 {/* Nội dung */}
                 <div className="relative z-10 max-w-6xl mx-auto text-center text-white">
                     {/* Header */}
-                    <div className="mb-8 md:mb-12">
+                    <div 
+                        ref={trustProgramHeaderAnimation.elementRef}
+                        className={`mb-8 md:mb-12 ${getAnimationClasses(trustProgramHeaderAnimation.isVisible, 'fadeInUp')}`}
+                    >
                         <h1
                             className="text-4xl md:text-5xl font-bold mb-3 tracking-wide"
                             style={{
@@ -697,7 +742,10 @@ const AllianceIntroduction: React.FC = () => {
                     </div>
 
                     {/* Description */}
-                    <div className="space-y-4 md:space-y-6 mb-8 md:mb-12">
+                    <div 
+                        ref={trustProgramContentAnimation.elementRef}
+                        className={`space-y-4 md:space-y-6 mb-8 md:mb-12 ${getAnimationClasses(trustProgramContentAnimation.isVisible, 'fadeInUp')}`}
+                    >
                         <p className="text-white text-[16px] md:text-lg leading-relaxed max-w-4xl mx-auto " style={{
                             fontFamily: "NeueHelveticaExt, sans-serif",
                             fontWeight: 400,
@@ -718,7 +766,8 @@ const AllianceIntroduction: React.FC = () => {
 
                     {/* MỤC ĐÍCH */}
                     <div
-                        className="w-full max-w-[1280px] mx-auto rounded-[16px] border border-white/30 backdrop-blur px-4 sm:px-6 md:px-8 py-5 md:py-6 text-left mb-5 box-border"
+                        ref={purposeAnimation.elementRef}
+                        className={`w-full max-w-[1280px] mx-auto rounded-[16px] border border-white/30 backdrop-blur px-4 sm:px-6 md:px-8 py-5 md:py-6 text-left mb-5 box-border ${getAnimationClasses(purposeAnimation.isVisible, 'fadeInUp')}`}
                         style={{
                             background:
                                 "linear-gradient(180deg, rgba(255, 255, 255, 0.4) -121.84%, #FFFFFF 100%)"
@@ -755,7 +804,10 @@ const AllianceIntroduction: React.FC = () => {
 
 
                     {/* TIÊU CHÍ ĐÁNH GIÁ */}
-                    <div className="w-full max-w-[1280px] mx-auto text-center">
+                    <div 
+                        ref={criteriaHeaderAnimation.elementRef}
+                        className={`w-full max-w-[1280px] mx-auto text-center ${getAnimationClasses(criteriaHeaderAnimation.isVisible, 'fadeInUp')}`}
+                    >
                         <div
                             className="rounded-[16px] border border-white/30 backdrop-blur px-4 py-3 md:py-4 box-border"
                             style={{background: "linear-gradient(180deg, rgba(255, 255, 255, 0.4) -121.84%, #FFFFFF 100%)"}}
@@ -794,11 +846,13 @@ const AllianceIntroduction: React.FC = () => {
 
                     {/* 5 trụ cột */}
                     <div
-                        className="mx-auto grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-stretch">
-                        {pillars.map((p) => (
+                        ref={pillarsAnimation.elementRef}
+                        className="mx-auto grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-stretch"
+                    >
+                        {pillars.map((p, index) => (
                             <div
                                 key={p.id}
-                                className="relative h-full"
+                                className={`relative h-full ${getAnimationClasses(pillarsAnimation.isVisible, 'fadeInUp', index)}`}
                             >
                                 {/* Nút + line trên đầu mỗi card */}
                                 <div

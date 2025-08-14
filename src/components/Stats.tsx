@@ -21,8 +21,26 @@ const CountdownWithServices: React.FC = () => {
     const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
     const [isOver, setIsOver] = useState(false);
     const [bgImage, setBgImage] = useState("/images/img_56.png");
+    const [visibleSections, setVisibleSections] = useState<number[]>([]);
 
     const targetDate = useMemo(() => new Date("2025-08-18T07:30:00+07:00"), []);
+
+    useEffect(() => {
+        // Hiển thị các phần lần lượt
+        const timer = setTimeout(() => setVisibleSections([0]), 100);
+        const timer2 = setTimeout(() => setVisibleSections([0, 1]), 300);
+        const timer3 = setTimeout(() => setVisibleSections([0, 1, 2]), 500);
+        const timer4 = setTimeout(() => setVisibleSections([0, 1, 2, 3]), 700);
+        const timer5 = setTimeout(() => setVisibleSections([0, 1, 2, 3, 4]), 900);
+
+        return () => {
+            clearTimeout(timer);
+            clearTimeout(timer2);
+            clearTimeout(timer3);
+            clearTimeout(timer4);
+            clearTimeout(timer5);
+        };
+    }, []);
 
     useEffect(() => {
         const tick = () => {
@@ -83,7 +101,13 @@ const CountdownWithServices: React.FC = () => {
                 />
 
                 {/* HEADER: logo nhỏ, padding rất ít trên mobile */}
-                <header className="pt-2 md:pt-5">
+                <header
+                    className="pt-2 md:pt-5"
+                    style={{
+                        opacity: visibleSections.includes(0) ? 1 : 0,
+                        transition: 'opacity 0.3s ease-in-out'
+                    }}
+                >
                     <div className="max-w-6xl mx-auto px-3 md:px-4">
                         <div className="flex justify-center items-center gap-3 md:gap-6">
                             <img src="/images/img_2.png" alt="Logo 1" className="h-10 md:h-12 w-auto object-contain" />
@@ -92,11 +116,16 @@ const CountdownWithServices: React.FC = () => {
                     </div>
                 </header>
 
-                {/* MAIN: chiếm toàn bộ khoảng còn lại, canh giữa theo trục dọc.
-            Gộp KOL + slogan + countdown vào cùng 1 cụm để thu ngắn khoảng cách tổng thể */}
+                {/* MAIN: chiếm toàn bộ khoảng còn lại, canh giữa theo trục dọc */}
                 <main className="flex-1 px-3 md:px-4 flex flex-col items-center justify-center gap-3 md:gap-6">
                     {/* KOL + slogan – rất ít gap trên mobile */}
-                    <section className="w-full flex justify-center -mb-1 md:mb-0">
+                    <section
+                        className="w-full flex justify-center -mb-1 md:mb-0"
+                        style={{
+                            opacity: visibleSections.includes(1) ? 1 : 0,
+                            transition: 'opacity 0.3s ease-in-out'
+                        }}
+                    >
                         <div className="w-full max-w-7xl">
                             <div className="flex flex-col md:flex-row items-center justify-center gap-1.5 md:gap-10 select-none">
                                 {/* KOL BIG */}
@@ -104,9 +133,9 @@ const CountdownWithServices: React.FC = () => {
                                     className="leading-none font-extrabold text-white tracking-[-0.02em] text-center md:text-left"
                                     style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700 }}
                                 >
-                  <span className="block text-[clamp(18vw,28vw,30vw)] md:text-[clamp(12vw,18vw,20vw)]">
-                    KOL
-                  </span>
+                                    <span className="block text-[clamp(18vw,28vw,30vw)] md:text-[clamp(12vw,18vw,20vw)]">
+                                        KOL
+                                    </span>
                                 </div>
 
                                 {/* Slogan */}
@@ -126,7 +155,13 @@ const CountdownWithServices: React.FC = () => {
                     </section>
 
                     {/* Tiêu đề countdown */}
-                    <div className="text-center -mt-1">
+                    <div
+                        className="text-center -mt-1"
+                        style={{
+                            opacity: visibleSections.includes(2) ? 1 : 0,
+                            transition: 'opacity 0.3s ease-in-out'
+                        }}
+                    >
                         <h3
                             className="text-base sm:text-lg md:text-xl font-bold"
                             style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500, color: "#ffffff" }}
@@ -148,6 +183,8 @@ const CountdownWithServices: React.FC = () => {
                             background: "linear-gradient(180deg, rgba(255, 255, 255, 0) -56.25%, rgba(255, 255, 255, 0.3) 100%)",
                             border: "1px solid rgba(255, 255, 255, 0.3)",
                             borderRadius: "16px",
+                            opacity: visibleSections.includes(3) ? 1 : 0,
+                            transition: 'opacity 0.3s ease-in-out'
                         }}
                     >
                         {!isOver ? (
@@ -157,22 +194,22 @@ const CountdownWithServices: React.FC = () => {
                                     className="hidden md:block text-2xl text-white -mt-2"
                                     style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400, color: "#ffffff" }}
                                 >
-                  :
-                </span>
+                                    :
+                                </span>
                                 <Item value={timeLeft.hours} label="Hours" />
                                 <span
                                     className="hidden md:block text-2xl text-white -mt-2"
                                     style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400, color: "#ffffff" }}
                                 >
-                  :
-                </span>
+                                    :
+                                </span>
                                 <Item value={timeLeft.minutes} label="Minutes" />
                                 <span
                                     className="hidden md:block text-2xl text-white -mt-2"
                                     style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400, color: "#ffffff" }}
                                 >
-                  :
-                </span>
+                                    :
+                                </span>
                                 <Item value={timeLeft.seconds} label="Seconds" />
                             </div>
                         ) : (
@@ -183,21 +220,24 @@ const CountdownWithServices: React.FC = () => {
                     </div>
                 </main>
 
-                <footer className="px-3 pt-2 pb-3 md:px-6 md:py-6 -mt-2 md:mt-0">
-                    <div className=" space-y-4">
-
+                <footer
+                    className="px-3 pt-2 pb-3 md:px-6 md:py-6 -mt-2 md:mt-0"
+                    style={{
+                        opacity: visibleSections.includes(4) ? 1 : 0,
+                        transition: 'opacity 0.3s ease-in-out'
+                    }}
+                >
+                    <div className="space-y-4">
                         {/* HÀNG 1: Đơn vị phối hợp tổ chức + Đơn vị tiên phong */}
-                        <div
-                            className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6 md:gap-12">
-
+                        <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6 md:gap-12">
                             {/* Đơn vị phối hợp tổ chức */}
                             <div className="flex flex-col items-center space-y-2">
-        <span
-            className="uppercase text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90"
-            style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
-        >
-          ĐƠN VỊ PHỐI HỢP TỔ CHỨC
-        </span>
+                                <span
+                                    className="uppercase text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90"
+                                    style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
+                                >
+                                    ĐƠN VỊ PHỐI HỢP TỔ CHỨC
+                                </span>
                                 <div className="flex gap-3 md:gap-6">
                                     <img src="/images/img_14.png" alt="Người Quan Sát"
                                          className="h-7 md:h-8 object-contain"/>
@@ -208,12 +248,12 @@ const CountdownWithServices: React.FC = () => {
 
                             {/* Đơn vị tiên phong */}
                             <div className="flex flex-col items-center space-y-2">
-        <span
-            className="uppercase text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90"
-            style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
-        >
-          ĐƠN VỊ TIÊN PHONG
-        </span>
+                                <span
+                                    className="uppercase text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90"
+                                    style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
+                                >
+                                    ĐƠN VỊ TIÊN PHONG
+                                </span>
                                 <div className="flex gap-3 md:gap-6">
                                     <img src="/images/img_16.png" alt="Logo 2"
                                          className="w-16 md:w-20 h-8 md:h-9 object-contain p-1"/>
@@ -221,15 +261,9 @@ const CountdownWithServices: React.FC = () => {
                                          className="w-16 md:w-20 h-8 md:h-9 object-contain p-1"/>
                                 </div>
                             </div>
-
                         </div>
-
-                        {/* HÀNG 2: Đơn vị đồng hành */}
-
-
                     </div>
                 </footer>
-
             </div>
         </div>
     );
