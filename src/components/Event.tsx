@@ -36,7 +36,7 @@ const Event: React.FC = () => {
                                 <div
                                     className="text-xl md:text-3xl font-bold"
                                 >
-                                    8h00&nbsp;&rarr;&nbsp;12h00
+                                    7h30&nbsp;&rarr;&nbsp;12h30
                                 </div>
 
                                 {/* Ngày */}
@@ -57,17 +57,9 @@ const Event: React.FC = () => {
 
 
                         <div
-                            className="mt-3 px-4 md:px-8 py-5 md:py-6 space-y-3 text-sm md:text-base text-white/90 leading-relaxed" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
-                            <p>
-                                Quy tụ các KOL tiêu biểu trên toàn quốc cùng đại diện cơ quan quản lý và doanh nghiệp.
-                            </p>
-                            <p>
-                                Diễn đàn thường niên, uy tín và quy mô nhất dành cho KOL.
-                            </p>
-                            <p>
-                                Nhìn nhận vai trò, trách nhiệm của KOL trong kỷ nguyên số, đồng thời đề xuất các giải
-                                pháp
-                                phát huy ảnh hưởng tích cực của họ trong phát triển đất nước và bảo vệ an ninh trật tự.
+                            className="mt-3 px-4 md:px-8 py-5 md:py-6 space-y-3 text-sm md:text-base text-white leading-relaxed" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
+                            <p className={"text-[30px] justify-center text-center"}>
+                                Diễn đàn thường niên, uy tín và quy mô dành cho KOL
                             </p>
                         </div>
 
@@ -103,7 +95,7 @@ const Event: React.FC = () => {
                     </span>
                                     </div>
                                     <p className="text-sm md:text-base text-white  leading-relaxed" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
-                                        Lựa chọn theo tiêu chí từ Cục an ninh mạng và Cục nghiệp vụ của Bộ và Công an
+                                        Tiêu biểu, đại diện trên các lĩnh vực, không phân biệt dân tộc, tôn giáo từ mọi miền Tổ quốc
                                     </p>
                                 </div>
                             </div>
@@ -126,8 +118,7 @@ const Event: React.FC = () => {
                                             <div>NGHIỆP</div>
                                         </div>
                                     </div>
-                                    <p className="text-sm md:text-base text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>Truyền thông, đào tạo, quản lý
-                                        KOL…</p>
+                                    <p className="text-sm md:text-base text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>Truyền thông, đào tạo, quản lý KOL,...</p>
                                 </div>
                             </div>
 
@@ -164,11 +155,10 @@ const Event: React.FC = () => {
                                     className="text-center text-xl md:text-2xl font-bold text-white leading-tight"
                                     style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
                                 >
-                                    CƠ QUAN QUẢN LÝ NHÀ NƯỚC
+                                    CƠ QUAN, TỔ CHỨC NHÀ NƯỚC
                                 </h3>
                                 <p className="text-sm md:text-base text-white leading-relaxed" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
-                                    Thuộc các bộ: Công an, Khoa học và Công nghệ, Công thương, Quốc phòng, Ngân hàng Nhà
-                                    nước...
+                                    UBTƯ MTTQ Việt Nam, TW Đoàn TNCS HCM, Hội liên hiệp TN VN. Các bộ Công an, Công thương, Tài chính, Khoa học - Công nghệ, Văn hóa, Thể thao và Du lịch
                                 </p>
                             </div>
                         </div>
@@ -186,12 +176,11 @@ const Event: React.FC = () => {
                                     {[
                                         {name: "Zalo", img: "/images/img_36.png"},
                                         {name: "Meta", img: "/images/img_37.png"},
-                                        {name: "Google", img: "/images/img_38.png"},
                                         {name: "TikTok", img: "/images/img_39.png"},
                                     ].map((platform, index) => (
                                         <div key={index} className="flex items-center justify-center px-3 py-2">
                                             <img src={platform.img} alt={platform.name}
-                                                 className="w-12 h-12 object-contain"/>
+                                                 className="w-16 h-16 object-scale-down"/>
                                         </div>
                                     ))}
                                 </div>
@@ -199,7 +188,7 @@ const Event: React.FC = () => {
                         </div>
 
                         {/* Card 6 - chỉ gradient */}
-                        <div className="rounded-2xl p-6 md:p-8 flex items-center justify-center text-center"
+                        <div className="rounded-2xl p-6 md:p-8 flex   "
                              style={cardGradient}>
                             <h3
                                 className="text-xl md:text-2xl font-bold text-white leading-tight"

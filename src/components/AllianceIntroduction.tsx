@@ -1,16 +1,15 @@
 import React from "react";
-
 interface DiscussionTopic {
     id: number;
     number: string;
     title: string;
 }
 
-interface TestimonialItem {
-    name: string;
-    position: string;
-    quote: string;
-}
+// interface TestimonialItem {
+//     name: string;
+//     position: string;
+//     quote: string;
+// }
 type Pillar = {
     id: number;
     title: string;
@@ -75,68 +74,64 @@ function Item({ children }: { children: React.ReactNode }) {
 }
 
 
-const AlliancePage: React.FC = () => {
-    const Logo = ({
-                      src,
-                      alt,
-                      className = "h-10 sm:h-12",
-                  }: {
-        src: string;
-        alt: string;
-        className?: string;
-    }) => <img src={src} alt={alt} className={`${className} object-contain`} loading="lazy" />;
+const AllianceIntroduction: React.FC = () => {
+    // const Logo = ({
+    //                   src,
+    //                   alt,
+    //                   className = "h-10 sm:h-12",
+    //               }: {
+    //     src: string;
+    //     alt: string;
+    //     className?: string;
+    // }) => <img src={src} alt={alt} className={`${className} object-contain`} loading="lazy" />;
 
     const topics: DiscussionTopic[] = [
-        { id: 1, number: "01", title: "VAI TRÒ CỦA KOL TRONG\n" +
-                "KỶ NGUYÊN SỐ" },
-        { id: 2, number: "02", title: "TRÁCH NHIỆM ĐẠO ĐỨC -\n" +
-                "PHÁP LÝ - XÃ HỘI CỦA KOL TRONG KỶ NGUYÊN MỚI" },
-        { id: 3, number: "03", title: "LIÊN KẾT HỆ SINH THÁI:\n" +
-                "NỀN TẢNG - DOANH NGHIỆP - AGENCY - KOLS" },
+        {id: 1, number: "01", title: "THAM LUẬN GỬI VỀ HỘI NGHỊ"},
+        {id: 2, number: "02", title: "PHIÊN DIỄN GIẢ - HÀNH TRÌNH VÀ NHỮNG GIÁ TRỊ"},
+        {id: 3, number: "03", title: "PHIÊN TỌA ĐÀM - NIỀM TIN VÀ KỲ VỌNG"},
     ];
 
-    const testimonials: TestimonialItem[] = [
-        { name: "NGUYEN VAN A", position: "CHỨC DANH", quote: "It's a great honor to be invited to this event and have a very fruitful conversation." },
-        { name: "NGUYEN VAN B", position: "CHỨC DANH", quote: "It's a great honor to be invited to this event and have a very fruitful conversation." },
-        { name: "NGUYEN VAN C", position: "CHỨC DANH", quote: "It's a great honor to be invited to this event and have a very fruitful conversation." },
-    ];
+    // const testimonials: TestimonialItem[] = [
+    //     { name: "NGUYEN VAN A", position: "CHỨC DANH", quote: "It's a great honor to be invited to this event and have a very fruitful conversation." },
+    //     { name: "NGUYEN VAN B", position: "CHỨC DANH", quote: "It's a great honor to be invited to this event and have a very fruitful conversation." },
+    //     { name: "NGUYEN VAN C", position: "CHỨC DANH", quote: "It's a great honor to be invited to this event and have a very fruitful conversation." },
+    // ];
 
     // ====== SUB COMPONENTS ======
-    const TestimonialCard = ({ t }: { t: TestimonialItem }) => (
-        <div
-            className="relative overflow-hidden rounded-[16px] backdrop-blur-sm flex flex-col w-full"
-            style={{
-                background:
-                    "linear-gradient(180deg, rgba(255, 255, 255, 0) -56.25%, rgba(255, 255, 255, 0.3) 100%)",
-                border: "1px solid rgba(255, 255, 255, 0.3)",
-                boxSizing: "border-box",
-            }}
-        >
-            {/* Nội dung */}
-            <div className="relative z-10 flex items-start flex-1 p-6">
-                {/* Text bên trái */}
-                <div className="flex-1 pr-4">
-                    <h4 className="font-bold text-[#ffffff]">{t.name}</h4>
-                    <p className="text-xs text-[#ffffff]/80 mb-2">{t.position}</p>
-                    <div className="text-[#ffffff]/90 text-sm leading-relaxed">
-                        <span className="text-[#ffffff]/60 text-xl mr-1 font-serif">"</span>
-                        {t.quote}
-                        <span className="text-[#ffffff]/60 text-xl ml-1 font-serif">"</span>
-                    </div>
-                </div>
-
-                {/* Avatar bên phải */}
-                <div className="flex-shrink-0 ml-auto">
-                    <img
-                        src="/images/img_31.png"
-                        alt="Avatar"
-                        className="object-contain w-[150px] md:w-[200px] h-auto"
-                    />
-                </div>
-            </div>
-        </div>
-    );
-
+    // const TestimonialCard = ({ t }: { t: TestimonialItem }) => (
+    //     <div
+    //         className="relative overflow-hidden rounded-[16px] backdrop-blur-sm flex flex-col w-full"
+    //         style={{
+    //             background:
+    //                 "linear-gradient(180deg, rgba(255, 255, 255, 0) -56.25%, rgba(255, 255, 255, 0.3) 100%)",
+    //             border: "1px solid rgba(255, 255, 255, 0.3)",
+    //             boxSizing: "border-box",
+    //         }}
+    //     >
+    //         {/* Nội dung */}
+    //         <div className="relative z-10 flex items-start flex-1 p-6">
+    //             {/* Text bên trái */}
+    //             <div className="flex-1 pr-4">
+    //                 <h4 className="font-bold text-[#ffffff]">{t.name}</h4>
+    //                 <p className="text-xs text-[#ffffff]/80 mb-2">{t.position}</p>
+    //                 <div className="text-[#ffffff]/90 text-sm leading-relaxed">
+    //                     <span className="text-[#ffffff]/60 text-xl mr-1 font-serif">"</span>
+    //                     {t.quote}
+    //                     <span className="text-[#ffffff]/60 text-xl ml-1 font-serif">"</span>
+    //                 </div>
+    //             </div>
+    //
+    //             {/* Avatar bên phải */}
+    //             <div className="flex-shrink-0 ml-auto">
+    //                 <img
+    //                     src="/images/img_31.png"
+    //                     alt="Avatar"
+    //                     className="object-contain w-[150px] md:w-[200px] h-auto"
+    //                 />
+    //             </div>
+    //         </div>
+    //     </div>
+    // );
 
 
     // ====== RENDER ======
@@ -149,7 +144,6 @@ const AlliancePage: React.FC = () => {
                 {/* BG image */}
                 <div
                     className="absolute inset-0 z-10  bg-cover"
-                    style={{backgroundImage: "url('/images/img_32.png')"}}
                 />
                 {/* Overlay trên ảnh (nhưng dưới nội dung) */}
                 <div
@@ -177,7 +171,7 @@ const AlliancePage: React.FC = () => {
                         <div className="relative z-10 mr-[80px] ml-[80px]">
                             {/* Header */}
                             <div className="px-4 md:mx-[100px] mb-10 md:mb-12">
-                                <div className="flex items-end justify-end gap-6">
+                                <div className="flex items-center justify-center gap-6">
                                     <div className="flex flex-col gap-1">
                                         <h1
                                             className="text-3xl md:text-4xl font-light"
@@ -187,7 +181,7 @@ const AlliancePage: React.FC = () => {
                                                 color: "#ffffff"
                                             }}
                                         >
-                                            CHUYÊN ĐỀ THẢO LUẬN
+                                            ĐIỂM NHẤN HỘI NGHỊ
                                         </h1>
                                     </div>
                                 </div>
@@ -253,19 +247,16 @@ const AlliancePage: React.FC = () => {
                                             >
                                                 {[
                                                     [
-                                                        "Đạo đức số, yếu tố cốt lõi trong ảnh hưởng bền vững",
-                                                        "Biểu đạt tự do và những ranh giới",
-                                                        "Giá trị thật hay những con số ảo",
+                                                        "Tuyển chọn những bài tham luận từ cơ quan quản lý, doanh nghiệp, nền tảng số và những câu chuyện, hành trình được chia sẻ từ các KOL",
+                                                        "Mang đến góc nhìn đa chiều về vai trò, trách nhiệm của KOL - ý tưởng - giải pháp liên kết hệ sinh thái, phát triển cộng đồng KOL bền vững"
                                                     ],
                                                     [
-                                                        "Sự cần thiết về giải pháp trang bị nhận thức đó với KOL",
-                                                        "Vai trò của nền tảng trong việc định hướng giá trị của KOL",
-                                                        "Tin tức cộng đồng và vai trò kiến tạo niềm tin trong kỷ nguyên truyền thông xã hội",
+                                                        "Không gian để KOL chia sẻ câu chuyện  về hành trình, những giá trị thật đã tạo dựng, cùng trải nghiệm chạm đến trái tim công chúng",
+                                                        "Nơi doanh nghiệp, công ty truyền thông, nền tảng, cơ quan quản lý  nhìn nhận về những giá trị \"thật\" của KOL, ghi nhận hành trình lan tỏa giá trị tích cực, bản sắc văn hóa quê hương mà KOL mang lại",
                                                     ],
                                                     [
-                                                        "Văn hóa số và ứng xử chuẩn mực của người ảnh hưởng",
-                                                        "Vai trò của KOL trong hệ sinh thái truyền thông số",
-                                                        "Thương hiệu cá nhân và quyền sở hữu trí tuệ trong kỷ nguyên số",
+                                                        "Đối thoại đa chiều giữa các bên nhằm thảo luận vai trò, trách nhiệm, niềm tin và kỳ vọng với KOL",
+                                                        "Giải quyết vấn đề lệch chuẩn, thúc đẩy minh bạch, đề cao giá trị thật của KOL",
                                                     ],
                                                 ].map((col, idx) => (
                                                     <div
@@ -300,10 +291,10 @@ const AlliancePage: React.FC = () => {
 
                     {/* ====== SECTION 2: GIỚI THIỆU LIÊN MINH ====== */}
                     <section
-                        className="py-8 relative"
+                        className="py-8 relative "
                         style={{
                             backgroundImage: "url('/images/img_65.png')", // đổi ảnh nếu cần
-                            backgroundSize: "cover",
+                            backgroundSize: "auto 80%",
                             backgroundPosition: "center",
                         }}
                     >
@@ -395,12 +386,20 @@ const AlliancePage: React.FC = () => {
                                         }}
                                     >
                                         <div className="leading-relaxed text-[#0011BF]">
-                                            <p className="mb-4 text-lg md:text-xl">
+                                            <p className="mb-4 text-lg md:text-xl" style={{
+                                                fontFamily: "NeueHelveticaExt, sans-serif",
+                                                fontWeight: 400,
+                                                color: "#0011BF"
+                                            }}>
                                                 Liên minh được thành lập để tập hợp, kết nối và phát huy vai trò xây
                                                 dựng,
                                                 dẫn dắt niềm tin của KOLs trên không gian mạng.
                                             </p>
-                                            <p className="text-lg md:text-xl">
+                                            <p className="text-lg md:text-xl" style={{
+                                                fontFamily: "NeueHelveticaExt, sans-serif",
+                                                fontWeight: 400,
+                                                color: "#0011BF"
+                                            }}>
                                                 Hoạt động của Liên minh hướng đến lan tỏa giá trị tích cực, định hướng
                                                 hành
                                                 vi đáng tin cậy và nâng cao trách nhiệm của KOLs với cộng đồng trong kỷ
@@ -471,11 +470,21 @@ const AlliancePage: React.FC = () => {
                                                     fontFamily: "NeueHelveticaExt, sans-serif",
                                                     fontWeight: 700,
                                                     color: "#0011BF"
-                                                }}>Tầm nhìn</div>
-                                                <ul className="list-disc space-y-2 pl-4 text-lg md:text-xl">
-                                                    <li>Xây dựng niềm tin, lan toả giá trị tích cực...</li>
+                                                }}>Tầm nhìn
+                                                </div>
+                                                <ul className="list-disc space-y-2 pl-4 text-lg md:text-xl" style={{
+                                                    fontFamily: "NeueHelveticaExt, sans-serif",
+                                                    fontWeight: 400,
+                                                    color: "#0011BF"
+                                                }}>
+                                                    <li>Xây dựng niềm tin, lan toả giá trị tích cực, bền vững, chống
+                                                        thông tin sai lệch, lừa đảo, thúc đẩy kỹ năng an toàn trên không
+                                                        gian mạng.
+                                                    </li>
                                                     <li>Định hướng, dẫn dắt hành vi đáng tin cậy của KOL.</li>
-                                                    <li>Cảnh báo, phê phán trào lưu, hiện tượng lệch lạc...</li>
+                                                    <li>Cảnh báo, phê phán trào lưu, hiện tượng lệch lạc của KOL trên
+                                                        không gian mạng.
+                                                    </li>
                                                 </ul>
                                             </div>
 
@@ -485,9 +494,16 @@ const AlliancePage: React.FC = () => {
                                                     fontFamily: "NeueHelveticaExt, sans-serif",
                                                     fontWeight: 700,
                                                     color: "#0011BF"
-                                                }}>Hành động</div>
-                                                <ul className="list-disc space-y-2 pl-4 text-lg md:text-xl">
-                                                    <li>Thông qua Chương trình "Tín nhiệm..."</li>
+                                                }}>Hành động
+                                                </div>
+                                                <ul className="list-disc space-y-2 pl-4 text-lg md:text-xl" style={{
+                                                    fontFamily: "NeueHelveticaExt, sans-serif",
+                                                    fontWeight: 400,
+                                                    color: "#0011BF"
+                                                }}>
+                                                    <li>Thông qua Chương trình "Tín nhiệm người có ảnh hưởng" trên không
+                                                        gian mạng.
+                                                    </li>
                                                     <li>Bằng các hoạt động đào tạo, tập huấn đa dạng.</li>
                                                     <li>Bằng các hoạt động cộng đồng rộng khắp.</li>
                                                 </ul>
@@ -618,35 +634,35 @@ const AlliancePage: React.FC = () => {
 
 
                     {/* Testimonials giữ nguyên */}
-                    <div className="relative overflow-visible">
-                        <div className="px-4 relative z-20 md:mx-[145px]">
-                            {/* MOBILE: 3 cards một hàng */}
-                            <div className="md:hidden px-4">
-                                <div className="flex flex-nowrap gap-4 overflow-x-auto snap-x snap-mandatory">
-                                    {testimonials.slice(0, 3).map((t, idx) => (
-                                        <div key={idx} className="snap-start shrink-0 w-[280px]">
-                                            <TestimonialCard t={t} />
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
+                    {/*<div className="relative overflow-visible">*/}
+                    {/*    <div className="px-4 relative z-20 md:mx-[145px]">*/}
+                    {/*        /!* MOBILE: 3 cards một hàng *!/*/}
+                    {/*        <div className="md:hidden px-4">*/}
+                    {/*            <div className="flex flex-nowrap gap-4 overflow-x-auto snap-x snap-mandatory">*/}
+                    {/*                {testimonials.slice(0, 3).map((t, idx) => (*/}
+                    {/*                    <div key={idx} className="snap-start shrink-0 w-[280px]">*/}
+                    {/*                        <TestimonialCard t={t} />*/}
+                    {/*                    </div>*/}
+                    {/*                ))}*/}
+                    {/*            </div>*/}
+                    {/*        </div>*/}
 
 
-                            {/* DESKTOP: 3 cột */}
-                            <div className="hidden md:block flex-1 mx-8">
-                                <div className="grid md:grid-cols-3 items-stretch gap-8">
-                                    {testimonials.map((t, idx) => (
-                                        <div
-                                            key={idx}
-                                            className="h-full  flex"
-                                        >
-                                            <TestimonialCard t={t}/>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {/*        /!* DESKTOP: 3 cột *!/*/}
+                    {/*        <div className="hidden md:block flex-1 mx-8">*/}
+                    {/*            <div className="grid md:grid-cols-3 items-stretch gap-8">*/}
+                    {/*                {testimonials.map((t, idx) => (*/}
+                    {/*                    <div*/}
+                    {/*                        key={idx}*/}
+                    {/*                        className="h-full  flex"*/}
+                    {/*                    >*/}
+                    {/*                        <TestimonialCard t={t}/>*/}
+                    {/*                    </div>*/}
+                    {/*                ))}*/}
+                    {/*            </div>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
             </section>
 
@@ -793,16 +809,24 @@ const AlliancePage: React.FC = () => {
                                 </div>
 
                                 {/* Line nối riêng cho card số 3 */}
+                                {/* Line nối riêng cho card số 3 */}
                                 {p.id === 3 && (
-                                    <div
-                                        className="absolute left-1/2 -translate-x-1/2 bg-white"
-                                        style={{
-                                            width: "3px",
-                                            height: "50px",  // chỉnh khoảng này để vừa tới line ngang cũ
-                                            top: "-60px",    // bắt đầu ngay mép trên card
-                                            zIndex: 5
-                                        }}
-                                    />
+                                    <>
+                                        <div
+                                            className="absolute left-1/2 -translate-x-1/2 bg-white"
+                                            style={{
+                                                width: "3px",
+                                                height: "50px",  // chiều dài line
+                                                top: "-60px",    // bắt đầu ngay mép trên card
+                                                zIndex: 5
+                                            }}
+                                        />
+                                        {/* Dot tại điểm cuối (gần card tiêu chí) */}
+                                        <div
+                                            className="absolute left-1/2 top-[-64px] h-3 w-3 rounded-full bg-white shadow -translate-x-1/2"
+                                            style={{zIndex: 6}}
+                                        />
+                                    </>
                                 )}
 
 
@@ -853,64 +877,54 @@ const AlliancePage: React.FC = () => {
             </section>
 
             <div
-                className="w-full py-10 bg-no-repeat bg-center bg-cover"
-                style={{backgroundImage: "url('/images/img_60.png')"}}
+                className="w-full py-10 bg-no-repeat"
             >
                 <div className="px-4">
-                    <div className="flex gap-4 overflow-x-auto no-scrollbar">
-                        {/* Slide 1 */}
-                        <div className="relative min-w-[350px] rounded-2xl overflow-hidden">
-                            <img
-                                src="/images/img_48.png"
-                                alt="Event 1"
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
+                    {/*<div className="flex gap-4 overflow-x-auto no-scrollbar">*/}
+                    {/*    /!* Slide 1 *!/*/}
+                    {/*    <div className="relative min-w-[350px] rounded-2xl overflow-hidden">*/}
+                    {/*        <img*/}
+                    {/*            src="/images/img_48.png"*/}
+                    {/*            alt="Event 1"*/}
+                    {/*            className="w-full h-full object-cover"*/}
+                    {/*        />*/}
+                    {/*    </div>*/}
 
-                        {/* Slide 2 */}
-                        <div className="relative min-w-[350px] rounded-2xl overflow-hidden">
-                            <img
-                                src="/images/img_49.png"
-                                alt="Event 2"
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
+                    {/*    /!* Slide 2 *!/*/}
+                    {/*    <div className="relative min-w-[350px] rounded-2xl overflow-hidden">*/}
+                    {/*        <img*/}
+                    {/*            src="/images/img_49.png"*/}
+                    {/*            alt="Event 2"*/}
+                    {/*            className="w-full h-full object-cover"*/}
+                    {/*        />*/}
+                    {/*    </div>*/}
 
-                        {/* Slide 3 */}
-                        <div className="relative min-w-[350px] rounded-2xl overflow-hidden">
-                            <img
-                                src="/images/img_50.png"
-                                alt="Event 3"
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
+                    {/*    /!* Slide 3 *!/*/}
+                    {/*    <div className="relative min-w-[350px] rounded-2xl overflow-hidden">*/}
+                    {/*        <img*/}
+                    {/*            src="/images/img_50.png"*/}
+                    {/*            alt="Event 3"*/}
+                    {/*            className="w-full h-full object-cover"*/}
+                    {/*        />*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+                    <p className="text-center" style={{
+                        fontFamily: "NeueHelveticaExt, sans-serif",
+                        fontWeight: 700
+                    }}>ĐƠN VỊ BẢO TRỢ TRUYỀN THÔNG</p>
+
+                    <div className="relative top-0 md:top-[70px] mb-20">
+                        <img
+                            src="/images/img_73.png"
+                            alt="Event 3"
+                            className="block mx-auto w-[589px] h-[186px] max-w-full object-contain"
+                        />
                     </div>
 
-                    <div className="text-center space-y-4 relative top-0 md:top-[70px] mb-20">
-                        <p className="text-[16px] font-bold">ĐƠN VỊ BẢO TRỢ TRUYỀN THÔNG</p>
-
-                        <div
-                            className="grid place-items-center gap-x-4 px-0 mx-0 grid-cols-2 sm:grid-cols-3 md:grid-cols-5 md:px-8 md:mx-[250px]">
-                        {/* Hàng 1 */}
-                            <Logo src="/images/img_18.png" alt="Đơn vị bảo trợ 1" className="h-10 sm:h-12"/>
-                            <Logo src="/images/img_19.png" alt="Đơn vị bảo trợ 2" className="h-7 sm:h-9"/>
-                            <Logo src="/images/img_20.png" alt="Đơn vị bảo trợ 3" className="h-5 sm:h-7"/>
-                            <Logo src="/images/img_26.png" alt="Đơn vị bảo trợ 4" className="h-9 sm:h-11"/>
-                            <Logo src="/images/img_22.png" alt="Đơn vị bảo trợ 5" className="h-7 sm:h-9"/>
-
-                            {/* Hàng 2 */}
-                            <div className="hidden md:block"/>
-                            <Logo src="/images/img_23.png" alt="Đơn vị bảo trợ 6" className="h-20 sm:h-20"/>
-                            <Logo src="/images/img_24.png" alt="Đơn vị bảo trợ 7" className="h-7 sm:h-9"/>
-                            <Logo src="/images/img_25.png" alt="Đơn vị bảo trợ 8" className="h-7 sm:h-9"/>
-                            <div className="hidden md:block"/>
-                        </div>
-                    </div>
                 </div>
             </div>
-
         </div>
+
     );
 };
-
-export default AlliancePage;
+export default AllianceIntroduction;

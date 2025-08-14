@@ -46,3 +46,27 @@
   font-weight: 700; /* Bold */
   font-style: normal;
 }
+.marquee-left,
+.marquee-right {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.marquee-left {
+  animation: scroll-left 60s linear infinite;
+}
+
+.marquee-right {
+  animation: scroll-right 60s linear infinite;
+}
+
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}

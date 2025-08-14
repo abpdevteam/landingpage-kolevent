@@ -22,7 +22,7 @@ const CountdownWithServices: React.FC = () => {
     const [isOver, setIsOver] = useState(false);
     const [bgImage, setBgImage] = useState("/images/img_56.png");
 
-    const targetDate = useMemo(() => new Date("2025-08-18T08:00:00+07:00"), []);
+    const targetDate = useMemo(() => new Date("2025-08-18T07:30:00+07:00"), []);
 
     useEffect(() => {
         const tick = () => {

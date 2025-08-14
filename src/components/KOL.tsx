@@ -1,5 +1,4 @@
-import React from "react";
-import { Image } from "antd";
+import React, { useMemo } from "react";
 
 interface KOLProfile {
     id: number;
@@ -9,99 +8,93 @@ interface KOLProfile {
 }
 
 const kolProfiles: KOLProfile[] = [
-    { id: 1, name: "NGUYEN VAN A", role: "KOLs", avatar: "/images/img_43.png" },
-    { id: 2, name: "NGUYEN VAN B", role: "KOLs", avatar: "/images/img_42.png" },
-    { id: 3, name: "NGUYEN VAN C", role: "KOLs", avatar: "/images/img_42.png" },
-    { id: 4, name: "NGUYEN VAN D", role: "KOLs", avatar: "/images/img_42.png" },
-    { id: 5, name: "NGUYEN VAN E", role: "KOLs", avatar: "/images/img_42.png" },
-    { id: 6, name: "NGUYEN VAN F", role: "KOLs", avatar: "/images/img_42.png" },
-    { id: 7, name: "NGUYEN VAN G", role: "KOLs", avatar: "/images/img_42.png" },
-    { id: 8, name: "NGUYEN VAN H", role: "KOLs", avatar: "/images/img_42.png" },
-    { id: 9, name: "NGUYEN VAN I", role: "KOLs", avatar: "/images/img_42.png" },
+    { id: 1, name: "XUÂN BẮC", role: "NSND", avatar: "/images/img_5.png" },
+    { id: 2, name: "KHÁNH VY", role: "MC", avatar: "/images/img_11.png" },
+    { id: 3, name: "ĐEN VÂU", role: "RAPPER", avatar: "/images/img_27.png" },
+    { id: 4, name: "BẢO NGỌC", role: "HOA HẬU", avatar: "/images/img_28.png" },
+    { id: 5, name: "THANH THUỶ", role: "HOA HẬU", avatar: "/images/img_29.png" },
+    { id: 6, name: "TIỂU VY", role: "HOA HẬU", avatar: "/images/img_30.png" },
+    { id: 7, name: "TÙNG DƯƠNG", role: "CA SĨ", avatar: "/images/img_32.png" },
+    { id: 8, name: "PHƯƠNG THANH", role: "CA SĨ", avatar: "/images/img_33.png" },
+    { id: 9, name: "HÀ MYO", role: "CA SĨ", avatar: "/images/img_34.png" },
+    { id: 10, name: "BẢO THANH", role: "DIỄN VIÊN", avatar: "/images/img_35.png" },
+    { id: 11, name: "MEICHAN", role: "KOL", avatar: "/images/img_40.png" },
+    { id: 12, name: "TINA THẢO THI", role: "KOL", avatar: "/images/img_41.png" },
+    { id: 13, name: "EM BÉ XỆ XỆ", role: "KOL", avatar: "/images/img_42.png" },
+    { id: 14, name: "HANA BAN MÊ", role: "KOL", avatar: "/images/img_43.png" },
+    { id: 15, name: "SÙNG A TÙA", role: "KOL", avatar: "/images/img_44.png" },
+    { id: 16, name: "ĐỒNG VĂN HÙNG", role: "ẨM THỰC MẸ LÀM", avatar: "/images/img_45.png" },
+    { id: 17, name: "PHƯƠNG NAM", role: "KOL", avatar: "/images/img_46.png" },
+    { id: 18, name: "TRÚC LINH", role: "HOA HẬU", avatar: "/images/img_47.png" },
+    { id: 19, name: "TRẦN NGỌC CHÂU ANH", role: "Á HẬU", avatar: "/images/img_51.png" },
+    { id: 20, name: "NGUYỄN THỊ VÂN NHI", role: "Á HẬU", avatar: "/images/img_52.png" },
+    { id: 21, name: "HƯNG NGUYỄN", role: "NAM VƯƠNG", avatar: "/images/img_53.png" },
+    { id: 22, name: "QUẾ NGỌC HẢI", role: "CẦU THỦ", avatar: "/images/img_54.png" },
+    { id: 23, name: "PHẠM TUẤN HƯNG", role: "KOL", avatar: "/images/img_55.png" },
+    { id: 24, name: "TUẤN NGỌC ĐÂY", role: "KOL", avatar: "/images/img_67.png" },
+    { id: 25, name: "VĨNH THÍCH ĂN NGON", role: "KOL", avatar: "/images/img_68.png" },
+    { id: 26, name: "ĐỖ KIM PHÚC", role: "KOL", avatar: "/images/img_69.png" },
+    { id: 27, name: "TRƯƠNG VÂN ĐẠO", role: "KOL", avatar: "/images/img_70.png" },
+    { id: 28, name: "NGUYỄN THÁI HỌC", role: "CA SĨ", avatar: "/images/img_71.png" },
 ];
 
-interface KOLCardProps {
-    profile: KOLProfile;
-}
-
-function KOLCard({ profile }: KOLCardProps) {
-    return (
-        <div
-            className="
-        relative overflow-hidden min-h-[220px] w-[160px] md:w-[250px] md:h-[200px]
-        transition-transform duration-300 ease-out hover:-translate-y-1 hover:shadow-xl
-      "
-            style={{
-                background:
-                    "linear-gradient(180deg, rgba(255, 255, 255, 0) -56.25%, rgba(255, 255, 255, 0.3) 100%)",
-                border: "1px solid rgba(255, 255, 255, 0.3)",
-                borderRadius: "16px",
-                backdropFilter: "blur(2px)",
-            }}
-        >
-            {/* Text trên cùng */}
-            <div className="absolute top-0 left-0 right-0 z-20 px-2 md:px-3 pt-2">
-                <div className="text-white font-semibold text-xs md:text-sm leading-tight whitespace-normal break-words">
-                    {profile.name}
-                </div>
-                <div className="italic text-white/80 text-[10px] md:text-xs mt-0.5 whitespace-normal">
-                    {profile.role}
-                </div>
-            </div>
-
-            {/* Avatar */}
-            <div className="absolute -bottom-2 md:ml-[60px] z-10">
-                <Image
-                    alt={profile.name}
-                    src={profile.avatar}
-                    preview={false}
-                    className="w-28 md:w-[190px] h-auto object-contain"
-                />
-            </div>
-        </div>
-    );
-}
-
 const KOL: React.FC = () => {
-    // Laptop/desktop: 4 – 5 – 4 (giữ nguyên)
-    const row1_md = kolProfiles.slice(0, 4);
-    const row2_md = kolProfiles.slice(4, 9);
+    // Hàng trên: mảng gốc nhân đôi
+    const trackTop = useMemo(() => [...kolProfiles, ...kolProfiles], []);
+
+    // Hàng dưới: xoay mảng đi nửa độ dài rồi nhân đôi
+    const trackBottom = useMemo(() => {
+        const offset = Math.ceil(kolProfiles.length / 2); // nửa mảng, làm tròn lên
+        const rotated = kolProfiles.slice(offset).concat(kolProfiles.slice(0, offset));
+        return [...rotated, ...rotated];
+    }, []);
 
     return (
         <div
-            className="relative py-12 px-4 bg-cover bg-center"
+            className="relative py-12 px-4 "
             style={{
-                backgroundImage: "url('/images/img_63.png')", // đổi theo ảnh bạn có
+                backgroundImage: "url('/images/img_63.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
             }}
         >
-
             <div className="relative z-10">
                 <div className="text-center mb-7">
                     <h2
                         className="text-2xl md:text-3xl font-light text-white/70 tracking-wider"
                         style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700 }}
                     >
-                        CÁC KOLs XÁC NHẬN THAM GIA
+                        KOLS THAM DỰ
                     </h2>
                 </div>
 
-                {/* Hàng 1: mobile 3, md+ 4 */}
-                <div className="flex justify-center mb-10">
-                    <div className="grid grid-cols-3 md:grid-cols-4 gap-3 md:gap-8 justify-items-center">
-                        {row1_md.map((p, i) => (
-                            <div key={p.id} className={i >= 3 ? "hidden md:block" : ""}>
-                                <KOLCard profile={p} />
+
+                <div className="overflow-hidden mb-10">
+                    <div className="marquee-left whitespace-nowrap">
+                        {trackTop.map((p, i) => (
+                            <div key={`${p.id}-top-${i}`} className="inline-block mx-2 md:mx-3">
+                                <img
+                                    src={p.avatar}
+                                    alt={p.name}
+                                    loading="lazy"
+                                    className="w-[300px] h-[300px] rounded-[16px] object-cover block"
+                                />
                             </div>
                         ))}
                     </div>
                 </div>
 
-                {/* Hàng 2: mobile 4, md+ 5 */}
-                <div className="flex justify-center mb-10">
-                    <div className="grid grid-cols-4 md:grid-cols-5 gap-3 md:gap-8 justify-items-center">
-                        {row2_md.map((p, i) => (
-                            <div key={p.id} className={i >= 4 ? "hidden md:block" : ""}>
-                                <KOLCard profile={p} />
+                {/* Hàng 2: chạy sang phải (khác thứ tự + khác tốc độ) */}
+                <div className="overflow-hidden">
+                    <div className="marquee-right whitespace-nowrap">
+                        {trackBottom.map((p, i) => (
+                            <div key={`${p.id}-bottom-${i}`} className="inline-block mx-2 md:mx-3">
+                                <img
+                                    src={p.avatar}
+                                    alt={p.name}
+                                    loading="lazy"
+                                    className="w-[300px] h-[300px] rounded-[16px] object-cover block"
+                                />
                             </div>
                         ))}
                     </div>
