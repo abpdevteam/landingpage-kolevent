@@ -51,7 +51,7 @@ const KOL: React.FC = () => {
 
     return (
         <div
-            className="relative py-12 px-4 "
+            className="relative py-12  "
             style={{
                 backgroundImage: "url('/images/img_63.png')",
                 backgroundSize: "cover",
