@@ -291,7 +291,7 @@ const AllianceIntroduction: React.FC = () => {
 
                     {/* ====== SECTION 2: GIỚI THIỆU LIÊN MINH ====== */}
                     <section
-                        className="py-8 relative "
+                        className="py-8 relative"
                         style={{
                             backgroundImage: "url('/images/img_65.png')", // đổi ảnh nếu cần
                             backgroundSize: "auto 80%",
@@ -302,11 +302,11 @@ const AllianceIntroduction: React.FC = () => {
                         {/* Nội dung */}
                         <div className="relative z-10 md:mx-[100px]">
                             {/* Header */}
-                            <div className="px-4 md:mx-[100px] mb-10 md:mb-12">
+                            <div className="px-4 md:mx-[100px] mb-5">
                                 <div className="flex justify-center items-start gap-6">
                                     <div className="text-center justify-center">
                                         <h1
-                                            className="text-3xl md:text-5xl font-bold mb-2"
+                                            className="mb-2 font-bold text-[40px]"
                                             style={{
                                                 fontFamily: "NeueHelveticaExt, sans-serif",
                                                 fontWeight: 700,
@@ -315,8 +315,9 @@ const AllianceIntroduction: React.FC = () => {
                                         >
                                             LIÊN MINH NIỀM TIN SỐ
                                         </h1>
+
                                         <p
-                                            className="text-xl md:text-3xl uppercase tracking-wide"
+                                            className="text-[30px] uppercase tracking-wide"
                                             style={{
                                                 fontFamily: "NeueHelveticaExt, sans-serif",
                                                 fontWeight: 400,
@@ -331,7 +332,7 @@ const AllianceIntroduction: React.FC = () => {
 
                             {/* Row 1 */}
                             <div className="px-4 md:mx-[80px]">
-                                {/* Row 1 */}
+                            {/* Row 1 */}
                                 <div className="grid grid-cols-1 md:grid-cols-[400px_1fr] gap-6 mb-6">
                                     {/* Card 1 */}
                                     <div
@@ -386,7 +387,7 @@ const AllianceIntroduction: React.FC = () => {
                                         }}
                                     >
                                         <div className="leading-relaxed text-[#0011BF]">
-                                            <p className="mb-4 text-lg md:text-xl" style={{
+                                            <p className="mb-4 text-lg md:text-[16px]" style={{
                                                 fontFamily: "NeueHelveticaExt, sans-serif",
                                                 fontWeight: 400,
                                                 color: "#0011BF"
@@ -395,7 +396,7 @@ const AllianceIntroduction: React.FC = () => {
                                                 dựng,
                                                 dẫn dắt niềm tin của KOLs trên không gian mạng.
                                             </p>
-                                            <p className="text-lg md:text-xl" style={{
+                                            <p className="text-lg md:text-[16px]" style={{
                                                 fontFamily: "NeueHelveticaExt, sans-serif",
                                                 fontWeight: 400,
                                                 color: "#0011BF"
@@ -472,7 +473,7 @@ const AllianceIntroduction: React.FC = () => {
                                                     color: "#0011BF"
                                                 }}>Tầm nhìn
                                                 </div>
-                                                <ul className="list-disc space-y-2 pl-4 text-lg md:text-xl" style={{
+                                                <ul className="list-disc space-y-2 pl-4 text-lg md:text-[16px]" style={{
                                                     fontFamily: "NeueHelveticaExt, sans-serif",
                                                     fontWeight: 400,
                                                     color: "#0011BF"
@@ -496,7 +497,7 @@ const AllianceIntroduction: React.FC = () => {
                                                     color: "#0011BF"
                                                 }}>Hành động
                                                 </div>
-                                                <ul className="list-disc space-y-2 pl-4 text-lg md:text-xl" style={{
+                                                <ul className="list-disc space-y-2 pl-4 text-lg md:text-[16px]" style={{
                                                     fontFamily: "NeueHelveticaExt, sans-serif",
                                                     fontWeight: 400,
                                                     color: "#0011BF"
