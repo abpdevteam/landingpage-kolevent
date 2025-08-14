@@ -46,4 +46,19 @@
   font-weight: 700; /* Bold */
   font-style: normal;
 }
-
+@keyframes marqueeRight {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marqueeLeft {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.animate-marquee-right {
+  animation: marqueeRight 40s linear infinite;
+  display: inline-flex;
+}
+.animate-marquee-left {
+  animation: marqueeLeft 40s linear infinite;
+  display: inline-flex;
+}

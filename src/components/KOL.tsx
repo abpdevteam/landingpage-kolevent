@@ -80,10 +80,6 @@ const KOL: React.FC = () => {
                                     loading="lazy"
                                     className="w-full h-[300px] rounded-[16px] object-cover"
                                 />
-                                <div className="text-center mt-2 text-white">
-                                    <p className="font-bold">{p.name}</p>
-                                    <p className="text-sm">{p.role}</p>
-                                </div>
                             </div>
                         ))}
                     </div>
@@ -103,35 +99,11 @@ const KOL: React.FC = () => {
                                     loading="lazy"
                                     className="w-full h-[300px] rounded-[16px] object-cover"
                                 />
-                                <div className="text-center mt-2 text-white">
-                                    <p className="font-bold">{p.name}</p>
-                                    <p className="text-sm">{p.role}</p>
-                                </div>
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
-
-            {/* CSS Animation */}
-            <style jsx>{`
-                @keyframes marqueeRight {
-                    0% { transform: translateX(0); }
-                    100% { transform: translateX(-50%); }
-                }
-                @keyframes marqueeLeft {
-                    0% { transform: translateX(-50%); }
-                    100% { transform: translateX(0); }
-                }
-                .animate-marquee-right {
-                    animation: marqueeRight 40s linear infinite;
-                    display: inline-flex;
-                }
-                .animate-marquee-left {
-                    animation: marqueeLeft 40s linear infinite;
-                    display: inline-flex;
-                }
-            `}</style>
         </div>
     );
 };
