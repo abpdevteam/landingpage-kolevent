@@ -86,8 +86,8 @@ const CountdownWithServices: React.FC = () => {
                 <header className="pt-2 md:pt-5">
                     <div className="max-w-6xl mx-auto px-3 md:px-4">
                         <div className="flex justify-center items-center gap-3 md:gap-6">
-                            <img src="/images/img_2.png" alt="Logo 1" className="h-10 md:h-16 w-auto object-contain" />
-                            <img src="/images/img_6.png" alt="Logo 2" className="h-10 md:h-16 w-auto object-contain" />
+                            <img src="/images/img_2.png" alt="Logo 1" className="h-10 md:h-12 w-auto object-contain" />
+                            <img src="/images/img_6.png" alt="Logo 2" className="h-10 md:h-12 w-auto object-contain" />
                         </div>
                     </div>
                 </header>
@@ -126,15 +126,15 @@ const CountdownWithServices: React.FC = () => {
                     </section>
 
                     {/* Tiêu đề countdown */}
-                    <div className="text-center -mt-1 md:mt-0">
+                    <div className="text-center -mt-1">
                         <h3
-                            className="text-base sm:text-lg md:text-2xl font-bold"
+                            className="text-base sm:text-lg md:text-xl font-bold"
                             style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500, color: "#ffffff" }}
                         >
                             COUNTDOWN ĐẾM NGƯỢC
                         </h3>
                         <p
-                            className="text-base sm:text-lg md:text-2xl"
+                            className="text-base sm:text-lg md:text-xl"
                             style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400, color: "#ffffff" }}
                         >
                             ngày diễn ra sự kiện
@@ -143,7 +143,7 @@ const CountdownWithServices: React.FC = () => {
 
                     {/* Countdown box – thu gọn padding, bỏ pb dư để gần footer hơn */}
                     <div
-                        className="p-3 sm:p-4 md:p-6 w-full max-w-xl backdrop-blur"
+                        className="p-3 sm:p-4 md:p-4 w-full max-w-xl backdrop-blur"
                         style={{
                             background: "linear-gradient(180deg, rgba(255, 255, 255, 0) -56.25%, rgba(255, 255, 255, 0.3) 100%)",
                             border: "1px solid rgba(255, 255, 255, 0.3)",
@@ -183,18 +183,71 @@ const CountdownWithServices: React.FC = () => {
                     </div>
                 </main>
 
-                {/* FOOTER: dính đáy màn hình, padding nhỏ mobile để sát countdown */}
-                <footer className="px-3 py-3 md:px-6 md:py-6 mt-auto">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="flex flex-wrap justify-center items-center gap-3 md:gap-6">
-                            <img src="/images/img_14.png" alt="Người Quan Sát" className="h-7 md:h-8 object-contain" />
-                            <img src="/images/img_15.png" alt="Cyber Trust" className="h-7 md:h-8 object-contain" />
-                            <img src="/images/img_16.png" alt="Logo 1" className="w-16 md:w-20 h-8 md:h-9 object-contain p-1" />
-                            <img src="/images/img_17.png" alt="Logo 2" className="w-16 md:w-20 h-8 md:h-9 object-contain p-1" />
-                            <img src="/images/img_57.png" alt="Logo 3" className="w-16 md:w-20 h-8 md:h-9 object-contain p-1" />
+                <footer className="px-3 pt-2 pb-3 md:px-6 md:py-6 -mt-2 md:mt-0">
+                    <div className=" space-y-4">
+
+                        {/* HÀNG 1: Đơn vị phối hợp tổ chức + Đơn vị tiên phong */}
+                        <div
+                            className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6 md:gap-12">
+
+                            {/* Đơn vị phối hợp tổ chức */}
+                            <div className="flex flex-col items-center space-y-2">
+        <span
+            className="uppercase text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90"
+            style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
+        >
+          ĐƠN VỊ PHỐI HỢP TỔ CHỨC
+        </span>
+                                <div className="flex gap-3 md:gap-6">
+                                    <img src="/images/img_14.png" alt="Người Quan Sát"
+                                         className="h-7 md:h-8 object-contain"/>
+                                    <img src="/images/img_15.png" alt="Cyber Trust"
+                                         className="h-7 md:h-8 object-contain"/>
+                                </div>
+                            </div>
+
+                            {/* Đơn vị tiên phong */}
+                            <div className="flex flex-col items-center space-y-2">
+        <span
+            className="uppercase text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90"
+            style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
+        >
+          ĐƠN VỊ TIÊN PHONG
+        </span>
+                                <div className="flex gap-3 md:gap-6">
+                                    <img src="/images/img_17.png" alt="Logo 2"
+                                         className="w-16 md:w-20 h-8 md:h-9 object-contain p-1"/>
+                                    <img src="/images/img_57.png" alt="Logo 3"
+                                         className="w-16 md:w-20 h-8 md:h-9 object-contain p-1"/>
+                                </div>
+                            </div>
+
                         </div>
+
+                        {/* HÀNG 2: Đơn vị đồng hành */}
+                        <div className="flex flex-col items-center space-y-2">
+      <span
+          className="uppercase text-[10px] sm:text-xs md:text-sm tracking-wide text-white/80"
+          style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
+      >
+        ĐƠN VỊ ĐỒNG HÀNH
+      </span>
+                            <div className="flex flex-wrap justify-center items-center gap-3 md:gap-6">
+                                <img src="/images/img_74.png" alt="Người Quan Sát"
+                                     className="h-7 md:h-8 object-contain"/>
+                                <img src="/images/img_75.png" alt="Cyber Trust" className="h-7 md:h-8 object-contain"/>
+                                <img src="/images/img_16.png" alt="Logo 1"
+                                     className="w-16 md:w-20 h-8 md:h-9 object-contain p-1"/>
+                                <img src="/images/img_78.png" alt="Logo 2"
+                                     className="max-h-9 md:max-h-10 object-contain p-1"/>
+                                <img src="/images/img_77.png" alt="Logo 3"
+                                     className="max-h-9 md:max-h-10 object-contain p-1"/>
+                            </div>
+                        </div>
+
                     </div>
                 </footer>
+
             </div>
         </div>
     );

@@ -168,7 +168,7 @@ const Event: React.FC = () => {
                             <div>
                                 <h3
                                     className="text-xl text-center md:text-2xl font-bold text-white leading-tight"
-                                    style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
+                                    style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500}}
                                 >
                                     CÁC NỀN TẢNG MẠNG XÃ HỘI
                                 </h3>
@@ -179,11 +179,19 @@ const Event: React.FC = () => {
                                         {name: "TikTok", img: "/images/img_39.png"},
                                     ].map((platform, index) => (
                                         <div key={index} className="flex items-center justify-center px-3 py-2">
-                                            <img src={platform.img} alt={platform.name}
-                                                 className="w-16 h-16 object-scale-down"/>
+                                            <img
+                                                src={platform.img}
+                                                alt={platform.name}
+                                                className={
+                                                    platform.name === "Meta" || platform.name === "TikTok"
+                                                        ? "w-20 h-21 object-scale-down" // to hơn
+                                                        : "w-16 h-16 object-scale-down" // size cũ
+                                                }
+                                            />
                                         </div>
                                     ))}
                                 </div>
+
                             </div>
                         </div>
 
@@ -192,7 +200,7 @@ const Event: React.FC = () => {
                              style={cardGradient}>
                             <h3
                                 className="text-xl md:text-2xl font-bold text-white leading-tight"
-                                style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
+                                style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500}}
                             >
                                 THÀNH VIÊN HIỆP HỘI AN NINH MẠNG QUỐC GIA
                             </h3>
