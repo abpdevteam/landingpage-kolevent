@@ -215,7 +215,7 @@ const CountdownWithServices: React.FC = () => {
           ĐƠN VỊ TIÊN PHONG
         </span>
                                 <div className="flex gap-3 md:gap-6">
-                                    <img src="/images/img_17.png" alt="Logo 2"
+                                    <img src="/images/img_16.png" alt="Logo 2"
                                          className="w-16 md:w-20 h-8 md:h-9 object-contain p-1"/>
                                     <img src="/images/img_57.png" alt="Logo 3"
                                          className="w-16 md:w-20 h-8 md:h-9 object-contain p-1"/>
@@ -225,25 +225,7 @@ const CountdownWithServices: React.FC = () => {
                         </div>
 
                         {/* HÀNG 2: Đơn vị đồng hành */}
-                        <div className="flex flex-col items-center space-y-2">
-      <span
-          className="uppercase text-[10px] sm:text-xs md:text-sm tracking-wide text-white/80"
-          style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
-      >
-        ĐƠN VỊ ĐỒNG HÀNH
-      </span>
-                            <div className="flex flex-wrap justify-center items-center gap-3 md:gap-6">
-                                <img src="/images/img_74.png" alt="Người Quan Sát"
-                                     className="h-7 md:h-8 object-contain"/>
-                                <img src="/images/img_75.png" alt="Cyber Trust" className="h-7 md:h-8 object-contain"/>
-                                <img src="/images/img_16.png" alt="Logo 1"
-                                     className="w-16 md:w-20 h-8 md:h-9 object-contain p-1"/>
-                                <img src="/images/img_78.png" alt="Logo 2"
-                                     className="max-h-9 md:max-h-10 object-contain p-1"/>
-                                <img src="/images/img_77.png" alt="Logo 3"
-                                     className="max-h-9 md:max-h-10 object-contain p-1"/>
-                            </div>
-                        </div>
+
 
                     </div>
                 </footer>

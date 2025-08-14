@@ -291,7 +291,7 @@ const AllianceIntroduction: React.FC = () => {
 
                     {/* ====== SECTION 2: GIỚI THIỆU LIÊN MINH ====== */}
                     <section
-                        className="py-8 relative"
+                        className="py-8 relative "
                         style={{
                             backgroundImage: "url('/images/img_65.png')", // đổi ảnh nếu cần
                             backgroundSize: "auto 80%",
@@ -302,11 +302,11 @@ const AllianceIntroduction: React.FC = () => {
                         {/* Nội dung */}
                         <div className="relative z-10 md:mx-[100px]">
                             {/* Header */}
-                            <div className="px-4 md:mx-[100px] mb-5">
+                            <div className="px-4 md:mx-[100px] mb-10 md:mb-12">
                                 <div className="flex justify-center items-start gap-6">
                                     <div className="text-center justify-center">
                                         <h1
-                                            className="mb-2 font-bold text-[40px]"
+                                            className="text-3xl md:text-5xl font-bold mb-2"
                                             style={{
                                                 fontFamily: "NeueHelveticaExt, sans-serif",
                                                 fontWeight: 700,
@@ -315,9 +315,8 @@ const AllianceIntroduction: React.FC = () => {
                                         >
                                             LIÊN MINH NIỀM TIN SỐ
                                         </h1>
-
                                         <p
-                                            className="text-[30px] uppercase tracking-wide"
+                                            className="text-xl md:text-3xl uppercase tracking-wide"
                                             style={{
                                                 fontFamily: "NeueHelveticaExt, sans-serif",
                                                 fontWeight: 400,
@@ -332,7 +331,7 @@ const AllianceIntroduction: React.FC = () => {
 
                             {/* Row 1 */}
                             <div className="px-4 md:mx-[80px]">
-                            {/* Row 1 */}
+                                {/* Row 1 */}
                                 <div className="grid grid-cols-1 md:grid-cols-[400px_1fr] gap-6 mb-6">
                                     {/* Card 1 */}
                                     <div
@@ -387,7 +386,7 @@ const AllianceIntroduction: React.FC = () => {
                                         }}
                                     >
                                         <div className="leading-relaxed text-[#0011BF]">
-                                            <p className="mb-4 text-lg md:text-[16px]" style={{
+                                            <p className="mb-4 text-lg md:text-xl" style={{
                                                 fontFamily: "NeueHelveticaExt, sans-serif",
                                                 fontWeight: 400,
                                                 color: "#0011BF"
@@ -396,7 +395,7 @@ const AllianceIntroduction: React.FC = () => {
                                                 dựng,
                                                 dẫn dắt niềm tin của KOLs trên không gian mạng.
                                             </p>
-                                            <p className="text-lg md:text-[16px]" style={{
+                                            <p className="text-lg md:text-xl" style={{
                                                 fontFamily: "NeueHelveticaExt, sans-serif",
                                                 fontWeight: 400,
                                                 color: "#0011BF"
@@ -473,7 +472,7 @@ const AllianceIntroduction: React.FC = () => {
                                                     color: "#0011BF"
                                                 }}>Tầm nhìn
                                                 </div>
-                                                <ul className="list-disc space-y-2 pl-4 text-lg md:text-[16px]" style={{
+                                                <ul className="list-disc space-y-2 pl-4 text-lg md:text-xl" style={{
                                                     fontFamily: "NeueHelveticaExt, sans-serif",
                                                     fontWeight: 400,
                                                     color: "#0011BF"
@@ -497,7 +496,7 @@ const AllianceIntroduction: React.FC = () => {
                                                     color: "#0011BF"
                                                 }}>Hành động
                                                 </div>
-                                                <ul className="list-disc space-y-2 pl-4 text-lg md:text-[16px]" style={{
+                                                <ul className="list-disc space-y-2 pl-4 text-lg md:text-xl" style={{
                                                     fontFamily: "NeueHelveticaExt, sans-serif",
                                                     fontWeight: 400,
                                                     color: "#0011BF"
@@ -876,53 +875,37 @@ const AllianceIntroduction: React.FC = () => {
                 </div>
             </section>
 
-            <div
-                className="w-full py-10 bg-no-repeat"
-            >
+            <div className="w-full  flex flex-col justify-center items-center py-6 bg-no-repeat">
                 <div className="px-4">
-                    {/*<div className="flex gap-4 overflow-x-auto no-scrollbar">*/}
-                    {/*    /!* Slide 1 *!/*/}
-                    {/*    <div className="relative min-w-[350px] rounded-2xl overflow-hidden">*/}
-                    {/*        <img*/}
-                    {/*            src="/images/img_48.png"*/}
-                    {/*            alt="Event 1"*/}
-                    {/*            className="w-full h-full object-cover"*/}
-                    {/*        />*/}
-                    {/*    </div>*/}
+                    <div className="flex flex-col items-center space-y-2">
+                        <p className="text-center font-bold" style={{fontFamily: "NeueHelveticaExt, sans-serif"}}>
+                            ĐƠN VỊ ĐỒNG HÀNH
+                        </p>
+                        <div className="flex flex-wrap justify-center items-center gap-2 md:gap-4">
+                            <img src="/images/img_74.png" alt="Người Quan Sát" className="h-6 md:h-7 object-contain"/>
+                            <img src="/images/img_75.png" alt="Cyber Trust" className="h-6 md:h-7 object-contain"/>
+                            <img src="/images/img_78.png" alt="Logo 2"
+                                 className="max-h-8 md:max-h-9 object-contain p-1"/>
+                            <img src="/images/img_77.png" alt="Logo 3"
+                                 className="max-h-8 md:max-h-9 object-contain p-1"/>
+                        </div>
+                    </div>
 
-                    {/*    /!* Slide 2 *!/*/}
-                    {/*    <div className="relative min-w-[350px] rounded-2xl overflow-hidden">*/}
-                    {/*        <img*/}
-                    {/*            src="/images/img_49.png"*/}
-                    {/*            alt="Event 2"*/}
-                    {/*            className="w-full h-full object-cover"*/}
-                    {/*        />*/}
-                    {/*    </div>*/}
+                    <p className="text-center mt-5 font-bold" style={{fontFamily: "NeueHelveticaExt, sans-serif"}}>
+                        ĐƠN VỊ BẢO TRỢ TRUYỀN THÔNG
+                    </p>
 
-                    {/*    /!* Slide 3 *!/*/}
-                    {/*    <div className="relative min-w-[350px] rounded-2xl overflow-hidden">*/}
-                    {/*        <img*/}
-                    {/*            src="/images/img_50.png"*/}
-                    {/*            alt="Event 3"*/}
-                    {/*            className="w-full h-full object-cover"*/}
-                    {/*        />*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
-                    <p className="text-center" style={{
-                        fontFamily: "NeueHelveticaExt, sans-serif",
-                        fontWeight: 700
-                    }}>ĐƠN VỊ BẢO TRỢ TRUYỀN THÔNG</p>
-
-                    <div className="relative top-0 md:top-[70px] mb-20">
+                    <div className="mt-1 mb-8">
                         <img
                             src="/images/img_73.png"
                             alt="Event 3"
-                            className="block mx-auto w-[589px] h-[186px] max-w-full object-contain"
+                            className="block mx-auto w-[320px] h-[150px] max-w-full object-contain"
                         />
                     </div>
-
                 </div>
             </div>
+
+
         </div>
 
     );

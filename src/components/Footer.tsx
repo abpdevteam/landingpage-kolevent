@@ -28,6 +28,7 @@ const Footer: React.FC = () => {
                     <span className="whitespace-nowrap">Hotline</span>
                     <span className="whitespace-nowrap">Website</span>
                 </div>
+
             </div>
         </div>
     );
