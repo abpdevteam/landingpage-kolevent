@@ -86,8 +86,8 @@ const CountdownWithServices: React.FC = () => {
                 <header className="pt-2 md:pt-5">
                     <div className="max-w-6xl mx-auto px-3 md:px-4">
                         <div className="flex justify-center items-center gap-3 md:gap-6">
-                            <img src="/images/img_2.png" alt="Logo 1" className="h-7 md:h-10 w-auto object-contain" />
-                            <img src="/images/img_6.png" alt="Logo 2" className="h-7 md:h-10 w-auto object-contain" />
+                            <img src="/images/img_2.png" alt="Logo 1" className="h-10 md:h-16 w-auto object-contain" />
+                            <img src="/images/img_6.png" alt="Logo 2" className="h-10 md:h-16 w-auto object-contain" />
                         </div>
                     </div>
                 </header>

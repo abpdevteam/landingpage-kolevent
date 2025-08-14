@@ -703,8 +703,7 @@ const AllianceIntroduction: React.FC = () => {
                             fontWeight: 400,
                         }}>
                             Chương trình cung cấp khung đánh giá toàn diện, và dễ dàng kiểm chứng; nhằm xác thực
-                            độ minh bạch - đạo đức -{" "}
-                            <span className="block">trách nhiệm xã hội của người có ảnh hưởng.</span>
+                            độ minh bạch - đạo đức - trách nhiệm xã hội của người có ảnh hưởng.
                         </p>
                         <p className="text-[16px] leading-relaxed max-w-4xl mx-auto" style={{
                             fontFamily: "NeueHelveticaExt, sans-serif",

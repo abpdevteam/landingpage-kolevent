@@ -188,7 +188,7 @@ const Event: React.FC = () => {
                         </div>
 
                         {/* Card 6 - chỉ gradient */}
-                        <div className="rounded-2xl p-6 md:p-8 flex   "
+                        <div className="rounded-2xl p-6 md:p-8 flex justify-center text-center  "
                              style={cardGradient}>
                             <h3
                                 className="text-xl md:text-2xl font-bold text-white leading-tight"
