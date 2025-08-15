@@ -104,9 +104,9 @@ const AllianceIntroduction: React.FC = () => {
     // }) => <img src={src} alt={alt} className={`${className} object-contain`} loading="lazy" />;
 
     const topics: DiscussionTopic[] = [
-        {id: 1, number: "01", title: "THAM LUẬN GỬI VỀ HỘI NGHỊ"},
-        {id: 2, number: "02", title: "PHIÊN DIỄN GIẢ - HÀNH TRÌNH VÀ NHỮNG GIÁ TRỊ"},
-        {id: 3, number: "03", title: "PHIÊN TỌA ĐÀM - NIỀM TIN VÀ KỲ VỌNG"},
+        {id: 1, number: "img_82.png", title: "THAM LUẬN GỬI VỀ HỘI NGHỊ"},
+        {id: 2, number: "img_83.png", title: "PHIÊN DIỄN GIẢ - HÀNH TRÌNH VÀ NHỮNG GIÁ TRỊ"},
+        {id: 3, number: "img_84.png", title: "PHIÊN TỌA ĐÀM - NIỀM TIN VÀ KỲ VỌNG"},
     ];
 
     // const testimonials: TestimonialItem[] = [
@@ -233,15 +233,20 @@ const AllianceIntroduction: React.FC = () => {
                                                 >
                                                     {/* Số */}
                                                     <span
-                                                        className="text-4xl md:text-5xl mb-3"
+                                                        className="mb-3"
                                                         style={{
                                                             fontFamily: "NeueHelveticaExt, sans-serif",
                                                             fontWeight: 700,
                                                             color: "#0011BF"
                                                         }}
                                                     >
-        {topic.number}
-      </span>
+  <img
+      src={`/images/${topic.number}`}
+      alt={topic.title}
+      className="inline-block w-12 h-12 object-contain"
+  />
+</span>
+
 
                                                     {/* Tiêu đề */}
                                                     <p
@@ -260,7 +265,7 @@ const AllianceIntroduction: React.FC = () => {
 
 
                                         {/* Bullets */}
-                                        <div 
+                                        <div
                                             ref={bulletsAnimation.elementRef}
                                             className={`mt-6 md:mt-8 ${getAnimationClasses(bulletsAnimation.isVisible, 'fadeInUp')}`}
                                         >
@@ -975,19 +980,7 @@ const AllianceIntroduction: React.FC = () => {
 
             <div className="w-full  flex flex-col justify-center items-center py-6 bg-no-repeat">
                 <div className="px-4">
-                    <div className="flex flex-col items-center space-y-2">
-                        <p className="text-center font-bold" style={{fontFamily: "NeueHelveticaExt, sans-serif"}}>
-                            ĐƠN VỊ ĐỒNG HÀNH
-                        </p>
-                        <div className="flex flex-wrap justify-center items-center gap-2 md:gap-4">
-                            <img src="/images/img_74.png" alt="Người Quan Sát" className="h-6 md:h-7 object-contain"/>
-                            <img src="/images/img_75.png" alt="Cyber Trust" className="h-6 md:h-7 object-contain"/>
-                            <img src="/images/img_78.png" alt="Logo 2"
-                                 className="max-h-8 md:max-h-9 object-contain p-1"/>
-                            <img src="/images/img_77.png" alt="Logo 3"
-                                 className="max-h-8 md:max-h-9 object-contain p-1"/>
-                        </div>
-                    </div>
+
 
                     <p className="text-center mt-5 font-bold" style={{fontFamily: "NeueHelveticaExt, sans-serif"}}>
                         ĐƠN VỊ BẢO TRỢ TRUYỀN THÔNG
@@ -997,7 +990,7 @@ const AllianceIntroduction: React.FC = () => {
                         <img
                             src="/images/img_73.png"
                             alt="Event 3"
-                            className="block mx-auto w-[320px] h-[150px] max-w-full object-contain"
+                            className="block mx-auto w-[490px] h-[150px] max-w-full object-contain"
                         />
                     </div>
                 </div>

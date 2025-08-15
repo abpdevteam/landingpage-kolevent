@@ -1,21 +1,21 @@
 import React, { useEffect, useMemo, useState } from "react";
 
 interface TimeLeft { days: number; hours: number; minutes: number; seconds: number; }
-const formatNumber = (n: number) => n.toString().padStart(2, "0");
+// const formatNumber = (n: number) => n.toString().padStart(2, "0");
 
-const Item = ({ value, label }: { value: number; label: string }) => (
-    <div className="text-center">
-        <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-none">
-            {formatNumber(value)}
-        </div>
-        <div
-            className="mt-1 text-[10px] sm:text-xs md:text-sm text-white/90"
-            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}
-        >
-            {label}
-        </div>
-    </div>
-);
+// const Item = ({ value, label }: { value: number; label: string }) => (
+//     <div className="text-center">
+//         <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-none">
+//             {formatNumber(value)}
+//         </div>
+//         <div
+//             className="mt-1 text-[10px] sm:text-xs md:text-sm text-white/90"
+//             style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}
+//         >
+//             {label}
+//         </div>
+//     </div>
+// );
 
 const CountdownWithServices: React.FC = () => {
     const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -25,23 +25,19 @@ const CountdownWithServices: React.FC = () => {
 
     const targetDate = useMemo(() => new Date("2025-08-18T07:30:00+07:00"), []);
 
+    // Lần lượt hiện các khối
     useEffect(() => {
-        // Hiển thị các phần lần lượt
-        const timer = setTimeout(() => setVisibleSections([0]), 100);
-        const timer2 = setTimeout(() => setVisibleSections([0, 1]), 300);
-        const timer3 = setTimeout(() => setVisibleSections([0, 1, 2]), 500);
-        const timer4 = setTimeout(() => setVisibleSections([0, 1, 2, 3]), 700);
-        const timer5 = setTimeout(() => setVisibleSections([0, 1, 2, 3, 4]), 900);
-
-        return () => {
-            clearTimeout(timer);
-            clearTimeout(timer2);
-            clearTimeout(timer3);
-            clearTimeout(timer4);
-            clearTimeout(timer5);
-        };
+        const timers = [
+            setTimeout(() => setVisibleSections([0]), 100),      // header: logo
+            setTimeout(() => setVisibleSections([0, 1]), 300),   // KOL
+            setTimeout(() => setVisibleSections([0, 1, 2]), 500),// Hàng: Ballroom + slogan
+            setTimeout(() => setVisibleSections([0, 1, 2, 3]), 700), // countdown
+            setTimeout(() => setVisibleSections([0, 1, 2, 3, 4]), 900) // footer tổ chức + tiên phong
+        ];
+        return () => timers.forEach(clearTimeout);
     }, []);
 
+    // Đếm ngược
     useEffect(() => {
         const tick = () => {
             const d = targetDate.getTime() - Date.now();
@@ -53,6 +49,8 @@ const CountdownWithServices: React.FC = () => {
                 setTimeLeft({ days, hours, minutes, seconds });
             } else {
                 setIsOver(true);
+                console.log(timeLeft);
+                console.log(isOver);
                 setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
             }
         };
@@ -61,6 +59,7 @@ const CountdownWithServices: React.FC = () => {
         return () => clearInterval(t);
     }, [targetDate]);
 
+    // Nền
     useEffect(() => {
         if (typeof window === "undefined") return;
         const mq = window.matchMedia("(max-width: 767px)");
@@ -81,10 +80,8 @@ const CountdownWithServices: React.FC = () => {
                 fontFamily: "'Inter', sans-serif",
             }}
         >
-            {/* Dùng dynamic viewport để luôn khớp chiều cao màn hình */}
             <div className="relative z-10 min-h-[100dvh] flex flex-col">
-
-                {/* OVERLAY TỔNG – ẨN TRÊN MOBILE, CHỈ HIỆN TỪ MD+ */}
+                {/* OVERLAY desktop */}
                 <div
                     aria-hidden
                     className="pointer-events-none absolute z-[25] hidden md:block"
@@ -93,173 +90,167 @@ const CountdownWithServices: React.FC = () => {
                         left: 0,
                         width: "clamp(260px, 42vw, 860px)",
                         height: "clamp(260px, 48vh, 620px)",
-                        background:
-                            "linear-gradient(135deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.28) 60%, rgba(0,0,0,0) 75%)",
+                        background: "linear-gradient(135deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.28) 60%, rgba(0,0,0,0) 75%)",
                         filter: "blur(8px)",
                         borderRadius: "12px",
                     }}
                 />
 
-                {/* HEADER: logo nhỏ, padding rất ít trên mobile */}
+                {/* 1) HEADER: 2 logo */}
                 <header
                     className="pt-2 md:pt-5"
-                    style={{
-                        opacity: visibleSections.includes(0) ? 1 : 0,
-                        transition: 'opacity 0.3s ease-in-out'
-                    }}
+                    style={{ opacity: visibleSections.includes(0) ? 1 : 0, transition: "opacity 0.3s ease-in-out" }}
                 >
                     <div className="max-w-6xl mx-auto px-3 md:px-4">
                         <div className="flex justify-center items-center gap-3 md:gap-6">
-                            <img src="/images/img_2.png" alt="Logo 1" className="h-10 md:h-12 w-auto object-contain" />
-                            <img src="/images/img_6.png" alt="Logo 2" className="h-10 md:h-12 w-auto object-contain" />
+                            <img src="/images/img_2.png" alt="Logo 1" className="h-10 md:h-16 w-auto object-contain" />
+                            <img src="/images/img_6.png" alt="Logo 2" className="h-10 md:h-16 w-auto object-contain" />
                         </div>
                     </div>
                 </header>
 
-                {/* MAIN: chiếm toàn bộ khoảng còn lại, canh giữa theo trục dọc */}
-                <main className="flex-1 px-3 md:px-4 flex flex-col items-center justify-center gap-3 md:gap-6">
-                    {/* KOL + slogan – rất ít gap trên mobile */}
+                {/* MAIN */}
+                <main className="flex-1 flex flex-col items-center justify-center gap-2">
+                    {/* 2) KOL */}
                     <section
-                        className="w-full flex justify-center -mb-1 md:mb-0"
-                        style={{
-                            opacity: visibleSections.includes(1) ? 1 : 0,
-                            transition: 'opacity 0.3s ease-in-out'
-                        }}
+                        className="w-full flex justify-start -mb-2 md:mb-0"
+                        style={{opacity: visibleSections.includes(1) ? 1 : 0, transition: "opacity 0.3s ease-in-out"}}
                     >
-                        <div className="w-full max-w-7xl">
-                            <div className="flex flex-col md:flex-row items-center justify-center gap-1.5 md:gap-10 select-none">
-                                {/* KOL BIG */}
+                        <div
+                            className="leading-none font-extrabold text-white tracking-[-0.02em]"
+                            style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700}}
+                        >
+        <span className="block text-[clamp(18vw,28vw,30vw)] md:text-[clamp(12vw,18vw,20vw)]">
+            KOL
+        </span>
+                        </div>
+                    </section>
+                    <section
+                        className="w-full"
+                        style={{opacity: visibleSections.includes(2) ? 1 : 0, transition: "opacity 0.3s ease-in-out"}}
+                    >
+                        <div className="md:ml-[70px] grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-start">
+                            {/* LEFT: Ballroom + địa chỉ - SÁT TRÁI */}
+                            <div className="text-white">
                                 <div
-                                    className="leading-none font-extrabold text-white tracking-[-0.02em] text-center md:text-left"
-                                    style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700 }}
+                                    className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight"
+                                    style={{fontFamily: "NeueHelveticaExt, sans-serif"}}
                                 >
-                                    <span className="block text-[clamp(18vw,28vw,30vw)] md:text-[clamp(12vw,18vw,20vw)]">
-                                        KOL
-                                    </span>
+                                    Ballroom Tầng 5
                                 </div>
+                                <div
+                                    className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight"
+                                    style={{fontFamily: "NeueHelveticaExt, sans-serif"}}
+                                >
+                                    Khách sạn Intercontinental
+                                </div>
+                                <div
+                                    className="mt-1 text-sm sm:text-base md:text-lg text-white/90"
+                                    style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
+                                >
+                                    E6, Khu đô thị mới Cầu Giấy, P. Yên Hòa, TP. Hà Nội
+                                </div>
+                            </div>
 
-                                {/* Slogan */}
-                                <div className="text-white text-center md:text-left flex flex-col justify-center leading-tight gap-0.5 md:gap-1.5">
-                                    {["với kỷ nguyên", "vươn mình", "của dân tộc"].map((text, i) => (
-                                        <div
-                                            key={i}
-                                            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
-                                            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}
-                                        >
-                                            {text}
-                                        </div>
-                                    ))}
+                            {/* RIGHT: Slogan - CŨNG SÁT TRÁI */}
+                            <div className="text-white">
+                                <div
+                                    className="text-2xl sm:text-3xl md:text-5xl leading-tight"
+                                    style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
+                                >
+                                    với kỷ nguyên
+                                </div>
+                                <div
+                                    className="text-2xl sm:text-3xl md:text-5xl leading-tight"
+                                    style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
+                                >
+                                    vươn mình của dân tộc
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    {/* Tiêu đề countdown */}
-                    <div
-                        className="text-center -mt-1"
-                        style={{
-                            opacity: visibleSections.includes(2) ? 1 : 0,
-                            transition: 'opacity 0.3s ease-in-out'
-                        }}
-                    >
-                        <h3
-                            className="text-base sm:text-lg md:text-xl font-bold"
-                            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500, color: "#ffffff" }}
-                        >
-                            COUNTDOWN ĐẾM NGƯỢC
-                        </h3>
-                        <p
-                            className="text-base sm:text-lg md:text-xl"
-                            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400, color: "#ffffff" }}
-                        >
-                            ngày diễn ra sự kiện
-                        </p>
-                    </div>
-
-                    {/* Countdown box – thu gọn padding, bỏ pb dư để gần footer hơn */}
-                    <div
-                        className="p-3 sm:p-4 md:p-4 w-full max-w-xl backdrop-blur"
-                        style={{
-                            background: "linear-gradient(180deg, rgba(255, 255, 255, 0) -56.25%, rgba(255, 255, 255, 0.3) 100%)",
-                            border: "1px solid rgba(255, 255, 255, 0.3)",
-                            borderRadius: "16px",
-                            opacity: visibleSections.includes(3) ? 1 : 0,
-                            transition: 'opacity 0.3s ease-in-out'
-                        }}
-                    >
-                        {!isOver ? (
-                            <div className="grid grid-cols-2 gap-2 sm:gap-3 md:flex md:items-center md:justify-center md:gap-6">
-                                <Item value={timeLeft.days} label="Days" />
-                                <span
-                                    className="hidden md:block text-2xl text-white -mt-2"
-                                    style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400, color: "#ffffff" }}
-                                >
-                                    :
-                                </span>
-                                <Item value={timeLeft.hours} label="Hours" />
-                                <span
-                                    className="hidden md:block text-2xl text-white -mt-2"
-                                    style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400, color: "#ffffff" }}
-                                >
-                                    :
-                                </span>
-                                <Item value={timeLeft.minutes} label="Minutes" />
-                                <span
-                                    className="hidden md:block text-2xl text-white -mt-2"
-                                    style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400, color: "#ffffff" }}
-                                >
-                                    :
-                                </span>
-                                <Item value={timeLeft.seconds} label="Seconds" />
-                            </div>
-                        ) : (
-                            <div className="text-center py-3 md:py-4">
-                                <p className="text-lg md:text-2xl font-semibold text-white">SỰ KIỆN ĐANG DIỄN RA</p>
-                            </div>
-                        )}
-                    </div>
+                    {/* 4) Countdown */}
+                    {/*<section*/}
+                    {/*    className="w-full flex justify-center"*/}
+                    {/*    style={{opacity: visibleSections.includes(3) ? 1 : 0, transition: "opacity 0.3s ease-in-out"}}*/}
+                    {/*>*/}
+                    {/*    <div*/}
+                    {/*        className="p-3 sm:p-4 md:p-4 w-full max-w-xl backdrop-blur"*/}
+                    {/*        style={{*/}
+                    {/*            background: "linear-gradient(180deg, rgba(255, 255, 255, 0) -56.25%, rgba(255, 255, 255, 0.3) 100%)",*/}
+                    {/*            border: "1px solid rgba(255, 255, 255, 0.3)",*/}
+                    {/*            borderRadius: "16px",*/}
+                    {/*        }}*/}
+                    {/*    >*/}
+                    {/*        {!isOver ? (*/}
+                    {/*            <div className="grid grid-cols-2 gap-2 sm:gap-3 md:flex md:items-center md:justify-center md:gap-6">*/}
+                    {/*                <Item value={timeLeft.days} label="Days" />*/}
+                    {/*                <span className="hidden md:block text-2xl text-white -mt-2">:</span>*/}
+                    {/*                <Item value={timeLeft.hours} label="Hours" />*/}
+                    {/*                <span className="hidden md:block text-2xl text-white -mt-2">:</span>*/}
+                    {/*                <Item value={timeLeft.minutes} label="Minutes" />*/}
+                    {/*                <span className="hidden md:block text-2xl text-white -mt-2">:</span>*/}
+                    {/*                <Item value={timeLeft.seconds} label="Seconds" />*/}
+                    {/*            </div>*/}
+                    {/*        ) : (*/}
+                    {/*            <div className="text-center py-3 md:py-4">*/}
+                    {/*                <p className="text-lg md:text-2xl font-semibold text-white">SỰ KIỆN ĐANG DIỄN RA</p>*/}
+                    {/*            </div>*/}
+                    {/*        )}*/}
+                    {/*    </div>*/}
+                    {/*</section>*/}
                 </main>
 
+                {/* 5) FOOTER: Hàng 1 = tổ chức + tiên phong | Hàng 2 = đồng hành */}
                 <footer
-                    className="px-3 pt-2 pb-3 md:px-6 md:py-6 -mt-2 md:mt-0"
-                    style={{
-                        opacity: visibleSections.includes(4) ? 1 : 0,
-                        transition: 'opacity 0.3s ease-in-out'
-                    }}
+                    className="px-3 pt-2 pb-5 md:px-6 md:py-8"
+                    style={{opacity: visibleSections.includes(4) ? 1 : 0, transition: "opacity 0.3s ease-in-out"}}
                 >
-                    <div className="space-y-4">
-                        {/* HÀNG 1: Đơn vị phối hợp tổ chức + Đơn vị tiên phong */}
-                        <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6 md:gap-12">
+                    <div className="max-w-6xl mx-auto space-y-6">
+                        {/* Hàng 1: Đơn vị phối hợp tổ chức + Đơn vị tiên phong */}
+                        <div
+                            className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6 md:gap-12">
                             {/* Đơn vị phối hợp tổ chức */}
                             <div className="flex flex-col items-center space-y-2">
-                                <span
-                                    className="uppercase text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90"
-                                    style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
-                                >
-                                    ĐƠN VỊ PHỐI HỢP TỔ CHỨC
-                                </span>
+                <span
+                    className="uppercase text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90"
+                    style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}
+                >
+                  ĐƠN VỊ PHỐI HỢP TỔ CHỨC
+                </span>
                                 <div className="flex gap-3 md:gap-6">
-                                    <img src="/images/img_14.png" alt="Người Quan Sát"
-                                         className="h-7 md:h-8 object-contain"/>
-                                    <img src="/images/img_15.png" alt="Cyber Trust"
-                                         className="h-7 md:h-8 object-contain"/>
+                                    <img src="/images/img_14.png" alt="Đối tác A" className="h-7 md:h-8 object-contain" />
+                                    <img src="/images/img_15.png" alt="Đối tác B" className="h-7 md:h-8 object-contain" />
                                 </div>
                             </div>
 
                             {/* Đơn vị tiên phong */}
                             <div className="flex flex-col items-center space-y-2">
-                                <span
-                                    className="uppercase text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90"
-                                    style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
-                                >
-                                    ĐƠN VỊ TIÊN PHONG
-                                </span>
+                <span
+                    className="uppercase text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90"
+                    style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}
+                >
+                  ĐƠN VỊ TIÊN PHONG
+                </span>
                                 <div className="flex gap-3 md:gap-6">
-                                    <img src="/images/img_16.png" alt="Logo 2"
-                                         className="w-16 md:w-20 h-8 md:h-9 object-contain p-1"/>
-                                    <img src="/images/img_57.png" alt="Logo 3"
-                                         className="w-16 md:w-20 h-8 md:h-9 object-contain p-1"/>
+                                    <img src="/images/img_16.png" alt="Tiên phong 1" className="w-16 md:w-20 h-8 md:h-9 object-contain p-1" />
+                                    <img src="/images/img_57.png" alt="Tiên phong 2" className="w-18 md:w-24 h-10 md:h-9 object-contain p-1 b-1" />
                                 </div>
+                            </div>
+                        </div>
+
+                        {/* Hàng 2: Đơn vị đồng hành */}
+                        <div className="flex flex-col items-center space-y-2">
+                            <p className="uppercase text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
+                                ĐƠN VỊ ĐỒNG HÀNH
+                            </p>
+                            <div className="flex flex-wrap justify-center items-center gap-2 md:gap-4">
+                                <img src="/images/img_74.png" alt="Đồng hành 1" className="h-6 md:h-7 object-contain" />
+                                <img src="/images/img_75.png" alt="Đồng hành 2" className="h-6 md:h-7 object-contain" />
+                                <img src="/images/img_78.png" alt="Đồng hành 3" className="max-h-8 md:max-h-9 object-contain p-1" />
+                                <img src="/images/img_77.png" alt="Đồng hành 4" className="max-h-8 md:max-h-9 object-contain p-1" />
+                                <img src="/images/img_81.png" alt="Đồng hành 5" className="max-h-8 md:max-h-9 object-contain p-1" />
                             </div>
                         </div>
                     </div>
