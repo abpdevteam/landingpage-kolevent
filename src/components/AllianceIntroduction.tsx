@@ -522,9 +522,9 @@ const AllianceIntroduction: React.FC = () => {
                                             listStyleType: 'none',
                                             paddingLeft: '0'
                                         }}>
-                                            <li>→ Xây dựng niềm tin, lan toả giá trị tích cực, bền vững...</li>
-                                            <li>→ Định hướng, dẫn dắt hành vi đáng tin cậy của KOL.</li>
-                                            <li>→ Cảnh báo, phê phán trào lưu, hiện tượng lệch lạc của KOL.</li>
+                                            <li>→ Xây dựng niềm tin, lan toả giá trị tích cực, bền vững</li>
+                                            <li>→ Định hướng, dẫn dắt hành vi đáng tin cậy của KOL</li>
+                                            <li>→ Cảnh báo, phê phán trào lưu, hiện tượng lệch lạc của KOL</li>
                                         </ul>
                                     </div>
 
@@ -566,9 +566,9 @@ const AllianceIntroduction: React.FC = () => {
                                             listStyleType: 'none',
                                             paddingLeft: '0'
                                         }}>
-                                            <li>→ Thông qua Chương trình "Tín nhiệm người có ảnh hưởng".</li>
-                                            <li>→ Bằng các hoạt động đào tạo, tập huấn đa dạng.</li>
-                                            <li>→ Bằng các hoạt động cộng đồng rộng khắp.</li>
+                                            <li>→ Thông qua Chương trình "Tín nhiệm người có ảnh hưởng</li>
+                                            <li>→ Bằng các hoạt động đào tạo, tập huấn đa dạng</li>
+                                            <li>→ Bằng các hoạt động cộng đồng rộng khắp</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -643,19 +643,19 @@ const AllianceIntroduction: React.FC = () => {
                                     number: "01",
                                     title: "Triển khai các dự án cộng đồng trên không gian mạng",
                                     desc:
-                                        "Tập trung vào chống tin giả, ngăn chặn lừa đảo trực tuyến, góp phần xây dựng một môi trường số an toàn – minh bạch – đáng tin cậy.",
+                                        "Tập trung vào chống tin giả, ngăn chặn lừa đảo trực tuyến, góp phần xây dựng một môi trường số an toàn – minh bạch – đáng tin cậy",
                                 },
                                 {
                                     number: "02",
                                     title: "Đào tạo & Nâng cao nhận thức và kỹ năng",
                                     desc:
-                                        "Tổ chức các chương trình đào tạo, huấn luyện và chia sẻ kiến thức nhằm nâng cao hiểu biết, kỹ năng và trách nhiệm xã hội của người nổi tiếng đối với cộng đồng.",
+                                        "Tổ chức các chương trình đào tạo, huấn luyện và chia sẻ kiến thức nhằm nâng cao hiểu biết, kỹ năng và trách nhiệm xã hội của người nổi tiếng đối với cộng đồng",
                                 },
                                 {
                                     number: "03",
                                     title: "Tổ chức các sự kiện và hoạt động thực tiễn",
                                     desc:
-                                        "Bao gồm tọa đàm, hội thảo, diễn đàn, đối thoại chính sách, các buổi gặp mặt và nhiều hoạt động ý nghĩa khác để biến cam kết thành hành động.",
+                                        "Bao gồm tọa đàm, hội thảo, diễn đàn, đối thoại chính sách, các buổi gặp mặt và nhiều hoạt động ý nghĩa khác để biến cam kết thành hành động",
                                 },
                             ].map((card, i) => (
                                 <div
@@ -776,7 +776,7 @@ const AllianceIntroduction: React.FC = () => {
                             fontFamily: "NeueHelveticaExt, sans-serif",
                             fontWeight: 400,
                         }}>
-                            Cung cấp khung đánh giá toàn diện và dễ dàng kiểm chứng; nhằm xác thực độ minh bạch - đạo đức - trách nhiệm của người có ảnh hưởng. Thiết lập chuẩn mực truyền thông phù hợp với quy định pháp luận, bảo vệ quyền lợi người tiêu dùng và tạo niềm tin cho các bên liên quan.
+                            Cung cấp khung đánh giá toàn diện và dễ dàng kiểm chứng; nhằm xác thực độ minh bạch - đạo đức - trách nhiệm của người có ảnh hưởng. Thiết lập chuẩn mực truyền thông phù hợp với quy định pháp luận, bảo vệ quyền lợi người tiêu dùng và tạo niềm tin cho các bên liên quan
                         </p>
                     </div>
 
