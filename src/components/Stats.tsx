@@ -60,12 +60,12 @@ const FadeEach: React.FC<{
 
 const CountdownWithServices: React.FC = () => {
     const [showVideo, setShowVideo] = useState(true);
-    const [revealed, setRevealed] = useState(false);
+    const [revealed, setRevealed] = useState(false); // reveal ảnh/backdrop
     const videoRef = useRef<HTMLVideoElement | null>(null);
 
     const isMobile = useIsMobile(768); // đồng bộ breakpoint md
 
-    // Nếu là mobile: bỏ overlay và hiện UI ngay
+    // Mobile: hiện UI ngay, không video
     useEffect(() => {
         if (isMobile) {
             setShowVideo(false);
@@ -73,12 +73,14 @@ const CountdownWithServices: React.FC = () => {
         }
     }, [isMobile]);
 
+    // Desktop: fallback auto-reveal nếu video không kết thúc sau 18s
     useEffect(() => {
-        if (!showVideo || revealed) return;
+        if (isMobile || !showVideo || revealed) return;
         const fallback = setTimeout(() => handleReveal(), 18000);
         return () => clearTimeout(fallback);
-    }, [showVideo, revealed]);
+    }, [isMobile, showVideo, revealed]);
 
+    // Sau khi revealed, cho video fade-out
     useEffect(() => {
         if (!revealed) return;
         const t = setTimeout(() => setShowVideo(false), FADE_MS);
@@ -89,13 +91,50 @@ const CountdownWithServices: React.FC = () => {
     const handleEnded = () => handleReveal();
     const handleError = () => handleReveal();
 
-    const leftTexts = [
-        "Ballroom Tầng 5",
-        "Khách sạn Intercontinental",
-        "E6, Khu đô thị mới Cầu Giấy, P. Yên Hòa, TP. Hà Nội",
-    ];
-    const kolLetters = ["K", "O", "L"];
 
+    // ===================== DESKTOP/LAPTOP =====================
+    // Video motion trước, sau đó chỉ hiển thị 1 ảnh nền (img_4.png)
+    if (!isMobile) {
+        return (
+            <div className="relative w-full min-h-[100dvh]">
+                {/* ẢNH nền sau khi video kết thúc */}
+                <div
+                    className="relative w-full min-h-[100dvh] transition-opacity bg-no-repeat"
+                    style={{
+                        opacity: revealed ? 1 : 0,
+                        transitionDuration: `${FADE_MS}ms`,
+                        backgroundImage: "url('/images/img_4.png')",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center top",
+                        backgroundRepeat: "no-repeat",
+                    }}
+                >
+                    <div className="relative z-10 min-h-[100dvh] flex flex-col"></div>
+                </div>
+
+                {/* Overlay video motion */}
+                {showVideo && (
+                    <div
+                        className="fixed inset-0 z-[100] bg-black transition-opacity"
+                        style={{ opacity: revealed ? 0 : 1, transitionDuration: `${FADE_MS}ms` }}
+                    >
+                        <video
+                            ref={videoRef}
+                            className="w-full h-full object-cover"
+                            src="/video/motion.mp4"
+                            autoPlay
+                            muted
+                            playsInline
+                            onEnded={handleEnded}
+                            onError={handleError}
+                        />
+                    </div>
+                )}
+            </div>
+        );
+    }
+
+    // ===================== MOBILE (giữ nguyên UI hiện có) =====================
     return (
         <div className="relative w-full min-h-[100dvh]" style={{ fontFamily: "'Inter', sans-serif" }}>
             {/* NỀN tổng thể fade-in */}
@@ -131,7 +170,7 @@ const CountdownWithServices: React.FC = () => {
                             >
                                 <div className="flex">
                                     <FadeEach show={revealed} baseDelay={220} step={120} className="flex">
-                                        {kolLetters.map((ch, i) => (
+                                        {["K", "O", "L"].map((ch, i) => (
                                             <span key={i} className="block text-[30vw] md:text-[22vw] leading-none">{ch}</span>
                                         ))}
                                     </FadeEach>
@@ -141,25 +180,14 @@ const CountdownWithServices: React.FC = () => {
 
                         {/* Hàng: (đã đổi thứ tự mobile) */}
                         <section className="w-full relative">
-                            <div
-                                className="
-                  md:ml-[85px]
-                  flex flex-col items-center gap-4 md:gap-8
-                  md:grid md:grid-cols-2 md:items-start
-                "
-                            >
+                            <div className="md:ml-[85px] flex flex-col items-center gap-4 md:gap-8 md:grid md:grid-cols-2 md:items-start">
                                 {/* 1) ẢNH SLOGAN — mobile FIRST, desktop RIGHT */}
                                 <Fade show={revealed} delay={520} y={10} className="order-1 md:order-2 w-full">
                                     <div className="text-white relative min-w-0 w-full flex justify-center md:justify-start">
                                         <img
                                             src="/images/img_86.png"
                                             alt="với kỷ nguyên vươn mình của dân tộc"
-                                            className="
-                        max-w-full h-auto
-                        w-[220px] sm:w-[300px]
-                        md:w-[500px]
-                        md:-ml-[180px] lg:-ml-[220px] xl:-ml-[180px]
-                      "
+                                            className="max-w-full h-auto w-[220px] sm:w-[300px] md:w-[500px] md:-ml-[180px] lg:-ml-[220px] xl:-ml-[180px]"
                                         />
                                     </div>
                                 </Fade>
@@ -167,17 +195,24 @@ const CountdownWithServices: React.FC = () => {
                                 {/* 2) ĐỊA ĐIỂM — mobile SECOND, desktop LEFT */}
                                 <div className="order-2 md:order-1 text-white z-10 w-full">
                                     <FadeEach show={revealed} baseDelay={380} step={120} className="w-full">
-                                        <div className="text-center md:text-left text-xl sm:text-2xl md:text-3xl font-bold leading-tight"
-                                             style={{ fontFamily: "NeueHelveticaExt, sans-serif" }}>
-                                            {leftTexts[0]}
-                                        </div>
-                                        <div className="text-center md:text-left text-xl sm:text-2xl md:text-3xl font-bold leading-tight"
-                                             style={{ fontFamily: "NeueHelveticaExt, sans-serif" }}>
-                                            {leftTexts[1]}
-                                        </div>
-                                        <div className="mt-1 text-center md:text-left text-sm sm:text-base md:text-lg text-white/90"
-                                             style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
-                                            {leftTexts[2]}
+                                        {[
+                                            "Hà Nội | 18.08.2025",
+                                            "Ballroom Tầng 5",
+                                            "Khách sạn Intercontinental",
+                                        ].map((t, idx) => (
+                                            <div
+                                                key={idx}
+                                                className="text-center md:text-left text-xl sm:text-2xl md:text-3xl font-bold leading-tight"
+                                                style={{ fontFamily: "NeueHelveticaExt, sans-serif" }}
+                                            >
+                                                {t}
+                                            </div>
+                                        ))}
+                                        <div
+                                            className="mt-1 text-center md:text-left text-sm sm:text-base md:text-lg text-white/90"
+                                            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}
+                                        >
+                                            E6, Khu đô thị mới Cầu Giấy, P. Yên Hòa, TP. Hà Nội
                                         </div>
                                     </FadeEach>
                                 </div>
@@ -192,8 +227,7 @@ const CountdownWithServices: React.FC = () => {
                                 {/* Đơn vị phối hợp tổ chức */}
                                 <div className="flex flex-col items-center space-y-2">
                                     <Fade show={revealed} delay={680}>
-                    <span className=" text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90"
-                          style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
+                    <span className=" text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
                       Đơn vị phối hợp tổ chức
                     </span>
                                     </Fade>
@@ -206,8 +240,7 @@ const CountdownWithServices: React.FC = () => {
                                 {/* Đơn vị tiên phong */}
                                 <div className="flex flex-col items-center space-y-2">
                                     <Fade show={revealed} delay={700}>
-                    <span className=" text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90"
-                          style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
+                    <span className=" text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
                       Đơn vị tiên phong
                     </span>
                                     </Fade>
@@ -221,25 +254,6 @@ const CountdownWithServices: React.FC = () => {
                     </footer>
                 </div>
             </div>
-
-            {/* Overlay video: CHỈ render nếu KHÔNG phải mobile */}
-            {showVideo && !isMobile && (
-                <div
-                    className="fixed inset-0 z-[100] bg-black transition-opacity"
-                    style={{ opacity: revealed ? 0 : 1, transitionDuration: `${FADE_MS}ms` }}
-                >
-                    <video
-                        ref={videoRef}
-                        className="w-full h-full object-cover"
-                        src="/video/motion.mp4"
-                        autoPlay
-                        muted
-                        playsInline
-                        onEnded={handleEnded}
-                        onError={handleError}
-                    />
-                </div>
-            )}
         </div>
     );
 };
