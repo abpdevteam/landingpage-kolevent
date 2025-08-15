@@ -164,7 +164,7 @@ const CountdownWithServices: React.FC = () => {
                                 {/* Đơn vị tiên phong */}
                                 <div className="flex flex-col items-center space-y-2">
                                     <Fade show={revealed} delay={700}>
-                    <span className="uppercase text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
+                    <span className=" text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
                       Đơn vị tiên phong
                     </span>
                                     </Fade>
