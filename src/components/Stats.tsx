@@ -2,6 +2,24 @@ import React, { useEffect, useRef, useState } from "react";
 
 const FADE_MS = 700;
 
+/** Hook nhận biết mobile theo breakpoint md (768px) */
+function useIsMobile(breakpoint = 768) {
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+        const mql = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
+        const update = () => setIsMobile(mql.matches);
+        update();
+        if (mql.addEventListener) mql.addEventListener("change", update);
+        else mql.addListener(update);
+        return () => {
+            if (mql.removeEventListener) mql.removeEventListener("change", update);
+            else mql.removeListener(update);
+        };
+    }, [breakpoint]);
+    return isMobile;
+}
+
 // ---- Hiệu ứng cho 1 item ----
 const Fade: React.FC<{
     show: boolean; delay?: number; duration?: number; y?: number; className?: string;
@@ -45,6 +63,16 @@ const CountdownWithServices: React.FC = () => {
     const [revealed, setRevealed] = useState(false);
     const videoRef = useRef<HTMLVideoElement | null>(null);
 
+    const isMobile = useIsMobile(768); // đồng bộ breakpoint md
+
+    // Nếu là mobile: bỏ overlay và hiện UI ngay
+    useEffect(() => {
+        if (isMobile) {
+            setShowVideo(false);
+            setRevealed(true);
+        }
+    }, [isMobile]);
+
     useEffect(() => {
         if (!showVideo || revealed) return;
         const fallback = setTimeout(() => handleReveal(), 18000);
@@ -66,7 +94,7 @@ const CountdownWithServices: React.FC = () => {
         "Khách sạn Intercontinental",
         "E6, Khu đô thị mới Cầu Giấy, P. Yên Hòa, TP. Hà Nội",
     ];
-    const kolLetters = ["K","O","L"];
+    const kolLetters = ["K", "O", "L"];
 
     return (
         <div className="relative w-full min-h-[100dvh]" style={{ fontFamily: "'Inter', sans-serif" }}>
@@ -111,7 +139,7 @@ const CountdownWithServices: React.FC = () => {
                             </div>
                         </section>
 
-                        {/* Hàng: (đÃ đổi thứ tự mobile)  */}
+                        {/* Hàng: (đã đổi thứ tự mobile) */}
                         <section className="w-full relative">
                             <div
                                 className="
@@ -194,8 +222,8 @@ const CountdownWithServices: React.FC = () => {
                 </div>
             </div>
 
-            {/* Overlay video */}
-            {showVideo && (
+            {/* Overlay video: CHỈ render nếu KHÔNG phải mobile */}
+            {showVideo && !isMobile && (
                 <div
                     className="fixed inset-0 z-[100] bg-black transition-opacity"
                     style={{ opacity: revealed ? 0 : 1, transitionDuration: `${FADE_MS}ms` }}
