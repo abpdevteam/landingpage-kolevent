@@ -60,25 +60,27 @@ const KOL: React.FC = () => {
                 <div className="text-center mb-7">
                     <h2
                         className="text-2xl md:text-3xl font-light text-white/70 tracking-wider"
-                        style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700 }}
+                        style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700}}
                     >
                         KOLS THAM DỰ
                     </h2>
                 </div>
 
                 {/* Hàng 1: chạy từ trái qua phải */}
-                <div className="mb-10 w-full overflow-hidden relative">
-                    <div className="flex animate-marquee-right whitespace-nowrap">
+                <div className="mb-10 w-full relative overflow-hidden">  {/* giữ để mask mép trái/phải */}
+                    <div className="flex animate-marquee-right whitespace-nowrap py-3 md:py-4"> {/* thêm đệm dọc */}
                         {trackTop.map((p, i) => (
                             <div
                                 key={`group1-${p.id}-${i}`}
-                                className="inline-flex flex-col mx-4 w-[300px] flex-shrink-0"
+                                className="group relative inline-flex flex-col mx-4 w-[300px] flex-shrink-0
+                   transform-gpu will-change-transform transition-transform duration-300
+                   hover:scale-105 hover:-translate-y-1 hover:z-20"
                             >
                                 <img
                                     src={p.avatar}
                                     alt={p.name}
                                     loading="lazy"
-                                    className="w-full h-[300px] rounded-[16px] object-cover"
+                                    className="w-full h-[300px] rounded-[16px] object-cover pointer-events-none"
                                 />
                             </div>
                         ))}
@@ -86,23 +88,26 @@ const KOL: React.FC = () => {
                 </div>
 
                 {/* Hàng 2: chạy từ phải qua trái */}
-                <div className="w-full overflow-hidden relative">
-                    <div className="flex animate-marquee-left whitespace-nowrap">
+                <div className="w-full relative overflow-hidden">
+                    <div className="flex animate-marquee-left whitespace-nowrap py-3 md:py-4">
                         {trackBottom.map((p, i) => (
                             <div
                                 key={`group2-${p.id}-${i}`}
-                                className="inline-flex flex-col mx-4 w-[300px] flex-shrink-0"
+                                className="group relative inline-flex flex-col mx-4 w-[300px] flex-shrink-0
+                   transform-gpu will-change-transform transition-transform duration-300
+                   hover:scale-105 hover:-translate-y-1 hover:z-20"
                             >
                                 <img
                                     src={p.avatar}
                                     alt={p.name}
                                     loading="lazy"
-                                    className="w-full h-[300px] rounded-[16px] object-cover"
+                                    className="w-full h-[300px] rounded-[16px] object-cover pointer-events-none"
                                 />
                             </div>
                         ))}
                     </div>
                 </div>
+
             </div>
         </div>
     );

@@ -97,165 +97,209 @@ const Event: React.FC = () => {
                             SỰ GÓP MẶT CỦA
                         </h2>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                            {/* Card 1 - có ảnh */}
-                            <div 
-                                className={`rounded-2xl p-6 md:p-10 ${getAnimationClasses(statsAnimation.isVisible, 'scaleIn', 0)}`} 
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 ">
+                            <div
+                                className="w-full rounded-2xl overflow-hidden transform transition-transform duration-300 hover:scale-105 will-change-transform"
                                 style={cardGradient}
                             >
-                                <div className="space-y-5">
-                                    <div className="flex items-end gap-3">
-                                        <CountUp
-                                            end={300}
-                                            suffix="+"
-                                            duration={2500}
-                                            delay={500}
-                                            className="text-5xl md:text-6xl font-extrabold text-white leading-none"
-                                            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
-                                        />
-                                        <span
-                                            className="text-xl md:text-2xl font-semibold text-white"
-                                            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
-                                        >
+                                <div
+                                    className={`rounded-2xl p-6 md:p-10 ${getAnimationClasses(statsAnimation.isVisible, 'scaleIn', 0)}`}
+                                >
+                                    <div className="space-y-5">
+                                        <div className="flex items-end gap-3">
+                                            <CountUp
+                                                end={300}
+                                                suffix="+"
+                                                duration={2500}
+                                                delay={500}
+                                                className="text-5xl md:text-6xl font-extrabold text-white leading-none"
+                                                style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500}}
+                                            />
+                                            <span
+                                                className="text-xl md:text-2xl font-semibold text-white"
+                                                style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500}}
+                                            >
                                             KOL
                                         </span>
+                                        </div>
+                                        <p className="text-sm md:text-base text-white  leading-relaxed"
+                                           style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}>
+                                            Tiêu biểu, đại diện trên các lĩnh vực, không phân biệt dân tộc, tôn giáo từ
+                                            mọi
+                                            miền Tổ quốc
+                                        </p>
                                     </div>
-                                    <p className="text-sm md:text-base text-white  leading-relaxed" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
-                                        Tiêu biểu, đại diện trên các lĩnh vực, không phân biệt dân tộc, tôn giáo từ mọi miền Tổ quốc
-                                    </p>
                                 </div>
                             </div>
 
-                            {/* Card 2 - chỉ gradient */}
-                            <div 
-                                className={`rounded-2xl p-6 md:p-10 ${getAnimationClasses(statsAnimation.isVisible, 'scaleIn', 1)}`} 
-                                style={cardGradient}
-                            >
-                                <div className="space-y-5">
-                                    <div className="flex items-end gap-3">
-                                        <CountUp
-                                            end={50}
-                                            suffix="+"
-                                            duration={2000}
-                                            delay={700}
-                                            className="text-5xl md:text-6xl font-extrabold text-white leading-none"
-                                            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700 }}
-                                        />
-                                        <div
-                                            className="text-xl md:text-2xl font-semibold text-white leading-tight"
-                                            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
-                                        >
-                                            <div>DOANH</div>
-                                            <div>NGHIỆP</div>
+                                <div
+                                    className="w-full rounded-2xl overflow-hidden transform transition-transform duration-300 hover:scale-105 will-change-transform"
+                                    style={cardGradient}
+                                >
+                                    {/* CARD: giữ padding + animation như cũ */}
+                                    <div
+                                        className={`p-6 md:p-10 ${getAnimationClasses(statsAnimation.isVisible, 'scaleIn', 1)}`}
+                                    >
+                                        <div className="space-y-5">
+                                            <div className="flex items-end gap-3">
+                                                <CountUp
+                                                    end={50}
+                                                    suffix="+"
+                                                    duration={2000}
+                                                    delay={700}
+                                                    className="text-5xl md:text-6xl font-extrabold text-white leading-none"
+                                                    style={{
+                                                        fontFamily: "NeueHelveticaExt, sans-serif",
+                                                        fontWeight: 700
+                                                    }}
+                                                />
+                                                <div
+                                                    className="text-xl md:text-2xl font-semibold text-white leading-tight"
+                                                    style={{
+                                                        fontFamily: "NeueHelveticaExt, sans-serif",
+                                                        fontWeight: 500
+                                                    }}
+                                                >
+                                                    <div>DOANH</div>
+                                                    <div>NGHIỆP</div>
+                                                </div>
+                                            </div>
+                                            <p
+                                                className="text-sm md:text-base text-white/90"
+                                                style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
+                                            >
+                                                Truyền thông, đào tạo, quản lý KOL,...
+                                            </p>
                                         </div>
                                     </div>
-                                    <p className="text-sm md:text-base text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>Truyền thông, đào tạo, quản lý KOL,...</p>
                                 </div>
-                            </div>
 
-                            {/* Card 3 - có ảnh */}
-                            <div 
-                                className={`rounded-2xl p-6 md:p-10 md:flex ${getAnimationClasses(statsAnimation.isVisible, 'scaleIn', 2)}`}
-                                style={cardGradient}
-                            >
-                                <div className="space-y-5">
-                                    <div className="flex items-end gap-3">
-                                        <CountUp
-                                            end={50}
-                                            suffix="+"
-                                            duration={2200}
-                                            delay={900}
-                                            className="text-5xl md:text-6xl font-extrabold text-white leading-none"
-                                            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
-                                        />
-                                        <div
-                                            className="text-xl md:text-2xl font-semibold text-white leading-tight"
-                                            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
-                                        >
-                                            <div>CHUYÊN</div>
-                                            <div>GIA</div>
+
+                                <div
+                                    className="w-full rounded-2xl overflow-hidden transform transition-transform duration-300 hover:scale-105 will-change-transform"
+                                    style={cardGradient}
+                                >
+                                    <div
+                                        className={`rounded-2xl p-6 md:p-10 md:flex ${getAnimationClasses(statsAnimation.isVisible, 'scaleIn', 2)}`}
+                                    >
+                                        <div className="space-y-5">
+                                            <div className="flex items-end gap-3">
+                                                <CountUp
+                                                    end={50}
+                                                    suffix="+"
+                                                    duration={2200}
+                                                    delay={900}
+                                                    className="text-5xl md:text-6xl font-extrabold text-white leading-none"
+                                                    style={{
+                                                        fontFamily: "NeueHelveticaExt, sans-serif",
+                                                        fontWeight: 500
+                                                    }}
+                                                />
+                                                <div
+                                                    className="text-xl md:text-2xl font-semibold text-white leading-tight"
+                                                    style={{
+                                                        fontFamily: "NeueHelveticaExt, sans-serif",
+                                                        fontWeight: 500
+                                                    }}
+                                                >
+                                                    <div>CHUYÊN</div>
+                                                    <div>GIA</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </section>
 
                     {/* ==== Đối tác ==== */}
-                    <section 
+                    <section
                         ref={partnersAnimation.elementRef}
                         className={`mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 ${getAnimationClasses(partnersAnimation.isVisible, 'fadeInUp', 2)}`}
                     >
-                        {/* Card 4 - chỉ gradient */}
-                        <div 
-                            className={`rounded-2xl p-6 md:p-8 ${getAnimationClasses(partnersAnimation.isVisible, 'fadeInLeft', 0)}`} 
+                        <div
+                            className="w-full rounded-2xl overflow-hidden transform transition-transform duration-300 hover:scale-105 will-change-transform"
                             style={cardGradient}
                         >
-                            <div className="space-y-4">
-                                <h3
-                                    className="text-center text-xl md:text-2xl font-bold text-white leading-tight"
-                                    style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500 }}
-                                >
-                                    CƠ QUAN, TỔ CHỨC NHÀ NƯỚC
-                                </h3>
-                                <p className="text-sm md:text-base text-white leading-relaxed" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
-                                    UBTƯ MTTQ Việt Nam, TW Đoàn TNCS HCM, Hội liên hiệp TN VN. Các bộ Công an, Công thương, Tài chính, Khoa học - Công nghệ, Văn hóa, Thể thao và Du lịch
-                                </p>
+                            <div
+                                className={`rounded-2xl p-6 md:p-8 ${getAnimationClasses(partnersAnimation.isVisible, 'fadeInLeft', 0)}`}
+                            >
+                                <div className="space-y-4">
+                                    <h3
+                                        className="text-center text-xl md:text-2xl font-bold text-white leading-tight"
+                                        style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500}}
+                                    >
+                                        CƠ QUAN, TỔ CHỨC NHÀ NƯỚC
+                                    </h3>
+                                    <p className="text-sm md:text-base text-white leading-relaxed"
+                                       style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}>
+                                        UBTW MTTQ Việt Nam, TW Đoàn TNCS HCM. Các bộ Công an, Công
+                                        thương, Tài chính, Khoa học - Công nghệ, Văn hóa, Thể thao và Du lịch
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
                         {/* Card 5 - có ảnh */}
-                        <div 
-                            className={`rounded-2xl p-6 md:p-8 ${getAnimationClasses(partnersAnimation.isVisible, 'scaleIn', 1)}`} 
+                        <div
+                            className="w-full rounded-2xl overflow-hidden transform transition-transform duration-300 hover:scale-105 will-change-transform"
                             style={cardGradient}
                         >
-                            <div>
-                                <h3
-                                    className="text-xl text-center md:text-2xl font-bold text-white leading-tight"
-                                    style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500}}
-                                >
-                                    CÁC NỀN TẢNG MẠNG XÃ HỘI
-                                </h3>
-                                <div className="flex items-center justify-center flex-wrap">
-                                    {[
-                                        {name: "Zalo", img: "/images/img_36.png"},
-                                        {name: "Meta", img: "/images/img_37.png"},
-                                        {name: "TikTok", img: "/images/img_39.png"},
-                                    ].map((platform, index) => (
-                                        <div key={index} className="flex items-center justify-center px-3 py-2">
-                                            <img
-                                                src={platform.img}
-                                                alt={platform.name}
-                                                className={
-                                                    platform.name === "Meta" || platform.name === "TikTok"
-                                                        ? "w-20 h-21 object-scale-down" // to hơn
-                                                        : "w-16 h-16 object-scale-down" // size cũ
-                                                }
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
+                            <div
+                                className={`rounded-2xl p-6 md:p-8 ${getAnimationClasses(partnersAnimation.isVisible, 'scaleIn', 1)}`}
+                            >
+                                <div>
+                                    <h3
+                                        className="text-xl text-center md:text-2xl font-bold text-white leading-tight"
+                                        style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500}}
+                                    >
+                                        CÁC NỀN TẢNG MẠNG XÃ HỘI
+                                    </h3>
+                                    <div className="flex items-center justify-center flex-wrap">
+                                        {[
+                                            {name: "Zalo", img: "/images/img_36.png"},
+                                            {name: "Meta", img: "/images/img_37.png"},
+                                            {name: "TikTok", img: "/images/img_39.png"},
+                                        ].map((platform, index) => (
+                                            <div key={index} className="flex items-center justify-center px-3 py-2">
+                                                <img
+                                                    src={platform.img}
+                                                    alt={platform.name}
+                                                    className={
+                                                        platform.name === "Meta" || platform.name === "TikTok"
+                                                            ? "w-20 h-21 object-scale-down" // to hơn
+                                                            : "w-16 h-16 object-scale-down" // size cũ
+                                                    }
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
 
+                                </div>
                             </div>
                         </div>
 
                         {/* Card 6 - chỉ gradient */}
-                        <div 
-                            className={`rounded-2xl p-6 md:p-8 flex justify-center text-center ${getAnimationClasses(partnersAnimation.isVisible, 'fadeInRight', 2)}`}
+                        <div
+                            className="w-full rounded-2xl overflow-hidden transform transition-transform duration-300 hover:scale-105 will-change-transform"
                             style={cardGradient}
                         >
-                            <h3
-                                className="text-xl md:text-2xl font-bold text-white leading-tight"
-                                style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500}}
+                            <div
+                                className={`rounded-2xl p-6 md:p-8 flex justify-center text-center ${getAnimationClasses(partnersAnimation.isVisible, 'fadeInRight', 2)}`}
                             >
-                                THÀNH VIÊN HIỆP HỘI AN NINH MẠNG QUỐC GIA
-                            </h3>
+                                <h3
+                                    className="text-xl md:text-2xl font-bold text-white leading-tight"
+                                    style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500}}
+                                >
+                                    THÀNH VIÊN HIỆP HỘI AN NINH MẠNG QUỐC GIA
+                                </h3>
+                            </div>
                         </div>
                     </section>
                 </div>
             </div>
         </div>
-    );
+);
 };
 
 export default Event;
