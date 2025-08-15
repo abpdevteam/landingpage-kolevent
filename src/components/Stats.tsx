@@ -66,8 +66,6 @@ const CountdownWithServices: React.FC = () => {
         "Khách sạn Intercontinental",
         "E6, Khu đô thị mới Cầu Giấy, P. Yên Hòa, TP. Hà Nội",
     ];
-    const partners = ["/images/img_74.png","/images/img_75.png","/images/img_78.png","/images/img_77.png","/images/img_81.png"];
-
     // tách chữ K O L để fade từng ký tự
     const kolLetters = ["K","O","L"];
 
@@ -176,20 +174,6 @@ const CountdownWithServices: React.FC = () => {
                                     </FadeEach>
                                 </div>
                             </FadeEach>
-
-                            {/* Đơn vị đồng hành: fade từng logo */}
-                            <div className="flex flex-col items-center space-y-2">
-                                <Fade show={revealed} delay={780}>
-                                    <p className="uppercase text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
-                                        ĐƠN VỊ ĐỒNG HÀNH
-                                    </p>
-                                </Fade>
-                                <FadeEach show={revealed} baseDelay={820} step={90} className="flex flex-wrap justify-center items-center gap-2 md:gap-4">
-                                    {partners.map((src, i) => (
-                                        <img key={i} src={src} alt={`Đồng hành ${i+1}`} className="h-6 md:h-7 object-contain max-h-8 md:max-h-9 p-1" />
-                                    ))}
-                                </FadeEach>
-                            </div>
                         </div>
                     </footer>
                 </div>
