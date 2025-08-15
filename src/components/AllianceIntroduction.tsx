@@ -344,7 +344,10 @@ const AllianceIntroduction: React.FC = () => {
                                         <div className="block md:hidden px-4">
                                             <div className="flex flex-col gap-6">
                                                 {topics.map((topic, index) => (
-                                                    <div key={topic.id} className="flex flex-col w-full items-center">
+                                                    <div
+                                                        key={topic.id}
+                                                        className="flex flex-col w-full items-center transform transition-transform duration-300 hover:scale-105"
+                                                    >
                                                         {/* Card trên */}
                                                         <div
                                                             className="p-6 mb-4 w-full flex flex-col items-center text-center"
@@ -382,11 +385,15 @@ const AllianceIntroduction: React.FC = () => {
                                                             style={{...cardStyle, ...textBlue}}
                                                         >
                                                             {bulletsByIndex[index]?.map((line, i) => (
-                                                                <span key={i} className="block mb-2 last:mb-0" style={{
-                                                                    fontFamily: "NeueHelveticaExt, sans-serif",
-                                                                    fontWeight: 400,
-                                                                    color: "#0011BF",
-                                                                }}>
+                                                                <span
+                                                                    key={i}
+                                                                    className="block mb-2 last:mb-0"
+                                                                    style={{
+                                                                        fontFamily: "NeueHelveticaExt, sans-serif",
+                                                                        fontWeight: 400,
+                                                                        color: "#0011BF",
+                                                                    }}
+                                                                >
               → {line}
             </span>
                                                             ))}

@@ -92,6 +92,7 @@ const CountdownWithServices: React.FC = () => {
     const handleError = () => handleReveal();
 
 
+
     // ===================== DESKTOP/LAPTOP =====================
     // Video motion trước, sau đó chỉ hiển thị 1 ảnh nền (img_4.png)
     if (!isMobile) {
@@ -105,7 +106,6 @@ const CountdownWithServices: React.FC = () => {
                         transitionDuration: `${FADE_MS}ms`,
                         backgroundImage: "url('/images/img_4.png')",
                         backgroundSize: "cover",
-                        backgroundPosition: "center top",
                         backgroundRepeat: "no-repeat",
                     }}
                 >
