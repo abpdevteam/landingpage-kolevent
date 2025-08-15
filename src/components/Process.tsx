@@ -3,55 +3,90 @@ import React, { useEffect, useRef, useState } from "react";
 const Process: React.FC = () => {
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const [loadedSrc, setLoadedSrc] = useState(false);
+    const [userInteracted, setUserInteracted] = useState(false);
 
+    // 1) Pause khi tab ẩn
     useEffect(() => {
-        const video = videoRef.current;
-        if (!video) return;
-
-        const onVis = () => {
-            if (document.hidden) video.pause();
-        };
+        const v = videoRef.current;
+        if (!v) return;
+        const onVis = () => { if (document.hidden) v.pause(); };
         document.addEventListener("visibilitychange", onVis);
+        return () => document.removeEventListener("visibilitychange", onVis);
+    }, []);
+
+    // 2) Autoplay (muted) khi vào viewport
+    useEffect(() => {
+        const v = videoRef.current;
+        if (!v) return;
 
         const io = new IntersectionObserver(
-            async (entries) => {
-                const entry = entries[0];
-                if (!video) return;
+            async ([entry]) => {
+                if (!v) return;
 
                 if (entry.isIntersecting) {
                     if (!loadedSrc) {
-                        video.src = "/video/tl.mp4";      // luôn 1 file tl.mp4
+                        v.src = "/video/tl.mp4"; // luôn 1 file tl.mp4
                         setLoadedSrc(true);
                     }
-                    // Autoplay phải muted
-                    video.muted = true;
-                    try { await video.play(); } catch {}
+                    // Chỉ ép muted trước khi có tương tác
+                    if (!userInteracted) {
+                        v.muted = true;
+                        v.setAttribute("muted", ""); // fix iOS: đảm bảo muted attr tồn tại
+                    }
+                    try { await v.play(); } catch {}
                 } else {
-                    video.pause();
+                    v.pause();
                 }
             },
             { threshold: 0.5 }
         );
 
-        io.observe(video);
-        return () => {
-            io.disconnect();
-            document.removeEventListener("visibilitychange", onVis);
+        io.observe(v);
+        return () => io.disconnect();
+    }, [loadedSrc, userInteracted]);
+
+    // 3) Ghi nhận tương tác đầu tiên -> bỏ mute + play trong CHÍNH handler
+    useEffect(() => {
+        const onFirstInteract = () => {
+            const v = videoRef.current;
+            if (!v) return;
+
+            setUserInteracted(true);
+            // Bỏ mute (cả property lẫn attribute) + play lại trong handler
+            v.muted = false;
+            v.removeAttribute("muted"); // iOS Safari đôi khi cần bỏ attr để mở tiếng
+            v.play().catch(() => {});   // gọi trong handler sẽ không bị chặn
+
+            // Gỡ listener sau lần đầu
+            window.removeEventListener("pointerdown", onFirstInteract);
+            window.removeEventListener("touchend", onFirstInteract);
+            window.removeEventListener("keydown", onFirstInteract);
         };
-    }, [loadedSrc]);
+
+        // Dùng nhiều loại event để chắc chắn trên mobile
+        window.addEventListener("pointerdown", onFirstInteract, { once: true });
+        window.addEventListener("touchend", onFirstInteract, { once: true });
+        window.addEventListener("keydown", onFirstInteract, { once: true });
+
+        return () => {
+            window.removeEventListener("pointerdown", onFirstInteract);
+            window.removeEventListener("touchend", onFirstInteract);
+            window.removeEventListener("keydown", onFirstInteract);
+        };
+    }, []);
 
     return (
         <section className="w-full min-h-screen flex flex-col items-center justify-center p-0">
             <video
                 ref={videoRef}
-                // BẬT thanh điều khiển mặc định giống YouTube
+                // Cho phép UI điều khiển (người dùng có thể bấm loa)
                 controls
-                // Cho phép PiP, AirPlay/Remote playback (đừng tắt)
-                // controlsList="nodownload" // (tùy chọn) nếu muốn ẩn nút tải
                 playsInline
                 loop
                 preload="metadata"
                 poster="/images/img.png"
+                // Khởi tạo muted để được autoplay; sẽ bỏ ở handler tương tác
+                muted
                 className="w-full max-w-none aspect-video shadow-lg"
             >
                 Trình duyệt của bạn không hỗ trợ video HTML5.

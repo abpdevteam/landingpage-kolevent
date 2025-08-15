@@ -958,6 +958,8 @@ const AllianceIntroduction: React.FC = () => {
                                  className="max-h-10 md:max-h-11 object-contain p-1"/>
                             <img src="/images/img_77.png" alt="Logo 3"
                                  className="max-h-10 md:max-h-11 object-contain p-1"/>
+                            <img src="/images/Logo%20Top%20Top%20white.png" alt="Logo 3"
+                                 className="max-h-10 md:max-h-14 object-contain p-1"/>
                         </div>
 
                     </div>
