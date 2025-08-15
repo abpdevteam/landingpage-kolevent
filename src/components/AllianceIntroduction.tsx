@@ -52,7 +52,7 @@ const pillars: Pillar[] = [
 ];
 function Item({ children }: { children: React.ReactNode }) {
     return (
-        <div className="flex items-start gap-2">
+        <div className="flex items-start gap-1">
             <svg className="mt-1 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none">
                 <rect
                     x="2"
@@ -351,16 +351,6 @@ const AllianceIntroduction: React.FC = () => {
                                         >
                                             LIÊN MINH NIỀM TIN SỐ
                                         </h1>
-                                        <p
-                                            className="text-xl md:text-3xl uppercase tracking-wide"
-                                            style={{
-                                                fontFamily: "NeueHelveticaExt, sans-serif",
-                                                fontWeight: 400,
-                                                color: "#ffffff"
-                                            }}
-                                        >
-                                            GIỚI THIỆU VỀ LIÊN MINH
-                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -390,28 +380,8 @@ const AllianceIntroduction: React.FC = () => {
                                                     color: "#0011BF"
                                                 }}
                                             >
-                                                LÝ DO THÀNH LẬP
+                                                SỨ MỆNH
                                             </h2>
-                                            <div className="flex items-center justify-center">
-                                                <svg className="w-5 h-5 md:w-6 md:h-6" fill="#0011BF"
-                                                     viewBox="0 0 20 20" aria-hidden="true">
-                                                    <path
-                                                        fillRule="evenodd"
-                                                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                                        clipRule="evenodd"
-                                                    />
-                                                </svg>
-                                                <h3
-                                                    className="ml-2 text-[28px] font-light"
-                                                    style={{
-                                                        fontFamily: "NeueHelveticaExt, sans-serif",
-                                                        fontWeight: 700,
-                                                        color: "#0011BF"
-                                                    }}
-                                                >
-                                                    LIÊN MINH
-                                                </h3>
-                                            </div>
                                         </div>
                                     </div>
 
@@ -424,27 +394,34 @@ const AllianceIntroduction: React.FC = () => {
                                             borderRadius: "16px"
                                         }}
                                     >
-                                        <div className="leading-relaxed text-[#0011BF]">
-                                            <p className="mb-4 text-lg md:text-[16px]" style={{
-                                                fontFamily: "NeueHelveticaExt, sans-serif",
-                                                fontWeight: 400,
-                                                color: "#0011BF"
-                                            }}>
-                                                Liên minh được thành lập để tập hợp, kết nối và phát huy vai trò xây
-                                                dựng,
-                                                dẫn dắt niềm tin của KOLs trên không gian mạng.
-                                            </p>
-                                            <p className="text-lg md:text-[16px]" style={{
-                                                fontFamily: "NeueHelveticaExt, sans-serif",
-                                                fontWeight: 400,
-                                                color: "#0011BF"
-                                            }}>
-                                                Hoạt động của Liên minh hướng đến lan tỏa giá trị tích cực, định hướng
-                                                hành
-                                                vi đáng tin cậy và nâng cao trách nhiệm của KOLs với cộng đồng trong kỷ
-                                                nguyên số.
-                                            </p>
+                                        <div className="leading-relaxed text-[#0011BF] space-y-4">
+                                            <div className="flex items-start gap-2">
+                                                <span className="text-[#0011BF] text-lg font-bold">→</span>
+                                                <p className="text-lg md:text-[16px]" style={{
+                                                    fontFamily: "NeueHelveticaExt, sans-serif",
+                                                    fontWeight: 400
+                                                }}>
+                                                    Liên minh được thành lập để tập hợp, kết nối và phát huy vai trò xây
+                                                    dựng,
+                                                    dẫn dắt niềm tin của KOLs trên không gian mạng
+                                                </p>
+                                            </div>
+
+                                            <div className="flex items-start gap-2">
+                                                <span className="text-[#0011BF] text-lg font-bold">→</span>
+                                                <p className="text-lg md:text-[16px]" style={{
+                                                    fontFamily: "NeueHelveticaExt, sans-serif",
+                                                    fontWeight: 400
+                                                }}>
+                                                    Hoạt động của Liên minh hướng đến lan tỏa giá trị tích cực, định
+                                                    hướng hành
+                                                    vi đáng tin cậy và nâng cao trách nhiệm của KOLs với cộng đồng trong
+                                                    kỷ
+                                                    nguyên số
+                                                </p>
+                                            </div>
                                         </div>
+
                                     </div>
                                 </div>
 
@@ -670,7 +647,7 @@ const AllianceIntroduction: React.FC = () => {
                                 },
                                 {
                                     number: "02",
-                                    title: "Đào tạo & Nâng cao Nhận thức",
+                                    title: "Đào tạo & Nâng cao nhận thức và kỹ năng",
                                     desc:
                                         "Tổ chức các chương trình đào tạo, huấn luyện và chia sẻ kiến thức nhằm nâng cao hiểu biết, kỹ năng và trách nhiệm xã hội của người nổi tiếng đối với cộng đồng.",
                                 },
@@ -777,7 +754,7 @@ const AllianceIntroduction: React.FC = () => {
                                 fontWeight: 700,
                             }}
                         >
-                            CHƯƠNG TRÌNH TÍN NHIỆM
+                            CHƯƠNG TRÌNH
                         </h1>
                         <h2
                             className="text-3xl md:text-4xl font-bold tracking-wide"
@@ -786,7 +763,7 @@ const AllianceIntroduction: React.FC = () => {
                                 fontWeight: 400,
                             }}
                         >
-                            NGƯỜI CÓ ẢNH HƯỞNG
+                            TÍN NHIỆM NGƯỜI CÓ ẢNH HƯỞNG
                         </h2>
                     </div>
 
@@ -799,17 +776,7 @@ const AllianceIntroduction: React.FC = () => {
                             fontFamily: "NeueHelveticaExt, sans-serif",
                             fontWeight: 400,
                         }}>
-                            Chương trình cung cấp khung đánh giá toàn diện, và dễ dàng kiểm chứng; nhằm xác thực
-                            độ minh bạch - đạo đức - trách nhiệm xã hội của người có ảnh hưởng.
-                        </p>
-                        <p className="text-[16px] md:text-[16px] leading-relaxed max-w-4xl mx-auto" style={{
-                            fontFamily: "NeueHelveticaExt, sans-serif",
-                            fontWeight: 400,
-
-                        }}>
-                            Chứng nhận “Tín nhiệm người có ảnh hưởng” thiết lập chuẩn mực truyền thông phù hợp
-                            với quy định pháp luật, bảo vệ quyền lợi người tiêu dùng và tạo niềm tin cho các bên liên
-                            quan.
+                            Cung cấp khung đánh giá toàn diện và dễ dàng kiểm chứng; nhằm xác thực độ minh bạch - đạo đức - trách nhiệm của người có ảnh hưởng. Thiết lập chuẩn mực truyền thông phù hợp với quy định pháp luận, bảo vệ quyền lợi người tiêu dùng và tạo niềm tin cho các bên liên quan.
                         </p>
                     </div>
 
@@ -840,7 +807,7 @@ const AllianceIntroduction: React.FC = () => {
 
                         {/* Luôn cùng 1 hàng */}
                         <div
-                            className="flex flex-row gap-8 items-start md:text-[16px]"
+                            className="flex flex-row gap-8 items-start md:text-[14px]"
                             style={{fontFamily: "NeueHelveticaExt, sans-serif", color: "#0011BF", fontWeight: 400}}
                         >
                             <Item>Đánh giá mức độ tín nhiệm trong hoạt động truyền thông, quảng bá</Item>
