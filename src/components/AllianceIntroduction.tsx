@@ -961,9 +961,10 @@ const AllianceIntroduction: React.FC = () => {
                                 )}`}
                             >
                                 {/* Nút + line trên đầu mỗi card: ẩn mobile, hiện md+ */}
-                                <div className="pointer-events-none absolute left-1/2 top-[-18px] z-10 -translate-x-1/2 hidden md:block">
-                                    <div className="h-4 w-[3px] bg-white mx-auto" />
-                                    <div className="h-3 w-3 rounded-full bg-white shadow mx-auto" />
+                                <div
+                                    className="pointer-events-none absolute left-1/2 top-[-18px] z-10 -translate-x-1/2 hidden md:block">
+                                    <div className="h-4 w-[3px] bg-white mx-auto"/>
+                                    <div className="h-3 w-3 rounded-full bg-white shadow mx-auto"/>
                                 </div>
 
                                 {/* Line nối riêng cho card số 3: chỉ md+ */}
@@ -971,11 +972,11 @@ const AllianceIntroduction: React.FC = () => {
                                     <>
                                         <div
                                             className="absolute left-1/2 -translate-x-1/2 bg-white hidden md:block"
-                                            style={{ width: '3px', height: '50px', top: '-60px', zIndex: 5 }}
+                                            style={{width: '3px', height: '50px', top: '-60px', zIndex: 5}}
                                         />
                                         <div
                                             className="absolute left-1/2 top-[-64px] h-3 w-3 rounded-full bg-white shadow -translate-x-1/2 hidden md:block"
-                                            style={{ zIndex: 6 }}
+                                            style={{zIndex: 6}}
                                         />
                                     </>
                                 )}
@@ -1023,14 +1024,58 @@ const AllianceIntroduction: React.FC = () => {
                     </div>
                 </div>
             </section>
-
-
             <div className="w-full  flex flex-col justify-center items-center py-6 bg-no-repeat">
                 <div className="px-4">
                     <div className="flex flex-col items-center space-y-10">
+                        <div className="max-w-6xl mx-auto space-y-6">
+                            <div
+                                className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6 md:gap-12">
+                                {/* Đơn vị phối hợp tổ chức */}
+                                <div className="flex flex-col items-center space-y-6">
+                                    <p className="text-center font-bold"
+                                       style={{fontFamily: "NeueHelveticaExt, sans-serif"}}>
+                                        Đơn vị phối hợp tổ chức
+                                    </p>
+                                    <div className="flex gap-3 md:gap-6">
+                                        <img
+                                            src="/images/img_14.png"
+                                            alt="Đối tác A"
+                                            className="h-7 md:h-8 object-contain"
+                                        />
+                                        <img
+                                            src="/images/img_15.png"
+                                            alt="Đối tác B"
+                                            className="h-7 md:h-8 object-contain"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Đơn vị tiên phong */}
+                                <div className="flex flex-col items-center space-y-6">
+
+                                    <p className="text-center font-bold"
+                                       style={{fontFamily: "NeueHelveticaExt, sans-serif"}}>
+                                        Đơn vị tiên phong
+                                    </p>
+                                    <div className="flex gap-3 md:gap-6">
+                                        <img
+                                            src="/images/img_16.png"
+                                            alt="Tiên phong 1"
+                                            className="w-16 md:w-20 h-8 md:h-9 object-contain p-1"
+                                        />
+                                        <img
+                                            src="/images/img_57.png"
+                                            alt="Tiên phong 2"
+                                            className="w-18 md:w-24 h-10 md:h-9 object-contain p-1 b-1"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <p className="text-center font-bold" style={{fontFamily: "NeueHelveticaExt, sans-serif"}}>
                             Đơn vị đồng hành
                         </p>
+
                         <div className="flex flex-wrap justify-center items-center gap-2 md:gap-4">
                             <img src="/images/img_74.png" alt="Người Quan Sát" className="h-9 md:h-10 object-contain"/>
                             <img src="/images/img_75.png" alt="Cyber Trust" className="h-9 md:h-10 object-contain"/>

@@ -26,8 +26,9 @@ const Event: React.FC = () => {
                 className="pointer-events-none absolute inset-0 z-0 bg-no-repeat bg-center"
                 style={{
                     backgroundImage: `url('${isMobile ? "/images/img_62.png" : "/images/img_62.png"}')`,
-                    backgroundSize: "100% auto",
+                    backgroundSize: isMobile ? "cover" : "100% auto",
                 }}
+
             />
 
             <div className="relative z-10 px-4 md:px-8 py-8 md:py-12">
@@ -69,8 +70,12 @@ const Event: React.FC = () => {
 
 
                         <div
-                            className="mt-3 px-4 md:px-8 py-5 md:py-6 space-y-3 text-sm md:text-base text-white leading-relaxed" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
-                            <p className={"text-[30px] justify-center text-center"}>
+                            className="mt-3 px-4 md:px-8 py-5 md:py-6 space-y-3 text-sm md:text-base text-white leading-relaxed"
+                            style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}>
+                            <p
+                                className="text-lg md:text-[30px] justify-center text-center"
+                                style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
+                            >
                                 Diễn đàn thường niên, uy tín và quy mô dành cho KOL
                             </p>
                         </div>
@@ -80,7 +85,7 @@ const Event: React.FC = () => {
 
 
                     {/* ==== Thống kê ==== */}
-                    <section 
+                    <section
                         ref={statsAnimation.elementRef}
                         className={`space-y-6 ${getAnimationClasses(statsAnimation.isVisible, 'fadeInUp', 1)}`}
                     >
