@@ -947,7 +947,7 @@ const AllianceIntroduction: React.FC = () => {
 
             <div className="w-full  flex flex-col justify-center items-center py-6 bg-no-repeat">
                 <div className="px-4">
-                    <div className="flex flex-col items-center space-y-2">
+                    <div className="flex flex-col items-center space-y-10">
                         <p className="text-center font-bold" style={{fontFamily: "NeueHelveticaExt, sans-serif"}}>
                             Đơn vị đồng hành
                         </p>
@@ -962,7 +962,7 @@ const AllianceIntroduction: React.FC = () => {
 
                     </div>
 
-                    <p className="text-center mt-5 font-bold" style={{fontFamily: "NeueHelveticaExt, sans-serif"}}>
+                    <p className="text-center mt-20 font-bold " style={{fontFamily: "NeueHelveticaExt, sans-serif"}}>
                         Đơn vị bảo trợ truyền thông
                     </p>
 
@@ -971,9 +971,9 @@ const AllianceIntroduction: React.FC = () => {
                         <div
                             className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6  justify-items-center">
                             <img src="/images/img_87.png" alt="Event 1" className="w-[100px] h-[100px] object-contain"/>
-                            <img src="/images/img_88.png" alt="Event 2" className="w-[100px] h-[100px] object-contain"/>
+                            <img src="/images/img_88.png" alt="Event 2" className="w-[105px] h-[100px] object-contain"/>
                             <img src="/images/img_89.png" alt="Event 3" className="w-[100px] h-[100px] object-contain"/>
-                            <img src="/images/img_90.png" alt="Event 4" className="w-[100px] h-[70px] object-contain"/>
+                            <img src="/images/img_90.png" alt="Event 4" className="w-[100px] h-[50px] mt-5 object-contain"/>
                             <img src="/images/img_91.png" alt="Event 5" className="w-[100px] h-[100px] object-contain"/>
                             <img src="/images/img_92.png" alt="Event 6" className="w-[100px] h-[100px] object-contain"/>
                             <img src="/images/img_93.png" alt="Event 7" className="w-[100px] h-[100px] object-contain"/>
