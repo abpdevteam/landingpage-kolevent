@@ -25,7 +25,7 @@ const Process: React.FC = () => {
 
                 if (entry.isIntersecting) {
                     if (!loadedSrc) {
-                        v.src = "/video/tl.mp4"; // luôn 1 file tl.mp4
+                        v.src = "http://niemtinso.vn/video/denvau.mp4";
                         setLoadedSrc(true);
                     }
                     if (!userInteracted) {
@@ -72,7 +72,7 @@ const Process: React.FC = () => {
 
     return (
 
-        <section className="w-full min-h-[100svh] md:min-h-screen flex items-center justify-center p-0">
+        <section className="relative">
             <video
                 ref={videoRef}
                 controls
@@ -81,11 +81,6 @@ const Process: React.FC = () => {
                 preload="metadata"
                 poster="/images/img.png"
                 muted
-                className="
-          w-screen h-[100svh] object-cover
-          md:w-full md:h-auto md:aspect-video md:object-contain
-          max-w-none shadow-lg
-        "
             >
                 Trình duyệt của bạn không hỗ trợ video HTML5.
             </video>
