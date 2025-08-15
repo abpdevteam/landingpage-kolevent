@@ -151,8 +151,8 @@ const CountdownWithServices: React.FC = () => {
                                 {/* Đơn vị phối hợp tổ chức */}
                                 <div className="flex flex-col items-center space-y-2">
                                     <Fade show={revealed} delay={680}>
-                    <span className="uppercase text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
-                      ĐƠN VỊ PHỐI HỢP TỔ CHỨC
+                    <span className=" text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
+                      Đơn vị phối hợp tổ chức
                     </span>
                                     </Fade>
                                     <FadeEach show={revealed} baseDelay={720} step={120} className="flex gap-3 md:gap-6">
@@ -165,7 +165,7 @@ const CountdownWithServices: React.FC = () => {
                                 <div className="flex flex-col items-center space-y-2">
                                     <Fade show={revealed} delay={700}>
                     <span className="uppercase text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
-                      ĐƠN VỊ TIÊN PHONG
+                      Đơn vị tiên phong
                     </span>
                                     </Fade>
                                     <FadeEach show={revealed} baseDelay={740} step={120} className="flex gap-3 md:gap-6">
