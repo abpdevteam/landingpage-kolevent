@@ -44,7 +44,6 @@ const Process: React.FC = () => {
         return () => io.disconnect();
     }, [loadedSrc, userInteracted]);
 
-    // 3) Bắt lần tương tác đầu tiên -> bật tiếng
     useEffect(() => {
         const onFirstInteract = () => {
             const v = videoRef.current;
@@ -72,26 +71,21 @@ const Process: React.FC = () => {
     }, []);
 
     return (
-        // Mobile: min-h 100svh để ăn đủ màn hình; Desktop: giữ nguyên min-h-screen
+
         <section className="w-full min-h-[100svh] md:min-h-screen flex items-center justify-center p-0">
             <video
                 ref={videoRef}
-                // Cho phép UI điều khiển (user có thể bật loa)
                 controls
                 playsInline
                 loop
                 preload="metadata"
                 poster="/images/img.png"
                 muted
-                // Mobile: full màn hình + cover; Desktop: aspect-video như cũ
                 className="
           w-screen h-[100svh] object-cover
           md:w-full md:h-auto md:aspect-video md:object-contain
           max-w-none shadow-lg
         "
-                // Tùy chọn: hạn chế PiP/remote (nếu muốn)
-                // disablePictureInPicture
-                // controlsList="nodownload noremoteplayback"
             >
                 Trình duyệt của bạn không hỗ trợ video HTML5.
             </video>

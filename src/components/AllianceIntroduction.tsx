@@ -982,12 +982,13 @@ const AllianceIntroduction: React.FC = () => {
 
                                 {/* Nội dung card */}
                                 <div
-                                    className="h-full min-h-[192px] rounded-[16px] border border-white/30 backdrop-blur p-4 box-border"
+                                    className="h-full min-h-[120px] md:min-h-[192px] rounded-[16px] border border-white/30 backdrop-blur p-4 box-border"
                                     style={{
                                         background:
                                             'linear-gradient(180deg, rgba(255, 255, 255, 0.4) -121.84%, #FFFFFF 100%)'
                                     }}
                                 >
+
                                     <div
                                         className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-[#0011BF]/10 font-bold border border-[#0011BF]"
                                         style={{
