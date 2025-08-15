@@ -1,21 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 
 interface TimeLeft { days: number; hours: number; minutes: number; seconds: number; }
-// const formatNumber = (n: number) => n.toString().padStart(2, "0");
-
-// const Item = ({ value, label }: { value: number; label: string }) => (
-//     <div className="text-center">
-//         <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-none">
-//             {formatNumber(value)}
-//         </div>
-//         <div
-//             className="mt-1 text-[10px] sm:text-xs md:text-sm text-white/90"
-//             style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}
-//         >
-//             {label}
-//         </div>
-//     </div>
-// );
 
 const CountdownWithServices: React.FC = () => {
     const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -104,7 +89,7 @@ const CountdownWithServices: React.FC = () => {
                     <div className="max-w-6xl mx-auto px-3 md:px-4">
                         <div className="flex justify-center items-center gap-3 md:gap-6">
                             <img src="/images/img_2.png" alt="Logo 1" className="h-10 md:h-16 w-auto object-contain" />
-                            <img src="/images/img_6.png" alt="Logo 2" className="h-10 md:h-16 w-auto object-contain" />
+                            <img src="/images/img_85.png" alt="Logo 2" className="h-10 md:h-16 w-auto object-contain" />
                         </div>
                     </div>
                 </header>
@@ -170,36 +155,6 @@ const CountdownWithServices: React.FC = () => {
                         </div>
                     </section>
 
-                    {/* 4) Countdown */}
-                    {/*<section*/}
-                    {/*    className="w-full flex justify-center"*/}
-                    {/*    style={{opacity: visibleSections.includes(3) ? 1 : 0, transition: "opacity 0.3s ease-in-out"}}*/}
-                    {/*>*/}
-                    {/*    <div*/}
-                    {/*        className="p-3 sm:p-4 md:p-4 w-full max-w-xl backdrop-blur"*/}
-                    {/*        style={{*/}
-                    {/*            background: "linear-gradient(180deg, rgba(255, 255, 255, 0) -56.25%, rgba(255, 255, 255, 0.3) 100%)",*/}
-                    {/*            border: "1px solid rgba(255, 255, 255, 0.3)",*/}
-                    {/*            borderRadius: "16px",*/}
-                    {/*        }}*/}
-                    {/*    >*/}
-                    {/*        {!isOver ? (*/}
-                    {/*            <div className="grid grid-cols-2 gap-2 sm:gap-3 md:flex md:items-center md:justify-center md:gap-6">*/}
-                    {/*                <Item value={timeLeft.days} label="Days" />*/}
-                    {/*                <span className="hidden md:block text-2xl text-white -mt-2">:</span>*/}
-                    {/*                <Item value={timeLeft.hours} label="Hours" />*/}
-                    {/*                <span className="hidden md:block text-2xl text-white -mt-2">:</span>*/}
-                    {/*                <Item value={timeLeft.minutes} label="Minutes" />*/}
-                    {/*                <span className="hidden md:block text-2xl text-white -mt-2">:</span>*/}
-                    {/*                <Item value={timeLeft.seconds} label="Seconds" />*/}
-                    {/*            </div>*/}
-                    {/*        ) : (*/}
-                    {/*            <div className="text-center py-3 md:py-4">*/}
-                    {/*                <p className="text-lg md:text-2xl font-semibold text-white">SỰ KIỆN ĐANG DIỄN RA</p>*/}
-                    {/*            </div>*/}
-                    {/*        )}*/}
-                    {/*    </div>*/}
-                    {/*</section>*/}
                 </main>
 
                 {/* 5) FOOTER: Hàng 1 = tổ chức + tiên phong | Hàng 2 = đồng hành */}
