@@ -190,12 +190,12 @@ const AllianceIntroduction: React.FC = () => {
                             {/* Header */}
                             <div 
                                 ref={headerAnimation.elementRef}
-                                className={`px-4 md:mx-[100px] mb-10 md:mb-12 ${getAnimationClasses(headerAnimation.isVisible, 'fadeInUp')}`}
+                                className={`px-4 md:mx-[100px] mb-10 md:mb-12 ${getAnimationClasses(headerAnimation.isVisible, 'slideInScale')}`}
                             >
                                 <div className="flex items-center justify-center gap-6">
                                     <div className="flex flex-col gap-1">
                                         <h1
-                                            className="text-3xl md:text-4xl font-light"
+                                            className="text-3xl md:text-[48px] font-light"
                                             style={{
                                                 fontFamily: "NeueHelveticaExt, sans-serif",
                                                 fontWeight: 700,
@@ -223,12 +223,12 @@ const AllianceIntroduction: React.FC = () => {
                                         {/* Topics */}
                                         <div 
                                             ref={topicsAnimation.elementRef}
-                                            className={`grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch ${getAnimationClasses(topicsAnimation.isVisible, 'fadeInUp')}`}
+                                            className={`grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch ${getAnimationClasses(topicsAnimation.isVisible, 'slideInUp')}`}
                                         >
                                             {topics.map((topic, index) => (
                                                 <div
                                                     key={topic.id}
-                                                    className={`h-full flex flex-col p-6 transition-transform hover:-translate-y-0.5 ${getAnimationClasses(topicsAnimation.isVisible, 'fadeInUp', index)}`}
+                                                    className={`h-full flex flex-col p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${getAnimationClasses(topicsAnimation.isVisible, 'bounceIn', index)}`}
                                                     style={cardStyle} // gradient + border
                                                 >
                                                     {/* Số */}
@@ -288,7 +288,7 @@ const AllianceIntroduction: React.FC = () => {
                                                 ].map((col, idx) => (
                                                     <div
                                                         key={idx}
-                                                        className={`text-left rounded-lg flex flex-col justify-start min-h-[200px] p-4 transition-transform hover:-translate-y-0.5 ${getAnimationClasses(bulletsAnimation.isVisible, 'fadeInUp', idx)}`}
+                                                        className={`text-left rounded-lg flex flex-col justify-start min-h-[200px] p-4 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg ${getAnimationClasses(bulletsAnimation.isVisible, 'slideInUp', idx)}`}
                                                         style={{
                                                             ...cardStyle,
                                                             height: "100%", // giữ cùng chiều cao khi grid auto
@@ -300,9 +300,10 @@ const AllianceIntroduction: React.FC = () => {
                                                         >
                                                             {col.map((line, i) => (
                                                                 <span key={i} className="block mb-2 last:mb-0">
-                            • {line}
-                        </span>
+        → {line}
+    </span>
                                                             ))}
+
                                                         </div>
                                                     </div>
                                                 ))}
@@ -329,9 +330,9 @@ const AllianceIntroduction: React.FC = () => {
                         {/* Nội dung */}
                         <div className="relative z-10 md:mx-[100px]">
                             {/* Header */}
-                            <div 
+                            <div
                                 ref={allianceHeaderAnimation.elementRef}
-                                className={`px-4 md:mx-[100px] mb-10 md:mb-12 ${getAnimationClasses(allianceHeaderAnimation.isVisible, 'fadeInUp')}`}
+                                className={`px-4 md:mx-[100px] mb-10 md:mb-12 ${getAnimationClasses(allianceHeaderAnimation.isVisible, 'slideInScale')}`}
                             >
                                 <div className="flex justify-center items-start gap-6">
                                     <div className="text-center justify-center">
@@ -362,13 +363,13 @@ const AllianceIntroduction: React.FC = () => {
                             {/* Row 1 */}
                             <div className="px-4 md:mx-[80px]">
                                 {/* Row 1 */}
-                                <div 
+                                <div
                                     ref={reasonCardAnimation.elementRef}
-                                    className={`grid grid-cols-1 md:grid-cols-[400px_1fr] gap-6 mb-6 ${getAnimationClasses(reasonCardAnimation.isVisible, 'fadeInUp')}`}
+                                    className={`grid grid-cols-1 md:grid-cols-[400px_1fr] gap-6 mb-6 ${getAnimationClasses(reasonCardAnimation.isVisible, 'slideInUp')}`}
                                 >
                                     {/* Card 1 */}
                                     <div
-                                        className={`backdrop-blur-sm p-6 rounded-lg h-full flex items-center justify-center ${getAnimationClasses(reasonCardAnimation.isVisible, 'fadeInLeft')}`}
+                                        className={`backdrop-blur-sm p-6 rounded-lg h-full flex items-center justify-center transition-all duration-500 hover:scale-105 ${getAnimationClasses(reasonCardAnimation.isVisible, 'fadeInLeft')}`}
                                         style={{
                                             background: "linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)",
                                             border: "1px solid rgba(255, 255, 255, 0.3)",
@@ -411,7 +412,7 @@ const AllianceIntroduction: React.FC = () => {
 
                                     {/* Card 2 */}
                                     <div
-                                        className={`p-6 rounded-lg h-full flex flex-col justify-center ${getAnimationClasses(reasonCardAnimation.isVisible, 'fadeInRight')}`}
+                                        className={`p-6 rounded-lg h-full flex flex-col justify-center transition-all duration-500 hover:scale-105 ${getAnimationClasses(reasonCardAnimation.isVisible, 'fadeInRight')}`}
                                         style={{
                                             background: "linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)",
                                             border: "1px solid rgba(255, 255, 255, 0.3)",
@@ -419,7 +420,7 @@ const AllianceIntroduction: React.FC = () => {
                                         }}
                                     >
                                         <div className="leading-relaxed text-[#0011BF]">
-                                            <p className="mb-4 text-lg md:text-xl" style={{
+                                            <p className="mb-4 text-lg md:text-[16px]" style={{
                                                 fontFamily: "NeueHelveticaExt, sans-serif",
                                                 fontWeight: 400,
                                                 color: "#0011BF"
@@ -428,7 +429,7 @@ const AllianceIntroduction: React.FC = () => {
                                                 dựng,
                                                 dẫn dắt niềm tin của KOLs trên không gian mạng.
                                             </p>
-                                            <p className="text-lg md:text-xl" style={{
+                                            <p className="text-lg md:text-[16px]" style={{
                                                 fontFamily: "NeueHelveticaExt, sans-serif",
                                                 fontWeight: 400,
                                                 color: "#0011BF"
@@ -443,33 +444,44 @@ const AllianceIntroduction: React.FC = () => {
                                 </div>
 
                                 {/* Row 2 */}
-                                <div 
+                                <div
                                     ref={visionCardAnimation.elementRef}
-                                    className={`grid grid-cols-1 md:grid-cols-[400px_1fr] gap-6 ${getAnimationClasses(visionCardAnimation.isVisible, 'fadeInUp')}`}
+                                    className={`md:grid-cols-[400px_1fr_1fr] grid grid-cols-1  gap-6 ${getAnimationClasses(
+                                        visionCardAnimation.isVisible,
+                                        'slideInUp'
+                                    )}`}
                                 >
-                                    {/* Card 3 */}
+                                    {/* Card 1: TỪ TẦM NHÌN ĐẾN HÀNH ĐỘNG */}
                                     <div
-                                        className={`backdrop-blur-sm p-6 rounded-lg h-full flex items-center justify-center ${getAnimationClasses(visionCardAnimation.isVisible, 'fadeInLeft')}`}
+                                        className={`backdrop-blur-sm p-6 rounded-lg h-full flex items-center justify-center transition-all duration-500 hover:scale-105 ${getAnimationClasses(
+                                            visionCardAnimation.isVisible,
+                                            'fadeInLeft'
+                                        )}`}
                                         style={{
-                                            background: "linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)",
-                                            border: "1px solid rgba(255, 255, 255, 0.3)",
-                                            borderRadius: "16px"
+                                            background:
+                                                'linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)',
+                                            border: '1px solid rgba(255, 255, 255, 0.3)',
+                                            borderRadius: '16px'
                                         }}
                                     >
                                         <div className="text-center">
                                             <h2
                                                 className="text-[28px] mb-4"
                                                 style={{
-                                                    fontFamily: "NeueHelveticaExt, sans-serif",
+                                                    fontFamily: 'NeueHelveticaExt, sans-serif',
                                                     fontWeight: 700,
-                                                    color: "#0011BF"
+                                                    color: '#0011BF'
                                                 }}
                                             >
                                                 TỪ TẦM NHÌN ĐẾN
                                             </h2>
                                             <div className="flex items-center justify-center">
-                                                <svg className="w-5 h-5 md:w-6 md:h-6" fill="#0011BF"
-                                                     viewBox="0 0 20 20" aria-hidden="true">
+                                                <svg
+                                                    className="w-5 h-5 md:w-6 md:h-6"
+                                                    fill="#0011BF"
+                                                    viewBox="0 0 20 20"
+                                                    aria-hidden="true"
+                                                >
                                                     <path
                                                         fillRule="evenodd"
                                                         d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
@@ -479,9 +491,9 @@ const AllianceIntroduction: React.FC = () => {
                                                 <h3
                                                     className="ml-2 text-[28px] font-light"
                                                     style={{
-                                                        fontFamily: "NeueHelveticaExt, sans-serif",
+                                                        fontFamily: 'NeueHelveticaExt, sans-serif',
                                                         fontWeight: 700,
-                                                        color: "#0011BF"
+                                                        color: '#0011BF'
                                                     }}
                                                 >
                                                     HÀNH ĐỘNG
@@ -490,63 +502,95 @@ const AllianceIntroduction: React.FC = () => {
                                         </div>
                                     </div>
 
-                                    {/* Card 4 */}
+                                    {/* Card 2: TẦM NHÌN */}
                                     <div
-                                        className={`p-6 rounded-lg h-full ${getAnimationClasses(visionCardAnimation.isVisible, 'fadeInRight')}`}
+                                        className={`p-6 rounded-lg h-full transition-all duration-500 hover:scale-105 ${getAnimationClasses(
+                                            visionCardAnimation.isVisible,
+                                            'fadeInUp'
+                                        )}`}
                                         style={{
-                                            background: "linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)",
-                                            border: "1px solid rgba(255, 255, 255, 0.3)",
-                                            borderRadius: "16px"
+                                            background:
+                                                'linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)',
+                                            border: '1px solid rgba(255, 255, 255, 0.3)',
+                                            borderRadius: '16px'
                                         }}
                                     >
-                                        <div className="space-y-8 text-[#0011BF]">
-                                            {/* Nhóm 1: TẦM NHÌN */}
-                                            <div className="grid grid-cols-[160px_1fr] gap-6 items-start">
-                                                <div className="font-bold text-xl uppercase" style={{
-                                                    fontFamily: "NeueHelveticaExt, sans-serif",
+                                        <div className="flex items-center mb-4">
+                                            <img
+                                                src="/images/img_79.png" // đường dẫn icon
+                                                alt="Icon Tầm nhìn"
+                                                className="w-10 h-10 mr-3" // 40x40 và cách chữ 12px
+                                            />
+                                            <span
+                                                className="font-bold text-xl uppercase"
+                                                style={{
+                                                    fontFamily: 'NeueHelveticaExt, sans-serif',
                                                     fontWeight: 700,
-                                                    color: "#0011BF"
-                                                }}>Tầm nhìn
-                                                </div>
-                                                <ul className="list-disc space-y-2 pl-4 text-lg md:text-xl" style={{
-                                                    fontFamily: "NeueHelveticaExt, sans-serif",
-                                                    fontWeight: 400,
-                                                    color: "#0011BF"
-                                                }}>
-                                                    <li>Xây dựng niềm tin, lan toả giá trị tích cực, bền vững, chống
-                                                        thông tin sai lệch, lừa đảo, thúc đẩy kỹ năng an toàn trên không
-                                                        gian mạng.
-                                                    </li>
-                                                    <li>Định hướng, dẫn dắt hành vi đáng tin cậy của KOL.</li>
-                                                    <li>Cảnh báo, phê phán trào lưu, hiện tượng lệch lạc của KOL trên
-                                                        không gian mạng.
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            {/* Nhóm 2: HÀNH ĐỘNG */}
-                                            <div className="grid grid-cols-[160px_1fr] gap-6 items-start">
-                                                <div className="font-bold text-xl uppercase" style={{
-                                                    fontFamily: "NeueHelveticaExt, sans-serif",
-                                                    fontWeight: 700,
-                                                    color: "#0011BF"
-                                                }}>Hành động
-                                                </div>
-                                                <ul className="list-disc space-y-2 pl-4 text-lg md:text-xl" style={{
-                                                    fontFamily: "NeueHelveticaExt, sans-serif",
-                                                    fontWeight: 400,
-                                                    color: "#0011BF"
-                                                }}>
-                                                    <li>Thông qua Chương trình "Tín nhiệm người có ảnh hưởng" trên không
-                                                        gian mạng.
-                                                    </li>
-                                                    <li>Bằng các hoạt động đào tạo, tập huấn đa dạng.</li>
-                                                    <li>Bằng các hoạt động cộng đồng rộng khắp.</li>
-                                                </ul>
-                                            </div>
+                                                    color: '#0011BF'
+                                                }}
+                                            >
+        Tầm nhìn
+    </span>
                                         </div>
+
+                                        <ul className="space-y-2 text-lg md:text-[16px]" style={{
+                                            fontFamily: 'NeueHelveticaExt, sans-serif',
+                                            fontWeight: 400,
+                                            color: '#0011BF',
+                                            listStyleType: 'none',
+                                            paddingLeft: '0'
+                                        }}>
+                                            <li>→ Xây dựng niềm tin, lan toả giá trị tích cực, bền vững...</li>
+                                            <li>→ Định hướng, dẫn dắt hành vi đáng tin cậy của KOL.</li>
+                                            <li>→ Cảnh báo, phê phán trào lưu, hiện tượng lệch lạc của KOL.</li>
+                                        </ul>
+                                    </div>
+
+                                    {/* Card 3: HÀNH ĐỘNG */}
+                                    <div
+                                        className={`p-6 rounded-lg h-full transition-all duration-500 hover:scale-105 ${getAnimationClasses(
+                                            visionCardAnimation.isVisible,
+                                            'fadeInRight'
+                                        )}`}
+                                        style={{
+                                            background:
+                                                'linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)',
+                                            border: '1px solid rgba(255, 255, 255, 0.3)',
+                                            borderRadius: '16px'
+                                        }}
+                                    >
+
+                                        <div className="flex items-center mb-4">
+                                            <img
+                                                src="/images/img_80.png" // đường dẫn icon
+                                                alt="Icon Tầm nhìn"
+                                                className="w-10 h-10 mr-3" // 40x40 và cách chữ 12px
+                                            />
+                                            <span
+                                                className="font-bold text-xl uppercase"
+                                                style={{
+                                                    fontFamily: 'NeueHelveticaExt, sans-serif',
+                                                    fontWeight: 700,
+                                                    color: '#0011BF'
+                                                }}
+                                            >
+       Hành động
+    </span>
+                                        </div>
+                                        <ul className="space-y-2 text-lg md:text-[16px]" style={{
+                                            fontFamily: 'NeueHelveticaExt, sans-serif',
+                                            fontWeight: 400,
+                                            color: '#0011BF',
+                                            listStyleType: 'none',
+                                            paddingLeft: '0'
+                                        }}>
+                                            <li>→ Thông qua Chương trình "Tín nhiệm người có ảnh hưởng".</li>
+                                            <li>→ Bằng các hoạt động đào tạo, tập huấn đa dạng.</li>
+                                            <li>→ Bằng các hoạt động cộng đồng rộng khắp.</li>
+                                        </ul>
                                     </div>
                                 </div>
+
 
                                 {/* Button */}
                                 <div className="flex justify-center mt-6">
@@ -587,9 +631,9 @@ const AllianceIntroduction: React.FC = () => {
                 {/* Nội dung */}
                 <div className="relative z-20 ">
                     {/* Header nhỏ */}
-                    <div 
+                    <div
                         ref={activitiesHeaderAnimation.elementRef}
-                        className={`text-center py-12 md:py-16 px-4 ${getAnimationClasses(activitiesHeaderAnimation.isVisible, 'fadeInUp')}`}
+                        className={`text-center py-12 md:py-16 px-4 ${getAnimationClasses(activitiesHeaderAnimation.isVisible, 'slideInScale')}`}
                     >
                         <h1
                             className="text-3xl md:text-5xl font-bold mb-2"
@@ -606,9 +650,9 @@ const AllianceIntroduction: React.FC = () => {
                     </div>
 
                     {/* 3 Cards (hoạt động chính) */}
-                    <div 
+                    <div
                         ref={activitiesCardsAnimation.elementRef}
-                        className={`px-4 md:px-0 mb-14 md:mb-20 md:mx-[195px] ${getAnimationClasses(activitiesCardsAnimation.isVisible, 'fadeInUp')}`}
+                        className={`px-4 md:px-0 mb-14 md:mb-20 md:mx-[195px] ${getAnimationClasses(activitiesCardsAnimation.isVisible, 'slideInUp')}`}
                     >
                         <div
                             className="grid grid-cols-1 md:grid-cols-3 items-stretch gap-6 md:gap-8">
@@ -634,7 +678,7 @@ const AllianceIntroduction: React.FC = () => {
                             ].map((card, i) => (
                                 <div
                                     key={i}
-                                    className={`h-full p-6 md:p-8 rounded-[16px] backdrop-blur-sm flex flex-col ${getAnimationClasses(activitiesCardsAnimation.isVisible, 'fadeInUp', i)}`}
+                                    className={`h-full p-6 md:p-8 rounded-[16px] backdrop-blur-sm flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-xl ${getAnimationClasses(activitiesCardsAnimation.isVisible, 'bounceIn', i)}`}
                                     style={{
                                         background: "linear-gradient(180deg, rgba(255, 255, 255, 0.2) -56.25%, #FFFFFF 100%)",
                                         border: "1px solid rgba(255, 255, 255, 0.3)",
@@ -717,9 +761,9 @@ const AllianceIntroduction: React.FC = () => {
                 {/* Nội dung */}
                 <div className="relative z-10 max-w-6xl mx-auto text-center text-white">
                     {/* Header */}
-                    <div 
+                    <div
                         ref={trustProgramHeaderAnimation.elementRef}
-                        className={`mb-8 md:mb-12 ${getAnimationClasses(trustProgramHeaderAnimation.isVisible, 'fadeInUp')}`}
+                        className={`mb-8 md:mb-12 ${getAnimationClasses(trustProgramHeaderAnimation.isVisible, 'slideInScale')}`}
                     >
                         <h1
                             className="text-4xl md:text-5xl font-bold mb-3 tracking-wide"
@@ -742,18 +786,18 @@ const AllianceIntroduction: React.FC = () => {
                     </div>
 
                     {/* Description */}
-                    <div 
+                    <div
                         ref={trustProgramContentAnimation.elementRef}
-                        className={`space-y-4 md:space-y-6 mb-8 md:mb-12 ${getAnimationClasses(trustProgramContentAnimation.isVisible, 'fadeInUp')}`}
+                        className={`space-y-4 md:space-y-6 mb-8 md:mb-12 ${getAnimationClasses(trustProgramContentAnimation.isVisible, 'slideInUp')}`}
                     >
-                        <p className="text-white text-[16px] md:text-lg leading-relaxed max-w-4xl mx-auto " style={{
+                        <p className="text-white text-[16px] md:text-[16px] leading-relaxed max-w-4xl mx-auto " style={{
                             fontFamily: "NeueHelveticaExt, sans-serif",
                             fontWeight: 400,
                         }}>
                             Chương trình cung cấp khung đánh giá toàn diện, và dễ dàng kiểm chứng; nhằm xác thực
                             độ minh bạch - đạo đức - trách nhiệm xã hội của người có ảnh hưởng.
                         </p>
-                        <p className="text-[16px] leading-relaxed max-w-4xl mx-auto" style={{
+                        <p className="text-[16px] md:text-[16px] leading-relaxed max-w-4xl mx-auto" style={{
                             fontFamily: "NeueHelveticaExt, sans-serif",
                             fontWeight: 400,
 
@@ -791,7 +835,7 @@ const AllianceIntroduction: React.FC = () => {
 
                         {/* Luôn cùng 1 hàng */}
                         <div
-                            className="flex flex-row gap-8 items-start"
+                            className="flex flex-row gap-8 items-start md:text-[16px]"
                             style={{fontFamily: "NeueHelveticaExt, sans-serif", color: "#0011BF", fontWeight: 400}}
                         >
                             <Item>Đánh giá mức độ tín nhiệm trong hoạt động truyền thông, quảng bá</Item>

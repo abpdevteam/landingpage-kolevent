@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer: React.FC = () => {
     return (
-        <div className="relative w-full text-white overflow-hidden">
+        <div className="relative w-full h-[200px] text-white overflow-hidden">
             {/* Chiều cao responsive: mobile thấp hơn, md giữ 400px như bản laptop */}
             <div className="h-[240px] md:h-[400px]">
                 {/* Ảnh nền */}
