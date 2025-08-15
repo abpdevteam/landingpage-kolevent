@@ -181,31 +181,35 @@ const AllianceIntroduction: React.FC = () => {
 
 
                 {/* Wrapper đảm bảo nội dung nổi trên overlay */}
-                <div className="relative z-30 ">
+                <div className="relative z-30">
                     <section
                         className="py-8 bg-cover bg-center relative"
                         style={{backgroundImage: "url('/images/img_64.png')"}}
                     >
-                        <div className="relative z-10 mr-[80px] ml-[80px]">
+                        <div className="relative z-10 md:mr-[80px] md:ml-[80px]">
                             {/* Header */}
-                            <div 
+                            <div
                                 ref={headerAnimation.elementRef}
-                                className={`px-4 md:mx-[100px] mb-10 md:mb-12 ${getAnimationClasses(headerAnimation.isVisible, 'slideInScale')}`}
+                                className={`px-4 md:mx-[100px] mb-10 md:mb-12 ${getAnimationClasses(
+                                    headerAnimation.isVisible,
+                                    "slideInScale"
+                                )}`}
                             >
-                                <div className="flex items-center justify-center gap-6">
-                                    <div className="flex flex-col gap-1">
+                                <div className="flex items-center justify-center md:justify-center gap-6 w-full">
+                                    <div className="flex flex-col gap-1 text-center md:text-center">
                                         <h1
                                             className="text-3xl md:text-[48px] font-light"
                                             style={{
                                                 fontFamily: "NeueHelveticaExt, sans-serif",
                                                 fontWeight: 700,
-                                                color: "#ffffff"
+                                                color: "#ffffff",
                                             }}
                                         >
                                             ĐIỂM NHẤN HỘI NGHỊ
                                         </h1>
                                     </div>
                                 </div>
+
                             </div>
 
                             {(() => {
@@ -215,105 +219,174 @@ const AllianceIntroduction: React.FC = () => {
                                     border: "1px solid rgba(255, 255, 255, 0.3)",
                                     borderRadius: "16px",
                                 };
+                                const textBlue = {color: "#0011BF"};
 
-                                const textBlue = {color: "#0B3C8A"};
+                                const bulletsByIndex: string[][] = [
+                                    [
+                                        "Tuyển chọn những bài tham luận từ cơ quan quản lý, doanh nghiệp, nền tảng số và những câu chuyện, hành trình được chia sẻ từ các KOL",
+                                        "Mang đến góc nhìn đa chiều về vai trò, trách nhiệm của KOL - ý tưởng - giải pháp liên kết hệ sinh thái, phát triển cộng đồng KOL bền vững",
+                                    ],
+                                    [
+                                        "Không gian để KOL chia sẻ câu chuyện  về hành trình, những giá trị thật đã tạo dựng, cùng trải nghiệm chạm đến trái tim công chúng",
+                                        'Nơi doanh nghiệp, công ty truyền thông, nền tảng, cơ quan quản lý  nhìn nhận về những giá trị "thật" của KOL, ghi nhận hành trình lan tỏa giá trị tích cực, bản sắc văn hóa quê hương mà KOL mang lại',
+                                    ],
+                                    [
+                                        "Đối thoại đa chiều giữa các bên nhằm thảo luận vai trò, trách nhiệm, niềm tin và kỳ vọng với KOL",
+                                        "Giải quyết vấn đề lệch chuẩn, thúc đẩy minh bạch, đề cao giá trị thật của KOL",
+                                    ],
+                                ];
 
                                 return (
                                     <div className="px-4 md:mx-[100px]">
-                                        {/* Topics */}
-                                        <div 
-                                            ref={topicsAnimation.elementRef}
-                                            className={`grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch ${getAnimationClasses(topicsAnimation.isVisible, 'slideInUp')}`}
-                                        >
-                                            {topics.map((topic, index) => (
+                                        {/* --- Laptop/Desktop layout (giữ nguyên) --- */}
+                                        <div className="hidden md:block">
+                                            {/* Topics */}
+                                            <div
+                                                ref={topicsAnimation.elementRef}
+                                                className={`grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch ${getAnimationClasses(
+                                                    topicsAnimation.isVisible,
+                                                    "slideInUp"
+                                                )}`}
+                                            >
+                                                {topics.map((topic, index) => (
+                                                    <div
+                                                        key={topic.id}
+                                                        className={`h-full flex flex-col p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${getAnimationClasses(
+                                                            topicsAnimation.isVisible,
+                                                            "bounceIn",
+                                                            index
+                                                        )}`}
+                                                        style={cardStyle}
+                                                    >
+                  <span
+                      className="text-4xl md:text-5xl mb-3"
+                      style={{
+                          fontFamily: "NeueHelveticaExt, sans-serif",
+                          fontWeight: 700,
+                          color: "#0011BF",
+                      }}
+                  >
+                    <img
+                        src={`/images/${topic.number}`}
+                        alt={topic.title}
+                        className="inline-block w-12 h-12 object-contain"
+                    />
+                  </span>
+                                                        <p
+                                                            className="text-base md:text-lg leading-relaxed"
+                                                            style={{
+                                                                fontFamily: "NeueHelveticaExt, sans-serif",
+                                                                fontWeight: 700,
+                                                                color: "#0011BF",
+                                                            }}
+                                                        >
+                                                            {topic.title}
+                                                        </p>
+                                                    </div>
+                                                ))}
+                                            </div>
+
+                                            {/* Bullets */}
+                                            <div
+                                                ref={bulletsAnimation.elementRef}
+                                                className={`mt-6 md:mt-8 ${getAnimationClasses(
+                                                    bulletsAnimation.isVisible,
+                                                    "fadeInUp"
+                                                )}`}
+                                            >
                                                 <div
-                                                    key={topic.id}
-                                                    className={`h-full flex flex-col p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${getAnimationClasses(topicsAnimation.isVisible, 'bounceIn', index)}`}
-                                                    style={cardStyle} // gradient + border
+                                                    className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
+                                                    style={{
+                                                        fontFamily: "NeueHelveticaExt, sans-serif",
+                                                        fontWeight: 400,
+                                                        color: "#0011BF",
+                                                    }}
                                                 >
-                                                    {/* Số */}
-                                                    <span
-                                                        className="text-4xl md:text-5xl mb-3"
-                                                        style={{
-                                                            fontFamily: "NeueHelveticaExt, sans-serif",
-                                                            fontWeight: 700,
-                                                            color: "#0011BF"
-                                                        }}
-                                                    >
-  <img
-      src={`/images/${topic.number}`}
-      alt={topic.title}
-      className="inline-block w-12 h-12 object-contain"
-  />
-</span>
-
-
-                                                    {/* Tiêu đề */}
-                                                    <p
-                                                        className="text-base md:text-lg leading-relaxed"
-                                                        style={{
-                                                            fontFamily: "NeueHelveticaExt, sans-serif",
-                                                            fontWeight: 700,
-                                                            color: "#0011BF"
-                                                        }}
-                                                    >
-                                                        {topic.title}
-                                                    </p>
+                                                    {bulletsByIndex.map((col, idx) => (
+                                                        <div
+                                                            key={idx}
+                                                            className={`text-left rounded-lg flex flex-col justify-start min-h-[200px] p-4 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg ${getAnimationClasses(
+                                                                bulletsAnimation.isVisible,
+                                                                "slideInUp",
+                                                                idx
+                                                            )}`}
+                                                            style={{
+                                                                ...cardStyle,
+                                                                height: "100%",
+                                                            }}
+                                                        >
+                                                            <div
+                                                                className="leading-relaxed text-sm md:text-base flex flex-col justify-start"
+                                                                style={textBlue}
+                                                            >
+                                                                {col.map((line, i) => (
+                                                                    <span key={i} className="block mb-2 last:mb-0">
+                          → {line}
+                        </span>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    ))}
                                                 </div>
-                                            ))}
+                                            </div>
                                         </div>
 
-
-                                        {/* Bullets */}
-                                        <div
-                                            ref={bulletsAnimation.elementRef}
-                                            className={`mt-6 md:mt-8 ${getAnimationClasses(bulletsAnimation.isVisible, 'fadeInUp')}`}
-                                        >
-                                            <div
-                                                className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
-                                                style={{
-                                                    fontFamily: "NeueHelveticaExt, sans-serif",
-                                                    fontWeight: 400,
-                                                    color: "#0011BF"
-                                                }}
-                                            >
-                                                {[
-                                                    [
-                                                        "Tuyển chọn những bài tham luận từ cơ quan quản lý, doanh nghiệp, nền tảng số và những câu chuyện, hành trình được chia sẻ từ các KOL",
-                                                        "Mang đến góc nhìn đa chiều về vai trò, trách nhiệm của KOL - ý tưởng - giải pháp liên kết hệ sinh thái, phát triển cộng đồng KOL bền vững"
-                                                    ],
-                                                    [
-                                                        "Không gian để KOL chia sẻ câu chuyện  về hành trình, những giá trị thật đã tạo dựng, cùng trải nghiệm chạm đến trái tim công chúng",
-                                                        "Nơi doanh nghiệp, công ty truyền thông, nền tảng, cơ quan quản lý  nhìn nhận về những giá trị \"thật\" của KOL, ghi nhận hành trình lan tỏa giá trị tích cực, bản sắc văn hóa quê hương mà KOL mang lại",
-                                                    ],
-                                                    [
-                                                        "Đối thoại đa chiều giữa các bên nhằm thảo luận vai trò, trách nhiệm, niềm tin và kỳ vọng với KOL",
-                                                        "Giải quyết vấn đề lệch chuẩn, thúc đẩy minh bạch, đề cao giá trị thật của KOL",
-                                                    ],
-                                                ].map((col, idx) => (
-                                                    <div
-                                                        key={idx}
-                                                        className={`text-left rounded-lg flex flex-col justify-start min-h-[200px] p-4 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg ${getAnimationClasses(bulletsAnimation.isVisible, 'slideInUp', idx)}`}
-                                                        style={{
-                                                            ...cardStyle,
-                                                            height: "100%", // giữ cùng chiều cao khi grid auto
-                                                        }}
-                                                    >
+                                        {/* --- Mobile layout (px-4, căn giữa, có padding 16px) --- */}
+                                        <div className="block md:hidden px-4">
+                                            <div className="flex flex-col gap-6">
+                                                {topics.map((topic, index) => (
+                                                    <div key={topic.id} className="flex flex-col w-full items-center">
+                                                        {/* Card trên */}
                                                         <div
-                                                            className="leading-relaxed text-sm md:text-base flex flex-col justify-start"
-                                                            style={textBlue}
+                                                            className="p-6 mb-4 w-full flex flex-col items-center text-center"
+                                                            style={cardStyle}
                                                         >
-                                                            {col.map((line, i) => (
-                                                                <span key={i} className="block mb-2 last:mb-0">
-        → {line}
-    </span>
-                                                            ))}
+          <span
+              className="text-4xl mb-3 flex justify-center"
+              style={{
+                  fontFamily: "NeueHelveticaExt, sans-serif",
+                  fontWeight: 700,
+                  color: "#0011BF",
+              }}
+          >
+            <img
+                src={`/images/${topic.number}`}
+                alt={topic.title}
+                className="w-12 h-12 object-contain"
+            />
+          </span>
+                                                            <p
+                                                                className="text-center"
+                                                                style={{
+                                                                    fontFamily: "NeueHelveticaExt, sans-serif",
+                                                                    fontWeight: 700,
+                                                                    color: "#0011BF",
+                                                                }}
+                                                            >
+                                                                {topic.title}
+                                                            </p>
+                                                        </div>
 
+                                                        {/* Bullets */}
+                                                        <div
+                                                            className="p-4 w-full flex flex-col items-center text-center"
+                                                            style={{...cardStyle, ...textBlue}}
+                                                        >
+                                                            {bulletsByIndex[index]?.map((line, i) => (
+                                                                <span key={i} className="block mb-2 last:mb-0" style={{
+                                                                    fontFamily: "NeueHelveticaExt, sans-serif",
+                                                                    fontWeight: 400,
+                                                                    color: "#0011BF",
+                                                                }}>
+              → {line}
+            </span>
+                                                            ))}
                                                         </div>
                                                     </div>
                                                 ))}
                                             </div>
                                         </div>
+
 
                                     </div>
                                 );
@@ -745,23 +818,20 @@ const AllianceIntroduction: React.FC = () => {
                     {/* Header */}
                     <div
                         ref={trustProgramHeaderAnimation.elementRef}
-                        className={`mb-8 md:mb-12 ${getAnimationClasses(trustProgramHeaderAnimation.isVisible, 'slideInScale')}`}
+                        className={`mb-8 md:mb-12 ${getAnimationClasses(
+                            trustProgramHeaderAnimation.isVisible,
+                            "slideInScale"
+                        )}`}
                     >
                         <h1
                             className="text-4xl md:text-5xl font-bold mb-3 tracking-wide"
-                            style={{
-                                fontFamily: "NeueHelveticaExt, sans-serif",
-                                fontWeight: 700,
-                            }}
+                            style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700}}
                         >
                             CHƯƠNG TRÌNH
                         </h1>
                         <h2
                             className="text-3xl md:text-4xl font-bold tracking-wide"
-                            style={{
-                                fontFamily: "NeueHelveticaExt, sans-serif",
-                                fontWeight: 400,
-                            }}
+                            style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
                         >
                             TÍN NHIỆM NGƯỜI CÓ ẢNH HƯỞNG
                         </h2>
@@ -770,23 +840,32 @@ const AllianceIntroduction: React.FC = () => {
                     {/* Description */}
                     <div
                         ref={trustProgramContentAnimation.elementRef}
-                        className={`space-y-4 md:space-y-6 mb-8 md:mb-12 ${getAnimationClasses(trustProgramContentAnimation.isVisible, 'slideInUp')}`}
+                        className={`space-y-4 md:space-y-6 mb-8 md:mb-12 ${getAnimationClasses(
+                            trustProgramContentAnimation.isVisible,
+                            "slideInUp"
+                        )}`}
                     >
-                        <p className="text-white text-[16px] md:text-[16px] leading-relaxed max-w-4xl mx-auto " style={{
-                            fontFamily: "NeueHelveticaExt, sans-serif",
-                            fontWeight: 400,
-                        }}>
-                            Cung cấp khung đánh giá toàn diện và dễ dàng kiểm chứng; nhằm xác thực độ minh bạch - đạo đức - trách nhiệm của người có ảnh hưởng. Thiết lập chuẩn mực truyền thông phù hợp với quy định pháp luận, bảo vệ quyền lợi người tiêu dùng và tạo niềm tin cho các bên liên quan
+                        <p
+                            className="text-white text-[16px] md:text-[16px] leading-relaxed max-w-4xl mx-auto"
+                            style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
+                        >
+                            Cung cấp khung đánh giá toàn diện và dễ dàng kiểm chứng; nhằm xác thực
+                            độ minh bạch - đạo đức - trách nhiệm của người có ảnh hưởng. Thiết lập
+                            chuẩn mực truyền thông phù hợp với quy định pháp luận, bảo vệ quyền lợi
+                            người tiêu dùng và tạo niềm tin cho các bên liên quan
                         </p>
                     </div>
 
                     {/* MỤC ĐÍCH */}
                     <div
                         ref={purposeAnimation.elementRef}
-                        className={`w-full max-w-[1280px] mx-auto rounded-[16px] border border-white/30 backdrop-blur px-4 sm:px-6 md:px-8 py-5 md:py-6 text-left mb-5 box-border ${getAnimationClasses(purposeAnimation.isVisible, 'fadeInUp')}`}
+                        className={`w-full max-w-[1280px] mx-auto rounded-[16px] border border-white/30 backdrop-blur px-4 sm:px-6 md:px-8 py-5 md:py-6 text-left mb-5 box-border ${getAnimationClasses(
+                            purposeAnimation.isVisible,
+                            "fadeInUp"
+                        )}`}
                         style={{
                             background:
-                                "linear-gradient(180deg, rgba(255, 255, 255, 0.4) -121.84%, #FFFFFF 100%)"
+                                "linear-gradient(180deg, rgba(255, 255, 255, 0.4) -121.84%, #FFFFFF 100%)",
                         }}
                     >
                         <div className="flex items-center justify-between mb-4">
@@ -795,45 +874,59 @@ const AllianceIntroduction: React.FC = () => {
                                 style={{
                                     fontFamily: "NeueHelveticaExt, sans-serif",
                                     color: "#0011BF",
-                                    fontWeight: 700
+                                    fontWeight: 700,
                                 }}
                             >
                                 MỤC ĐÍCH
                             </p>
                             <span
-                                className="inline-block w-8 h-[2px] bg-[#0011BF] relative after:content-[''] after:w-0 after:h-0 after:border-y-8 after:border-y-transparent after:border-l-8 after:border-l-[#0011BF] after:absolute after:-right-2 after:-top-[7px]"
-                            />
+                                className="inline-block w-8 h-[2px] bg-[#0011BF] relative after:content-[''] after:w-0 after:h-0 after:border-y-8 after:border-y-transparent after:border-l-8 after:border-l-[#0011BF] after:absolute after:-right-2 after:-top-[7px]"/>
                         </div>
 
                         {/* Luôn cùng 1 hàng */}
                         <div
                             className="flex flex-row gap-8 items-start md:text-[14px]"
-                            style={{fontFamily: "NeueHelveticaExt, sans-serif", color: "#0011BF", fontWeight: 400}}
+                            style={{
+                                fontFamily: "NeueHelveticaExt, sans-serif",
+                                color: "#0011BF",
+                                fontWeight: 400,
+                            }}
                         >
-                            <Item>Đánh giá mức độ tín nhiệm trong hoạt động truyền thông, quảng bá</Item>
-                            <Item>Hỗ trợ cơ quan quản lý, doanh nghiệp, nhãn hàng lựa chọn đối tác truyền thông phù
-                                hợp</Item>
-                            <Item>Bảo vệ người tiêu dùng khỏi nội dung sai lệch, quảng cáo trá hình</Item>
+                            <Item>
+                                Đánh giá mức độ tín nhiệm trong hoạt động truyền thông, quảng bá
+                            </Item>
+                            <Item>
+                                Hỗ trợ cơ quan quản lý, doanh nghiệp, nhãn hàng lựa chọn đối tác
+                                truyền thông phù hợp
+                            </Item>
+                            <Item>
+                                Bảo vệ người tiêu dùng khỏi nội dung sai lệch, quảng cáo trá hình
+                            </Item>
                         </div>
-
                     </div>
 
-
                     {/* TIÊU CHÍ ĐÁNH GIÁ */}
-                    <div 
+                    <div
                         ref={criteriaHeaderAnimation.elementRef}
-                        className={`w-full max-w-[1280px] mx-auto text-center ${getAnimationClasses(criteriaHeaderAnimation.isVisible, 'fadeInUp')}`}
+                        className={`w-full max-w-[1280px] mx-auto text-center ${getAnimationClasses(
+                            criteriaHeaderAnimation.isVisible,
+                            "fadeInUp"
+                        )}`}
                     >
                         <div
                             className="rounded-[16px] border border-white/30 backdrop-blur px-4 py-3 md:py-4 box-border"
-                            style={{background: "linear-gradient(180deg, rgba(255, 255, 255, 0.4) -121.84%, #FFFFFF 100%)"}}
+                            style={{
+                                background:
+                                    "linear-gradient(180deg, rgba(255, 255, 255, 0.4) -121.84%, #FFFFFF 100%)",
+                            }}
                         >
-                            <h2 className="text-base md:text-xl font-extrabold tracking-wide"
+                            <h2
+                                className="text-base md:text-xl font-extrabold tracking-wide"
                                 style={{
                                     fontFamily: "NeueHelveticaExt, sans-serif",
                                     color: "#0011BF",
                                     fontSize: "25px",
-                                    fontWeight: 700
+                                    fontWeight: 700,
                                 }}
                             >
                                 TIÊU CHÍ ĐÁNH GIÁ - 5 TRỤ CỘT CHÍNH
@@ -841,23 +934,16 @@ const AllianceIntroduction: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Thanh timeline */}
-                    <div className="relative mx-auto mt-6 h-8 max-w-6xl">
+                    {/* Thanh timeline: ẩn trên mobile, hiện md+ */}
+                    <div className="relative mx-auto mt-6 h-8 max-w-6xl hidden md:block">
                         <div
                             className="absolute top-4 h-[2px] rounded-full bg-white"
-                            style={{
-                                left: "9.3%",
-                                right: "9.3%"
-                            }}
+                            style={{left: "9.3%", right: "9.3%"}}
                         />
                         <div
-                            className="absolute top-[10px] left-[9.4%] h-3 w-3 rounded-full bg-white shadow -translate-x-1/2"
-                        />
-
-                        {/* Dot tại điểm cuối (dot 5) */}
+                            className="absolute top-[10px] left-[9.4%] h-3 w-3 rounded-full bg-white shadow -translate-x-1/2"/>
                         <div
-                            className="absolute top-[10px] left-[90.5%] h-3 w-3 rounded-full bg-white shadow -translate-x-1/2"
-                        />
+                            className="absolute top-[10px] left-[90.5%] h-3 w-3 rounded-full bg-white shadow -translate-x-1/2"/>
                     </div>
 
                     {/* 5 trụ cột */}
@@ -868,50 +954,45 @@ const AllianceIntroduction: React.FC = () => {
                         {pillars.map((p, index) => (
                             <div
                                 key={p.id}
-                                className={`relative h-full ${getAnimationClasses(pillarsAnimation.isVisible, 'fadeInUp', index)}`}
+                                className={`relative h-full mt-6 md:mt-0 ${getAnimationClasses(
+                                    pillarsAnimation.isVisible,
+                                    'fadeInUp',
+                                    index
+                                )}`}
                             >
-                                {/* Nút + line trên đầu mỗi card */}
-                                <div
-                                    className="pointer-events-none absolute left-1/2 top-[-18px] z-10 -translate-x-1/2">
-                                    <div className="h-4 w-[3px] bg-white mx-auto"/>
-                                    <div className="h-3 w-3 rounded-full bg-white shadow mx-auto"/>
+                                {/* Nút + line trên đầu mỗi card: ẩn mobile, hiện md+ */}
+                                <div className="pointer-events-none absolute left-1/2 top-[-18px] z-10 -translate-x-1/2 hidden md:block">
+                                    <div className="h-4 w-[3px] bg-white mx-auto" />
+                                    <div className="h-3 w-3 rounded-full bg-white shadow mx-auto" />
                                 </div>
 
-                                {/* Line nối riêng cho card số 3 */}
-                                {/* Line nối riêng cho card số 3 */}
+                                {/* Line nối riêng cho card số 3: chỉ md+ */}
                                 {p.id === 3 && (
                                     <>
                                         <div
-                                            className="absolute left-1/2 -translate-x-1/2 bg-white"
-                                            style={{
-                                                width: "3px",
-                                                height: "50px",  // chiều dài line
-                                                top: "-60px",    // bắt đầu ngay mép trên card
-                                                zIndex: 5
-                                            }}
+                                            className="absolute left-1/2 -translate-x-1/2 bg-white hidden md:block"
+                                            style={{ width: '3px', height: '50px', top: '-60px', zIndex: 5 }}
                                         />
-                                        {/* Dot tại điểm cuối (gần card tiêu chí) */}
                                         <div
-                                            className="absolute left-1/2 top-[-64px] h-3 w-3 rounded-full bg-white shadow -translate-x-1/2"
-                                            style={{zIndex: 6}}
+                                            className="absolute left-1/2 top-[-64px] h-3 w-3 rounded-full bg-white shadow -translate-x-1/2 hidden md:block"
+                                            style={{ zIndex: 6 }}
                                         />
                                     </>
                                 )}
-
 
                                 {/* Nội dung card */}
                                 <div
                                     className="h-full min-h-[192px] rounded-[16px] border border-white/30 backdrop-blur p-4 box-border"
                                     style={{
                                         background:
-                                            "linear-gradient(180deg, rgba(255, 255, 255, 0.4) -121.84%, #FFFFFF 100%)"
+                                            'linear-gradient(180deg, rgba(255, 255, 255, 0.4) -121.84%, #FFFFFF 100%)'
                                     }}
                                 >
                                     <div
                                         className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-[#0011BF]/10 font-bold border border-[#0011BF]"
                                         style={{
-                                            fontFamily: "NeueHelveticaExt, sans-serif",
-                                            color: "#0011BF",
+                                            fontFamily: 'NeueHelveticaExt, sans-serif',
+                                            color: '#0011BF',
                                             fontWeight: 400
                                         }}
                                     >
@@ -920,8 +1001,8 @@ const AllianceIntroduction: React.FC = () => {
                                     <p
                                         className="text-sm leading-relaxed"
                                         style={{
-                                            fontFamily: "NeueHelveticaExt, sans-serif",
-                                            color: "#0011BF",
+                                            fontFamily: 'NeueHelveticaExt, sans-serif',
+                                            color: '#0011BF',
                                             fontWeight: 400
                                         }}
                                     >
@@ -929,21 +1010,19 @@ const AllianceIntroduction: React.FC = () => {
                                         {p.lines.length > 0 && (
                                             <>
                                                 {p.lines.map((l, i) => (
-                                                    <span key={i}>
-                            {i === 0 ? ": " : ", "}
-                                                        {l}
-                        </span>
+                                                    <span key={i}>{i === 0 ? ': ' : ', '}{l}</span>
                                                 ))}
                                             </>
                                         )}
                                     </p>
                                 </div>
                             </div>
-
                         ))}
+
                     </div>
                 </div>
             </section>
+
 
             <div className="w-full  flex flex-col justify-center items-center py-6 bg-no-repeat">
                 <div className="px-4">
@@ -975,7 +1054,8 @@ const AllianceIntroduction: React.FC = () => {
                             <img src="/images/img_87.png" alt="Event 1" className="w-[100px] h-[100px] object-contain"/>
                             <img src="/images/img_88.png" alt="Event 2" className="w-[105px] h-[100px] object-contain"/>
                             <img src="/images/img_89.png" alt="Event 3" className="w-[100px] h-[100px] object-contain"/>
-                            <img src="/images/img_90.png" alt="Event 4" className="w-[100px] h-[50px] mt-5 object-contain"/>
+                            <img src="/images/img_90.png" alt="Event 4"
+                                 className="w-[100px] h-[50px] mt-5 object-contain"/>
                             <img src="/images/img_91.png" alt="Event 5" className="w-[100px] h-[100px] object-contain"/>
                             <img src="/images/img_92.png" alt="Event 6" className="w-[100px] h-[100px] object-contain"/>
                             <img src="/images/img_93.png" alt="Event 7" className="w-[100px] h-[100px] object-contain"/>

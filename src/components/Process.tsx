@@ -28,10 +28,9 @@ const Process: React.FC = () => {
                         v.src = "/video/tl.mp4"; // luôn 1 file tl.mp4
                         setLoadedSrc(true);
                     }
-                    // Chỉ ép muted trước khi có tương tác
                     if (!userInteracted) {
                         v.muted = true;
-                        v.setAttribute("muted", ""); // fix iOS: đảm bảo muted attr tồn tại
+                        v.setAttribute("muted", ""); // fix iOS
                     }
                     try { await v.play(); } catch {}
                 } else {
@@ -45,25 +44,22 @@ const Process: React.FC = () => {
         return () => io.disconnect();
     }, [loadedSrc, userInteracted]);
 
-    // 3) Ghi nhận tương tác đầu tiên -> bỏ mute + play trong CHÍNH handler
+    // 3) Bắt lần tương tác đầu tiên -> bật tiếng
     useEffect(() => {
         const onFirstInteract = () => {
             const v = videoRef.current;
             if (!v) return;
 
             setUserInteracted(true);
-            // Bỏ mute (cả property lẫn attribute) + play lại trong handler
             v.muted = false;
-            v.removeAttribute("muted"); // iOS Safari đôi khi cần bỏ attr để mở tiếng
-            v.play().catch(() => {});   // gọi trong handler sẽ không bị chặn
+            v.removeAttribute("muted");
+            v.play().catch(() => {});
 
-            // Gỡ listener sau lần đầu
             window.removeEventListener("pointerdown", onFirstInteract);
             window.removeEventListener("touchend", onFirstInteract);
             window.removeEventListener("keydown", onFirstInteract);
         };
 
-        // Dùng nhiều loại event để chắc chắn trên mobile
         window.addEventListener("pointerdown", onFirstInteract, { once: true });
         window.addEventListener("touchend", onFirstInteract, { once: true });
         window.addEventListener("keydown", onFirstInteract, { once: true });
@@ -76,18 +72,26 @@ const Process: React.FC = () => {
     }, []);
 
     return (
-        <section className="w-full min-h-screen flex flex-col items-center justify-center p-0">
+        // Mobile: min-h 100svh để ăn đủ màn hình; Desktop: giữ nguyên min-h-screen
+        <section className="w-full min-h-[100svh] md:min-h-screen flex items-center justify-center p-0">
             <video
                 ref={videoRef}
-                // Cho phép UI điều khiển (người dùng có thể bấm loa)
+                // Cho phép UI điều khiển (user có thể bật loa)
                 controls
                 playsInline
                 loop
                 preload="metadata"
                 poster="/images/img.png"
-                // Khởi tạo muted để được autoplay; sẽ bỏ ở handler tương tác
                 muted
-                className="w-full max-w-none aspect-video shadow-lg"
+                // Mobile: full màn hình + cover; Desktop: aspect-video như cũ
+                className="
+          w-screen h-[100svh] object-cover
+          md:w-full md:h-auto md:aspect-video md:object-contain
+          max-w-none shadow-lg
+        "
+                // Tùy chọn: hạn chế PiP/remote (nếu muốn)
+                // disablePictureInPicture
+                // controlsList="nodownload noremoteplayback"
             >
                 Trình duyệt của bạn không hỗ trợ video HTML5.
             </video>

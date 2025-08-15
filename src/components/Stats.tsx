@@ -44,6 +44,7 @@ const CountdownWithServices: React.FC = () => {
     const [showVideo, setShowVideo] = useState(true);
     const [revealed, setRevealed] = useState(false);
     const videoRef = useRef<HTMLVideoElement | null>(null);
+
     useEffect(() => {
         if (!showVideo || revealed) return;
         const fallback = setTimeout(() => handleReveal(), 18000);
@@ -60,13 +61,11 @@ const CountdownWithServices: React.FC = () => {
     const handleEnded = () => handleReveal();
     const handleError = () => handleReveal();
 
-    // dữ liệu demo để map từng dòng/ảnh:
     const leftTexts = [
         "Ballroom Tầng 5",
         "Khách sạn Intercontinental",
         "E6, Khu đô thị mới Cầu Giấy, P. Yên Hòa, TP. Hà Nội",
     ];
-    // tách chữ K O L để fade từng ký tự
     const kolLetters = ["K","O","L"];
 
     return (
@@ -84,7 +83,7 @@ const CountdownWithServices: React.FC = () => {
                 }}
             >
                 <div className="relative z-10 min-h-[100dvh] flex flex-col">
-                    {/* HEADER: fade từng logo */}
+                    {/* HEADER */}
                     <header className="pt-2 md:pt-5">
                         <div className="max-w-6xl mx-auto px-3 md:px-4">
                             <FadeEach show={revealed} baseDelay={100} step={140} className="flex justify-center items-center gap-3 md:gap-6">
@@ -96,7 +95,7 @@ const CountdownWithServices: React.FC = () => {
 
                     {/* MAIN */}
                     <main className="flex-1 flex flex-col items-center justify-center gap-2">
-                        {/* KOL: fade từng ký tự to */}
+                        {/* KOL */}
                         <section className="w-full flex justify-start -mb-2 md:mb-0">
                             <div
                                 className="leading-none font-extrabold text-white tracking-[-0.02em]"
@@ -112,46 +111,61 @@ const CountdownWithServices: React.FC = () => {
                             </div>
                         </section>
 
-                        {/* Hàng: Ballroom + slogan */}
+                        {/* Hàng: (đÃ đổi thứ tự mobile)  */}
                         <section className="w-full relative">
-                            <div className="md:ml-[85px] grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-start relative">
-                                {/* LEFT: fade từng dòng địa chỉ */}
-                                <div className="text-white z-10">
-                                    <FadeEach show={revealed} baseDelay={380} step={120}>
-                                        <div className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight" style={{ fontFamily: "NeueHelveticaExt, sans-serif" }}>
+                            <div
+                                className="
+                  md:ml-[85px]
+                  flex flex-col items-center gap-4 md:gap-8
+                  md:grid md:grid-cols-2 md:items-start
+                "
+                            >
+                                {/* 1) ẢNH SLOGAN — mobile FIRST, desktop RIGHT */}
+                                <Fade show={revealed} delay={520} y={10} className="order-1 md:order-2 w-full">
+                                    <div className="text-white relative min-w-0 w-full flex justify-center md:justify-start">
+                                        <img
+                                            src="/images/img_86.png"
+                                            alt="với kỷ nguyên vươn mình của dân tộc"
+                                            className="
+                        max-w-full h-auto
+                        w-[220px] sm:w-[300px]
+                        md:w-[500px]
+                        md:-ml-[180px] lg:-ml-[220px] xl:-ml-[180px]
+                      "
+                                        />
+                                    </div>
+                                </Fade>
+
+                                {/* 2) ĐỊA ĐIỂM — mobile SECOND, desktop LEFT */}
+                                <div className="order-2 md:order-1 text-white z-10 w-full">
+                                    <FadeEach show={revealed} baseDelay={380} step={120} className="w-full">
+                                        <div className="text-center md:text-left text-xl sm:text-2xl md:text-3xl font-bold leading-tight"
+                                             style={{ fontFamily: "NeueHelveticaExt, sans-serif" }}>
                                             {leftTexts[0]}
                                         </div>
-                                        <div className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight" style={{ fontFamily: "NeueHelveticaExt, sans-serif" }}>
+                                        <div className="text-center md:text-left text-xl sm:text-2xl md:text-3xl font-bold leading-tight"
+                                             style={{ fontFamily: "NeueHelveticaExt, sans-serif" }}>
                                             {leftTexts[1]}
                                         </div>
-                                        <div className="mt-1 text-sm sm:text-base md:text-lg text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
+                                        <div className="mt-1 text-center md:text-left text-sm sm:text-base md:text-lg text-white/90"
+                                             style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
                                             {leftTexts[2]}
                                         </div>
                                     </FadeEach>
                                 </div>
-
-                                {/* RIGHT: slogan ảnh riêng */}
-                                <Fade show={revealed} delay={520} y={10}>
-                                    <div className="text-white relative min-w-0">
-                                        <img
-                                            src="/images/img_86.png"
-                                            alt="với kỷ nguyên vươn mình của dân tộc"
-                                            className="max-w-full h-auto w-[200px] sm:w-[300px] md:w-[500px] md:-ml-[180px] lg:-ml-[220px] xl:-ml-[180px]"
-                                        />
-                                    </div>
-                                </Fade>
                             </div>
                         </section>
                     </main>
 
-                    {/* FOOTER: từng khối + từng logo trong khối */}
+                    {/* FOOTER */}
                     <footer className="px-3 pt-2 pb-5 md:px-6 md:py-8">
                         <div className="max-w-6xl mx-auto space-y-6">
                             <FadeEach show={revealed} baseDelay={650} step={120} className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6 md:gap-12">
                                 {/* Đơn vị phối hợp tổ chức */}
                                 <div className="flex flex-col items-center space-y-2">
                                     <Fade show={revealed} delay={680}>
-                    <span className=" text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
+                    <span className=" text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90"
+                          style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
                       Đơn vị phối hợp tổ chức
                     </span>
                                     </Fade>
@@ -164,7 +178,8 @@ const CountdownWithServices: React.FC = () => {
                                 {/* Đơn vị tiên phong */}
                                 <div className="flex flex-col items-center space-y-2">
                                     <Fade show={revealed} delay={700}>
-                    <span className=" text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
+                    <span className=" text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90"
+                          style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
                       Đơn vị tiên phong
                     </span>
                                     </Fade>
