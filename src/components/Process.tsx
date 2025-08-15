@@ -54,7 +54,7 @@ const Process: React.FC = () => {
                 playsInline
                 loop
                 preload="none"              // không tải sớm khi chưa cần
-                poster="/images/img_48.png"
+                poster="/images/img.png"
                 className="w-full max-w-none aspect-video shadow-lg"
                 controls={false}
                 controlsList="nodownload noplaybackrate noremoteplayback"
