@@ -192,7 +192,7 @@ const CountdownWithServices: React.FC = () => {
                                     </div>
                                 </Fade>
 
-                                {/* 2) ĐỊA ĐIỂM — mobile SECOND, desktop LEFT */}
+
                                 <div className="order-2 md:order-1 text-white z-10 w-full">
                                     <FadeEach show={revealed} baseDelay={380} step={120} className="w-full">
                                         {[
