@@ -131,11 +131,11 @@ const AllianceIntroduction: React.FC = () => {
                         className="py-8 bg-cover bg-center relative"
                         style={{backgroundImage: "url('/images/img_64.png')"}}
                     >
-                        <div className="relative z-10 md:mr-[80px] md:ml-[80px]">
+                        <div className="relative z-10 lg:mr-[80px] lg:ml-[80px]">
                             {/* Header */}
                             <div
                                 ref={headerAnimation.elementRef}
-                                className={`px-4 md:mx-[100px] mb-10 md:mb-12 ${getAnimationClasses(
+                                className={`px-4 lg:mx-[100px] mb-10 md:mb-12 ${getAnimationClasses(
                                     headerAnimation.isVisible,
                                     "slideInScale"
                                 )}`}
@@ -182,7 +182,7 @@ const AllianceIntroduction: React.FC = () => {
                                 ];
 
                                 return (
-                                    <div className="px-4 md:mx-[100px]">
+                                    <div className="px-4 lg:mx-[100px]">
                                         {/* --- Laptop/Desktop layout (giữ nguyên) --- */}
                                         <div className="hidden md:block">
                                             {/* Topics */}
@@ -694,7 +694,7 @@ const AllianceIntroduction: React.FC = () => {
                     {/* 3 Cards (hoạt động chính) */}
                     <div
                         ref={activitiesCardsAnimation.elementRef}
-                        className={`px-4 md:px-0 mb-14 md:mb-20 md:mx-[195px] ${getAnimationClasses(
+                        className={`px-4 md:px-0 mb-14 md:mb-20 lg:mx-[195px] ${getAnimationClasses(
                             activitiesCardsAnimation.isVisible,
                             'slideInUp'
                         )}`}
