@@ -204,6 +204,7 @@ const CountdownWithServices: React.FC = () => {
                                             "Hà Nội | 18.08.2025",
                                             "Ballroom Tầng 5",
                                             "Khách sạn Intercontinental",
+                                            "Hanoi Landmark72"
                                         ].map((t, idx) => (
                                             <div
                                                 key={idx}
