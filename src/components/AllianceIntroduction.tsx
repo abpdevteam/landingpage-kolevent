@@ -694,12 +694,12 @@ const AllianceIntroduction: React.FC = () => {
                     {/* 3 Cards (hoạt động chính) */}
                     <div
                         ref={activitiesCardsAnimation.elementRef}
-                        className={`px-4 md:px-0 mb-14 md:mb-20 lg:mx-[195px] ${getAnimationClasses(
+                        className={`px-4 lg:px-0 mb-14 lg:mb-20 lg:mx-[195px] ${getAnimationClasses(
                             activitiesCardsAnimation.isVisible,
                             'slideInUp'
                         )}`}
                     >
-                        <div className="grid grid-cols-1 md:grid-cols-3 items-stretch gap-6 md:gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-3 items-stretch gap-6 lg:gap-8">
                             {[
                                 {
                                     number: "01",
