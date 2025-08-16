@@ -107,7 +107,7 @@ const CountdownWithServices: React.FC = () => {
                     }}
                 >
                     <img
-                        src="/images/img_4.png"
+                        src="/images/bp.jpg"
                         alt="background"
                         className="w-full h-auto block"
                     />
