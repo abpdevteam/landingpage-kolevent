@@ -355,23 +355,24 @@ const AllianceIntroduction: React.FC = () => {
                         </div>
                     </section>
 
-
                     {/* ====== SECTION 2: GIỚI THIỆU LIÊN MINH ====== */}
                     <section
-                        className="py-8 relative "
+                        className="py-8 relative"
                         style={{
                             backgroundImage: "url('/images/img_65.png')", // đổi ảnh nếu cần
                             backgroundSize: "auto 80%",
                             backgroundPosition: "center",
                         }}
                     >
-
                         {/* Nội dung */}
-                        <div className="relative z-10 md:mx-[100px]">
+                        <div className="relative z-10 mx-4 md:mx-0 lg:mx-[100px]">
                             {/* Header */}
                             <div
                                 ref={allianceHeaderAnimation.elementRef}
-                                className={`px-4 md:mx-[100px] mb-10 md:mb-12 ${getAnimationClasses(allianceHeaderAnimation.isVisible, 'slideInScale')}`}
+                                className={`px-4 md:mx-0 lg:mx-[100px] mb-10 md:mb-12 ${getAnimationClasses(
+                                    allianceHeaderAnimation.isVisible,
+                                    'slideInScale'
+                                )}`}
                             >
                                 <div className="flex justify-center items-start gap-6">
                                     <div className="text-center justify-center">
@@ -380,7 +381,7 @@ const AllianceIntroduction: React.FC = () => {
                                             style={{
                                                 fontFamily: "NeueHelveticaExt, sans-serif",
                                                 fontWeight: 700,
-                                                color: "#ffffff"
+                                                color: "#ffffff",
                                             }}
                                         >
                                             LIÊN MINH NIỀM TIN SỐ
@@ -390,13 +391,12 @@ const AllianceIntroduction: React.FC = () => {
                             </div>
 
                             {/* Row 1 */}
-                            <div className="px-4 md:mx-[80px]">
-                                {/* Row 1 */}
+                            <div className="px-4 md:px-0 md:mx-0 lg:mx-[80px]">
                                 <div
                                     ref={reasonCardAnimation.elementRef}
                                     className={`grid grid-cols-1 md:grid-cols-[400px_1fr] gap-6 mb-6 ${getAnimationClasses(
                                         reasonCardAnimation.isVisible,
-                                        "slideInUp"
+                                        'slideInUp'
                                     )}`}
                                 >
                                     {/* Card 1 */}
@@ -404,22 +404,22 @@ const AllianceIntroduction: React.FC = () => {
                                         <div
                                             className={`backdrop-blur-sm p-6 rounded-lg h-full flex items-center justify-center transition-all duration-500 group-hover:scale-105 ${getAnimationClasses(
                                                 reasonCardAnimation.isVisible,
-                                                "fadeInLeft"
+                                                'fadeInLeft'
                                             )}`}
                                             style={{
                                                 background:
-                                                    "linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)",
-                                                border: "1px solid rgba(255, 255, 255, 0.3)",
-                                                borderRadius: "16px",
+                                                    'linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)',
+                                                border: '1px solid rgba(255, 255, 255, 0.3)',
+                                                borderRadius: '16px',
                                             }}
                                         >
                                             <div className="text-center">
                                                 <h2
                                                     className="text-[28px] mb-4"
                                                     style={{
-                                                        fontFamily: "NeueHelveticaExt, sans-serif",
+                                                        fontFamily: 'NeueHelveticaExt, sans-serif',
                                                         fontWeight: 700,
-                                                        color: "#0011BF",
+                                                        color: '#0011BF',
                                                     }}
                                                 >
                                                     SỨ MỆNH
@@ -433,13 +433,13 @@ const AllianceIntroduction: React.FC = () => {
                                         <div
                                             className={`p-6 rounded-lg h-full flex flex-col justify-center transition-all duration-500 group-hover:scale-105 ${getAnimationClasses(
                                                 reasonCardAnimation.isVisible,
-                                                "fadeInRight"
+                                                'fadeInRight'
                                             )}`}
                                             style={{
                                                 background:
-                                                    "linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)",
-                                                border: "1px solid rgba(255, 255, 255, 0.3)",
-                                                borderRadius: "16px",
+                                                    'linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)',
+                                                border: '1px solid rgba(255, 255, 255, 0.3)',
+                                                borderRadius: '16px',
                                             }}
                                         >
                                             <div className="leading-relaxed text-[#0011BF] space-y-4">
@@ -448,13 +448,12 @@ const AllianceIntroduction: React.FC = () => {
                                                     <p
                                                         className="text-lg md:text-[16px]"
                                                         style={{
-                                                            fontFamily: "NeueHelveticaExt, sans-serif",
+                                                            fontFamily: 'NeueHelveticaExt, sans-serif',
                                                             fontWeight: 400,
                                                         }}
                                                     >
                                                         Liên minh được thành lập để tập hợp, kết nối và phát huy vai trò
-                                                        xây
-                                                        dựng, dẫn dắt niềm tin của KOLs trên không gian mạng
+                                                        xây dựng, dẫn dắt niềm tin của KOLs trên không gian mạng
                                                     </p>
                                                 </div>
 
@@ -463,14 +462,13 @@ const AllianceIntroduction: React.FC = () => {
                                                     <p
                                                         className="text-lg md:text-[16px]"
                                                         style={{
-                                                            fontFamily: "NeueHelveticaExt, sans-serif",
+                                                            fontFamily: 'NeueHelveticaExt, sans-serif',
                                                             fontWeight: 400,
                                                         }}
                                                     >
                                                         Hoạt động của Liên minh hướng đến lan tỏa giá trị tích cực, định
                                                         hướng hành vi đáng tin cậy và nâng cao trách nhiệm của KOLs với
-                                                        cộng
-                                                        đồng trong kỷ nguyên số
+                                                        cộng đồng trong kỷ nguyên số
                                                     </p>
                                                 </div>
                                             </div>
@@ -478,11 +476,10 @@ const AllianceIntroduction: React.FC = () => {
                                     </div>
                                 </div>
 
-
                                 {/* Row 2 */}
                                 <div
                                     ref={visionCardAnimation.elementRef}
-                                    className={`md:grid-cols-[400px_1fr_1fr] grid grid-cols-1  gap-6 ${getAnimationClasses(
+                                    className={`grid grid-cols-1 md:grid-cols-[400px_1fr_1fr] gap-6 ${getAnimationClasses(
                                         visionCardAnimation.isVisible,
                                         'slideInUp'
                                     )}`}
@@ -491,16 +488,13 @@ const AllianceIntroduction: React.FC = () => {
                                     <div className="group transition-all duration-500 hover:-translate-y-1">
                                         <div
                                             className={`backdrop-blur-sm p-6 rounded-lg h-full flex items-center justify-center 
-                transition-all duration-500 group-hover:scale-105 group-hover:shadow-lg
-                border border-white/30 group-hover:border-white/50
-                ${getAnimationClasses(
-                                                visionCardAnimation.isVisible,
-                                                'fadeInLeft'
-                                            )}`}
+              transition-all duration-500 group-hover:scale-105 group-hover:shadow-lg
+              border border-white/30 group-hover:border-white/50
+              ${getAnimationClasses(visionCardAnimation.isVisible, 'fadeInLeft')}`}
                                             style={{
                                                 background:
                                                     'linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)',
-                                                borderRadius: '16px'
+                                                borderRadius: '16px',
                                             }}
                                         >
                                             <div className="text-center">
@@ -509,7 +503,7 @@ const AllianceIntroduction: React.FC = () => {
                                                     style={{
                                                         fontFamily: 'NeueHelveticaExt, sans-serif',
                                                         fontWeight: 700,
-                                                        color: '#0011BF'
+                                                        color: '#0011BF',
                                                     }}
                                                 >
                                                     TỪ TẦM NHÌN ĐẾN
@@ -532,7 +526,7 @@ const AllianceIntroduction: React.FC = () => {
                                                         style={{
                                                             fontFamily: 'NeueHelveticaExt, sans-serif',
                                                             fontWeight: 700,
-                                                            color: '#0011BF'
+                                                            color: '#0011BF',
                                                         }}
                                                     >
                                                         HÀNH ĐỘNG
@@ -546,14 +540,13 @@ const AllianceIntroduction: React.FC = () => {
                                     <div className="group transition-all duration-500 hover:-translate-y-3">
                                         <div
                                             className={`p-6 rounded-lg h-full transition-all duration-500
-                group-hover:scale-105 group-hover:shadow-lg
-                border border-white/30 group-hover:border-white/50
-                focus-within:shadow-lg
-                ${getAnimationClasses(visionCardAnimation.isVisible, 'fadeInUp')}`}
+              group-hover:scale-105 group-hover:shadow-lg
+              border border-white/30 group-hover:border-white/50
+              focus-within:shadow-lg
+              ${getAnimationClasses(visionCardAnimation.isVisible, 'fadeInUp')}`}
                                             style={{
                                                 background:
                                                     'linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)',
-                                                // giữ gradient bằng inline; bỏ inline border/borderRadius để Tailwind xử lý hover
                                             }}
                                         >
                                             <div className="flex items-center mb-4">
@@ -570,8 +563,8 @@ const AllianceIntroduction: React.FC = () => {
                                                         color: '#0011BF',
                                                     }}
                                                 >
-        Tầm nhìn
-      </span>
+                Tầm nhìn
+              </span>
                                             </div>
 
                                             <ul
@@ -595,10 +588,10 @@ const AllianceIntroduction: React.FC = () => {
                                     <div className="group transition-all duration-500 hover:-translate-y-3">
                                         <div
                                             className={`p-6 rounded-lg h-full transition-all duration-500
-                group-hover:scale-105 group-hover:shadow-lg
-                border border-white/30 group-hover:border-white/50
-                focus-within:shadow-lg
-                ${getAnimationClasses(visionCardAnimation.isVisible, 'fadeInRight')}`}
+              group-hover:scale-105 group-hover:shadow-lg
+              border border-white/30 group-hover:border-white/50
+              focus-within:shadow-lg
+              ${getAnimationClasses(visionCardAnimation.isVisible, 'fadeInRight')}`}
                                             style={{
                                                 background:
                                                     'linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)',
@@ -618,8 +611,8 @@ const AllianceIntroduction: React.FC = () => {
                                                         color: '#0011BF',
                                                     }}
                                                 >
-        Hành động
-      </span>
+                Hành động
+              </span>
                                             </div>
 
                                             <ul
@@ -638,9 +631,7 @@ const AllianceIntroduction: React.FC = () => {
                                             </ul>
                                         </div>
                                     </div>
-
                                 </div>
-
 
                                 {/* Button */}
                                 <div className="flex justify-center mt-6">
@@ -653,20 +644,19 @@ const AllianceIntroduction: React.FC = () => {
                                             className="px-6 py-3 text-lg font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg"
                                             style={{
                                                 background:
-                                                    "linear-gradient(180deg, rgba(255, 255, 255, 0) -56.25%, rgba(255, 255, 255, 0.3) 100%)",
-                                                border: "1px solid rgba(255, 255, 255, 0.3)",
-                                                borderRadius: "16px",
+                                                    'linear-gradient(180deg, rgba(255, 255, 255, 0) -56.25%, rgba(255, 255, 255, 0.3) 100%)',
+                                                border: '1px solid rgba(255, 255, 255, 0.3)',
+                                                borderRadius: '16px',
                                             }}
                                         >
                                             ĐĂNG KÝ THÀNH VIÊN
                                         </button>
                                     </a>
                                 </div>
-
                             </div>
-
                         </div>
                     </section>
+
 
                 </div>
             </section>
@@ -912,7 +902,7 @@ const AllianceIntroduction: React.FC = () => {
                     </div>
 
                     {/* Thanh timeline: ẩn trên mobile, hiện md+ */}
-                    <div className="relative mx-auto mt-6 h-8 max-w-6xl hidden md:block">
+                    <div className="relative mx-auto mt-6 h-8 max-w-6xl hidden lg:block">
                         <div
                             className="absolute top-4 h-[2px] rounded-full bg-white"
                             style={{left: "9.3%", right: "9.3%"}}
@@ -926,7 +916,7 @@ const AllianceIntroduction: React.FC = () => {
                     {/* 5 trụ cột */}
                     <div
                         ref={pillarsAnimation.elementRef}
-                        className="mx-auto grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-stretch"
+                        className="mx-auto grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-stretch md:mt-[10px]"
                     >
                         {pillars.map((p, index) => (
                             <div
@@ -939,7 +929,7 @@ const AllianceIntroduction: React.FC = () => {
                             >
                                 {/* Nút + line trên đầu mỗi card: ẩn mobile, hiện md+ */}
                                 <div
-                                    className="pointer-events-none absolute left-1/2 top-[-18px] z-10 -translate-x-1/2 hidden md:block">
+                                    className="pointer-events-none absolute left-1/2 top-[-18px] z-10 -translate-x-1/2 hidden lg:block">
                                     <div className="h-4 w-[3px] bg-white mx-auto"/>
                                     <div className="h-3 w-3 rounded-full bg-white shadow mx-auto"/>
                                 </div>
@@ -948,11 +938,11 @@ const AllianceIntroduction: React.FC = () => {
                                 {p.id === 3 && (
                                     <>
                                         <div
-                                            className="absolute left-1/2 -translate-x-1/2 bg-white hidden md:block"
+                                            className="absolute left-1/2 -translate-x-1/2 bg-white hidden lg:block"
                                             style={{width: '3px', height: '50px', top: '-60px', zIndex: 5}}
                                         />
                                         <div
-                                            className="absolute left-1/2 top-[-64px] h-3 w-3 rounded-full bg-white shadow -translate-x-1/2 hidden md:block"
+                                            className="absolute left-1/2 top-[-64px] h-3 w-3 rounded-full bg-white shadow -translate-x-1/2 hidden lg:block"
                                             style={{zIndex: 6}}
                                         />
                                     </>

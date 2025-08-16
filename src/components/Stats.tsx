@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 
 const FADE_MS = 700;
 
-/** Hook nhận biết mobile theo breakpoint md (768px) */
-function useIsMobile(breakpoint = 768) {
-    const [isMobile, setIsMobile] = useState(false);
+/** true nếu viewport <= 1024px (mobile + tablet) */
+function useIsHandheld(maxPx = 1024) {
+    const [isHandheld, setIsHandheld] = useState(false);
     useEffect(() => {
         if (typeof window === "undefined") return;
-        const mql = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
-        const update = () => setIsMobile(mql.matches);
+        const mql = window.matchMedia(`(max-width: ${maxPx - 1}px)`);
+        const update = () => setIsHandheld(mql.matches);
         update();
         if (mql.addEventListener) mql.addEventListener("change", update);
         else mql.addListener(update);
@@ -16,8 +16,8 @@ function useIsMobile(breakpoint = 768) {
             if (mql.removeEventListener) mql.removeEventListener("change", update);
             else mql.removeListener(update);
         };
-    }, [breakpoint]);
-    return isMobile;
+    }, [maxPx]);
+    return isHandheld;
 }
 
 // ---- Hiệu ứng cho 1 item ----
@@ -63,22 +63,23 @@ const CountdownWithServices: React.FC = () => {
     const [revealed, setRevealed] = useState(false); // reveal ảnh/backdrop
     const videoRef = useRef<HTMLVideoElement | null>(null);
 
-    const isMobile = useIsMobile(768); // đồng bộ breakpoint md
+    // Mobile + Tablet chung 1 nhánh
+    const isHandheld = useIsHandheld(1024);
 
-    // Mobile: hiện UI ngay, không video
+    // Handheld: hiện UI ngay, không video
     useEffect(() => {
-        if (isMobile) {
+        if (isHandheld) {
             setShowVideo(false);
             setRevealed(true);
         }
-    }, [isMobile]);
+    }, [isHandheld]);
 
     // Desktop: fallback auto-reveal nếu video không kết thúc sau 18s
     useEffect(() => {
-        if (isMobile || !showVideo || revealed) return;
-        const fallback = setTimeout(() => handleReveal(), 18000);
+        if (isHandheld || !showVideo || revealed) return;
+        const fallback = setTimeout(() => setRevealed(true), 18000);
         return () => clearTimeout(fallback);
-    }, [isMobile, showVideo, revealed]);
+    }, [isHandheld, showVideo, revealed]);
 
     // Sau khi revealed, cho video fade-out
     useEffect(() => {
@@ -87,15 +88,11 @@ const CountdownWithServices: React.FC = () => {
         return () => clearTimeout(t);
     }, [revealed]);
 
-    const handleReveal = () => setRevealed(true);
-    const handleEnded = () => handleReveal();
-    const handleError = () => handleReveal();
+    const handleEnded = () => setRevealed(true);
+    const handleError = () => setRevealed(true);
 
-
-
-    // ===================== DESKTOP/LAPTOP =====================
-    // Video motion trước, sau đó chỉ hiển thị 1 ảnh nền (img_4.png)
-    if (!isMobile) {
+    // ===================== DESKTOP (>= 1024px) =====================
+    if (!isHandheld) {
         return (
             <div className="relative w-full min-h-[100dvh]">
                 {/* ẢNH nền sau khi video kết thúc */}
@@ -111,7 +108,6 @@ const CountdownWithServices: React.FC = () => {
                         alt="background"
                         className="w-full h-auto block"
                     />
-
                 </div>
 
                 {/* Overlay video motion */}
@@ -139,7 +135,7 @@ const CountdownWithServices: React.FC = () => {
         );
     }
 
-    // ===================== MOBILE (giữ nguyên UI hiện có) =====================
+    // ===================== HANDHELD (Mobile + Tablet) =====================
     return (
         <div className="relative w-full min-h-[100dvh]" style={{ fontFamily: "'Inter', sans-serif" }}>
             {/* NỀN tổng thể fade-in */}
@@ -156,11 +152,11 @@ const CountdownWithServices: React.FC = () => {
             >
                 <div className="relative z-10 min-h-[100dvh] flex flex-col">
                     {/* HEADER */}
-                    <header className="pt-2 md:pt-5">
-                        <div className="max-w-6xl mx-auto px-3 md:px-4">
-                            <FadeEach show={revealed} baseDelay={100} step={140} className="flex justify-center items-center gap-3 md:gap-6">
-                                <img src="/images/img_2.png" alt="Logo 1" className="h-10 md:h-16 w-auto object-contain" />
-                                <img src="/images/img_85.png" alt="Logo 2" className="h-10 md:h-16 w-auto object-contain" />
+                    <header className="pt-2 lg:pt-5">
+                        <div className="max-w-6xl mx-auto px-3 lg:px-4">
+                            <FadeEach show={revealed} baseDelay={100} step={140} className="flex justify-center items-center gap-3 lg:gap-6">
+                                <img src="/images/img_2.png" alt="Logo 1" className="h-10 lg:h-16 w-auto object-contain" />
+                                <img src="/images/img_85.png" alt="Logo 2" className="h-10 lg:h-16 w-auto object-contain" />
                             </FadeEach>
                         </div>
                     </header>
@@ -168,7 +164,7 @@ const CountdownWithServices: React.FC = () => {
                     {/* MAIN */}
                     <main className="flex-1 flex flex-col items-center justify-center gap-2">
                         {/* KOL */}
-                        <section className="w-full flex justify-start -mb-2 md:mb-0">
+                        <section className="w-full flex justify-start -mb-2 lg:mb-0">
                             <div
                                 className="leading-none font-extrabold text-white tracking-[-0.02em]"
                                 style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700 }}
@@ -176,29 +172,28 @@ const CountdownWithServices: React.FC = () => {
                                 <div className="flex">
                                     <FadeEach show={revealed} baseDelay={220} step={120} className="flex">
                                         {["K", "O", "L"].map((ch, i) => (
-                                            <span key={i} className="block text-[30vw] md:text-[22vw] leading-none">{ch}</span>
+                                            <span key={i} className="block text-[30vw] lg:text-[22vw] leading-none">{ch}</span>
                                         ))}
                                     </FadeEach>
                                 </div>
                             </div>
                         </section>
 
-                        {/* Hàng: (đã đổi thứ tự mobile) */}
+                        {/* Hàng: (đã đổi thứ tự handheld) */}
                         <section className="w-full relative">
-                            <div className="md:ml-[85px] flex flex-col items-center gap-4 md:gap-8 md:grid md:grid-cols-2 md:items-start">
-                                {/* 1) ẢNH SLOGAN — mobile FIRST, desktop RIGHT */}
-                                <Fade show={revealed} delay={520} y={10} className="order-1 md:order-2 w-full">
-                                    <div className="text-white relative min-w-0 w-full flex justify-center md:justify-start">
+                            <div className="lg:ml-[85px] flex flex-col items-center gap-4 lg:gap-8 lg:grid lg:grid-cols-2 lg:items-start">
+                                {/* 1) ẢNH SLOGAN — handheld FIRST, desktop RIGHT */}
+                                <Fade show={revealed} delay={520} y={10} className="order-1 lg:order-2 w-full">
+                                    <div className="text-white relative min-w-0 w-full flex justify-center lg:justify-start">
                                         <img
                                             src="/images/img_86.png"
                                             alt="với kỷ nguyên vươn mình của dân tộc"
-                                            className="max-w-full h-auto w-[220px] sm:w-[300px] md:w-[500px] md:-ml-[180px] lg:-ml-[220px] xl:-ml-[180px]"
+                                            className="max-w-full h-auto w-[220px] sm:w-[300px] lg:w-[500px] lg:-ml-[180px] xl:-ml-[180px]"
                                         />
                                     </div>
                                 </Fade>
 
-
-                                <div className="order-2 md:order-1 text-white z-10 w-full">
+                                <div className="order-2 lg:order-1 text-white z-10 w-full">
                                     <FadeEach show={revealed} baseDelay={380} step={120} className="w-full">
                                         {[
                                             "Hà Nội | 18.08.2025",
@@ -208,14 +203,14 @@ const CountdownWithServices: React.FC = () => {
                                         ].map((t, idx) => (
                                             <div
                                                 key={idx}
-                                                className="text-center md:text-left text-xl sm:text-2xl md:text-3xl font-bold leading-tight"
+                                                className="text-center lg:text-left text-xl sm:text-2xl lg:text-3xl font-bold leading-tight"
                                                 style={{ fontFamily: "NeueHelveticaExt, sans-serif" }}
                                             >
                                                 {t}
                                             </div>
                                         ))}
                                         <div
-                                            className="mt-1 text-center md:text-left text-sm sm:text-base md:text-lg text-white/90"
+                                            className="mt-1 text-center lg:text-left text-sm sm:text-base lg:text-lg text-white/90"
                                             style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}
                                         >
                                             E6, Khu đô thị mới Cầu Giấy, P. Yên Hòa, TP. Hà Nội
@@ -227,51 +222,49 @@ const CountdownWithServices: React.FC = () => {
                     </main>
 
                     {/* FOOTER */}
-                    <footer className="px-3 pt-2 pb-5 md:px-6 md:py-8">
+                    <footer className="px-3 pt-2 pb-5 lg:px-6 lg:py-8">
                         <div className="max-w-6xl mx-auto space-y-6">
-                            <FadeEach show={revealed} baseDelay={650} step={120} className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6 md:gap-12">
+                            <FadeEach show={revealed} baseDelay={650} step={120} className="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-6 lg:gap-12">
                                 {/* Đơn vị phối hợp tổ chức */}
                                 <div className="flex flex-col items-center space-y-2">
                                     <Fade show={revealed} delay={680}>
-                    <span className=" text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
-                      Đơn vị phối hợp tổ chức
-                    </span>
+                                        <span className=" text-[11px] sm:text-xs lg:text-sm tracking-wide text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
+                                            Đơn vị phối hợp tổ chức
+                                        </span>
                                     </Fade>
-                                    <FadeEach show={revealed} baseDelay={720} step={120} className="flex gap-3 md:gap-6">
+                                    <FadeEach show={revealed} baseDelay={720} step={120} className="flex gap-3 lg:gap-6">
                                         <img
                                             src="/images/img_14.png"
                                             alt="Đối tác A"
-                                            className="h-6 md:h-7 object-contain"
+                                            className="h-6 lg:h-7 object-contain"
                                         />
                                         <img
                                             src="/images/img_15.png"
                                             alt="Đối tác B"
-                                            className="h-6 md:h-7 object-contain"
+                                            className="h-6 lg:h-7 object-contain"
                                         />
                                     </FadeEach>
-
                                 </div>
 
                                 {/* Đơn vị tiên phong */}
                                 <div className="flex flex-col items-center space-y-2">
                                     <Fade show={revealed} delay={700}>
-                    <span className=" text-[11px] sm:text-xs md:text-sm tracking-wide text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
-                      Đơn vị tiên phong
-                    </span>
+                                        <span className=" text-[11px] sm:text-xs lg:text-sm tracking-wide text-white/90" style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400 }}>
+                                            Đơn vị tiên phong
+                                        </span>
                                     </Fade>
-                                    <FadeEach show={revealed} baseDelay={740} step={120} className="flex gap-4 md:gap-8">
+                                    <FadeEach show={revealed} baseDelay={740} step={120} className="flex gap-4 lg:gap-8">
                                         <img
                                             src="/images/img_16.png"
                                             alt="Tiên phong 1"
-                                            className="w-20 md:w-28 h-10 md:h-12 object-contain p-1"
+                                            className="w-20 lg:w-28 h-10 lg:h-12 object-contain p-1"
                                         />
                                         <img
                                             src="/images/img_57.png"
                                             alt="Tiên phong 2"
-                                            className="w-20 md:w-28 h-10 md:h-12 object-contain p-1 -mt-1"
+                                            className="w-20 lg:w-28 h-10 lg:h-12 object-contain p-1 -mt-1"
                                         />
                                     </FadeEach>
-
                                 </div>
                             </FadeEach>
                         </div>

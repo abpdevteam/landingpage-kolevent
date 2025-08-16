@@ -106,7 +106,8 @@ const Event: React.FC = () => {
                                     className={`rounded-2xl p-6 md:p-10 ${getAnimationClasses(statsAnimation.isVisible, 'scaleIn', 0)}`}
                                 >
                                     <div className="space-y-5">
-                                        <div className="flex items-end gap-3">
+                                        <div
+                                            className="flex items-end gap-3 md:flex-col md:items-start lg:flex-row lg:items-end">
                                             <CountUp
                                                 end={300}
                                                 suffix="+"
@@ -141,7 +142,8 @@ const Event: React.FC = () => {
                                         className={`p-6 md:p-10 ${getAnimationClasses(statsAnimation.isVisible, 'scaleIn', 1)}`}
                                     >
                                         <div className="space-y-5">
-                                            <div className="flex items-end gap-3">
+                                            <div
+                                                className="flex items-end gap-3 md:flex-col md:items-start lg:flex-row lg:items-end">
                                                 <CountUp
                                                     end={50}
                                                     suffix="+"
@@ -183,7 +185,8 @@ const Event: React.FC = () => {
                                         className={`rounded-2xl p-6 md:p-10 md:flex ${getAnimationClasses(statsAnimation.isVisible, 'scaleIn', 2)}`}
                                     >
                                         <div className="space-y-5">
-                                            <div className="flex items-end gap-3">
+                                            <div
+                                                className="flex items-end gap-3 md:flex-col md:items-start lg:flex-row lg:items-end">
                                                 <CountUp
                                                     end={50}
                                                     suffix="+"
