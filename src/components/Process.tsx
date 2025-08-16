@@ -5,7 +5,6 @@ const Process: React.FC = () => {
     const [loadedSrc, setLoadedSrc] = useState(false);
     const [userInteracted, setUserInteracted] = useState(false);
 
-    // 1) Pause khi tab ẩn
     useEffect(() => {
         const v = videoRef.current;
         if (!v) return;
@@ -14,7 +13,6 @@ const Process: React.FC = () => {
         return () => document.removeEventListener("visibilitychange", onVis);
     }, []);
 
-    // 2) Autoplay (muted) khi vào viewport
     useEffect(() => {
         const v = videoRef.current;
         if (!v) return;
@@ -25,12 +23,12 @@ const Process: React.FC = () => {
 
                 if (entry.isIntersecting) {
                     if (!loadedSrc) {
-                        v.src = "http://niemtinso.vn/video/denvau.mp4";
+                        v.src = "https://niemtinso.vn/video/intro.mp4";
                         setLoadedSrc(true);
                     }
                     if (!userInteracted) {
                         v.muted = true;
-                        v.setAttribute("muted", ""); // fix iOS
+                        v.setAttribute("muted", "");
                     }
                     try { await v.play(); } catch {}
                 } else {
