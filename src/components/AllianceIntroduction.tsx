@@ -8,11 +8,6 @@ interface DiscussionTopic {
     title: string;
 }
 
-// interface TestimonialItem {
-//     name: string;
-//     position: string;
-//     quote: string;
-// }
 type Pillar = {
     id: number;
     title: string;
@@ -93,15 +88,6 @@ const AllianceIntroduction: React.FC = () => {
     const criteriaHeaderAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
     const pillarsAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
 
-    // const Logo = ({
-    //                   src,
-    //                   alt,
-    //                   className = "h-10 sm:h-12",
-    //               }: {
-    //     src: string;
-    //     alt: string;
-    //     className?: string;
-    // }) => <img src={src} alt={alt} className={`${className} object-contain`} loading="lazy" />;
 
     const topics: DiscussionTopic[] = [
         {id: 1, number: "img_82.png", title: "THAM LUẬN GỬI VỀ HỘI NGHỊ"},
@@ -109,47 +95,6 @@ const AllianceIntroduction: React.FC = () => {
         {id: 3, number: "img_84.png", title: "PHIÊN TỌA ĐÀM - NIỀM TIN VÀ KỲ VỌNG"},
     ];
 
-    // const testimonials: TestimonialItem[] = [
-    //     { name: "NGUYEN VAN A", position: "CHỨC DANH", quote: "It's a great honor to be invited to this event and have a very fruitful conversation." },
-    //     { name: "NGUYEN VAN B", position: "CHỨC DANH", quote: "It's a great honor to be invited to this event and have a very fruitful conversation." },
-    //     { name: "NGUYEN VAN C", position: "CHỨC DANH", quote: "It's a great honor to be invited to this event and have a very fruitful conversation." },
-    // ];
-
-    // ====== SUB COMPONENTS ======
-    // const TestimonialCard = ({ t }: { t: TestimonialItem }) => (
-    //     <div
-    //         className="relative overflow-hidden rounded-[16px] backdrop-blur-sm flex flex-col w-full"
-    //         style={{
-    //             background:
-    //                 "linear-gradient(180deg, rgba(255, 255, 255, 0) -56.25%, rgba(255, 255, 255, 0.3) 100%)",
-    //             border: "1px solid rgba(255, 255, 255, 0.3)",
-    //             boxSizing: "border-box",
-    //         }}
-    //     >
-    //         {/* Nội dung */}
-    //         <div className="relative z-10 flex items-start flex-1 p-6">
-    //             {/* Text bên trái */}
-    //             <div className="flex-1 pr-4">
-    //                 <h4 className="font-bold text-[#ffffff]">{t.name}</h4>
-    //                 <p className="text-xs text-[#ffffff]/80 mb-2">{t.position}</p>
-    //                 <div className="text-[#ffffff]/90 text-sm leading-relaxed">
-    //                     <span className="text-[#ffffff]/60 text-xl mr-1 font-serif">"</span>
-    //                     {t.quote}
-    //                     <span className="text-[#ffffff]/60 text-xl ml-1 font-serif">"</span>
-    //                 </div>
-    //             </div>
-    //
-    //             {/* Avatar bên phải */}
-    //             <div className="flex-shrink-0 ml-auto">
-    //                 <img
-    //                     src="/images/img_31.png"
-    //                     alt="Avatar"
-    //                     className="object-contain w-[150px] md:w-[200px] h-auto"
-    //                 />
-    //             </div>
-    //         </div>
-    //     </div>
-    // );
 
 
     // ====== RENDER ======
@@ -836,37 +781,6 @@ const AllianceIntroduction: React.FC = () => {
                         </div>
                     </div>
 
-
-                    {/* Testimonials giữ nguyên */}
-                    {/*<div className="relative overflow-visible">*/}
-                    {/*    <div className="px-4 relative z-20 md:mx-[145px]">*/}
-                    {/*        /!* MOBILE: 3 cards một hàng *!/*/}
-                    {/*        <div className="md:hidden px-4">*/}
-                    {/*            <div className="flex flex-nowrap gap-4 overflow-x-auto snap-x snap-mandatory">*/}
-                    {/*                {testimonials.slice(0, 3).map((t, idx) => (*/}
-                    {/*                    <div key={idx} className="snap-start shrink-0 w-[280px]">*/}
-                    {/*                        <TestimonialCard t={t} />*/}
-                    {/*                    </div>*/}
-                    {/*                ))}*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-
-
-                    {/*        /!* DESKTOP: 3 cột *!/*/}
-                    {/*        <div className="hidden md:block flex-1 mx-8">*/}
-                    {/*            <div className="grid md:grid-cols-3 items-stretch gap-8">*/}
-                    {/*                {testimonials.map((t, idx) => (*/}
-                    {/*                    <div*/}
-                    {/*                        key={idx}*/}
-                    {/*                        className="h-full  flex"*/}
-                    {/*                    >*/}
-                    {/*                        <TestimonialCard t={t}/>*/}
-                    {/*                    </div>*/}
-                    {/*                ))}*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
                 </div>
             </section>
 
@@ -948,7 +862,7 @@ const AllianceIntroduction: React.FC = () => {
 
                         {/* Luôn cùng 1 hàng */}
                         <div
-                            className="flex flex-row gap-8 items-start md:text-[14px]"
+                            className="flex flex-col sm:flex-col md:flex-row gap-4 md:gap-8 items-start text-sm md:text-[14px]"
                             style={{
                                 fontFamily: "NeueHelveticaExt, sans-serif",
                                 color: "#0011BF",
@@ -984,16 +898,16 @@ const AllianceIntroduction: React.FC = () => {
                             }}
                         >
                             <h2
-                                className="text-base md:text-xl font-extrabold tracking-wide"
+                                className="text-lg sm:text-xl md:text-2xl font-extrabold tracking-wide"
                                 style={{
                                     fontFamily: "NeueHelveticaExt, sans-serif",
                                     color: "#0011BF",
-                                    fontSize: "25px",
                                     fontWeight: 700,
                                 }}
                             >
                                 TIÊU CHÍ ĐÁNH GIÁ - 5 TRỤ CỘT CHÍNH
                             </h2>
+
                         </div>
                     </div>
 
@@ -1096,46 +1010,6 @@ const AllianceIntroduction: React.FC = () => {
                         <div className="max-w-6xl mx-auto space-y-6">
                             <div
                                 className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6 md:gap-12">
-                                {/* Đơn vị phối hợp tổ chức */}
-                                <div className="flex flex-col items-center space-y-6">
-                                    <p className="text-center font-bold"
-                                       style={{fontFamily: "NeueHelveticaExt, sans-serif"}}>
-                                        Đơn vị phối hợp tổ chức
-                                    </p>
-                                    <div className="flex gap-3 md:gap-6">
-                                        <img
-                                            src="/images/img_14.png"
-                                            alt="Đối tác A"
-                                            className="h-7 md:h-8 object-contain"
-                                        />
-                                        <img
-                                            src="/images/img_15.png"
-                                            alt="Đối tác B"
-                                            className="h-7 md:h-8 object-contain"
-                                        />
-                                    </div>
-                                </div>
-
-                                {/* Đơn vị tiên phong */}
-                                <div className="flex flex-col items-center space-y-6">
-
-                                    <p className="text-center font-bold"
-                                       style={{fontFamily: "NeueHelveticaExt, sans-serif"}}>
-                                        Đơn vị tiên phong
-                                    </p>
-                                    <div className="flex gap-3 md:gap-6">
-                                        <img
-                                            src="/images/img_16.png"
-                                            alt="Tiên phong 1"
-                                            className="w-16 md:w-20 h-8 md:h-9 object-contain p-1"
-                                        />
-                                        <img
-                                            src="/images/img_57.png"
-                                            alt="Tiên phong 2"
-                                            className="w-18 md:w-24 h-10 md:h-9 object-contain p-1 b-1"
-                                        />
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <p className="text-center font-bold" style={{fontFamily: "NeueHelveticaExt, sans-serif"}}>

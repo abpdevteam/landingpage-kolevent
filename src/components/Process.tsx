@@ -77,7 +77,6 @@ const Process: React.FC = () => {
                 playsInline
                 loop
                 preload="metadata"
-                poster="/images/img.png"
                 muted
             >
                 Trình duyệt của bạn không hỗ trợ video HTML5.

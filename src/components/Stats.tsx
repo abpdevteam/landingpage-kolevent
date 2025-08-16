@@ -100,23 +100,28 @@ const CountdownWithServices: React.FC = () => {
             <div className="relative w-full min-h-[100dvh]">
                 {/* ẢNH nền sau khi video kết thúc */}
                 <div
-                    className="relative w-full min-h-[100dvh] transition-opacity bg-no-repeat"
+                    className="relative w-full min-h-[100dvh] transition-opacity"
                     style={{
                         opacity: revealed ? 1 : 0,
                         transitionDuration: `${FADE_MS}ms`,
-                        backgroundImage: "url('/images/img_4.png')",
-                        backgroundSize: "cover",
-                        backgroundRepeat: "no-repeat",
                     }}
                 >
-                    <div className="relative z-10 min-h-[100dvh] flex flex-col"></div>
+                    <img
+                        src="/images/img_4.png"
+                        alt="background"
+                        className="w-full h-auto block"
+                    />
+
                 </div>
 
                 {/* Overlay video motion */}
                 {showVideo && (
                     <div
                         className="fixed inset-0 z-[100] bg-black transition-opacity"
-                        style={{ opacity: revealed ? 0 : 1, transitionDuration: `${FADE_MS}ms` }}
+                        style={{
+                            opacity: revealed ? 0 : 1,
+                            transitionDuration: `${FADE_MS}ms`,
+                        }}
                     >
                         <video
                             ref={videoRef}
@@ -244,10 +249,19 @@ const CountdownWithServices: React.FC = () => {
                       Đơn vị tiên phong
                     </span>
                                     </Fade>
-                                    <FadeEach show={revealed} baseDelay={740} step={120} className="flex gap-3 md:gap-6">
-                                        <img src="/images/img_16.png" alt="Tiên phong 1" className="w-16 md:w-20 h-8 md:h-9 object-contain p-1" />
-                                        <img src="/images/img_57.png" alt="Tiên phong 2" className="w-16 md:w-20 h-8 md:h-9 object-contain p-1 b-1 -mt-1" />
+                                    <FadeEach show={revealed} baseDelay={740} step={120} className="flex gap-4 md:gap-8">
+                                        <img
+                                            src="/images/img_16.png"
+                                            alt="Tiên phong 1"
+                                            className="w-20 md:w-28 h-10 md:h-12 object-contain p-1"
+                                        />
+                                        <img
+                                            src="/images/img_57.png"
+                                            alt="Tiên phong 2"
+                                            className="w-20 md:w-28 h-10 md:h-12 object-contain p-1 -mt-1"
+                                        />
                                     </FadeEach>
+
                                 </div>
                             </FadeEach>
                         </div>
