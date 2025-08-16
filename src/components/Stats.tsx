@@ -107,7 +107,7 @@ const CountdownWithServices: React.FC = () => {
                     }}
                 >
                     <img
-                        src="/images/bp.jpg"
+                        src="/images/bp.png"
                         alt="background"
                         className="w-full h-auto block"
                     />
@@ -237,9 +237,18 @@ const CountdownWithServices: React.FC = () => {
                     </span>
                                     </Fade>
                                     <FadeEach show={revealed} baseDelay={720} step={120} className="flex gap-3 md:gap-6">
-                                        <img src="/images/img_14.png" alt="Đối tác A" className="h-7 md:h-8 object-contain" />
-                                        <img src="/images/img_15.png" alt="Đối tác B" className="h-7 md:h-8 object-contain" />
+                                        <img
+                                            src="/images/img_14.png"
+                                            alt="Đối tác A"
+                                            className="h-6 md:h-7 object-contain"
+                                        />
+                                        <img
+                                            src="/images/img_15.png"
+                                            alt="Đối tác B"
+                                            className="h-6 md:h-7 object-contain"
+                                        />
                                     </FadeEach>
+
                                 </div>
 
                                 {/* Đơn vị tiên phong */}
