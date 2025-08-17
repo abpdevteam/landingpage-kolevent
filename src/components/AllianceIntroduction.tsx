@@ -819,7 +819,7 @@ const AllianceIntroduction: React.FC = () => {
                             Cung cấp khung đánh giá toàn diện và dễ dàng kiểm chứng; nhằm xác thực
                             độ minh bạch - đạo đức - trách nhiệm của người có ảnh hưởng. Thiết lập
                             chuẩn mực truyền thông phù hợp với quy định pháp luật, bảo vệ quyền lợi
-                            người tiêu dùng và tạo niềm tin cho các bên liên quan
+                            người tiêu dùng và tạo niềm tin cho các bên liên quan.
                         </p>
                     </div>
 
