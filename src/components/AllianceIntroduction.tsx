@@ -818,7 +818,7 @@ const AllianceIntroduction: React.FC = () => {
                         >
                             Cung cấp khung đánh giá toàn diện và dễ dàng kiểm chứng; nhằm xác thực
                             độ minh bạch - đạo đức - trách nhiệm của người có ảnh hưởng. Thiết lập
-                            chuẩn mực truyền thông phù hợp với quy định pháp luận, bảo vệ quyền lợi
+                            chuẩn mực truyền thông phù hợp với quy định pháp luật, bảo vệ quyền lợi
                             người tiêu dùng và tạo niềm tin cho các bên liên quan
                         </p>
                     </div>
@@ -1026,30 +1026,31 @@ const AllianceIntroduction: React.FC = () => {
                     <div className="mt-1 mb-8">
                         {/* 12 ảnh đầu dùng grid */}
                         <div
-                            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6  justify-items-center">
+                            // className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6  justify-items-center"
+                            className="flex justify-center gap-4 mt-4 flex-wrap">
                             <img src="/images/img_87.png" alt="Event 1" className="w-[100px] h-[100px] object-contain"/>
-                            <img src="/images/img_88.png" alt="Event 2" className="w-[105px] h-[100px] object-contain"/>
+                            {/* <img src="/images/img_88.png" alt="Event 2" className="w-[105px] h-[100px] object-contain"/> */}
                             <img src="/images/img_89.png" alt="Event 3" className="w-[100px] h-[100px] object-contain"/>
-                            <img src="/images/img_90.png" alt="Event 4"
-                                 className="w-[100px] h-[50px] mt-5 object-contain"/>
+                            {/* <img src="/images/img_90.png" alt="Event 4"
+                                 className="w-[100px] h-[50px] mt-5 object-contain"/> */}
                             <img src="/images/img_91.png" alt="Event 5" className="w-[100px] h-[100px] object-contain"/>
-                            <img src="/images/img_92.png" alt="Event 6" className="w-[100px] h-[100px] object-contain"/>
+                            {/* <img src="/images/img_92.png" alt="Event 6" className="w-[100px] h-[100px] object-contain"/>
                             <img src="/images/img_93.png" alt="Event 7" className="w-[100px] h-[100px] object-contain"/>
                             <img src="/images/img_94.png" alt="Event 8" className="w-[100px] h-[100px] object-contain"/>
                             <img src="/images/a.png" alt="Event 9" className="w-[100px] h-[100px] object-contain"/>
                             <img src="/images/a1.png" alt="Event 10" className="w-[100px] h-[100px] object-contain"/>
                             <img src="/images/a2.png" alt="Event 11" className="w-[100px] h-[100px] object-contain"/>
-                            <img src="/images/b.png" alt="Event 12" className="w-[100px] h-[100px] object-contain"/>
+                            <img src="/images/b.png" alt="Event 12" className="w-[100px] h-[100px] object-contain"/> */}
                         </div>
 
                         {/* 5 ảnh cuối căn giữa */}
-                        <div className="flex justify-center gap-4 mt-4 flex-wrap">
+                        {/* <div className="flex justify-center gap-4 mt-4 flex-wrap">
                             <img src="/images/c.png" alt="Event 13" className="w-[100px] h-[100px] object-contain"/>
                             <img src="/images/d.png" alt="Event 14" className="w-[100px] h-[100px] object-contain"/>
                             <img src="/images/f.png" alt="Event 15" className="w-[100px] h-[100px] object-contain"/>
                             <img src="/images/g.png" alt="Event 16" className="w-[100px] h-[100px] object-contain"/>
                             <img src="/images/i.png" alt="Event 17" className="w-[100px] h-[100px] object-contain"/>
-                        </div>
+                        </div> */}
                     </div>
 
 
