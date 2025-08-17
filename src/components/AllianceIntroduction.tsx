@@ -1,137 +1,1065 @@
 import React from "react";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { getAnimationClasses } from "../utils/animation";
 
-const AllianceIntroduction: React.FC = () => {
-    return (
-        <div className="min-h-screen p-8">
-            <div className="max-w-6xl mx-auto bg-white">
-                {/* Header Section */}
-                <div className="relative mb-12">
-                    <div className="flex justify-between items-start">
-                        <div>
-                            <h1 className="text-4xl font-bold text-black mb-2">LIÊN MINH NIỀM TIN SỐ</h1>
-                            <p className="text-lg text-gray-600 uppercase tracking-wide">GIỚI THIỆU VỀ LIÊN MINH</p>
-                        </div>
+interface DiscussionTopic {
+    id: number;
+    number: string;
+    title: string;
+}
 
-                        {/* Brand Identity Pattern */}
-                        <div className="relative">
-                            <div className="w-32 h-20 border-2 border-gray-300 transform rotate-12 bg-white"></div>
-                            <p className="text-xs text-gray-500 mt-2 text-center">
-                                Họa tiết
-                                <br />
-                                nhận diện
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Row 1 - Lý do thành lập + Giới thiệu */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    {/* Card Lý do thành lập */}
-                    <div className="bg-gray-200 p-6 rounded-lg h-full flex items-center justify-center">
-                        <div className="text-center">
-                            <h2 className="text-2xl font-light text-gray-600 mb-4">LÝ DO THÀNH LẬP</h2>
-                            <div className="flex items-center justify-center">
-                                <svg
-                                    className="w-6 h-6 text-gray-500"
-                                    fill="currentColor"
-                                    viewBox="0 0 20 20"
-                                >
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                        clipRule="evenodd"
-                                    />
-                                </svg>
-                                <h3 className="ml-2 text-2xl font-light text-gray-600">LIÊN MINH</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Card Giới thiệu */}
-                    <div className="bg-white p-6 rounded-lg border border-gray-200 h-full flex flex-col justify-center">
-                        <div className="text-sm text-gray-700 leading-relaxed">
-                            <p className="mb-4">
-                                Liên minh được thành lập để tập hợp, kết nối và phát huy vai trò
-                                xây dựng, dẫn dắt niềm tin của KOLs trên không gian mạng.
-                            </p>
-                            <p>
-                                Hoạt động của Liên minh hướng đến lan tỏa giá trị tích cực, định
-                                hướng hành vi đáng tin cậy và nâng cao trách nhiệm của KOLs với
-                                cộng đồng trong kỷ nguyên số.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Row 2 - Tầm nhìn + Hành động */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 j">
-                    <div className="bg-gray-200 p-6 rounded-lg h-full flex items-center justify-center">
-                        <div className="text-center">
-                            <h2 className="text-2xl font-light text-gray-600 mb-4">TỪ TẦM NHÌN ĐẾN</h2>
-                            <div className="flex items-center justify-center">
-                                <svg
-                                    className="w-6 h-6 text-gray-500"
-                                    fill="currentColor"
-                                    viewBox="0 0 20 20"
-                                >
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                        clipRule="evenodd"
-                                    />
-                                </svg>
-                                <h3 className="ml-2 text-2xl font-light text-gray-600">HÀNH ĐỘNG</h3>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    {/* Card Hành động */}
-                    <div className="bg-white p-6 rounded-lg border border-gray-200 h-full">
-                        <div>
-                            <div>
-                                <h3 className="font-bold text-black mb-4">Tầm nhìn:</h3>
-                                <div className="space-y-3 text-sm text-gray-700">
-                                    <p>
-                                        <span className="font-medium">(1)</span> Xây dựng niềm tin, lan tỏa giá trị
-                                        tích
-                                        cực, bền vững, chống
-                                        thông tin sai lệch, lừa đảo, thúc đẩy ý thức an toàn trên không gian mạng.
-                                    </p>
-                                    <p>
-                                        <span className="font-medium">(2)</span> Định hướng, dẫn dắt hành vi đáng
-                                        tin cậy
-                                        của KOL.
-                                    </p>
-                                    <p>
-                                        <span className="font-medium">(3)</span> Cảnh báo, phê phán trao lưu, hiện
-                                        tượng
-                                        lệch lạc của KOL trên
-                                        không gian mạng.
-                                    </p>
-                                </div>
-                            </div>
-                            <h3 className="font-bold text-black mb-4">Hành động:</h3>
-                            <div className="space-y-3 text-sm text-gray-700">
-                                <p>
-                                    <span className="font-medium">(1)</span> Thông qua Chương trình "Tín nhiệm người có
-                                    ảnh hưởng" trên
-                                    không gian mạng.
-                                </p>
-                                <p>
-                                    <span className="font-medium">(2)</span> Bằng các hoạt động đào tạo, tập huấn đa
-                                    dạng.
-                                </p>
-                                <p>
-                                    <span className="font-medium">(3)</span> Bằng các hoạt động cộng đồng rộng khắp.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+type Pillar = {
+    id: number;
+    title: string;
+    lines: string[];
 };
 
+const pillars: Pillar[] = [
+    {
+        id: 1,
+        title: "Minh bạch nội dung và hoạt động quảng cáo",
+        lines: ["gắn nhãn bài đăng thương mại"],
+    },
+    {
+        id: 2,
+        title:
+            "Đạo đức và hành vi truyền thông: Không vi phạm pháp luật, ứng xử có trách nhiệm",
+        lines: [],
+    },
+    {
+        id: 3,
+        title:
+            "Tương tác thực - phản hồi cộng đồng: Không dùng tương tác ảo, xử lý khủng hoảng tích cực",
+        lines: [],
+    },
+    {
+        id: 4,
+        title:
+            "Phù hợp thương hiệu & giá trị xã hội: Hình ảnh tích cực, hợp tác minh bạch",
+        lines: [],
+    },
+    {
+        id: 5,
+        title:
+            "Bảo vệ dữ liệu cá nhân: Tuân thủ pháp luật về quyền riêng tư",
+        lines: [],
+    },
+];
+function Item({ children }: { children: React.ReactNode }) {
+    return (
+        <div className="flex items-start gap-1">
+            <svg className="mt-1 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <rect
+                    x="2"
+                    y="2"
+                    width="20"
+                    height="20"
+                    rx="5"
+                    stroke="#0011BF"
+                    opacity=".9"
+                />
+                <path
+                    d="M7 12l3 3 7-7"
+                    stroke="#0011BF"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                />
+            </svg>
+            <span className="text-sm md:text-base">{children}</span>
+        </div>
+    );
+}
+
+
+const AllianceIntroduction: React.FC = () => {
+    // Animation hooks
+    const headerAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.3 });
+    const topicsAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+    const bulletsAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+    const allianceHeaderAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.3 });
+    const reasonCardAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+    const visionCardAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+    const activitiesHeaderAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.3 });
+    const activitiesCardsAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+    const trustProgramHeaderAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.3 });
+    const trustProgramContentAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+    const purposeAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+    const criteriaHeaderAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+    const pillarsAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+
+
+    const topics: DiscussionTopic[] = [
+        {id: 1, number: "img_82.png", title: "THAM LUẬN GỬI VỀ HỘI NGHỊ"},
+        {id: 2, number: "img_83.png", title: "PHIÊN DIỄN GIẢ - HÀNH TRÌNH VÀ NHỮNG GIÁ TRỊ"},
+        {id: 3, number: "img_84.png", title: "PHIÊN TỌA ĐÀM - NIỀM TIN VÀ KỲ VỌNG"},
+    ];
+
+
+
+    // ====== RENDER ======
+    return (
+        <div
+            className="min-h-screen w-full text-white bg-[#000B9F]"
+        >
+            {/* ====== KHỐI NỀN + SECTION 1 & 2 ====== */}
+            <section className="relative overflow-hidden">
+                {/* BG image */}
+                <div
+                    className="absolute inset-0 z-10  bg-cover"
+                />
+                {/* Overlay trên ảnh (nhưng dưới nội dung) */}
+                <div
+                    className="absolute inset-0 z-20"
+                    style={{
+                        background: `
+            linear-gradient(
+                0deg, 
+                rgba(28, 62, 133, 0.95) 0%,   /* dưới cùng đậm */
+                rgba(28, 62, 133, 0.8) 80%,  /* giữa mờ hơn */
+                rgba(28, 62, 133, 0.8) 60%,  /* giữa mờ hơn */
+                rgba(28, 62, 133, 0.95) 100% /* trên cùng đậm */
+            )
+        `
+                    }}
+                />
+
+
+                {/* Wrapper đảm bảo nội dung nổi trên overlay */}
+                <div className="relative z-30">
+                    <section
+                        className="py-8 bg-cover bg-center relative"
+                        style={{backgroundImage: "url('/images/img_64.png')"}}
+                    >
+                        <div className="relative z-10 lg:mr-[80px] lg:ml-[80px]">
+                            {/* Header */}
+                            <div
+                                ref={headerAnimation.elementRef}
+                                className={`px-4 lg:mx-[100px] mb-10 md:mb-12 ${getAnimationClasses(
+                                    headerAnimation.isVisible,
+                                    "slideInScale"
+                                )}`}
+                            >
+                                <div className="flex items-center justify-center md:justify-center gap-6 w-full">
+                                    <div className="flex flex-col gap-1 text-center md:text-center">
+                                        <h1
+                                            className="text-3xl md:text-[48px] font-light"
+                                            style={{
+                                                fontFamily: "NeueHelveticaExt, sans-serif",
+                                                fontWeight: 700,
+                                                color: "#ffffff",
+                                            }}
+                                        >
+                                            ĐIỂM NHẤN HỘI NGHỊ
+                                        </h1>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            {(() => {
+                                const cardStyle: React.CSSProperties = {
+                                    background:
+                                        "linear-gradient(180deg, rgba(255, 255, 255, 0.4) -56.25%, #FFFFFF 100%)",
+                                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                                    borderRadius: "16px",
+                                };
+                                const textBlue = {color: "#0011BF"};
+
+                                const bulletsByIndex: string[][] = [
+                                    [
+                                        "Tuyển chọn những bài tham luận từ cơ quan quản lý, doanh nghiệp, nền tảng số và những câu chuyện, hành trình được chia sẻ từ các KOL",
+                                        "Mang đến góc nhìn đa chiều về vai trò, trách nhiệm của KOL - ý tưởng - giải pháp liên kết hệ sinh thái, phát triển cộng đồng KOL bền vững",
+                                    ],
+                                    [
+                                        "Không gian để KOL chia sẻ câu chuyện  về hành trình, những giá trị thật đã tạo dựng, cùng trải nghiệm chạm đến trái tim công chúng",
+                                        'Nơi doanh nghiệp, công ty truyền thông, nền tảng, cơ quan quản lý  nhìn nhận về những giá trị "thật" của KOL, ghi nhận hành trình lan tỏa giá trị tích cực, bản sắc văn hóa quê hương mà KOL mang lại',
+                                    ],
+                                    [
+                                        "Đối thoại đa chiều giữa các bên nhằm thảo luận vai trò, trách nhiệm, niềm tin và kỳ vọng với KOL",
+                                        "Giải quyết vấn đề lệch chuẩn, thúc đẩy minh bạch, đề cao giá trị thật của KOL",
+                                    ],
+                                ];
+
+                                return (
+                                    <div className="px-4 lg:mx-[100px]">
+                                        {/* --- Laptop/Desktop layout (giữ nguyên) --- */}
+                                        <div className="hidden md:block">
+                                            {/* Topics */}
+
+                                            <div
+                                                ref={topicsAnimation.elementRef}
+                                                className={`grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch ${getAnimationClasses(
+                                                    topicsAnimation.isVisible,
+                                                    "slideInUp"
+                                                )}`}
+                                            >
+                                                {topics.map((topic, index) => (
+                                                    <div
+                                                        key={topic.id}
+                                                        className="group h-full transition-all duration-300 hover:-translate-y-2" // wrapper hover
+                                                    >
+                                                        <div
+                                                            className={`h-full flex flex-col p-6 transition-all duration-300 group-hover:shadow-lg ${getAnimationClasses(
+                                                                topicsAnimation.isVisible,
+                                                                "bounceIn",
+                                                                index
+                                                            )}`}
+                                                            style={cardStyle}
+                                                        >
+        <span
+            className="text-4xl md:text-5xl mb-3"
+            style={{
+                fontFamily: "NeueHelveticaExt, sans-serif",
+                fontWeight: 700,
+                color: "#0011BF",
+            }}
+        >
+          <img
+              src={`/images/${topic.number}`}
+              alt={topic.title}
+              className="inline-block w-12 h-12 object-contain"
+          />
+        </span>
+                                                            <p
+                                                                className="text-base md:text-lg leading-relaxed"
+                                                                style={{
+                                                                    fontFamily: "NeueHelveticaExt, sans-serif",
+                                                                    fontWeight: 700,
+                                                                    color: "#0011BF",
+                                                                }}
+                                                            >
+                                                                {topic.title}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+
+
+                                            {/* Bullets */}
+                                            <div
+                                                ref={bulletsAnimation.elementRef}
+                                                className={`mt-6 md:mt-8 ${getAnimationClasses(
+                                                    bulletsAnimation.isVisible,
+                                                    "fadeInUp"
+                                                )}`}
+                                            >
+                                                <div
+                                                    className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
+                                                    style={{
+                                                        fontFamily: "NeueHelveticaExt, sans-serif",
+                                                        fontWeight: 400,
+                                                        color: "#0011BF",
+                                                    }}
+                                                >
+                                                    {bulletsByIndex.map((col, idx) => (
+                                                        <div key={idx}
+                                                             className="group transition-all duration-500 hover:-translate-y-3">
+                                                            <div
+                                                                className={`text-left rounded-lg flex flex-col justify-start min-h-[200px] p-4 transition-all duration-500 group-hover:shadow-lg ${getAnimationClasses(
+                                                                    bulletsAnimation.isVisible,
+                                                                    "slideInUp",
+                                                                    idx
+                                                                )}`}
+                                                                style={{
+                                                                    ...cardStyle,
+                                                                    height: "100%",
+                                                                }}
+                                                            >
+                                                                <div
+                                                                    className="leading-relaxed text-sm md:text-base flex flex-col justify-start"
+                                                                    style={textBlue}
+                                                                >
+                                                                    {col.map((line, i) => (
+                                                                        <span key={i} className="block mb-2 last:mb-0">
+                → {line}
+              </span>
+                                                                    ))}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        {/* --- Mobile layout (px-4, căn giữa, có padding 16px) --- */}
+                                        <div className="block md:hidden px-4">
+                                            <div className="flex flex-col gap-6">
+                                                {topics.map((topic, index) => (
+                                                    <div
+                                                        key={topic.id}
+                                                        className="flex flex-col w-full items-center transform transition-transform duration-300 hover:scale-105"
+                                                    >
+                                                        {/* Card trên */}
+                                                        <div
+                                                            className="p-6 mb-4 w-full flex flex-col items-center text-center"
+                                                            style={cardStyle}
+                                                        >
+          <span
+              className="text-4xl mb-3 flex justify-center"
+              style={{
+                  fontFamily: "NeueHelveticaExt, sans-serif",
+                  fontWeight: 700,
+                  color: "#0011BF",
+              }}
+          >
+            <img
+                src={`/images/${topic.number}`}
+                alt={topic.title}
+                className="w-12 h-12 object-contain"
+            />
+          </span>
+                                                            <p
+                                                                className="text-center"
+                                                                style={{
+                                                                    fontFamily: "NeueHelveticaExt, sans-serif",
+                                                                    fontWeight: 700,
+                                                                    color: "#0011BF",
+                                                                }}
+                                                            >
+                                                                {topic.title}
+                                                            </p>
+                                                        </div>
+
+                                                        {/* Bullets */}
+                                                        <div
+                                                            className="p-4 w-full flex flex-col items-center text-center"
+                                                            style={{...cardStyle, ...textBlue}}
+                                                        >
+                                                            {bulletsByIndex[index]?.map((line, i) => (
+                                                                <span
+                                                                    key={i}
+                                                                    className="block mb-2 last:mb-0"
+                                                                    style={{
+                                                                        fontFamily: "NeueHelveticaExt, sans-serif",
+                                                                        fontWeight: 400,
+                                                                        color: "#0011BF",
+                                                                    }}
+                                                                >
+              → {line}
+            </span>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                );
+                            })()}
+                        </div>
+                    </section>
+
+                    {/* ====== SECTION 2: GIỚI THIỆU LIÊN MINH ====== */}
+                    <section
+                        className="py-8 relative"
+                        style={{
+                            backgroundImage: "url('/images/img_65.png')", // đổi ảnh nếu cần
+                            backgroundSize: "auto 80%",
+                            backgroundPosition: "center",
+                        }}
+                    >
+                        {/* Nội dung */}
+                        <div className="relative z-10 mx-4 md:mx-0 lg:mx-[100px]">
+                            {/* Header */}
+                            <div
+                                ref={allianceHeaderAnimation.elementRef}
+                                className={`px-4 md:mx-0 lg:mx-[100px] mb-10 md:mb-12 ${getAnimationClasses(
+                                    allianceHeaderAnimation.isVisible,
+                                    'slideInScale'
+                                )}`}
+                            >
+                                <div className="flex justify-center items-start gap-6">
+                                    <div className="text-center justify-center">
+                                        <h1
+                                            className="text-3xl md:text-5xl font-bold mb-2"
+                                            style={{
+                                                fontFamily: "NeueHelveticaExt, sans-serif",
+                                                fontWeight: 700,
+                                                color: "#ffffff",
+                                            }}
+                                        >
+                                            LIÊN MINH NIỀM TIN SỐ
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Row 1 */}
+                            <div className="px-4 md:px-0 md:mx-0 lg:mx-[80px]">
+                                <div
+                                    ref={reasonCardAnimation.elementRef}
+                                    className={`grid grid-cols-1 md:grid-cols-[400px_1fr] gap-6 mb-6 ${getAnimationClasses(
+                                        reasonCardAnimation.isVisible,
+                                        'slideInUp'
+                                    )}`}
+                                >
+                                    {/* Card 1 */}
+                                    <div className="group transition-all duration-500 hover:-translate-y-3">
+                                        <div
+                                            className={`backdrop-blur-sm p-6 rounded-lg h-full flex items-center justify-center transition-all duration-500 group-hover:scale-105 ${getAnimationClasses(
+                                                reasonCardAnimation.isVisible,
+                                                'fadeInLeft'
+                                            )}`}
+                                            style={{
+                                                background:
+                                                    'linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)',
+                                                border: '1px solid rgba(255, 255, 255, 0.3)',
+                                                borderRadius: '16px',
+                                            }}
+                                        >
+                                            <div className="text-center">
+                                                <h2
+                                                    className="text-[28px] mb-4"
+                                                    style={{
+                                                        fontFamily: 'NeueHelveticaExt, sans-serif',
+                                                        fontWeight: 700,
+                                                        color: '#0011BF',
+                                                    }}
+                                                >
+                                                    SỨ MỆNH
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Card 2 */}
+                                    <div className="group transition-all duration-500 hover:-translate-y-3">
+                                        <div
+                                            className={`p-6 rounded-lg h-full flex flex-col justify-center transition-all duration-500 group-hover:scale-105 ${getAnimationClasses(
+                                                reasonCardAnimation.isVisible,
+                                                'fadeInRight'
+                                            )}`}
+                                            style={{
+                                                background:
+                                                    'linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)',
+                                                border: '1px solid rgba(255, 255, 255, 0.3)',
+                                                borderRadius: '16px',
+                                            }}
+                                        >
+                                            <div className="leading-relaxed text-[#0011BF] space-y-4">
+                                                <div className="flex items-start gap-2">
+                                                    <span className="text-[#0011BF] text-lg font-bold">→</span>
+                                                    <p
+                                                        className="text-lg md:text-[16px]"
+                                                        style={{
+                                                            fontFamily: 'NeueHelveticaExt, sans-serif',
+                                                            fontWeight: 400,
+                                                        }}
+                                                    >
+                                                        Liên minh được thành lập để tập hợp, kết nối và phát huy vai trò
+                                                        xây dựng, dẫn dắt niềm tin của KOLs trên không gian mạng
+                                                    </p>
+                                                </div>
+
+                                                <div className="flex items-start gap-2">
+                                                    <span className="text-[#0011BF] text-lg font-bold">→</span>
+                                                    <p
+                                                        className="text-lg md:text-[16px]"
+                                                        style={{
+                                                            fontFamily: 'NeueHelveticaExt, sans-serif',
+                                                            fontWeight: 400,
+                                                        }}
+                                                    >
+                                                        Hoạt động của Liên minh hướng đến lan tỏa giá trị tích cực, định
+                                                        hướng hành vi đáng tin cậy và nâng cao trách nhiệm của KOLs với
+                                                        cộng đồng trong kỷ nguyên số
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Row 2 */}
+                                <div
+                                    ref={visionCardAnimation.elementRef}
+                                    className={`grid grid-cols-1 md:grid-cols-[400px_1fr_1fr] gap-6 ${getAnimationClasses(
+                                        visionCardAnimation.isVisible,
+                                        'slideInUp'
+                                    )}`}
+                                >
+                                    {/* Card 1: TỪ TẦM NHÌN ĐẾN HÀNH ĐỘNG */}
+                                    <div className="group transition-all duration-500 hover:-translate-y-1">
+                                        <div
+                                            className={`backdrop-blur-sm p-6 rounded-lg h-full flex items-center justify-center 
+              transition-all duration-500 group-hover:scale-105 group-hover:shadow-lg
+              border border-white/30 group-hover:border-white/50
+              ${getAnimationClasses(visionCardAnimation.isVisible, 'fadeInLeft')}`}
+                                            style={{
+                                                background:
+                                                    'linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)',
+                                                borderRadius: '16px',
+                                            }}
+                                        >
+                                            <div className="text-center">
+                                                <h2
+                                                    className="text-[28px] mb-4"
+                                                    style={{
+                                                        fontFamily: 'NeueHelveticaExt, sans-serif',
+                                                        fontWeight: 700,
+                                                        color: '#0011BF',
+                                                    }}
+                                                >
+                                                    TỪ TẦM NHÌN ĐẾN
+                                                </h2>
+                                                <div className="flex items-center justify-center">
+                                                    <svg
+                                                        className="w-5 h-5 md:w-6 md:h-6"
+                                                        fill="#0011BF"
+                                                        viewBox="0 0 20 20"
+                                                        aria-hidden="true"
+                                                    >
+                                                        <path
+                                                            fillRule="evenodd"
+                                                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                                            clipRule="evenodd"
+                                                        />
+                                                    </svg>
+                                                    <h3
+                                                        className="ml-2 text-[28px] font-light"
+                                                        style={{
+                                                            fontFamily: 'NeueHelveticaExt, sans-serif',
+                                                            fontWeight: 700,
+                                                            color: '#0011BF',
+                                                        }}
+                                                    >
+                                                        HÀNH ĐỘNG
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Card 2: TẦM NHÌN */}
+                                    <div className="group transition-all duration-500 hover:-translate-y-3">
+                                        <div
+                                            className={`p-6 rounded-lg h-full transition-all duration-500
+              group-hover:scale-105 group-hover:shadow-lg
+              border border-white/30 group-hover:border-white/50
+              focus-within:shadow-lg
+              ${getAnimationClasses(visionCardAnimation.isVisible, 'fadeInUp')}`}
+                                            style={{
+                                                background:
+                                                    'linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)',
+                                            }}
+                                        >
+                                            <div className="flex items-center mb-4">
+                                                <img
+                                                    src="/images/img_79.png"
+                                                    alt="Icon Tầm nhìn"
+                                                    className="w-10 h-10 mr-3"
+                                                />
+                                                <span
+                                                    className="font-bold text-xl uppercase"
+                                                    style={{
+                                                        fontFamily: 'NeueHelveticaExt, sans-serif',
+                                                        fontWeight: 700,
+                                                        color: '#0011BF',
+                                                    }}
+                                                >
+                Tầm nhìn
+              </span>
+                                            </div>
+
+                                            <ul
+                                                className="space-y-2 text-lg md:text-[16px]"
+                                                style={{
+                                                    fontFamily: 'NeueHelveticaExt, sans-serif',
+                                                    fontWeight: 400,
+                                                    color: '#0011BF',
+                                                    listStyleType: 'none',
+                                                    paddingLeft: 0,
+                                                }}
+                                            >
+                                                <li>→ Xây dựng niềm tin, lan toả giá trị tích cực, bền vững</li>
+                                                <li>→ Định hướng, dẫn dắt hành vi đáng tin cậy của KOL</li>
+                                                <li>→ Cảnh báo, phê phán trào lưu, hiện tượng lệch lạc của KOL</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    {/* Card 3: HÀNH ĐỘNG */}
+                                    <div className="group transition-all duration-500 hover:-translate-y-3">
+                                        <div
+                                            className={`p-6 rounded-lg h-full transition-all duration-500
+              group-hover:scale-105 group-hover:shadow-lg
+              border border-white/30 group-hover:border-white/50
+              focus-within:shadow-lg
+              ${getAnimationClasses(visionCardAnimation.isVisible, 'fadeInRight')}`}
+                                            style={{
+                                                background:
+                                                    'linear-gradient(180deg, rgba(255, 255, 255, 0.2) -121.84%, #FFFFFF 100%)',
+                                            }}
+                                        >
+                                            <div className="flex items-center mb-4">
+                                                <img
+                                                    src="/images/img_80.png"
+                                                    alt="Icon Hành động"
+                                                    className="w-10 h-10 mr-3"
+                                                />
+                                                <span
+                                                    className="font-bold text-xl uppercase"
+                                                    style={{
+                                                        fontFamily: 'NeueHelveticaExt, sans-serif',
+                                                        fontWeight: 700,
+                                                        color: '#0011BF',
+                                                    }}
+                                                >
+                Hành động
+              </span>
+                                            </div>
+
+                                            <ul
+                                                className="space-y-2 text-lg md:text-[16px]"
+                                                style={{
+                                                    fontFamily: 'NeueHelveticaExt, sans-serif',
+                                                    fontWeight: 400,
+                                                    color: '#0011BF',
+                                                    listStyleType: 'none',
+                                                    paddingLeft: 0,
+                                                }}
+                                            >
+                                                <li>→ Thông qua Chương trình "Tín nhiệm người có ảnh hưởng</li>
+                                                <li>→ Bằng các hoạt động đào tạo, tập huấn đa dạng</li>
+                                                <li>→ Bằng các hoạt động cộng đồng rộng khắp</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Button */}
+                                <div className="flex justify-center mt-6">
+                                    <a
+                                        href="https://docs.google.com/forms/d/e/1FAIpQLSfVdo1tlGPdNVD5IEKZmyK_AYZhuthH5PVD0jVnKA0EMSMmog/viewform?usp=dialog"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <button
+                                            className="px-6 py-3 text-lg font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                                            style={{
+                                                background:
+                                                    'linear-gradient(180deg, rgba(255, 255, 255, 0) -56.25%, rgba(255, 255, 255, 0.3) 100%)',
+                                                border: '1px solid rgba(255, 255, 255, 0.3)',
+                                                borderRadius: '16px',
+                                            }}
+                                        >
+                                            ĐĂNG KÝ THÀNH VIÊN
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                </div>
+            </section>
+
+            {/* ====== SECTION 3: HOẠT ĐỘNG CHÍNH + TESTIMONIALS ====== */}
+            <section className="relative py-8 ">
+                {/* BG image */}
+                <div
+                    className="absolute inset-0 z-10 bg-center bg-cover"
+                    style={{backgroundImage: "url('/images/img_66.png')"}}
+                />
+
+
+                {/* Nội dung */}
+                <div className="relative z-20 ">
+                    {/* Header nhỏ */}
+                    <div
+                        ref={activitiesHeaderAnimation.elementRef}
+                        className={`text-center py-12 md:py-16 px-4 ${getAnimationClasses(activitiesHeaderAnimation.isVisible, 'slideInScale')}`}
+                    >
+                        <h1
+                            className="text-3xl md:text-5xl font-bold mb-2"
+                            style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700, color: "#ffffff"}}
+                        >
+                            LIÊN MINH NIỀM TIN SỐ
+                        </h1>
+                        <p
+                            className="text-xl md:text-3xl uppercase tracking-wide"
+                            style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400, color: "#ffffff"}}
+                        >
+                            ẢNH HƯỞNG TRÁCH NHIỆM, DẪN DẮT NIỀM TIN
+                        </p>
+                    </div>
+
+                    {/* 3 Cards (hoạt động chính) */}
+                    <div
+                        ref={activitiesCardsAnimation.elementRef}
+                        className={`px-4 lg:px-0 mb-14 lg:mb-20 lg:mx-[195px] ${getAnimationClasses(
+                            activitiesCardsAnimation.isVisible,
+                            'slideInUp'
+                        )}`}
+                    >
+                        <div className="grid grid-cols-1 md:grid-cols-3 items-stretch gap-6 lg:gap-8">
+                            {[
+                                {
+                                    number: "01",
+                                    title: "Triển khai các dự án cộng đồng trên không gian mạng",
+                                    desc:
+                                        "Tập trung vào chống tin giả, ngăn chặn lừa đảo trực tuyến, góp phần xây dựng một môi trường số an toàn – minh bạch – đáng tin cậy",
+                                },
+                                {
+                                    number: "02",
+                                    title: "Đào tạo & Nâng cao nhận thức và kỹ năng",
+                                    desc:
+                                        "Tổ chức các chương trình đào tạo, huấn luyện và chia sẻ kiến thức nhằm nâng cao hiểu biết, kỹ năng và trách nhiệm xã hội của người nổi tiếng đối với cộng đồng",
+                                },
+                                {
+                                    number: "03",
+                                    title: "Tổ chức các sự kiện và hoạt động thực tiễn",
+                                    desc:
+                                        "Bao gồm tọa đàm, hội thảo, diễn đàn, đối thoại chính sách, các buổi gặp mặt và nhiều hoạt động ý nghĩa khác để biến cam kết thành hành động",
+                                },
+                            ].map((card, i) => (
+                                // Wrapper hover (giữ nguyên hiệu ứng: nhấc lên + shadow)
+                                <div key={i} className="group transition-all duration-500 hover:-translate-y-2">
+                                    <div
+                                        className={`h-full p-6 md:p-8 rounded-[16px] backdrop-blur-sm flex flex-col 
+                      transition-all duration-500 group-hover:shadow-xl
+                      ${getAnimationClasses(activitiesCardsAnimation.isVisible, 'bounceIn', i)}`}
+                                        style={{
+                                            background: "linear-gradient(180deg, rgba(255, 255, 255, 0.2) -56.25%, #FFFFFF 100%)",
+                                            border: "1px solid rgba(255, 255, 255, 0.3)",
+                                            borderRadius: "16px",
+                                        }}
+                                    >
+                                        <div
+                                            className="text-5xl md:text-6xl font-light mb-4 md:mb-6"
+                                            style={{
+                                                fontFamily: "NeueHelveticaExt, sans-serif",
+                                                fontWeight: 700,
+                                                color: "#0011BF",
+                                            }}
+                                        >
+                                            {card.number}
+                                        </div>
+
+                                        <h3
+                                            className="text-lg md:text-xl font-semibold mb-3 md:mb-4 leading-tight"
+                                            style={{
+                                                fontFamily: "NeueHelveticaExt, sans-serif",
+                                                fontWeight: 500,
+                                                color: "#0011BF",
+                                            }}
+                                        >
+                                            {card.title}
+                                        </h3>
+
+                                        <p
+                                            className="text-sm md:text-base leading-relaxed"
+                                            style={{
+                                                fontFamily: "NeueHelveticaExt, sans-serif",
+                                                fontWeight: 400,
+                                                color: "#0011BF",
+                                            }}
+                                        >
+                                            {card.desc}
+                                        </p>
+                                        <div className="mt-auto"/>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+            {/* ====== SECTION 4: CHƯƠNG TRÌNH TÍN NHIỆM ====== */}
+            <section
+                className="relative py-10 md:py-16 px-4 sm:px-6 lg:px-8 bg-no-repeat bg-center bg-cover"
+                style={{backgroundImage: "url('/images/img_61.png')"}}
+            >
+                {/* Nội dung */}
+                <div className="relative z-10 max-w-6xl mx-auto text-center text-white">
+                    {/* Header */}
+                    <div
+                        ref={trustProgramHeaderAnimation.elementRef}
+                        className={`mb-8 md:mb-12 ${getAnimationClasses(
+                            trustProgramHeaderAnimation.isVisible,
+                            "slideInScale"
+                        )}`}
+                    >
+                        <h1
+                            className="text-4xl md:text-5xl font-bold mb-3 tracking-wide"
+                            style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700}}
+                        >
+                            CHƯƠNG TRÌNH
+                        </h1>
+                        <h2
+                            className="text-3xl md:text-4xl font-bold tracking-wide"
+                            style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
+                        >
+                            TÍN NHIỆM NGƯỜI CÓ ẢNH HƯỞNG
+                        </h2>
+                    </div>
+
+                    {/* Description */}
+                    <div
+                        ref={trustProgramContentAnimation.elementRef}
+                        className={`space-y-4 md:space-y-6 mb-8 md:mb-12 ${getAnimationClasses(
+                            trustProgramContentAnimation.isVisible,
+                            "slideInUp"
+                        )}`}
+                    >
+                        <p
+                            className="text-white text-[16px] md:text-[16px] leading-relaxed max-w-4xl mx-auto"
+                            style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
+                        >
+                            Cung cấp khung đánh giá toàn diện và dễ dàng kiểm chứng; nhằm xác thực
+                            độ minh bạch - đạo đức - trách nhiệm của người có ảnh hưởng. Thiết lập
+                            chuẩn mực truyền thông phù hợp với quy định pháp luật, bảo vệ quyền lợi
+                            người tiêu dùng và tạo niềm tin cho các bên liên quan.
+                        </p>
+                    </div>
+
+                    {/* MỤC ĐÍCH */}
+                    <div
+                        ref={purposeAnimation.elementRef}
+                        className={`w-full max-w-[1280px] mx-auto rounded-[16px] border border-white/30 backdrop-blur px-4 sm:px-6 md:px-8 py-5 md:py-6 text-left mb-5 box-border ${getAnimationClasses(
+                            purposeAnimation.isVisible,
+                            "fadeInUp"
+                        )}`}
+                        style={{
+                            background:
+                                "linear-gradient(180deg, rgba(255, 255, 255, 0.4) -121.84%, #FFFFFF 100%)",
+                        }}
+                    >
+                        <div className="flex items-center justify-between mb-4">
+                            <p
+                                className="text-lg md:text-xl font-extrabold tracking-wide"
+                                style={{
+                                    fontFamily: "NeueHelveticaExt, sans-serif",
+                                    color: "#0011BF",
+                                    fontWeight: 700,
+                                }}
+                            >
+                                MỤC ĐÍCH
+                            </p>
+                            <span
+                                className="inline-block w-8 h-[2px] bg-[#0011BF] relative after:content-[''] after:w-0 after:h-0 after:border-y-8 after:border-y-transparent after:border-l-8 after:border-l-[#0011BF] after:absolute after:-right-2 after:-top-[7px]"/>
+                        </div>
+
+                        {/* Luôn cùng 1 hàng */}
+                        <div
+                            className="flex flex-col sm:flex-col md:flex-row gap-4 md:gap-8 items-start text-sm md:text-[14px]"
+                            style={{
+                                fontFamily: "NeueHelveticaExt, sans-serif",
+                                color: "#0011BF",
+                                fontWeight: 400,
+                            }}
+                        >
+                            <Item>
+                                Đánh giá mức độ tín nhiệm trong hoạt động truyền thông, quảng bá
+                            </Item>
+                            <Item>
+                                Hỗ trợ cơ quan quản lý, doanh nghiệp, nhãn hàng lựa chọn đối tác
+                                truyền thông phù hợp
+                            </Item>
+                            <Item>
+                                Bảo vệ người tiêu dùng khỏi nội dung sai lệch, quảng cáo trá hình
+                            </Item>
+                        </div>
+                    </div>
+
+                    {/* TIÊU CHÍ ĐÁNH GIÁ */}
+                    <div
+                        ref={criteriaHeaderAnimation.elementRef}
+                        className={`w-full max-w-[1280px] mx-auto text-center ${getAnimationClasses(
+                            criteriaHeaderAnimation.isVisible,
+                            "fadeInUp"
+                        )}`}
+                    >
+                        <div
+                            className="rounded-[16px] border border-white/30 backdrop-blur px-4 py-3 md:py-4 box-border"
+                            style={{
+                                background:
+                                    "linear-gradient(180deg, rgba(255, 255, 255, 0.4) -121.84%, #FFFFFF 100%)",
+                            }}
+                        >
+                            <h2
+                                className="text-lg sm:text-xl md:text-2xl font-extrabold tracking-wide"
+                                style={{
+                                    fontFamily: "NeueHelveticaExt, sans-serif",
+                                    color: "#0011BF",
+                                    fontWeight: 700,
+                                }}
+                            >
+                                TIÊU CHÍ ĐÁNH GIÁ - 5 TRỤ CỘT CHÍNH
+                            </h2>
+
+                        </div>
+                    </div>
+
+                    {/* Thanh timeline: ẩn trên mobile, hiện md+ */}
+                    <div className="relative mx-auto mt-6 h-8 max-w-6xl hidden lg:block">
+                        <div
+                            className="absolute top-4 h-[2px] rounded-full bg-white"
+                            style={{left: "9.3%", right: "9.3%"}}
+                        />
+                        <div
+                            className="absolute top-[10px] left-[9.4%] h-3 w-3 rounded-full bg-white shadow -translate-x-1/2"/>
+                        <div
+                            className="absolute top-[10px] left-[90.5%] h-3 w-3 rounded-full bg-white shadow -translate-x-1/2"/>
+                    </div>
+
+                    {/* 5 trụ cột */}
+                    <div
+                        ref={pillarsAnimation.elementRef}
+                        className="mx-auto grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-stretch md:mt-[10px]"
+                    >
+                        {pillars.map((p, index) => (
+                            <div
+                                key={p.id}
+                                className={`relative h-full mt-6 md:mt-0 ${getAnimationClasses(
+                                    pillarsAnimation.isVisible,
+                                    'fadeInUp',
+                                    index
+                                )}`}
+                            >
+                                {/* Nút + line trên đầu mỗi card: ẩn mobile, hiện md+ */}
+                                <div
+                                    className="pointer-events-none absolute left-1/2 top-[-18px] z-10 -translate-x-1/2 hidden lg:block">
+                                    <div className="h-4 w-[3px] bg-white mx-auto"/>
+                                    <div className="h-3 w-3 rounded-full bg-white shadow mx-auto"/>
+                                </div>
+
+                                {/* Line nối riêng cho card số 3: chỉ md+ */}
+                                {p.id === 3 && (
+                                    <>
+                                        <div
+                                            className="absolute left-1/2 -translate-x-1/2 bg-white hidden lg:block"
+                                            style={{width: '3px', height: '50px', top: '-60px', zIndex: 5}}
+                                        />
+                                        <div
+                                            className="absolute left-1/2 top-[-64px] h-3 w-3 rounded-full bg-white shadow -translate-x-1/2 hidden lg:block"
+                                            style={{zIndex: 6}}
+                                        />
+                                    </>
+                                )}
+
+                                {/* Wrapper hover */}
+                                <div
+                                    className="group h-full transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#0011BF]/30 rounded-[16px]">
+                                    {/* Nội dung card */}
+                                    <div
+                                        className="h-full min-h-[120px] md:min-h-[192px] rounded-[16px] border border-white/30 backdrop-blur p-4 box-border"
+                                        style={{
+                                            background:
+                                                'linear-gradient(180deg, rgba(255, 255, 255, 0.4) -121.84%, #FFFFFF 100%)'
+                                        }}
+                                    >
+                                        <div
+                                            className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-[#0011BF]/10 font-bold border border-[#0011BF]"
+                                            style={{
+                                                fontFamily: 'NeueHelveticaExt, sans-serif',
+                                                color: '#0011BF',
+                                                fontWeight: 400
+                                            }}
+                                        >
+                                            {p.id}
+                                        </div>
+                                        <p
+                                            className="text-sm leading-relaxed"
+                                            style={{
+                                                fontFamily: 'NeueHelveticaExt, sans-serif',
+                                                color: '#0011BF',
+                                                fontWeight: 400
+                                            }}
+                                        >
+                                            {p.title}
+                                            {p.lines.length > 0 && (
+                                                <>
+                                                    {p.lines.map((l, i) => (
+                                                        <span key={i}>{i === 0 ? ': ' : ', '}{l}</span>
+                                                    ))}
+                                                </>
+                                            )}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                </div>
+            </section>
+            <div className="w-full  flex flex-col justify-center items-center py-6 bg-no-repeat">
+                <div className="px-4">
+                    <div className="flex flex-col items-center space-y-10">
+                        <div className="max-w-6xl mx-auto space-y-6">
+                            <div
+                                className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6 md:gap-12">
+                            </div>
+                        </div>
+                        <p className="text-center font-bold" style={{fontFamily: "NeueHelveticaExt, sans-serif"}}>
+                            Đơn vị đồng hành
+                        </p>
+
+                        <div className="flex flex-wrap justify-center items-center gap-2 md:gap-4">
+                        <img src="/images/img_74.png" alt="Người Quan Sát" className="h-9 md:h-10 object-contain"/>
+                            <img src="/images/img_75.png" alt="Cyber Trust" className="h-9 md:h-10 object-contain"/>
+                            <img src="/images/img_78.png" alt="Logo 2"
+                                 className="max-h-10 md:max-h-11 object-contain p-1"/>
+                            <img src="/images/img_77.png" alt="Logo 3"
+                                 className="max-h-10 md:max-h-11 object-contain p-1"/>
+                            <img src="/images/Logo%20Top%20Top%20white.png" alt="Logo 3"
+                                 className="max-h-10 md:max-h-14 object-contain p-1"/>
+                        </div>
+
+                    </div>
+
+                    <p className="text-center mt-20 font-bold " style={{fontFamily: "NeueHelveticaExt, sans-serif"}}>
+                        Đơn vị bảo trợ truyền thông
+                    </p>
+
+                    <div className="mt-1 mb-8">
+                        {/* 12 ảnh đầu dùng grid */}
+                        <div
+                            // className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6  justify-items-center"
+                            className="flex justify-center gap-4 mt-4 flex-wrap">
+                            <img src="/images/img_87.png" alt="Event 1" className="w-[100px] h-[100px] object-contain"/>
+                            {/* <img src="/images/img_88.png" alt="Event 2" className="w-[105px] h-[100px] object-contain"/> */}
+                            <img src="/images/img_89.png" alt="Event 3" className="w-[100px] h-[100px] object-contain"/>
+                            {/* <img src="/images/img_90.png" alt="Event 4"
+                                 className="w-[100px] h-[50px] mt-5 object-contain"/> */}
+                            <img src="/images/img_91.png" alt="Event 5" className="w-[100px] h-[100px] object-contain"/>
+                            {/* <img src="/images/img_92.png" alt="Event 6" className="w-[100px] h-[100px] object-contain"/>
+                            <img src="/images/img_93.png" alt="Event 7" className="w-[100px] h-[100px] object-contain"/>
+                            <img src="/images/img_94.png" alt="Event 8" className="w-[100px] h-[100px] object-contain"/>
+                            <img src="/images/a.png" alt="Event 9" className="w-[100px] h-[100px] object-contain"/>
+                            <img src="/images/a1.png" alt="Event 10" className="w-[100px] h-[100px] object-contain"/>
+                            <img src="/images/a2.png" alt="Event 11" className="w-[100px] h-[100px] object-contain"/>
+                            <img src="/images/b.png" alt="Event 12" className="w-[100px] h-[100px] object-contain"/> */}
+                        </div>
+
+                        {/* 5 ảnh cuối căn giữa */}
+                        {/* <div className="flex justify-center gap-4 mt-4 flex-wrap">
+                            <img src="/images/c.png" alt="Event 13" className="w-[100px] h-[100px] object-contain"/>
+                            <img src="/images/d.png" alt="Event 14" className="w-[100px] h-[100px] object-contain"/>
+                            <img src="/images/f.png" alt="Event 15" className="w-[100px] h-[100px] object-contain"/>
+                            <img src="/images/g.png" alt="Event 16" className="w-[100px] h-[100px] object-contain"/>
+                            <img src="/images/i.png" alt="Event 17" className="w-[100px] h-[100px] object-contain"/>
+                        </div> */}
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+    );
+};
 export default AllianceIntroduction;

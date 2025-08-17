@@ -1,153 +1,308 @@
 import React from "react";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { getAnimationClasses } from "../utils/animation";
+import CountUp from "./CountUp";
 
 const Event: React.FC = () => {
+    const cardGradient: React.CSSProperties = {
+        background: "linear-gradient(180deg, rgba(255, 255, 255, 0) -56.25%, rgba(255, 255, 255, 0.3) 100%)",
+        border: "1px solid rgba(255, 255, 255, 0.3)",
+        borderRadius: "16px"
+    };
+
+    const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+
+    // Animation hooks for different sections
+    const eventInfoAnimation = useScrollAnimation<HTMLElement>({ threshold: 0.2, triggerOnce: true });
+    const titleAnimation = useScrollAnimation<HTMLHeadingElement>({ threshold: 0.3, triggerOnce: true });
+    const statsAnimation = useScrollAnimation<HTMLElement>({ threshold: 0.3, triggerOnce: true });
+    const partnersAnimation = useScrollAnimation<HTMLElement>({ threshold: 0.3, triggerOnce: true });
+
     return (
-        <div className="min-h-screen bg-gray-100 p-4 md:p-8">
-            <div className="max-w-5xl mx-auto space-y-8"> {/* Tăng max-width lên 5xl */}
-                {/* Header Event Info - Card to hơn */}
-                <div className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-gray-500 w-full"> {/* Tăng padding */}
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                        <div className="space-y-3 w-full">
-                            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 w-full">
-                                <div className="text-3xl md:text-4xl font-light text-gray-600 whitespace-nowrap">
-                                    8h00 → 12h00
+        <div className="relative min-h-screen">
+            {/* Lớp nền */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 z-0 bg-no-repeat bg-center"
+                style={{
+                    backgroundImage: `url('${isMobile ? "/images/img_62.png" : "/images/img_62.png"}')`,
+                    backgroundSize: isMobile ? "cover" : "100% auto",
+                }}
+
+            />
+
+            <div className="relative z-10 px-4 md:px-8 py-8 md:py-12">
+                <div className="mx-auto w-full max-w-6xl">
+                    {/* ==== Phần thông tin sự kiện ==== */}
+                    <section 
+                        ref={eventInfoAnimation.elementRef}
+                        className={`text-white ${getAnimationClasses(eventInfoAnimation.isVisible, 'fadeInUp')}`}
+                    >
+                        {/* Thanh thông tin (giống pill mờ trong ảnh) */}
+                        <div
+                            className="rounded-2xl border border-white/40 bg-white/10 backdrop-blur px-4 md:px-8 py-4 md:py-5
+             flex flex-col items-center md:items-start text-center md:text-left shadow-sm"
+                        >
+                            {/* Hàng trên: Giờ và Ngày */}
+                            <div className="flex items-center justify-between w-full">
+                                {/* Giờ */}
+                                <div
+                                    className="text-xl md:text-3xl font-bold"
+                                >
+                                    7h30&nbsp;&rarr;&nbsp;12h30
                                 </div>
-                                <div className="text-3xl md:text-4xl font-light text-gray-400 whitespace-nowrap">
+
+                                {/* Ngày */}
+                                <div
+                                    className="text-xl md:text-3xl font-bold"
+                                >
                                     18.08.2025
                                 </div>
                             </div>
 
-                            <div className="flex justify-between items-center w-full">
-                                <div className="text-xl md:text-2xl text-gray-500">
-                                    Khách sạn Intercontinental Hanoi Landmark72
-                                </div>
-                            </div>
+                            {/* Địa điểm */}
+                            <h3
+                                className="text-2xl md:text-4xl font-bold leading-snug mt-2"
+                            >
+                                Khách sạn Intercontinental Hanoi Landmark&nbsp;72
+                            </h3>
                         </div>
 
-                    </div>
-                </div>
 
-                {/* Main Content */}
-                <div className="space-y-8"> {/* Tăng khoảng cách */}
-                    <div
-                        className="text-lg md:text-xl text-gray-800 leading-relaxed space-y-6"> {/* Tăng kích thước chữ */}
-                        <p>Quy tụ các KOL tiêu biểu trên toàn quốc cùng đại diện cơ quan quản lý và doanh nghiệp</p>
-                        <p>Diễn đàn thường niên, uy tín và quy mô nhất dành cho KOL.</p>
-                        <p>
-                            Nhìn nhận vai trò, trách nhiệm của KOL trong kỷ nguyên số, đồng thời đề xuất các giải pháp
-                            phát huy ảnh
-                            hưởng tích cực của họ trong phát triển đất nước và bảo vệ an ninh trật tự.
-                        </p>
-                    </div>
+                        <div
+                            className="mt-3 px-4 md:px-8 py-5 md:py-6 space-y-3 text-sm md:text-base text-white leading-relaxed"
+                            style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}>
+                            <p
+                                className="text-lg md:text-[30px] justify-center text-center"
+                                style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
+                            >
+                                Diễn đàn thường niên, uy tín và quy mô dành cho KOL
+                            </p>
+                        </div>
 
-                    {/* Statistics Section */}
-                    <div className="space-y-8"> {/* Tăng khoảng cách */}
-                        <h2 className="text-3xl md:text-4xl font-light text-gray-400 text-center">SỰ GÓP MẶT CỦA</h2>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8"> {/* Tăng khoảng cách */}
-                            {/* 300+ KOLs */}
-                            <div className="bg-gray-200 rounded-2xl p-8 md:p-10 h-full"> {/* Tăng padding */}
-                                <div className="space-y-6"> {/* Tăng khoảng cách */}
-                                    <div className="flex items-center gap-3">
-                                        <span className="text-5xl md:text-6xl font-bold text-black">300+</span>
-                                        <span className="text-xl md:text-2xl font-medium text-gray-700">KOLS</span>
+                    </section>
+
+
+                    {/* ==== Thống kê ==== */}
+                    <section
+                        ref={statsAnimation.elementRef}
+                        className={`space-y-6 ${getAnimationClasses(statsAnimation.isVisible, 'fadeInUp', 1)}`}
+                    >
+                        <h2
+                            ref={titleAnimation.elementRef}
+                            className={`text-2xl md:text-3xl font-light text-white/90 text-center tracking-wide ${getAnimationClasses(titleAnimation.isVisible, 'fadeIn')}`}
+                            style={{ fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700 }}
+                        >
+                            SỰ GÓP MẶT CỦA
+                        </h2>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 ">
+                            <div
+                                className="w-full rounded-2xl overflow-hidden transform transition-transform duration-300 hover:scale-105 will-change-transform"
+                                style={cardGradient}
+                            >
+                                <div
+                                    className={`rounded-2xl p-6 md:p-10 ${getAnimationClasses(statsAnimation.isVisible, 'scaleIn', 0)}`}
+                                >
+                                    <div className="space-y-5">
+                                        <div
+                                            className="flex items-end gap-3 md:flex-col md:items-start lg:flex-row lg:items-end">
+                                            <CountUp
+                                                end={300}
+                                                suffix="+"
+                                                duration={2500}
+                                                delay={500}
+                                                className="text-5xl md:text-6xl font-extrabold text-white leading-none"
+                                                style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500}}
+                                            />
+                                            <span
+                                                className="text-xl md:text-2xl font-semibold text-white"
+                                                style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500}}
+                                            >
+                                            KOL
+                                        </span>
+                                        </div>
+                                        <p className="text-sm md:text-base text-white  leading-relaxed"
+                                           style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}>
+                                            Tiêu biểu, đại diện trên các lĩnh vực, không phân biệt dân tộc, tôn giáo từ
+                                            mọi
+                                            miền Tổ quốc
+                                        </p>
                                     </div>
+                                </div>
+                            </div>
 
-                                    <p className="text-base md:text-lg text-gray-700 leading-relaxed"> {/* Tăng kích thước */}
-                                        Lựa chọn theo tiêu chí từ Cục an ninh
-                                        mạng và Cục nghiệp vụ của Bộ và
-                                        Công an
+                                <div
+                                    className="w-full rounded-2xl overflow-hidden transform transition-transform duration-300 hover:scale-105 will-change-transform"
+                                    style={cardGradient}
+                                >
+                                    {/* CARD: giữ padding + animation như cũ */}
+                                    <div
+                                        className={`p-6 md:p-10 ${getAnimationClasses(statsAnimation.isVisible, 'scaleIn', 1)}`}
+                                    >
+                                        <div className="space-y-5">
+                                            <div
+                                                className="flex items-end gap-3 md:flex-col md:items-start lg:flex-row lg:items-end">
+                                                <CountUp
+                                                    end={50}
+                                                    suffix="+"
+                                                    duration={2000}
+                                                    delay={700}
+                                                    className="text-5xl md:text-6xl font-extrabold text-white leading-none"
+                                                    style={{
+                                                        fontFamily: "NeueHelveticaExt, sans-serif",
+                                                        fontWeight: 700
+                                                    }}
+                                                />
+                                                <div
+                                                    className="text-xl md:text-2xl font-semibold text-white leading-tight"
+                                                    style={{
+                                                        fontFamily: "NeueHelveticaExt, sans-serif",
+                                                        fontWeight: 500
+                                                    }}
+                                                >
+                                                    <div>DOANH</div>
+                                                    <div>NGHIỆP</div>
+                                                </div>
+                                            </div>
+                                            <p
+                                                className="text-sm md:text-base text-white/90"
+                                                style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}
+                                            >
+                                                Truyền thông, đào tạo, quản lý KOL,...
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div
+                                    className="w-full rounded-2xl overflow-hidden transform transition-transform duration-300 hover:scale-105 will-change-transform"
+                                    style={cardGradient}
+                                >
+                                    <div
+                                        className={`rounded-2xl p-6 md:p-10 md:flex ${getAnimationClasses(statsAnimation.isVisible, 'scaleIn', 2)}`}
+                                    >
+                                        <div className="space-y-5">
+                                            <div
+                                                className="flex items-end gap-3 md:flex-col md:items-start lg:flex-row lg:items-end">
+                                                <CountUp
+                                                    end={50}
+                                                    suffix="+"
+                                                    duration={2200}
+                                                    delay={900}
+                                                    className="text-5xl md:text-6xl font-extrabold text-white leading-none"
+                                                    style={{
+                                                        fontFamily: "NeueHelveticaExt, sans-serif",
+                                                        fontWeight: 500
+                                                    }}
+                                                />
+                                                <div
+                                                    className="text-xl md:text-2xl font-semibold text-white leading-tight"
+                                                    style={{
+                                                        fontFamily: "NeueHelveticaExt, sans-serif",
+                                                        fontWeight: 500
+                                                    }}
+                                                >
+                                                    <div>CHUYÊN</div>
+                                                    <div>GIA</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </section>
+
+                    {/* ==== Đối tác ==== */}
+                    <section
+                        ref={partnersAnimation.elementRef}
+                        className={`mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 ${getAnimationClasses(partnersAnimation.isVisible, 'fadeInUp', 2)}`}
+                    >
+                        <div
+                            className="w-full rounded-2xl overflow-hidden transform transition-transform duration-300 hover:scale-105 will-change-transform"
+                            style={cardGradient}
+                        >
+                            <div
+                                className={`rounded-2xl p-6 md:p-8 ${getAnimationClasses(partnersAnimation.isVisible, 'fadeInLeft', 0)}`}
+                            >
+                                <div className="space-y-4">
+                                    <h3
+                                        className="text-center text-xl md:text-2xl font-bold text-white leading-tight"
+                                        style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500}}
+                                    >
+                                        CƠ QUAN, TỔ CHỨC NHÀ NƯỚC
+                                    </h3>
+                                    <p className="text-sm md:text-base text-white leading-relaxed"
+                                       style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 400}}>
+                                        UBTW MTTQ Việt Nam, TW Đoàn TNCS HCM. Các bộ Công an, Công
+                                        thương, Tài chính, Khoa học - Công nghệ, Văn hóa, Thể thao và Du lịch
                                     </p>
                                 </div>
                             </div>
-
-                            {/* 50+ Businesses */}
-                            <div className="bg-gray-200 rounded-2xl p-8 md:p-10 shadow-sm border border-gray-200 h-full"> {/* Tăng padding */}
-                                <div className="space-y-6"> {/* Tăng khoảng cách */}
-                                    <div className="flex items-center gap-3"> {/* Tăng khoảng cách */}
-                                        <span className="text-5xl md:text-6xl font-bold text-black">50+</span> {/* Tăng kích thước */}
-                                        <div className="text-xl md:text-2xl font-medium text-gray-700"> {/* Tăng kích thước */}
-                                            <div>DOANH</div>
-                                            <div>NGHIỆP</div>
-                                        </div>
-                                    </div>
-                                    <p className="text-base md:text-lg text-gray-700">Truyền thông, đào tạo, quản lý KOL...</p> {/* Tăng kích thước */}
-                                </div>
-                            </div>
-
-                            {/* 50+ Experts */}
-                            <div className="bg-gray-200 rounded-2xl p-8 md:p-10 shadow-sm border border-gray-200 h-full"> {/* Tăng padding */}
-                                <div className="space-y-6"> {/* Tăng khoảng cách */}
-                                    <div className="flex items-center gap-3"> {/* Tăng khoảng cách */}
-                                        <span className="text-5xl md:text-6xl font-bold text-black">50+</span> {/* Tăng kích thước */}
-                                        <div className="text-xl md:text-2xl font-medium text-gray-700"> {/* Tăng kích thước */}
-                                            <div>CHUYÊN</div>
-                                            <div>GIA</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Partner Sections */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8"> {/* Tăng khoảng cách */}
-                        {/* State Management */}
-                        <div className="bg-gray-200 rounded-2xl p-8 shadow-sm border border-gray-200 h-full"> {/* Tăng padding */}
-                            <div className="space-y-6"> {/* Tăng khoảng cách */}
-                                <h3 className="text-xl md:text-2xl font-bold text-black leading-tight">CƠ QUAN QUẢN LÝ NHÀ NƯỚC</h3> {/* Tăng kích thước */}
-                                <p className="text-base text-gray-600 leading-relaxed"> {/* Tăng kích thước */}
-                                    Thuộc các bộ: Công an, Khoa học và
-                                    Công nghệ, Công thương, Quốc
-                                    phòng, Ngân hàng Nhà nước…
-                                </p>
-                            </div>
                         </div>
 
-                        {/* Social Media Platforms */}
-                        <div className="bg-gray-200 rounded-2xl p-8 shadow-sm border border-gray-200 h-full"> {/* Tăng padding */}
-                            <div className="space-y-6"> {/* Tăng khoảng cách */}
-                                <h3 className="text-xl md:text-2xl font-bold text-black leading-tight">CÁC NỀN TẢNG MẠNG XÃ HỘI</h3> {/* Tăng kích thước */}
-                                <div className="flex items-center gap-6 flex-wrap"> {/* Tăng khoảng cách */}
-                                    <div className="flex items-center gap-2"> {/* Tăng khoảng cách */}
-                                        <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center"> {/* Tăng kích thước */}
-                                            <span className="text-white text-sm font-bold">Z</span> {/* Tăng kích thước */}
-                                        </div>
-                                        <span className="text-base font-medium">Zalo</span> {/* Tăng kích thước */}
+                        {/* Card 5 - có ảnh */}
+                        <div
+                            className="w-full rounded-2xl overflow-hidden transform transition-transform duration-300 hover:scale-105 will-change-transform"
+                            style={cardGradient}
+                        >
+                            <div
+                                className={`rounded-2xl p-6 md:p-8 ${getAnimationClasses(partnersAnimation.isVisible, 'scaleIn', 1)}`}
+                            >
+                                <div>
+                                    <h3
+                                        className="text-xl text-center md:text-2xl font-bold text-white leading-tight"
+                                        style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500}}
+                                    >
+                                        CÁC NỀN TẢNG MẠNG XÃ HỘI
+                                    </h3>
+                                    <div className="flex items-center justify-center flex-wrap">
+                                        {[
+                                            {name: "Zalo", img: "/images/img_36.png"},
+                                            {name: "Meta", img: "/images/img_37.png"},
+                                            {name: "TikTok", img: "/images/img_39.png"},
+                                        ].map((platform, index) => (
+                                            <div key={index} className="flex items-center justify-center px-3 py-2">
+                                                <img
+                                                    src={platform.img}
+                                                    alt={platform.name}
+                                                    className={
+                                                        platform.name === "Meta" || platform.name === "TikTok"
+                                                            ? "w-20 h-21 object-scale-down" // to hơn
+                                                            : "w-16 h-16 object-scale-down" // size cũ
+                                                    }
+                                                />
+                                            </div>
+                                        ))}
                                     </div>
-                                    <div className="flex items-center gap-2"> {/* Tăng khoảng cách */}
-                                        <div className="w-8 h-8 bg-blue-500 rounded flex items-center justify-center"> {/* Tăng kích thước */}
-                                            <span className="text-white text-sm font-bold">M</span> {/* Tăng kích thước */}
-                                        </div>
-                                        <span className="text-base font-medium">Meta</span> {/* Tăng kích thước */}
-                                    </div>
-                                    <div className="flex items-center gap-2"> {/* Tăng khoảng cách */}
-                                        <div className="w-8 h-8 bg-red-500 rounded flex items-center justify-center"> {/* Tăng kích thước */}
-                                            <span className="text-white text-sm font-bold">G</span> {/* Tăng kích thước */}
-                                        </div>
-                                        <span className="text-base font-medium">Google</span> {/* Tăng kích thước */}
-                                    </div>
-                                    <div className="flex items-center gap-2"> {/* Tăng khoảng cách */}
-                                        <div className="w-8 h-8 bg-black rounded flex items-center justify-center"> {/* Tăng kích thước */}
-                                            <span className="text-white text-sm font-bold">T</span> {/* Tăng kích thước */}
-                                        </div>
-                                        <span className="text-base font-medium">TikTok</span> {/* Tăng kích thước */}
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
 
-                        {/* National Cybersecurity Association */}
-                        <div className="bg-gray-200 rounded-2xl p-8 shadow-sm border border-gray-200 h-full"> {/* Tăng padding */}
-                            <h3 className="text-xl md:text-2xl font-bold text-black leading-tight"> {/* Tăng kích thước */}
-                                THÀNH VIÊN HIỆP HỘI AN NINH MẠNG QUỐC GIA
-                            </h3>
+                        {/* Card 6 - chỉ gradient */}
+                        <div
+                            className="w-full rounded-2xl overflow-hidden transform transition-transform duration-300 hover:scale-105 will-change-transform"
+                            style={cardGradient}
+                        >
+                            <div
+                                className={`rounded-2xl p-6 md:p-8 flex justify-center text-center ${getAnimationClasses(partnersAnimation.isVisible, 'fadeInRight', 2)}`}
+                            >
+                                <h3
+                                    className="text-xl md:text-2xl font-bold text-white leading-tight"
+                                    style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 500}}
+                                >
+                                    THÀNH VIÊN HIỆP HỘI AN NINH MẠNG QUỐC GIA
+                                </h3>
+                            </div>
                         </div>
-                    </div>
+                    </section>
                 </div>
             </div>
         </div>
-    )
-}
+);
+};
 
 export default Event;

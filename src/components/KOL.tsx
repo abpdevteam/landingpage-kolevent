@@ -1,111 +1,116 @@
-"use client"
+import React, { useMemo } from "react";
 
-import React, { useState } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "antd"
-
-interface KOL {
-    id: number
-    name: string
-    role: string
-    avatar?: string
+interface KOLProfile {
+    id: number;
+    name: string;
+    role: string;
+    avatar: string;
 }
 
-const kols: KOL[] = [
-    { id: 1, name: "NGUYEN VAN A", role: "KOL" },
-    { id: 2, name: "NGUYEN VAN B", role: "KOL" },
-    { id: 3, name: "NGUYEN VAN C", role: "KOL" },
-    { id: 4, name: "NGUYEN VAN D", role: "KOL" },
-    { id: 5, name: "NGUYEN VAN E", role: "KOL" },
-    { id: 6, name: "NGUYEN VAN F", role: "KOL" },
-    { id: 7, name: "NGUYEN VAN G", role: "KOL" },
-    { id: 8, name: "NGUYEN VAN H", role: "KOL" },
-]
+// Mảng KOL đầu tiên - 14 thành phần
+const kolProfilesGroup1: KOLProfile[] = [
+    { id: 1, name: "XUÂN BẮC", role: "NSND", avatar: "/images/img_5.png" },
+    { id: 2, name: "KHÁNH VY", role: "MC", avatar: "/images/img_11.png" },
+    { id: 3, name: "ĐEN VÂU", role: "RAPPER", avatar: "/images/img_27.png" },
+    { id: 4, name: "BẢO NGỌC", role: "HOA HẬU", avatar: "/images/img_28.png" },
+    { id: 5, name: "THANH THUỶ", role: "HOA HẬU", avatar: "/images/img_29.png" },
+    { id: 6, name: "TIỂU VY", role: "HOA HẬU", avatar: "/images/img_30.png" },
+    { id: 7, name: "TÙNG DƯƠNG", role: "CA SĨ", avatar: "/images/img_32.png" },
+    { id: 8, name: "PHƯƠNG THANH", role: "CA SĨ", avatar: "/images/img_33.png" },
+    { id: 9, name: "HÀ MYO", role: "CA SĨ", avatar: "/images/img_34.png" },
+    { id: 10, name: "BẢO THANH", role: "DIỄN VIÊN", avatar: "/images/img_35.png" },
+    { id: 11, name: "MEICHAN", role: "KOL", avatar: "/images/img_40.png" },
+    { id: 12, name: "TINA THẢO THI", role: "KOL", avatar: "/images/img_41.png" },
+    { id: 13, name: "EM BÉ XỆ XỆ", role: "KOL", avatar: "/images/img_42.png" },
+    { id: 14, name: "HANA BAN MÊ", role: "KOL", avatar: "/images/img_43.png" },
+];
+
+// Mảng KOL thứ hai - 14 thành phần
+const kolProfilesGroup2: KOLProfile[] = [
+    { id: 15, name: "SÙNG A TÙA", role: "KOL", avatar: "/images/img_44.png" },
+    { id: 16, name: "ĐỒNG VĂN HÙNG", role: "ẨM THỰC MẸ LÀM", avatar: "/images/img_45.png" },
+    { id: 17, name: "PHƯƠNG NAM", role: "KOL", avatar: "/images/img_46.png" },
+    { id: 18, name: "TRÚC LINH", role: "HOA HẬU", avatar: "/images/img_47.png" },
+    { id: 19, name: "TRẦN NGỌC CHÂU ANH", role: "Á HẬU", avatar: "/images/img_51.png" },
+    { id: 20, name: "NGUYỄN THỊ VÂN NHI", role: "Á HẬU", avatar: "/images/img_52.png" },
+    { id: 21, name: "HƯNG NGUYỄN", role: "NAM VƯƠNG", avatar: "/images/img_53.png" },
+    { id: 22, name: "QUẾ NGỌC HẢI", role: "CẦU THỦ", avatar: "/images/img_54.png" },
+    { id: 23, name: "PHẠM TUẤN HƯNG", role: "KOL", avatar: "/images/img_55.png" },
+    { id: 24, name: "TUẤN NGỌC ĐÂY", role: "KOL", avatar: "/images/img_67.png" },
+    { id: 25, name: "VĨNH THÍCH ĂN NGON", role: "KOL", avatar: "/images/img_68.png" },
+    { id: 26, name: "ĐỖ KIM PHÚC", role: "KOL", avatar: "/images/img_69.png" },
+    { id: 27, name: "TRƯƠNG VÂN ĐẠO", role: "KOL", avatar: "/images/img_70.png" },
+    { id: 28, name: "NGUYỄN THÁI HỌC", role: "CA SĨ", avatar: "/images/img_71.png" },
+];
 
 const KOL: React.FC = () => {
-    const [currentIndex, setCurrentIndex] = useState(0)
-    const itemsPerView = 5
-    const maxIndex = Math.max(0, kols.length - itemsPerView)
-
-    const nextSlide = () => {
-        setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1))
-    }
-
-    const prevSlide = () => {
-        setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1))
-    }
-
-    const visibleKols = kols.slice(currentIndex, currentIndex + itemsPerView)
+    const trackTop = useMemo(() => [...kolProfilesGroup1, ...kolProfilesGroup1], []);
+    const trackBottom = useMemo(() => [...kolProfilesGroup2, ...kolProfilesGroup2], []);
 
     return (
-        <div className="w-full max-w-6xl mx-auto px-4 py-8">
-            {/* Title */}
+        <div
+            className="relative py-12 overflow-hidden"
+            style={{
+                backgroundImage: "url('/images/img_63.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+            }}
+        >
+            <div className="relative z-10 max-w-[100vw] mx-auto overflow-hidden">
+                <div className="text-center mb-7">
+                    <h2
+                        className="text-2xl md:text-3xl font-light text-white/70 tracking-wider"
+                        style={{fontFamily: "NeueHelveticaExt, sans-serif", fontWeight: 700}}
+                    >
+                        KOLS THAM DỰ
+                    </h2>
+                </div>
 
-            <div className="relative">
-                {/* Navigation Arrows */}
-                <Button
-                    className="absolute left-0 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full bg-white shadow-md hover:bg-gray-50"
-                    onClick={prevSlide}
-                    disabled={currentIndex === 0}
-                >
-                    <ChevronLeft className="h-6 w-6 text-gray-600"/>
-                </Button>
-
-                <Button
-                    className="absolute right-0 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full bg-white shadow-md hover:bg-gray-50"
-                    onClick={nextSlide}
-                    disabled={currentIndex >= maxIndex}
-                >
-                    <ChevronRight className="h-6 w-6 text-gray-600"/>
-                </Button>
-
-                {/* KOL Cards Container */}
-                <div className="mx-16">
-                    <div className="grid grid-cols-5 gap-6">
-
-                        {visibleKols.map((kol) => (
-
-                            <div key={`${kol.id}-${currentIndex}`} className="flex flex-col items-center h-full">
-                                <div className="flex items-center w-full">
-                                    <div className="ml-3">
-                                        <div className="text-sm font-medium text-gray-800">{kol.name}</div>
-                                        <div className="text-xs text-gray-500">{kol.role}</div>
-                                    </div>
-                                    {/* Avatar */}
-                                    <div className="relative flex-shrink-0">
-                                        <div
-                                            className="w-16 h-16 bg-gray-300 rounded-full overflow-hidden flex items-center justify-center">
-                                            {/* Placeholder for avatar image */}
-                                            <span className="text-gray-500 text-lg font-medium">
-                                                {kol.name.split(' ').map(n => n[0]).join('')}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
+                {/* Hàng 1: chạy từ trái qua phải */}
+                <div className="mb-10 w-full relative overflow-hidden">  {/* giữ để mask mép trái/phải */}
+                    <div className="flex animate-marquee-right whitespace-nowrap py-3 md:py-4"> {/* thêm đệm dọc */}
+                        {trackTop.map((p, i) => (
+                            <div
+                                key={`group1-${p.id}-${i}`}
+                                className="group relative inline-flex flex-col mx-4 w-[300px] flex-shrink-0
+                   transform-gpu will-change-transform transition-transform duration-300
+                   hover:scale-105 hover:-translate-y-1 hover:z-20"
+                            >
+                                <img
+                                    src={p.avatar}
+                                    alt={p.name}
+                                    loading="lazy"
+                                    className="w-full h-[300px] rounded-[16px] object-cover pointer-events-none"
+                                />
                             </div>
                         ))}
                     </div>
                 </div>
-            </div>
 
-            {/* Dots Indicator */}
-            <div className="flex justify-center mt-8 space-x-2">
-                {Array.from({length: maxIndex + 1}).map((_, index) => (
-                    <button
-                        key={index}
-                        className={`w-3 h-3 rounded-full transition-colors ${
-                            index === currentIndex ? "bg-gray-600" : "bg-gray-300"
-                        }`}
-                        onClick={() => setCurrentIndex(index)}
-                    />
-                ))}
-            </div>
-            <div className="text-center mb-8 mt-10">
-                <h2 className="text-2xl font-light text-gray-400 tracking-wider">CÁC KOLs XÁC NHẬN THAM GIA</h2>
-            </div>
+                {/* Hàng 2: chạy từ phải qua trái */}
+                <div className="w-full relative overflow-hidden">
+                    <div className="flex animate-marquee-left whitespace-nowrap py-3 md:py-4">
+                        {trackBottom.map((p, i) => (
+                            <div
+                                key={`group2-${p.id}-${i}`}
+                                className="group relative inline-flex flex-col mx-4 w-[300px] flex-shrink-0
+                   transform-gpu will-change-transform transition-transform duration-300
+                   hover:scale-105 hover:-translate-y-1 hover:z-20"
+                            >
+                                <img
+                                    src={p.avatar}
+                                    alt={p.name}
+                                    loading="lazy"
+                                    className="w-full h-[300px] rounded-[16px] object-cover pointer-events-none"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
 
+            </div>
         </div>
-    )
-}
+    );
+};
 
 export default KOL;
