@@ -1007,7 +1007,7 @@ const AllianceIntroduction: React.FC = () => {
                         </p>
 
                         <div className="flex flex-wrap justify-center items-center gap-2 md:gap-4">
-                        <img src="/images/img_74.png" alt="Người Quan Sát" className="h-9 md:h-10 object-contain"/>
+                            <img src="/images/img_74.png" alt="Người Quan Sát" className="h-9 md:h-10 object-contain"/>
                             <img src="/images/img_75.png" alt="Cyber Trust" className="h-9 md:h-10 object-contain"/>
                             <img src="/images/img_78.png" alt="Logo 2"
                                  className="max-h-10 md:max-h-11 object-contain p-1"/>
@@ -1028,38 +1028,46 @@ const AllianceIntroduction: React.FC = () => {
                         <div
                             // className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6  justify-items-center"
                             className="flex justify-center gap-4 mt-4 flex-wrap">
-                            <img src="/images/img_87_vtv.png" alt="Event 1" className="w-[100px] h-[100px] object-contain"/>
-                            {/* <img src="/images/img_88.png" alt="Event 2" className="w-[105px] h-[100px] object-contain"/> */}
+                            <img src="/images/img_87_vtv.png" alt="Event 1"
+                                 className="w-[100px] h-[100px] object-contain"/>
                             <img src="/images/img_89.png" alt="Event 3" className="w-[100px] h-[100px] object-contain"/>
-                            {/* <img src="/images/img_90.png" alt="Event 4"
-                                 className="w-[100px] h-[50px] mt-5 object-contain"/> */}
                             <img src="/images/img_91.png" alt="Event 5" className="w-[100px] h-[100px] object-contain"/>
-                            {/* <img src="/images/img_92.png" alt="Event 6" className="w-[100px] h-[100px] object-contain"/>
-                            <img src="/images/img_93.png" alt="Event 7" className="w-[100px] h-[100px] object-contain"/>
-                            <img src="/images/img_94.png" alt="Event 8" className="w-[100px] h-[100px] object-contain"/>
-                            <img src="/images/a.png" alt="Event 9" className="w-[100px] h-[100px] object-contain"/>
-                            <img src="/images/a1.png" alt="Event 10" className="w-[100px] h-[100px] object-contain"/>
-                            <img src="/images/a2.png" alt="Event 11" className="w-[100px] h-[100px] object-contain"/>
-                            <img src="/images/b.png" alt="Event 12" className="w-[100px] h-[100px] object-contain"/> */}
                         </div>
 
-                        {/* 5 ảnh cuối căn giữa */}
-                        {/* <div className="flex justify-center gap-4 mt-4 flex-wrap">
-                            <img src="/images/c.png" alt="Event 13" className="w-[100px] h-[100px] object-contain"/>
-                            <img src="/images/d.png" alt="Event 14" className="w-[100px] h-[100px] object-contain"/>
-                            <img src="/images/f.png" alt="Event 15" className="w-[100px] h-[100px] object-contain"/>
-                            <img src="/images/g.png" alt="Event 16" className="w-[100px] h-[100px] object-contain"/>
-                            <img src="/images/i.png" alt="Event 17" className="w-[100px] h-[100px] object-contain"/>
-                        </div> */}
                     </div>
-
-
+                    <p className="text-center  font-bold " style={{fontFamily: "NeueHelveticaExt, sans-serif"}}>
+                        Đơn vị phối hợp truyền thông
+                    </p>
+                    <div
+                        // className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6  justify-items-center"
+                        className="flex justify-center gap-4 mt-2 flex-wrap">
+                        <img src="/images/logo_final_01_01%20-%20YEAH1%20.png" alt="Event 4"
+                             className="w-[100px] h-[50px] mt-8 object-contain"/>
+                        <img src="/images/logo_final_02_02%20-%20metub.png" alt="Event 2"
+                             className="w-[105px] h-[100px] object-contain"/>
+                        <img src="/images/logo_final_03_03%20-%20theanh28trang.png" alt="Event 6"
+                             className="w-[100px] h-[100px] object-contain"/>
+                        <img src="/images/logo_final_04_04%20-%20beatvn.png" alt="Event 7"
+                             className="w-[100px] h-[100px] object-contain"/>
+                        <img src="/images/logo_final_05_05%20-%20mcv.png" alt="Event 8"
+                             className="w-[100px] h-[100px] object-contain"/>
+                        <img src="/images/logo_final_06_06%20-%20schannel.png" alt="Event 9"
+                             className="w-[100px] h-[100px] object-contain"/>
+                        <img src="/images/logo_final_07_07%20-%20kenh14.png" alt="Event 10"
+                             className="w-[100px] h-[100px] object-contain"/>
+                        <img src="/images/logo_final_08_08%20-%20golden.png" alt="Event 11"
+                             className="w-[100px] h-[100px] object-contain"/>
+                        <img src="/images/logo_final_09_09%20-%20iSocial.png" alt="Event 12"
+                             className="w-[100px] h-[100px] object-contain"/>
+                        <img src="/images/logo_final_10_10%20-%20vitamin.png" alt="Event 12"
+                             className="w-[100px] h-[100px] object-contain"/>
+                    </div>
+                    </div>
                 </div>
+
+
             </div>
 
-
-        </div>
-
-    );
-};
-export default AllianceIntroduction;
+            );
+            };
+            export default AllianceIntroduction;
