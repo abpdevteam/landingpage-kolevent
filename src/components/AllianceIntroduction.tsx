@@ -1028,7 +1028,7 @@ const AllianceIntroduction: React.FC = () => {
                         <div
                             // className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6  justify-items-center"
                             className="flex justify-center gap-4 mt-4 flex-wrap">
-                            <img src="/images/img_87.png" alt="Event 1" className="w-[100px] h-[100px] object-contain"/>
+                            <img src="/images/img_87_vtv.png" alt="Event 1" className="w-[100px] h-[100px] object-contain"/>
                             {/* <img src="/images/img_88.png" alt="Event 2" className="w-[105px] h-[100px] object-contain"/> */}
                             <img src="/images/img_89.png" alt="Event 3" className="w-[100px] h-[100px] object-contain"/>
                             {/* <img src="/images/img_90.png" alt="Event 4"
