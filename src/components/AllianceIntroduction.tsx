@@ -1045,7 +1045,7 @@ const AllianceIntroduction: React.FC = () => {
                              className="w-[100px] h-[50px] mt-8 object-contain"/>
                         <img src="/images/logo_final_02_02%20-%20metub.png" alt="Event 2"
                              className="w-[105px] h-[100px] object-contain"/>
-                        <img src="/images/logo_final_03_03%20-%20theanh28trang.png" alt="Event 6"
+                        <img src="/images/theanh28-white-mv.png" alt="Event 6"
                              className="w-[100px] h-[100px] object-contain"/>
                         <img src="/images/logo_final_04_04%20-%20beatvn.png" alt="Event 7"
                              className="w-[100px] h-[100px] object-contain"/>
